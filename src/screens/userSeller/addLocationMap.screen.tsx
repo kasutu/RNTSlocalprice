@@ -5,7 +5,6 @@ import {
   Box,
   Center,
   NativeBaseProvider,
-  Spacer,
   Text,
   VStack
 } from 'native-base';
