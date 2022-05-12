@@ -1,5 +1,5 @@
-import ButtonBar from '../components/buttonBar.component';
-import HeaderBar from '../components/headerBar.components';
+import ButtonBar from '../../components/buttonBar.component';
+import HeaderBar from '../../components/headerBar.components';
 import React from 'react';
 import {
   Box,
