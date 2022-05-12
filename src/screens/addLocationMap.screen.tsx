@@ -1,77 +1,47 @@
-import Icon from 'react-native-vector-icons/MaterialIcons';
+import ButtonBar from '../components/buttonBar.component';
+import HeaderBar from '../components/headerBar.components';
 import React from 'react';
 import {
   Box,
   Center,
-  HStack,
-  IconButton,
   NativeBaseProvider,
-  Button,
-  StatusBar,
+  Spacer,
   Text,
   VStack
 } from 'native-base';
 
-const arrowBack = <Icon name="arrow-back" size={30} color="black" />;
-
 export default function AddLocationMap() {
-  const [selected, setSelected] = React.useState(1);
-
   return (
     <NativeBaseProvider>
-      {/* status bar */}
-      <StatusBar barStyle="light-content" />
-      <VStack safeArea space={3}>
-        <Box>
-          <HStack px="1" py="1" alignItems="center" w="100%">
-            <HStack alignItems="center">
-              <IconButton
-                icon={arrowBack}
-                onPress={() => console.log('pressed back button')}
-              />
-              <Text color="black" fontSize="20" fontWeight="bold">
-                Add Location
-              </Text>
-            </HStack>
-          </HStack>
-        </Box>
+      <VStack space={3} height={'full'}>
+        {/* status bar */}
+        <HeaderBar />
 
         {/* map placeholder */}
-        <Center backgroundColor={'indigo.500'} marginY={'1'} height={'80%'}>
+        <Center
+          backgroundColor={'indigo.500'}
+          height={'80%'}
+          justifyContent={'center'}
+          alignItems={'center'}
+        >
           <Text color="black" fontSize="20" fontWeight="bold">
             MAP
           </Text>
         </Center>
 
         {/* cancel and save btn */}
-        <Center safeAreaBottom>
-          <HStack alignItems="center" safeAreaBottom maxH={'100%'}>
-            <Center mx={'2.5'}>
-              <Button
-                width={'150'}
-                height={'45'}
-                variant={'outline'}
-                onPress={() => console.log('CANCEL pressed')}
-                _text={{ fontSize: '15', fontWeight: 'medium' }}
-                borderRadius={'50'}
-              >
-                Cancel
-              </Button>
-            </Center>
-            <Center mx={'2.5'}>
-              <Button
-                width={'150'}
-                height={'45'}
-                variant={'solid'}
-                onPress={() => console.log('SAVE pressed')}
-                _text={{ fontSize: '15', fontWeight: 'medium' }}
-                borderRadius={'50'}
-              >
-                Save
-              </Button>
-            </Center>
-          </HStack>
-        </Center>
+        <Box
+          safeAreaBottom
+          flex={1}
+          marginY={'5'}
+          position={'absolute'}
+          bottom={'0'}
+          flexDirection={'row'}
+          justifyContent={'center'}
+          width={'100%'}
+        >
+          <ButtonBar />
+        </Box>
       </VStack>
     </NativeBaseProvider>
   );
