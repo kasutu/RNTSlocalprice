@@ -1,3 +1,3 @@
 export type HeaderProps = {
-  title: string;
+  title?: string;
 };
