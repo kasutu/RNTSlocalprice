@@ -1,20 +1,14 @@
-import ButtonBar from '../../components/buttonBar.component';
-import HeaderBar from '../../components/headerBar.components';
+import CancelAndSave from '../../components/cancelAndSave.component';
 import React from 'react';
-import {
-  Box,
-  Center,
-  NativeBaseProvider,
-  Text,
-  VStack
-} from 'native-base';
+import { Box, Center, NativeBaseProvider, Text, VStack } from 'native-base';
+import TitleAndBackButtonHeader from '../../components/header/titleAndBackButton.header';
 
 export default function AddLocationMap() {
   return (
     <NativeBaseProvider>
       <VStack space={3} height={'full'}>
         {/* status bar */}
-        <HeaderBar />
+        <TitleAndBackButtonHeader title="Add location" />
 
         {/* map placeholder */}
         <Center
@@ -39,7 +33,7 @@ export default function AddLocationMap() {
           justifyContent={'center'}
           width={'100%'}
         >
-          <ButtonBar />
+          <CancelAndSave />
         </Box>
       </VStack>
     </NativeBaseProvider>
