@@ -2,7 +2,11 @@ import React from 'react';
 import { Input } from 'native-base';
 import { InputProps } from '../../types/inputProps.type';
 
-export default function TextInput({ placeholder }: InputProps) {
+export default function TextInput({
+  placeholder,
+  height,
+  VTextAlign
+}: InputProps) {
   return (
     <>
       <Input
@@ -10,10 +14,11 @@ export default function TextInput({ placeholder }: InputProps) {
         placeholder={placeholder}
         placeholderTextColor={'black'}
         maxWidth={'75%'}
-        maxHeight={'8'}
+        height={height ? height : '8'}
         bgColor={'#D5C1F1'}
         borderColor={'#D5C1F1'}
         borderRadius={'5'}
+        textAlignVertical={VTextAlign}
       />
     </>
   );
