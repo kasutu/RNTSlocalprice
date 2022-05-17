@@ -1,3 +1,3 @@
 export type ButtonProps = {
-  value: string;
+  value?: string;
 };
