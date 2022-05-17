@@ -1,7 +1,8 @@
 import React from 'react';
 import { Button } from 'native-base';
+import { ButtonProps } from '../../types/buttonProps.type';
 
-export default function OutlineButton() {
+export default function OutlineButton({ value }: ButtonProps) {
   return (
     <>
       <Button
@@ -12,7 +13,7 @@ export default function OutlineButton() {
         _text={{ fontSize: '15', fontWeight: 'medium' }}
         borderRadius={'50'}
       >
-        Cancel
+        {value}
       </Button>
     </>
   );
