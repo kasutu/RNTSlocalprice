@@ -6,10 +6,10 @@ export type ButtonProps = {
   onPressHandler?: onPressAcceptedValue;
 } & IButtonProps;
 
-export type CancelAndSave {
+export type CancelAndSave = {
   onPressCancelHandler?: onPressAcceptedValue;
   onPressSaveHandler?: onPressAcceptedValue;
-}
+};
 
 export type onPressAcceptedValue =
   | ((event: GestureResponderEvent) => void)
