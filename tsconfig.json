@@ -1,5 +1,7 @@
 {
   "compilerOptions": {
+    "rootDir": "src",
+    "outDir": "build",
     "allowJs": true,
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,

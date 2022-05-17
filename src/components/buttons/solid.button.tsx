@@ -1,7 +1,8 @@
 import React from 'react';
 import { Button } from 'native-base';
+import { ButtonProps } from '../../types/buttonProps.type';
 
-export default function SolidButton() {
+export default function SolidButton({ value }: ButtonProps) {
   return (
     <>
       <Button
@@ -12,7 +13,7 @@ export default function SolidButton() {
         _text={{ fontSize: '15', fontWeight: 'medium' }}
         borderRadius={'50'}
       >
-        Save
+        {value}
       </Button>
     </>
   );
