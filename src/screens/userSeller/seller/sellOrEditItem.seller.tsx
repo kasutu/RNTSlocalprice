@@ -91,11 +91,7 @@ export default function SellOrEditItem() {
           space={3}
         >
           <TextInput placeholder="Item Name" VTextAlign={'top'} />
-          <TextInputMultiline
-            placeholder="Description"
-            VTextAlign={'top'}
-            useTextArea={true}
-          />
+          <TextInputMultiline placeholder="Description" />
           <TextInput placeholder="Price" VTextAlign={'top'} />
           <TextInput placeholder="Discount in percent" VTextAlign={'top'} />
         </VStack>

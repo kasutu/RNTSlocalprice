@@ -1,7 +1,9 @@
 import React from 'react';
 import TitleAndBackButtonHeader from '../../components/header/titleAndBackButton.header';
 import { Box, Center, NativeBaseProvider, VStack } from 'native-base';
-import TextInput from '../../components/forms/textInput.form';
+import TextInput, {
+  TextInputMultiline
+} from '../../components/forms/textInput.form';
 import SolidButton from '../../components/buttons/solid.button';
 
 export default function ReportUser() {
@@ -21,11 +23,7 @@ export default function ReportUser() {
           marginY={'6'}
           alignItems={'center'}
         >
-          <TextInput
-            placeholder="Reason for report"
-            height={'50%'}
-            VTextAlign={'top'}
-          />
+          <TextInputMultiline placeholder="Reason for report" />
         </Box>
 
         {/* cancel and save button */}
