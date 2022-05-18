@@ -20,9 +20,9 @@ for consumers and sellers who wants to find a product nearby fast and to save ti
 
 ### Running for the first time
 
-1. Run `npm init` and `yarn init` to install the dependencies
+1. Run `npm install` and `yarn install` to install the dependencies
 2. Run `npm start` in a seperate terminal (cmd)
-3. Open and run an emulator in android studio specifically Android API level 30
+3. Open and run an emulator in android studio specifically Android API level 30, run `emulator -list-avds` copy the result of this and run `emulator -avd <AVD NAME>` to start the emulator manualy.
 4. Run `npm run android` to run build and install the app in the emulator or physical device
 5. Start editing
 

@@ -11,9 +11,8 @@ import {
   Stack,
   Text
 } from 'native-base';
-import { TouchableOpacity } from 'react-native';
 
-export default function Demo() {
+export default function HomeView() {
   return (
     <NativeBaseProvider>
       <Box alignItems="center">
