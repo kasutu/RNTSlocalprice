@@ -1,6 +1,9 @@
 import React from 'react';
-import { Input } from 'native-base';
+import { Input, TextArea } from 'native-base';
 import { InputProps } from '../../types/inputProps.type';
+import { InputColor } from '../../colors/localprice.colors';
+
+const TextInputColor = InputColor;
 
 export default function TextInput({
   placeholder,
@@ -15,10 +18,28 @@ export default function TextInput({
         placeholderTextColor={'black'}
         maxWidth={'75%'}
         height={height ? height : '8'}
-        bgColor={'#D5C1F1'}
-        borderColor={'#D5C1F1'}
+        bgColor={TextInputColor}
+        borderColor={TextInputColor}
         borderRadius={'5'}
         textAlignVertical={VTextAlign}
+      />
+    </>
+  );
+}
+
+export function TextInputMultiline({ placeholder, height }: InputProps) {
+  return (
+    <>
+      <TextArea
+        variant="filled"
+        placeholder={placeholder}
+        placeholderTextColor={'black'}
+        maxWidth={'75%'}
+        height={height ? height : '8'}
+        bgColor={TextInputColor}
+        borderColor={TextInputColor}
+        borderRadius={'5'}
+        autoCompleteType={undefined}
       />
     </>
   );

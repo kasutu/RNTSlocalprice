@@ -6,7 +6,9 @@ export type ButtonProps = {
   onPressHandler?: onPressAcceptedValue;
 } & IButtonProps;
 
-export type CancelAndSave = {
+export type HollowAndSolidButtonProps = {
+  hollowButtonValue?: string;
+  solidButtonValue?: string;
   onPressCancelHandler?: onPressAcceptedValue;
   onPressSaveHandler?: onPressAcceptedValue;
 };
