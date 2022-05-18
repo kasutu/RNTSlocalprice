@@ -1,10 +1,7 @@
-import Icon from 'react-native-vector-icons/MaterialIcons';
 import React from 'react';
 import { Box, HStack, IconButton, StatusBar, Text } from 'native-base';
 import { HeaderProps } from '../../types/headerProps.type';
-import { ButtonProps } from '../../types/buttonProps.type';
-
-const arrowBack = <Icon name="arrow-back" size={30} color="black" />;
+import { arrowBack } from '../../icons/localprice.icons';
 
 export default function titleAndBackButtonHeader({
   title,

@@ -1,4 +1,4 @@
-import CancelAndSave from '../../components/cancelAndSave.component';
+import HollowAndSolidButton from '../../components/hollowAndSolidButton.component';
 import React from 'react';
 import { Box, Center, NativeBaseProvider, Text, VStack } from 'native-base';
 import TitleAndBackButtonHeader from '../../components/header/titleAndBackButton.header';
@@ -33,7 +33,7 @@ export default function AddLocationMap() {
           justifyContent={'center'}
           width={'100%'}
         >
-          <CancelAndSave />
+          <HollowAndSolidButton />
         </Box>
       </VStack>
     </NativeBaseProvider>

@@ -6,6 +6,7 @@
     "localprice",
     "Pressable",
     "rexml",
+    "Slocalprice",
     "zeitwerk"
   ]
 }
