@@ -1,4 +1,4 @@
-import CancelAndSave from '../../components/cancelAndSave.component';
+import HollowAndSolidButton from '../../components/hollowAndSolidButton.component';
 import React from 'react';
 import TextInput from '../../components/forms/textInput.form';
 import TitleAndBackButtonHeader from '../../components/header/titleAndBackButton.header';
@@ -42,7 +42,7 @@ export default function EditAddressScreenUserSeller() {
 
         {/* cancel and save button */}
         <Center marginY={'3'}>
-          <CancelAndSave />
+          <HollowAndSolidButton />
         </Center>
       </VStack>
     </NativeBaseProvider>
