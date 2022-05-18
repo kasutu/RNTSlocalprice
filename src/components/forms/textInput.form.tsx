@@ -35,10 +35,10 @@ export function TextInputMultiline({ placeholder, height }: InputProps) {
         placeholder={placeholder}
         placeholderTextColor={'black'}
         maxWidth={'75%'}
-        height={height ? height : '8'}
         bgColor={TextInputColor}
         borderColor={TextInputColor}
         borderRadius={'5'}
+        h={height ? height : '40%'}
         autoCompleteType={undefined}
       />
     </>
