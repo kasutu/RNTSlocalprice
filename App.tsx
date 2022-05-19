@@ -15,10 +15,12 @@ export default function App(): ReactNode {
   return (
     <>
       {/* <HomeView /> */}
+
       {/* <AddLocationMap /> */}
       {/* <EditAddressScreenUserSeller /> */}
-      {/* <ReportUser /> */}
+      <ReportUser />
       {/* <SellOrEditItem /> */}
+
       {/* <LogInView/> */}
       {/* <RegisterView/> */}
       {/* <ResetPasswordView/> */}
