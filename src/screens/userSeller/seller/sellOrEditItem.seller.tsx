@@ -1,19 +1,15 @@
 import HollowAndSolidButton from '../../../components/hollowAndSolidButton.component';
-import Icon from 'react-native-vector-icons/MaterialIcons';
 import React from 'react';
 import TextInput, {
   TextInputMultiline
 } from '../../../components/forms/textInput.form';
 import TitleAndBackButtonHeader from '../../../components/header/titleAndBackButton.header';
-import { addIcon } from '../../../icons/localprice.icons';
 import {
   Box,
   Center,
   HStack,
-  IconButton,
   NativeBaseProvider,
   ScrollView,
-  Text,
   VStack
 } from 'native-base';
 import AddPhotoButton from '../../../components/buttons/addPhoto.Button';
