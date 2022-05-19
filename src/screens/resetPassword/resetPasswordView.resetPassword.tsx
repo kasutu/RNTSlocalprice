@@ -11,7 +11,7 @@ import { TextInputMultiline } from '../../components/forms/textInput.form';
 import { TextInput } from 'react-native';
 import HollowAndSolidButton from '../../components/hollowAndSolidButton.component';
 
-export default function LogInView() {
+export default function ResetPasswordView() {
     return (
         <NativeBaseProvider>
             <Box>
