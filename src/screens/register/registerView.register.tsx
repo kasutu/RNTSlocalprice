@@ -67,7 +67,6 @@ export default function RegisterView() {
             />
           </VStack>
         </VStack>
-        <Box width={'75%'} alignItems={'flex-end'} alignSelf={'center'}></Box>
         <Center
           marginY={'3'}
           bottom={'5'}

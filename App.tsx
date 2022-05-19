@@ -20,8 +20,8 @@ export default function App(): ReactNode {
       {/* <ReportUser /> */}
       {/* <SellOrEditItem /> */}
       {/* <LogInView/> */}
-      <RegisterView/>
-      {/* <ResetPasswordView/> */}
+      {/* <RegisterView/> */}
+      <ResetPasswordView/>
       </>
   );
 }
