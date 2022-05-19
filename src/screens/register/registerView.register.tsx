@@ -2,6 +2,8 @@ import React from 'react';
 import {
   Box,
   Center,
+  Icon,
+  Input,
   Link,
   NativeBaseProvider,
   Text,
@@ -11,6 +13,8 @@ import {
 import TitleAndBackButtonHeader from '../../components/header/titleAndBackButton.header';
 import SolidButton from '../../components/buttons/solid.button';
 import TextInput from '../../components/forms/textInput.form';
+import { InputColor } from '../../colors/localprice.colors';
+import { eyeIcon } from '../../icons/localprice.icons';
 
 export default function RegisterView() {
   return (
@@ -23,9 +27,9 @@ export default function RegisterView() {
           />
           <Center marginX={20} marginY={'3'} width={'200px'} height={'50px'}>
             <Box>
-              <Text color={'#9B69DD'}
-              fontSize={24}
-              >Sign Up</Text>
+              <Text color={'#9B69DD'} fontSize={24}>
+                Sign Up
+              </Text>
             </Box>
           </Center>
           <VStack
@@ -37,30 +41,49 @@ export default function RegisterView() {
             <TextInput placeholder="Full Name" />
             <TextInput placeholder="Username" />
             <TextInput placeholder="Email" />
-            <TextInput placeholder="Password" />
-            <TextInput placeholder="Confirm Password" />
+            <Input
+              variant="filled"
+              placeholder={'Password'}
+              placeholderTextColor={'black'}
+              maxWidth={'75%'}
+              height={'8'}
+              bgColor={InputColor}
+              borderColor={InputColor}
+              borderRadius={'5'}
+              textAlignVertical={'center'}
+              InputRightElement={<Icon mr={2} as={eyeIcon} />}
+            />
+            <Input
+              variant="filled"
+              placeholder={'Confirm Password'}
+              placeholderTextColor={'black'}
+              maxWidth={'75%'}
+              height={'8'}
+              bgColor={InputColor}
+              borderColor={InputColor}
+              borderRadius={'5'}
+              textAlignVertical={'center'}
+              InputRightElement={<Icon mr={2} as={eyeIcon} />}
+            />
           </VStack>
         </VStack>
         <Box width={'75%'} alignItems={'flex-end'} alignSelf={'center'}></Box>
         <Center
           marginY={'3'}
-          bottom={'0'}
+          bottom={'5'}
           position={'absolute'}
           width={'full'}
           maxWidth={'full'}
         >
           <SolidButton value="Register" />
           <Box>
-            <Text>
-              Have an account?{' '}
-              <Link
-                isExternal
-                _text={{ color: 'blue.400' }}
-                onPress={() => console.log('sign in btn click')}
-              >
-                Sign in
-              </Link>
-            </Text>
+            <Link
+              isExternal
+              _text={{ color: 'blue.400' }}
+              onPress={() => console.log('sign in btn click')}
+            >
+              Have an account?
+            </Link>
           </Box>
         </Center>
       </Box>

@@ -1,14 +1,11 @@
 import React from 'react';
 import {
   Box,
-  Button,
   Center,
-  HStack,
   Icon,
   Input,
   Link,
   NativeBaseProvider,
-  Text,
   VStack
 } from 'native-base';
 
