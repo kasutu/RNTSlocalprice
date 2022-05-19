@@ -69,7 +69,7 @@ export default function RegisterView() {
         </VStack>
         <Center
           marginY={'3'}
-          bottom={'5'}
+          bottom={'20'}
           position={'absolute'}
           width={'full'}
           maxWidth={'full'}

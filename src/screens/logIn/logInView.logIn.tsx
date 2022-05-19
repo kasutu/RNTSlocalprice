@@ -59,13 +59,13 @@ export default function LogInView() {
           </Box>
           <Center
             marginY={'3'}
-            bottom={'5'}
+            bottom={'20'}
             position={'absolute'}
             width={'full'}
             maxWidth={'full'}
           >
             <SolidButton value="Log In" />
-            <Center>
+           { <Center>
               <Link
                 isExternal
                 _text={{ color: 'blue.400' }}
@@ -73,7 +73,7 @@ export default function LogInView() {
               >
                 Don't have an account?
               </Link>
-            </Center>
+            </Center>}
           </Center>
         </VStack>
       </Box>
