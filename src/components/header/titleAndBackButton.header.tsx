@@ -1,9 +1,9 @@
 import React from 'react';
-import { Box, HStack, IconButton, StatusBar, Text } from 'native-base';
+import { Box, Center, HStack, IconButton, StatusBar, Text } from 'native-base';
 import { HeaderProps } from '../../types/headerProps.type';
 import { arrowBack } from '../../icons/localprice.icons';
 
-export default function titleAndBackButtonHeader({
+export default function TitleAndBackButtonHeader({
   title,
   onPressHandler
 }: HeaderProps) {
@@ -25,6 +25,22 @@ export default function titleAndBackButtonHeader({
             {title}
           </Text>
         </HStack>
+      </HStack>
+    </>
+  );
+}
+
+export function TitleHeader({ title }: HeaderProps) {
+  return (
+    <>
+      <StatusBar backgroundColor="white" barStyle="dark-content" />
+      <Box safeAreaTop />
+      <HStack alignItems="center">
+        <Center marginLeft={'4'} marginTop={'3'}>
+          <Text color="black" fontSize="20" fontWeight="bold">
+            {title}
+          </Text>
+        </Center>
       </HStack>
     </>
   );
