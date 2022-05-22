@@ -19,7 +19,7 @@ export default function App(): ReactNode {
 
       {/* <AddLocationMap /> */}
       {/* <EditAddressScreenUserSeller /> */}
-      <ReportUser />
+      {/* <ReportUser /> */}
       {/* <SellOrEditItem /> */}
 
       {/* <LogInView/> */}
