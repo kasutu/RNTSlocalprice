@@ -36,6 +36,19 @@ export default function ProfileView() {
           >
             <SolidButton value="Log In or Register" />
           </Center>
+          <Center
+            alignContent={'center'}
+            textAlign={'center'}
+            width={'full'}
+            height={'50px'}
+            backgroundColor={'violet.300'}
+            marginY={'3'}
+            bottom={'1'}
+            position={'absolute'}
+            maxWidth={'full'}
+          >
+            Icons
+          </Center>
         </VStack>
       </Box>
     </NativeBaseProvider>

@@ -23,7 +23,7 @@ export default function App(): ReactNode {
       {/* <LogInView/> */}
       {/* <RegisterView/> */}
       {/* <ResetPasswordView/> */}
-      {/* <ProfileView/> */}
+      <ProfileView/>
       </>
   );
 }
