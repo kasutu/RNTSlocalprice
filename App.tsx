@@ -10,18 +10,22 @@ import TextInput from './src/components/forms/textInput.form';
 import LogInView from './src/screens/logIn/logInView.logIn';
 import RegisterView from './src/screens/register/registerView.register';
 import ResetPasswordView from './src/screens/resetPassword/resetPasswordView.resetPassword';
+import ProfileView from './src/screens/profile/profileView.profile';
 
 export default function App(): ReactNode {
   return (
     <>
       {/* <HomeView /> */}
+
       {/* <AddLocationMap /> */}
       {/* <EditAddressScreenUserSeller /> */}
       {/* <ReportUser /> */}
       {/* <SellOrEditItem /> */}
+
       {/* <LogInView/> */}
       {/* <RegisterView/> */}
       {/* <ResetPasswordView/> */}
+      <ProfileView/>
       </>
   );
 }
