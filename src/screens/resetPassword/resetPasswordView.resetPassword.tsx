@@ -66,7 +66,7 @@ export default function ResetPasswordView() {
           </VStack>
           <Center
             marginY={'3'}
-            bottom={'20'}
+            bottom={'40px'}
             position={'absolute'}
             width={'full'}
             maxWidth={'full'}
@@ -78,7 +78,7 @@ export default function ResetPasswordView() {
                 _text={{ color: 'blue.400' }}
                 onPress={() => console.log('sign in btn click')}
               >
-               Don't have an account?
+                Don't have an account?
               </Link>
             </Box>
           </Center>

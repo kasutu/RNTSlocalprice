@@ -59,7 +59,7 @@ export default function LogInView() {
           </Box>
           <Center
             marginY={'3'}
-            bottom={'20'}
+            bottom={'40px'}
             position={'absolute'}
             width={'full'}
             maxWidth={'full'}

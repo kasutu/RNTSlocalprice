@@ -28,7 +28,7 @@ export default function RegisterView() {
           <Center marginX={20} marginY={'3'} width={'200px'} height={'50px'}>
             <Box>
               <Text color={'#9B69DD'} fontSize={24}>
-                Sign Up
+                Register
               </Text>
             </Box>
           </Center>
@@ -69,7 +69,7 @@ export default function RegisterView() {
         </VStack>
         <Center
           marginY={'3'}
-          bottom={'20'}
+          bottom={'40px'}
           position={'absolute'}
           width={'full'}
           maxWidth={'full'}
