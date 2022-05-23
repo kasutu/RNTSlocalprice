@@ -29,7 +29,7 @@ export default function ProfileView() {
           </Center>
           <Center
             marginY={'3'}
-            bottom={'20'}
+            bottom={'40px'}
             position={'absolute'}
             width={'full'}
             maxWidth={'full'}
@@ -41,7 +41,6 @@ export default function ProfileView() {
             textAlign={'center'}
             width={'full'}
             height={'50px'}
-            backgroundColor={'violet.300'}
             marginY={'3'}
             bottom={'1'}
             position={'absolute'}
