@@ -9,30 +9,27 @@ import SellOrEditItem from './src/screens/userSeller/seller/sellOrEditItem.selle
 import LogInView from './src/screens/logIn/logInView.logIn';
 import RegisterView from './src/screens/register/registerView.register';
 import ResetPasswordView from './src/screens/resetPassword/resetPasswordView.resetPassword';
-<<<<<<< HEAD
 import MainHome from './src/screens/home/main.home';
-=======
+import ItemView from './src/screens/itemView/itemView';
 import ProfileView from './src/screens/profile/profileView.profile';
->>>>>>> 75eae598625ee413a23141335a135d360bdd2b3b
 
 export default function App(): ReactNode {
   return (
     <>
       {/* <HomeView /> */}
-
       {/* <AddLocationMap /> */}
       {/* <EditAddressScreenUserSeller /> */}
       {/* <ReportUser /> */}
       {/* <SellOrEditItem /> */}
-
       {/* <LogInView/> */}
       {/* <RegisterView/> */}
       {/* <ResetPasswordView/> */}
-<<<<<<< HEAD
-      <MainHome/>
-=======
-      <ProfileView/>
->>>>>>> 75eae598625ee413a23141335a135d360bdd2b3b
+      {/* <MainHome/> */}
+      <ItemView/>
+      {/* <MainHome/> */}
+      {/* <ProfileView/> */}
+      {/* <MainHome/> */}
+      {/* <ProfileView/> */}
       </>
   );
 }
