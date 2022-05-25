@@ -8,14 +8,9 @@ import {
 } from 'native-base';
 import React from 'react';
 import SolidButton from '../../components/buttons/solid.button';
+import IconButtonsFooter from '../../components/footer/iconButtons.footer';
 import { TitleHeader } from '../../components/header/titleAndBackButton.header';
-import {
-  hollowBagIcon,
-  hollowChatIcon,
-  hollowHomeIcon,
-  hollowNotifIcon,
-  profileIcon
-} from '../../icons/localprice.icons';
+import { solidProfileIcon } from '../../icons/localprice.icons';
 
 export default function ProfileView() {
   return (
@@ -30,7 +25,7 @@ export default function ProfileView() {
             width={'full'}
             height={'30px'}
           >
-            {<Icon size={'45px'} as={profileIcon} />}
+            {<Icon size={'45px'} as={solidProfileIcon} />}
           </Center>
           <Center width={'full'}>
             <Center
@@ -51,14 +46,8 @@ export default function ProfileView() {
             width={'full'}
             maxWidth={'full'}
           >
-            <SolidButton value="Log In or Register" />{' '}
-            <HStack space={7} justifyContent={'center'} width={'full'}>
-              <Icon size={'35px'} as={hollowHomeIcon} />
-              <Icon size={'35px'} as={hollowChatIcon} />
-              <Icon size={'35px'} as={hollowBagIcon} />
-              <Icon size={'35px'} as={hollowNotifIcon} />
-              <Icon size={'35px'} as={profileIcon} />
-            </HStack>
+            <SolidButton value="Log In or Register" />
+              <IconButtonsFooter />
           </Center>
         </VStack>
       </Box>
