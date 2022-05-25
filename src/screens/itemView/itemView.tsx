@@ -9,6 +9,7 @@ import {
 } from 'native-base';
 import React from 'react';
 import TitleAndBackButtonHeader from '../../components/header/titleAndBackButton.header';
+import PhotoHolderButton from '../home/photoHolder.home';
 import SearchInput from '../home/searchButton';
 import ItemViewPhotoHolder from './photoHolder.itemview';
 
@@ -37,10 +38,72 @@ export default function ItemView() {
 
             <ScrollView>
               <Center>
-                <ItemViewPhotoHolder value="item viewed" />
-                <Text alignSelf={'normal'}>
+                  {/* main item */}
+                <VStack space={'3'}>
+                  <ItemViewPhotoHolder value="item viewed" />
+                  <Text alignSelf={'normal'}>Description</Text>
+                </VStack>
+                <VStack space={'3'}>
+                    <Text alignSelf={'normal'} fontWeight={'bold'} fontSize={'md'}> Details</Text>
+                </VStack>
+
+                {/* related/suggestion items */}
+                <HStack space={3}>
+                <VStack>
+                  <PhotoHolderButton value="Item" />
+                  <Text alignSelf={'center'}>
                     Description
-                </Text>
+                  </Text>
+                </VStack>
+                <VStack>
+                  <PhotoHolderButton value="Item" />
+                  <Text alignSelf={'center'}>
+                    Description
+                  </Text>
+                </VStack>
+              </HStack>
+              <HStack space={3}>
+                <VStack>
+                  <PhotoHolderButton value="Item" />
+                  <Text alignSelf={'center'}>
+                    Description
+                  </Text>
+                </VStack>
+                <VStack>
+                  <PhotoHolderButton value="Item" />
+                  <Text alignSelf={'center'}>
+                    Description
+                  </Text>
+                </VStack>
+              </HStack>
+              <HStack space={3}>
+                <VStack>
+                  <PhotoHolderButton value="Item" />
+                  <Text alignSelf={'center'}>
+                    Description
+                  </Text>
+                </VStack>
+                <VStack>
+                  <PhotoHolderButton value="Item" />
+                  <Text alignSelf={'center'}>
+                    Description
+                  </Text>
+                </VStack>
+              </HStack>
+              <HStack space={3}>
+                <VStack>
+                  <PhotoHolderButton value="Item" />
+                  <Text alignSelf={'center'}>
+                    Description
+                  </Text>
+                </VStack>
+                <VStack>
+                  <PhotoHolderButton value="Item" />
+                  <Text alignSelf={'center'}>
+                    Description
+                  </Text>
+                </VStack>
+              </HStack>
               </Center>
             </ScrollView>
           </VStack>
