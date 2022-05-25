@@ -1,7 +1,6 @@
 import AntDesignIcon from 'react-native-vector-icons/AntDesign.js';
 import Icon from 'react-native-vector-icons/MaterialIcons.js';
 import React from 'react';
-import Icon from 'react-native-vector-icons/MaterialIcons.js';
 import Ionicon from 'react-native-vector-icons/Ionicons.js';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons.js';
 
