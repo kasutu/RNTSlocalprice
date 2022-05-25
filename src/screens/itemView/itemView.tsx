@@ -26,11 +26,11 @@ export default function ItemView() {
           <VStack backgroundColor={'white'} space={5} marginY={7}>
             <Box safeArea>
               <HStack>
-                <SearchInput placeholder="Search" />
-                <TitleAndBackButtonHeader
+              <TitleAndBackButtonHeader
                   title=" "
                   onPressHandler={() => console.log('Item view back btn')}
                 />
+                <SearchInput placeholder="Search" />
               </HStack>
             </Box>
             <VStack />
