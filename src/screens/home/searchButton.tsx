@@ -16,7 +16,7 @@ export default function SearchInput({
         variant="filled"
         placeholder={placeholder}
         placeholderTextColor={'black'}
-        maxWidth={'250%'}
+        maxWidth={'350'}
         height={height ? height : '12'}
         bgColor={TextInputColor}
         borderColor={TextInputColor}

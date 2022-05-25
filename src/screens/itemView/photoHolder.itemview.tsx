@@ -12,8 +12,8 @@ export default function ItemViewPhotoHolder({
     return (
       <>
         <Button
-          width={'300'}
-          height={'300'}
+          width={'410'}
+          height={'410'}
           variant={'solid'}
           onPress={
             onPressHandler ? onPressHandler : () => console.log('Item viewed')

@@ -10,6 +10,7 @@ import LogInView from './src/screens/logIn/logInView.logIn';
 import RegisterView from './src/screens/register/registerView.register';
 import ResetPasswordView from './src/screens/resetPassword/resetPasswordView.resetPassword';
 import MainHome from './src/screens/home/main.home';
+import ItemView from './src/screens/itemView/itemView';
 
 export default function App(): ReactNode {
   return (
@@ -24,7 +25,8 @@ export default function App(): ReactNode {
       {/* <LogInView/> */}
       {/* <RegisterView/> */}
       {/* <ResetPasswordView/> */}
-      <MainHome/>
+      {/* <MainHome/> */}
+      <ItemView/>
       </>
   );
 }

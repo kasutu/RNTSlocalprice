@@ -10,14 +10,14 @@ export default function ViewLocationButton({
   return (
     <>
       <Button
-        width={'87'}
+        width={'100px'}
         height={'10'}
         variant={'outline'}
         onPress={
-          onPressHandler ? onPressHandler : () => console.log('CANCEL pressed')
+          onPressHandler ? onPressHandler : () => console.log('View location pressed')
         }
-        _text={{ fontSize: '15', fontWeight: 'medium' }}
-        borderRadius={'50'}
+        _text={{ fontSize: '12', fontWeight: 'light' }}
+        borderRadius={'xxl'}
         borderColor={borderColor}
       >
         {value}

@@ -4,6 +4,7 @@ import {
     HStack,
     NativeBaseProvider,
     ScrollView,
+    Stack,
     Text,
     VStack
   } from 'native-base';
@@ -12,6 +13,7 @@ import {
   import PhotoHolderButton from '../home/photoHolder.home';
   import SearchInput from '../home/searchButton';
   import ItemViewPhotoHolder from './photoHolder.itemview';
+import ViewLocationButton from './viewLocation.itemView';
   
   export default function ItemView() {
     return (
@@ -23,28 +25,31 @@ import {
           width={'full'}
           height={'full'}
         >
-          <Center>
+
             <VStack backgroundColor={'white'} space={5} marginY={7}>
               <Box safeArea>
-                <HStack>
+                <Center >
                   <SearchInput placeholder="Search" />
-                  <TitleAndBackButtonHeader
-                    title=" "
-                    onPressHandler={() => console.log('Item view back btn')}
-                  />
-                </HStack>
+                </Center>
               </Box>
               <VStack />
   
               <ScrollView>
                 <Center>
                     {/* main item */}
-                  <VStack space={'3'}>
+                  <VStack>
                     <ItemViewPhotoHolder value="item viewed" />
-                    <Text alignSelf={'normal'}>Description</Text>
+                    <HStack>
+                        <Text fontWeight={'bold'} fontSize={'lg'}>Description</Text>
+                        <Text fontWeight={'bold'} fontSize={'lg'} color={'#8244d5'}>Price</Text> 
+                        <ViewLocationButton value={'View Location'}/>
+                    </HStack>
                   </VStack>
                   <VStack space={'3'}>
-                      <Text alignSelf={'normal'} fontWeight={'bold'} fontSize={'md'}> Details</Text>
+                      <Text fontWeight={'bold'} fontSize={'lg'}> Details</Text>
+                      <Text>
+                        About the product
+                      </Text>
                   </VStack>
   
                   {/* related/suggestion items */}
@@ -107,7 +112,6 @@ import {
                 </Center>
               </ScrollView>
             </VStack>
-          </Center>
         </Box>
       </NativeBaseProvider>
     );
