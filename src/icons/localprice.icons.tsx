@@ -1,3 +1,8 @@
+<<<<<<< HEAD
+import AntDesignIcon from 'react-native-vector-icons/AntDesign.js';
+import Icon from 'react-native-vector-icons/MaterialIcons.js';
+=======
+>>>>>>> 75eae598625ee413a23141335a135d360bdd2b3b
 import React from 'react';
 import Icon from 'react-native-vector-icons/MaterialIcons.js';
 import Ionicon from 'react-native-vector-icons/Ionicons.js';
@@ -5,6 +10,12 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 
 const arrowBack = <Icon name="arrow-back" size={30} color="black" />;
 const addIcon = <Icon name="add" size={25} color="white" />;
+<<<<<<< HEAD
+const eyeIcon = <Icon name="remove-red-eye" size={25} color="black" />;
+const heartIcon = <AntDesignIcon name="heart" size={25} color="#9e6dde" />;
+
+export { arrowBack, addIcon, eyeIcon, heartIcon};
+=======
 const eyeIcon = <Icon name="remove-red-eye" size={20} color="black" />;
 const solidProfileIcon = (
   <Ionicon name="person-circle" color="black" size={30} />
@@ -42,3 +53,4 @@ export {
   solidNotifIcon,
   hollowNotifIcon
 };
+>>>>>>> 75eae598625ee413a23141335a135d360bdd2b3b

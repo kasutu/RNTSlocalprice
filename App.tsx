@@ -6,11 +6,14 @@ import HomeView from './src/screens/home/homeview.home';
 import EditAddressScreenUserSeller from './src/screens/userSeller/editAddressScreen.userSeller';
 import ReportUser from './src/screens/userSeller/reportUser.screen';
 import SellOrEditItem from './src/screens/userSeller/seller/sellOrEditItem.seller';
-import TextInput from './src/components/forms/textInput.form';
 import LogInView from './src/screens/logIn/logInView.logIn';
 import RegisterView from './src/screens/register/registerView.register';
 import ResetPasswordView from './src/screens/resetPassword/resetPasswordView.resetPassword';
+<<<<<<< HEAD
+import MainHome from './src/screens/home/main.home';
+=======
 import ProfileView from './src/screens/profile/profileView.profile';
+>>>>>>> 75eae598625ee413a23141335a135d360bdd2b3b
 
 export default function App(): ReactNode {
   return (
@@ -25,7 +28,11 @@ export default function App(): ReactNode {
       {/* <LogInView/> */}
       {/* <RegisterView/> */}
       {/* <ResetPasswordView/> */}
+<<<<<<< HEAD
+      <MainHome/>
+=======
       <ProfileView/>
+>>>>>>> 75eae598625ee413a23141335a135d360bdd2b3b
       </>
   );
 }
