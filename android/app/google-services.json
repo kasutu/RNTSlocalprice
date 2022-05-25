@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1095952306351",
+    "project_id": "localprice-181a1",
+    "storage_bucket": "localprice-181a1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1095952306351:android:0b63550c37eb2774ce445a",
+        "android_client_info": {
+          "package_name": "com.rntslocalprice"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1095952306351-k35inhf3kkfcvlbs3gdtq2vtb8tu5srp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAFTKaPWmHwfah58J0zVzI4oEV7PAFt-dU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1095952306351-k35inhf3kkfcvlbs3gdtq2vtb8tu5srp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
