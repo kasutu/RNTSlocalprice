@@ -2,7 +2,7 @@ import React from 'react';
 import { Button } from 'native-base';
 import { ButtonProps } from '../../types/buttonProps.type';
 
-export default function ViewLocation({
+export default function ViewLocationButton({
   value,
   borderColor,
   onPressHandler
@@ -10,14 +10,14 @@ export default function ViewLocation({
   return (
     <>
       <Button
-        width={'87'}
+        width={'100px'}
         height={'10'}
         variant={'outline'}
         onPress={
-          onPressHandler ? onPressHandler : () => console.log('CANCEL pressed')
+          onPressHandler ? onPressHandler : () => console.log('View location pressed')
         }
-        _text={{ fontSize: '15', fontWeight: 'medium' }}
-        borderRadius={'50'}
+        _text={{ fontSize: '12', fontWeight: 'light' }}
+        borderRadius={'xxl'}
         borderColor={borderColor}
       >
         {value}

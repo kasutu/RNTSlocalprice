@@ -10,23 +10,26 @@ import LogInView from './src/screens/logIn/logInView.logIn';
 import RegisterView from './src/screens/register/registerView.register';
 import ResetPasswordView from './src/screens/resetPassword/resetPasswordView.resetPassword';
 import MainHome from './src/screens/home/main.home';
+import ItemView from './src/screens/itemView/itemView';
 import ProfileView from './src/screens/profile/profileView.profile';
 
 export default function App(): ReactNode {
   return (
     <>
       {/* <HomeView /> */}
-
       {/* <AddLocationMap /> */}
       {/* <EditAddressScreenUserSeller /> */}
       {/* <ReportUser /> */}
       {/* <SellOrEditItem /> */}
-
       {/* <LogInView/> */}
       {/* <RegisterView/> */}
       {/* <ResetPasswordView/> */}
       {/* <MainHome/> */}
-      <ProfileView/>
+      <ItemView/>
+      {/* <MainHome/> */}
+      {/* <ProfileView/> */}
+      {/* <MainHome/> */}
+      {/* <ProfileView/> */}
       </>
   );
 }
