@@ -14,6 +14,7 @@ import ItemView from './src/screens/itemView/itemView';
 import ProfileView from './src/screens/profile/profileView.profile';
 import UserChatScreen from './src/screens/ChatScreen/user.chat.screen';
 import UserSearchContact from './src/screens/ChatScreen/user.SearchContact';
+import UserMessageScreen from './src/screens/ChatScreen/user.message.screen';
 
 
 export default function App(): ReactNode {
@@ -28,11 +29,14 @@ export default function App(): ReactNode {
       {/* <RegisterView/> */}
       {/* <ResetPasswordView/> */}
       {/* <MainHome/> */}
-      <ItemView/>
+      {/* <ItemView/> */}
       {/* <MainHome/> */}
       {/* <ProfileView/> */}
       {/* <MainHome/> */}
       {/* <ProfileView/> */}
+      {/* <UserChatScreen/> */}
+      {/* <UserSearchContact/> */}
+      <UserMessageScreen/>
       </>
   );
 }

@@ -1,7 +1,6 @@
 import { NativeBaseProvider,VStack, Text, HStack, Box, Avatar, ScrollView} from "native-base";
 import React from "react";
-import { Circle } from "react-native-svg";
-import { TitleHeader } from "../../components/header/titleAndBackButton.header";
+
 
 
 
@@ -59,12 +58,8 @@ export default function UserSearchContact() {
         <Box w="56"  px={"4"} h="20">
           <Text fontWeight={"bold"}  marginY={"4"} alignSelf={"baseline"}  fontSize={"22"} noOfLines={1}>Eivoryl</Text>
         </Box>
-  
-  
         <Box w={"16"}>
-  
         </Box>
-  
         </HStack>
   
         <HStack space={"2"}>
@@ -95,17 +90,11 @@ export default function UserSearchContact() {
         </Avatar>
             </Box>
     
-       
         <Box w="56" px={"4"} h="20">
-          
           <Text fontWeight={"bold"}  marginY={"4"} alignSelf={"baseline"}  fontSize={"22"} noOfLines={1}>Kitler</Text>
         </Box>
-  
-  
         <Box h={"16"} w={"16"} >
-  
         </Box>
-  
         </HStack>
   
         <HStack space={"2"}>
@@ -118,15 +107,10 @@ export default function UserSearchContact() {
     
        
         <Box w="56" px={"4"} h="20">
-          
           <Text fontWeight={"bold"}   marginY={"4"} alignSelf={"baseline"} fontSize={"22"} noOfLines={1}>Kenn & Ken</Text>
         </Box>
-  
-  
         <Box h={"16"} w={"16"}>
-  
         </Box>
-  
         </HStack>
   
         <HStack space={"2"}>

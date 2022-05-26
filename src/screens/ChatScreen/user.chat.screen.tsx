@@ -1,6 +1,5 @@
 import { NativeBaseProvider,VStack, Text, HStack, Box, Avatar, ScrollView} from "native-base";
 import React from "react";
-import { Circle } from "react-native-svg";
 import { TitleHeader } from "../../components/header/titleAndBackButton.header";
 
 
