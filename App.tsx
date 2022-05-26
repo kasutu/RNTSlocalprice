@@ -11,6 +11,9 @@ import LogInView from './src/screens/logIn/logInView.logIn';
 import RegisterView from './src/screens/register/registerView.register';
 import ResetPasswordView from './src/screens/resetPassword/resetPasswordView.resetPassword';
 import ProfileView from './src/screens/profile/profileView.profile';
+import UserChatScreen from './src/screens/ChatScreen/user.chat.screen';
+import UserSearchContact from './src/screens/ChatScreen/user.SearchContact';
+
 
 export default function App(): ReactNode {
   return (
@@ -25,7 +28,8 @@ export default function App(): ReactNode {
       {/* <LogInView/> */}
       {/* <RegisterView/> */}
       {/* <ResetPasswordView/> */}
-      <ProfileView/>
+      {/*<UserChatScreen/>*/}
+      <UserSearchContact/>
       </>
   );
 }
