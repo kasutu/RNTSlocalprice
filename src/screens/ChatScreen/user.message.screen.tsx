@@ -4,7 +4,7 @@ import React from "react";
 
 
 
-export default function userMessageScreen() {
+export default function UserMessageScreen() {
     return (
 <NativeBaseProvider>
 
