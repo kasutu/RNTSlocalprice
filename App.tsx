@@ -11,6 +11,7 @@ import RegisterView from './src/screens/register/registerView.register';
 import ResetPasswordView from './src/screens/resetPassword/resetPasswordView.resetPassword';
 import MainHome from './src/screens/home/main.home';
 import ProfileView from './src/screens/profile/profileView.profile';
+import Db from './src/test/db';
 
 export default function App(): ReactNode {
   return (
@@ -25,8 +26,12 @@ export default function App(): ReactNode {
       {/* <LogInView/> */}
       {/* <RegisterView/> */}
       {/* <ResetPasswordView/> */}
-      <MainHome/>
+      {/* <MainHome/> */}
       {/* <ProfileView/> */}
-      </>
+
+      {/* -------------- test section -------------- */}
+
+      <Db />
+    </>
   );
 }
