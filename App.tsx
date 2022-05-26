@@ -12,6 +12,7 @@ import ResetPasswordView from './src/screens/resetPassword/resetPasswordView.res
 import MainHome from './src/screens/home/main.home';
 import ItemView from './src/screens/itemView/itemView';
 import ProfileView from './src/screens/profile/profileView.profile';
+import Db from './src/test/db';
 
 export default function App(): ReactNode {
   return (
@@ -25,11 +26,11 @@ export default function App(): ReactNode {
       {/* <RegisterView/> */}
       {/* <ResetPasswordView/> */}
       {/* <MainHome/> */}
-      <ItemView/>
-      {/* <MainHome/> */}
       {/* <ProfileView/> */}
-      {/* <MainHome/> */}
-      {/* <ProfileView/> */}
-      </>
+
+      {/* -------------- test section -------------- */}
+
+      <Db />
+    </>
   );
 }
