@@ -14,7 +14,7 @@ const ref = firestore().collection('users');
 
 let userData = { name: 'cool jiv' };
 
-export default function Db() {
+export default function DbTest() {
   const [displayData, setDisplayData] = useState<string[]>([]);
 
   async function uploadData() {

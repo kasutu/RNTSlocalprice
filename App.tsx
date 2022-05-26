@@ -12,7 +12,7 @@ import ResetPasswordView from './src/screens/resetPassword/resetPasswordView.res
 import MainHome from './src/screens/home/main.home';
 import ItemView from './src/screens/itemView/itemView';
 import ProfileView from './src/screens/profile/profileView.profile';
-import Db from './src/test/db';
+import DbTest from './test/dbTest';
 
 export default function App(): ReactNode {
   return (
@@ -30,7 +30,7 @@ export default function App(): ReactNode {
 
       {/* -------------- test section -------------- */}
 
-      <Db />
+      <DbTest />
     </>
   );
 }
