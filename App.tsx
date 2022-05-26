@@ -6,10 +6,11 @@ import HomeView from './src/screens/home/homeview.home';
 import EditAddressScreenUserSeller from './src/screens/userSeller/editAddressScreen.userSeller';
 import ReportUser from './src/screens/userSeller/reportUser.screen';
 import SellOrEditItem from './src/screens/userSeller/seller/sellOrEditItem.seller';
-import TextInput from './src/components/forms/textInput.form';
 import LogInView from './src/screens/logIn/logInView.logIn';
 import RegisterView from './src/screens/register/registerView.register';
 import ResetPasswordView from './src/screens/resetPassword/resetPasswordView.resetPassword';
+import MainHome from './src/screens/home/main.home';
+import ItemView from './src/screens/itemView/itemView';
 import ProfileView from './src/screens/profile/profileView.profile';
 import UserChatScreen from './src/screens/ChatScreen/user.chat.screen';
 import UserSearchContact from './src/screens/ChatScreen/user.SearchContact';
@@ -19,17 +20,24 @@ export default function App(): ReactNode {
   return (
     <>
       {/* <HomeView /> */}
-
       {/* <AddLocationMap /> */}
       {/* <EditAddressScreenUserSeller /> */}
       {/* <ReportUser /> */}
       {/* <SellOrEditItem /> */}
-
       {/* <LogInView/> */}
       {/* <RegisterView/> */}
       {/* <ResetPasswordView/> */}
+<<<<<<< HEAD
       {/*<UserChatScreen/>*/}
       <UserSearchContact/>
+=======
+      {/* <MainHome/> */}
+      <ItemView/>
+      {/* <MainHome/> */}
+      {/* <ProfileView/> */}
+      {/* <MainHome/> */}
+      {/* <ProfileView/> */}
+>>>>>>> c08b93a733c623794cbf94f1f1bb54078136fe6a
       </>
   );
 }
