@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box, HStack, IconButton, StatusBar, Text } from 'native-base';
 import { HeaderProps } from '../../types/headerProps.type';
-import { heartIcon } from '../../icons/localprice.icons';
+// import { heartIcon } from '../../icons/localprice.icons';
 import { HeartColor } from '../../colors/localprice.colors';
 
 export default function HeartIcon({ onPressHandler }: HeaderProps) {
@@ -10,7 +10,7 @@ export default function HeartIcon({ onPressHandler }: HeaderProps) {
       <Box safeAreaTop />
       <HStack alignItems="center">
         <IconButton
-          icon={heartIcon}
+          // icon={heartIcon}
           alignItems={'end'}
           onPress={
             onPressHandler
