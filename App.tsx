@@ -27,17 +27,12 @@ export default function App(): ReactNode {
       {/* <LogInView/> */}
       {/* <RegisterView/> */}
       {/* <ResetPasswordView/> */}
-<<<<<<< HEAD
-      {/*<UserChatScreen/>*/}
-      <UserSearchContact/>
-=======
       {/* <MainHome/> */}
       <ItemView/>
       {/* <MainHome/> */}
       {/* <ProfileView/> */}
       {/* <MainHome/> */}
       {/* <ProfileView/> */}
->>>>>>> c08b93a733c623794cbf94f1f1bb54078136fe6a
       </>
   );
 }
