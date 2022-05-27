@@ -1,5 +1,5 @@
 import React from 'react';
-import TitleAndBackButtonHeader from '../../components/header/titleAndBackButton.header';
+import TitleAndBackButtonHeader from '../../components/header/headers';
 import { Box, Center, NativeBaseProvider, VStack } from 'native-base';
 import { TextInputMultiline } from '../../components/forms/textInput.form';
 import SolidButton from '../../components/buttons/solid.button';
