@@ -11,7 +11,9 @@ import React from 'react';
 import TitleAndBackButtonHeader from '../../components/header/titleAndBackButton.header';
 import PhotoHolderButton from '../home/photoHolder.home';
 import SearchInput from '../home/searchButton';
+import CheckOutAddBUtton from './add.itemView';
 import ItemViewPhotoHolder from './photoHolder.itemview';
+import ViewLocationButton from './viewLocation.itemView';
 
 export default function ItemView() {
   return (
@@ -25,27 +27,30 @@ export default function ItemView() {
       >
         <Center>
           <VStack backgroundColor={'white'} space={5} marginY={7}>
-            <Box safeArea>
-              <HStack>
-                <SearchInput placeholder="Search" />
-                <TitleAndBackButtonHeader
-                  title=" "
-                  onPressHandler={() => console.log('Item view back btn')}
-                />
-              </HStack>
-            </Box>
+            <Center>
+              <SearchInput placeholder="Search" />
+            </Center>
             <VStack />
+            
 
             <ScrollView>
               <Center>
-                  {/* main item */}
+                  {/* main item */} 
                 <VStack space={'3'}>
                   <ItemViewPhotoHolder value="item viewed" />
-                  <Text alignSelf={'normal'}>Description</Text>
+                  <Text fontWeight={'bold'} fontSize={'lg'}>Description</Text>
+                  <Text fontWeight={'bold'} fontSize={'lg'} color={'#8244d5'}>Price</Text>
                 </VStack>
-                <VStack space={'3'}>
-                    <Text alignSelf={'normal'} fontWeight={'bold'} fontSize={'md'}> Details</Text>
+                
+                <ViewLocationButton value='Show Location'/>
+                
+                <VStack space={'3'} marginY={'30'}>
+                  <Box safeArea marginRight={'230px'}>
+                    <Text fontWeight={'bold'} fontSize={'lg'}> Details</Text>
+                    <Text fontWeight={'normal'} fontSize={'md'}> More details about the product. </Text>
+                  </Box>
                 </VStack>
+                
 
                 {/* related/suggestion items */}
                 <HStack space={3}>
@@ -106,6 +111,11 @@ export default function ItemView() {
               </HStack>
               </Center>
             </ScrollView>
+
+            <Center>
+              <CheckOutAddBUtton />
+            </Center>
+
           </VStack>
         </Center>
       </Box>

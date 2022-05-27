@@ -12,15 +12,13 @@ import ResetPasswordView from './src/screens/resetPassword/resetPasswordView.res
 import MainHome from './src/screens/home/main.home';
 import ItemView from './src/screens/itemView/itemView';
 import ProfileView from './src/screens/profile/profileView.profile';
-import UserChatScreen from './src/screens/ChatScreen/user.chat.screen';
-import UserSearchContact from './src/screens/ChatScreen/user.SearchContact';
-import UserMessageScreen from './src/screens/ChatScreen/user.message.screen';
-
-
+import Shoppingscreen from './src/screens/shopping/shopping.screen';
+import DbTest from './test/dbTest';
 export default function App(): ReactNode {
   return (
     <>
       {/* <HomeView /> */}
+      {/* <Shoppingscreen /> */}
       {/* <AddLocationMap /> */}
       {/* <EditAddressScreenUserSeller /> */}
       {/* <ReportUser /> */}
@@ -28,15 +26,12 @@ export default function App(): ReactNode {
       {/* <LogInView/> */}
       {/* <RegisterView/> */}
       {/* <ResetPasswordView/> */}
-      {/* <MainHome/> */}
-      {/* <ItemView/> */}
-      {/* <MainHome/> */}
       {/* <ProfileView/> */}
       {/* <MainHome/> */}
-      {/* <ProfileView/> */}
-      {/* <UserChatScreen/> */}
-      {/* <UserSearchContact/> */}
-      <UserMessageScreen/>
-      </>
+
+      {/* -------------- test section -------------- */}
+
+      <DbTest />
+    </>
   );
 }
