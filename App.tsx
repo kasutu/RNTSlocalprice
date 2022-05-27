@@ -11,21 +11,21 @@ import LogInView from './src/screens/logIn/logInView.logIn';
 import RegisterView from './src/screens/register/registerView.register';
 import ResetPasswordView from './src/screens/resetPassword/resetPasswordView.resetPassword';
 import ProfileView from './src/screens/profile/profileView.profile';
-
+import Shoppingscreen from './src/screens/shopping/shopping.screen';
 export default function App(): ReactNode {
   return (
     <>
       {/* <HomeView /> */}
-
+      <Shoppingscreen />
       {/* <AddLocationMap /> */}
       {/* <EditAddressScreenUserSeller /> */}
-      <ReportUser />
+      {/* <ReportUser /> */}
       {/* <SellOrEditItem /> */}
 
       {/* <LogInView/> */}
       {/* <RegisterView/> */}
       {/* <ResetPasswordView/> */}
-      <ProfileView/>
+      {/* <ProfileView/> */}
       </>
   );
 }
