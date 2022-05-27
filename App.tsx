@@ -12,12 +12,13 @@ import ResetPasswordView from './src/screens/resetPassword/resetPasswordView.res
 import MainHome from './src/screens/home/main.home';
 import ItemView from './src/screens/itemView/itemView';
 import ProfileView from './src/screens/profile/profileView.profile';
+import Shoppingscreen from './src/screens/shopping/shopping.screen';
 import DbTest from './test/dbTest';
-
 export default function App(): ReactNode {
   return (
     <>
       {/* <HomeView /> */}
+      <Shoppingscreen />
       {/* <AddLocationMap /> */}
       {/* <EditAddressScreenUserSeller /> */}
       {/* <ReportUser /> */}
@@ -25,6 +26,8 @@ export default function App(): ReactNode {
       {/* <LogInView/> */}
       {/* <RegisterView/> */}
       {/* <ResetPasswordView/> */}
+      {/* <ProfileView/> */}
+      </>
       {/* <MainHome/> */}
       {/* <ProfileView/> */}
 
