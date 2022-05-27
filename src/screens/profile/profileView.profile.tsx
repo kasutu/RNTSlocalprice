@@ -9,13 +9,13 @@ import {
 import React from 'react';
 import SolidButton from '../../components/buttons/solid.button';
 import IconButtonsFooter from '../../components/footer/iconButtons.footer';
-import { TitleHeader } from '../../components/header/titleAndBackButton.header';
+import { TitleHeader } from '../../components/header/headers';
 import { solidProfileIcon } from '../../icons/localprice.icons';
 
 export default function ProfileView() {
   return (
     <NativeBaseProvider>
-      <Box safeArea width={'full'} height={'full'}>
+      <Box safeArea width={'full'} height={'full'} position={'absolute'}>
         <VStack width={'full'} height={'full'}>
           <TitleHeader title="Profile" />
           <Center
@@ -47,7 +47,7 @@ export default function ProfileView() {
             maxWidth={'full'}
           >
             <SolidButton value="Log In or Register" />
-              <IconButtonsFooter />
+            <IconButtonsFooter />
           </Center>
         </VStack>
       </Box>

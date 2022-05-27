@@ -9,7 +9,7 @@ import {
   VStack
 } from 'native-base';
 
-import TitleAndBackButtonHeader from '../../components/header/titleAndBackButton.header';
+import TitleAndBackButtonHeader from '../../components/header/headers';
 import TextInput from '../../components/forms/textInput.form';
 import SolidButton from './../../components/buttons/solid.button';
 import { InputColor } from './../../colors/localprice.colors';

@@ -8,7 +8,7 @@ import {
   ScrollView
 } from 'native-base';
 import React from 'react';
-import { TitleHeader } from '../../components/header/titleAndBackButton.header';
+import { TitleHeader } from '../../components/header/headers';
 
 export default function UserChatScreen() {
   return (
