@@ -15,7 +15,7 @@ export default function CheckOutAddBUtton({
       <HStack alignItems="center" maxH={'100%'}>
         <Center mx={'2.5'}>
           <OutlineButton
-            value={hollowButtonValue ? hollowButtonValue : 'Add'}
+            value={hollowButtonValue ? hollowButtonValue : 'Add to Cart'}
             onPressHandler={onPressCancelHandler}
           />
         </Center>
