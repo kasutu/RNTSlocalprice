@@ -14,6 +14,8 @@ import ItemView from './src/screens/itemView/itemView';
 import ProfileView from './src/screens/profile/profileView.profile';
 import Shoppingscreen from './src/screens/shopping/shopping.screen';
 import DbTest from './test/dbTest';
+import UserChatScreen from './src/screens/ChatScreen/user.chat.screen';
+import UserSearchContact from './src/screens/ChatScreen/user.SearchContact';
 export default function App(): ReactNode {
   return (
     <>
@@ -28,6 +30,8 @@ export default function App(): ReactNode {
       {/* <ResetPasswordView/> */}
       {/* <ProfileView/> */}
       {/* <MainHome/> */}
+      {/* <UserChatScreen /> */}
+      {/* <UserSearchContact /> */}
 
       {/* -------------- test section -------------- */}
 
