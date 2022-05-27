@@ -30,9 +30,6 @@ export default function App(): ReactNode {
       {/* <ResetPasswordView/> */}
       {/* <MainHome/> */}
       {/* <ItemView/> */}
-      {/* <MainHome/> */}
-      {/* <ProfileView/> */}
-      {/* <MainHome/> */}
       {/* <ProfileView/> */}
       {/* <UserChatScreen/> */}
       {/* <UserSearchContact/> */}
