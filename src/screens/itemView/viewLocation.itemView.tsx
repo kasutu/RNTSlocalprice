@@ -2,7 +2,7 @@ import React from 'react';
 import { Button } from 'native-base';
 import { ButtonProps } from '../../types/buttonProps.type';
 
-export default function OutlineButton({
+export default function ViewLocationButton({
   value,
   borderColor,
   onPressHandler
@@ -10,14 +10,14 @@ export default function OutlineButton({
   return (
     <>
       <Button
-        width={'150'}
+        width={'100px'}
         height={'10'}
         variant={'outline'}
         onPress={
-          onPressHandler ? onPressHandler : () => console.log('item location pressed')
+          onPressHandler ? onPressHandler : () => console.log('View location pressed')
         }
-        _text={{ fontSize: '15', fontWeight: 'medium' }}
-        borderRadius={'50'}
+        _text={{ fontSize: '12', fontWeight: 'light' }}
+        borderRadius={'xxl'}
         borderColor={borderColor}
       >
         {value}
