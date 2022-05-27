@@ -26,13 +26,7 @@ export default function ItemView() {
         <Center>
           <VStack backgroundColor={'white'} space={5} marginY={7}>
             <Box safeArea>
-              <HStack>
-                <SearchInput placeholder="Search" />
-                <TitleAndBackButtonHeader
-                  title=" "
-                  onPressHandler={() => console.log('Item view back btn')}
-                />
-              </HStack>
+              <SearchInput placeholder="Search" />
             </Box>
             <VStack />
 
@@ -41,10 +35,10 @@ export default function ItemView() {
                   {/* main item */}
                 <VStack space={'3'}>
                   <ItemViewPhotoHolder value="item viewed" />
-                  <Text alignSelf={'normal'}>Description</Text>
+                  <Text>Description</Text>
                 </VStack>
                 <VStack space={'3'}>
-                    <Text alignSelf={'normal'} fontWeight={'bold'} fontSize={'md'}> Details</Text>
+                    <Text fontWeight={'bold'} fontSize={'md'}> Details</Text>
                 </VStack>
 
                 {/* related/suggestion items */}
