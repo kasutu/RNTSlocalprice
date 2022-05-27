@@ -18,7 +18,7 @@ export default function App(): ReactNode {
   return (
     <>
       {/* <HomeView /> */}
-      <Shoppingscreen />
+      {/* <Shoppingscreen /> */}
       {/* <AddLocationMap /> */}
       {/* <EditAddressScreenUserSeller /> */}
       {/* <ReportUser /> */}
@@ -27,7 +27,6 @@ export default function App(): ReactNode {
       {/* <RegisterView/> */}
       {/* <ResetPasswordView/> */}
       {/* <ProfileView/> */}
-      </>
       {/* <MainHome/> */}
       {/* <ProfileView/> */}
 
