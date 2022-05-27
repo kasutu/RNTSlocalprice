@@ -12,7 +12,7 @@ export default function Shoppingscreen() {
         <Box px={1}>
         <HStack space={"20"}>
         <Checkbox value="" borderRadius={'full'} accessibilityLabel='all' backgroundColor={'#9B69DD'}>
-          Select 
+          Select all
           
           </Checkbox>
             <Stack mb="0" mt="0" direction={{
@@ -55,7 +55,7 @@ export default function Shoppingscreen() {
           </HStack>
           <Box px={1}>
         <Checkbox value="" borderRadius={'full'} accessibilityLabel='all' backgroundColor={'#9B69DD'} fontWeight={"bold"}>
-            Gadget Headz
+            Silicon Valley
           </Checkbox>
           </Box>
         <HStack>
@@ -79,17 +79,29 @@ export default function Shoppingscreen() {
           <Box >
             
           </Box>
-        </VStack>
-
+          </VStack>
+          <Box px={4}>
+          <Text fontSize={15} fontWeight={"bold"}> Order summary</Text>
+          <Text px={1}>Subtotal:</Text>
+          <Text px={1}>Shipping Fee:</Text>
+          <Text px={1}>Subtotal:</Text>
+          </Box>
+          
           <Center
-           marginTop={"16"}
-           bottom={'20'}
+           marginY={'5'}
+           bottom={'16'}
            position={'absolute'}
            width={'full'}
            maxWidth={'full'}
+           
           >
-            <SolidButton value="Proceed_to_checkout" width={'full'}/>
+            <SolidButton
+            value="proceed to checkout"
+            
+            > 
+            </SolidButton>
           </Center>
+          
           
           
   
