@@ -8,11 +8,11 @@ import {
   Text,
   VStack
 } from 'native-base';
-import firestore from '@react-native-firebase/firestore';
+import Db from '../src/utils/db.utils';
 
-const ref = firestore().collection('users');
+const ref = Db.collection('users');
 
-let userData = { name: 'cool jiv' };
+let userData = { name: 'cool jun' };
 
 export default function DbTest() {
   const [displayData, setDisplayData] = useState<string[]>([]);
