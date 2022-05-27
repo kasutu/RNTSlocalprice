@@ -31,6 +31,7 @@ export default function ItemView() {
               <SearchInput placeholder="Search" />
             </Center>
             <VStack />
+            
 
             <ScrollView>
               <Center>
@@ -40,6 +41,8 @@ export default function ItemView() {
                   <Text fontWeight={'bold'} fontSize={'lg'}>Description</Text>
                   <Text fontWeight={'bold'} fontSize={'lg'} color={'#8244d5'}>Price</Text>
                 </VStack>
+                
+                <ViewLocationButton value='Show Location'/>
                 
                 <VStack space={'3'} marginY={'30'}>
                   <Box safeArea marginRight={'230px'}>
