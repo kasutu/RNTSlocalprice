@@ -7,7 +7,6 @@ import {
   IconButton,
   Image,
   Input,
-  Link,
   NativeBaseProvider,
   Pressable,
   VStack,
@@ -16,16 +15,15 @@ import {
 
 import TitleAndBackButtonHeader from '../../components/header/headers';
 import TextInput from '../../components/forms/textInput.form';
-import SolidButton from './../../components/buttons/solid.button';
 import { InputColor } from './../../colors/localprice.colors';
 import { eyeIcon } from '../../icons/localprice.icons';
 
 const appLogo = require('../../assets/appLogo.png');
 
 interface AuthenticationStuff {
-  email: string,
-  password: string,
-  error: boolean
+  email: string;
+  password: string;
+  error: boolean;
 }
 export default function LogInView() {
   let [state, setState] = useState();
