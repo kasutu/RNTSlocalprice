@@ -1,7 +1,16 @@
 import React from 'react';
-import { Box, Center, HStack, IconButton, StatusBar, Text } from 'native-base';
+import {
+  Box,
+  Center,
+  HStack,
+  IconButton,
+  Input,
+  StatusBar,
+  Text
+} from 'native-base';
 import { HeaderProps } from '../../types/headerProps.type';
 import { arrowBack } from '../../icons/localprice.icons';
+import { InputColor } from '../../colors/localprice.colors';
 
 export default function TitleAndBackButtonHeader({
   title,
@@ -41,6 +50,42 @@ export function TitleHeader({ title }: HeaderProps) {
             {title}
           </Text>
         </Center>
+      </HStack>
+    </>
+  );
+}
+
+export function SearchHeader({ onPressHandler }: HeaderProps) {
+  return (
+    <>
+      <StatusBar backgroundColor="white" barStyle="dark-content" />
+      <Box safeArea />
+      <HStack alignItems="center">
+        <HStack alignItems="center" space={2}>
+          <IconButton
+            icon={arrowBack}
+            onPress={
+              onPressHandler
+                ? onPressHandler
+                : () => console.log('BACK pressed ')
+            }
+          />
+
+          {/* search input */}
+          <Input
+            variant="filled"
+            placeholder={'Search'}
+            placeholderTextColor={'black'}
+            width={'full'}
+            maxWidth={'300'}
+            height={'8'}
+            bgColor={InputColor}
+            borderColor={InputColor}
+            borderRadius={'full'}
+          />
+
+          {/* heart pressable icon soon */}
+        </HStack>
       </HStack>
     </>
   );

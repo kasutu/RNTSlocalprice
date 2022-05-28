@@ -1,12 +1,12 @@
 import HollowAndSolidButton from '../../components/hollowAndSolidButton.component';
 import React from 'react';
 import { Box, Center, NativeBaseProvider, Text, VStack } from 'native-base';
-import TitleAndBackButtonHeader from '../../components/header/titleAndBackButton.header';
+import TitleAndBackButtonHeader from '../../components/header/headers';
 
 export default function AddLocationMap() {
   return (
     <NativeBaseProvider>
-      <Box safeArea width={'full'} height={'full'}>
+      <Box safeArea width={'full'} height={'full'} position={'absolute'}>
         <VStack space={3} height={'full'}>
           {/* status bar */}
           <TitleAndBackButtonHeader title="Add location" />

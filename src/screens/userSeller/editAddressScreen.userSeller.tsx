@@ -1,13 +1,13 @@
 import HollowAndSolidButton from '../../components/hollowAndSolidButton.component';
 import React from 'react';
 import TextInput from '../../components/forms/textInput.form';
-import TitleAndBackButtonHeader from '../../components/header/titleAndBackButton.header';
+import TitleAndBackButtonHeader from '../../components/header/headers';
 import { Box, Center, NativeBaseProvider, Text, VStack } from 'native-base';
 
 export default function EditAddressScreenUserSeller() {
   return (
     <NativeBaseProvider>
-      <Box safeArea width={'full'} height={'full'}>
+      <Box safeArea width={'full'} height={'full'} position={'absolute'}>
         <VStack space={3} maxHeight={'full'}>
           {/* status bar */}
           <TitleAndBackButtonHeader title="Edit location" />
