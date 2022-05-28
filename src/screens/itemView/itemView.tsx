@@ -31,6 +31,8 @@ export default function ItemView() {
         <SearchHeader />
 
         <VStack space={5} flex={1}>
+          <VStack />
+
           <ScrollView showsVerticalScrollIndicator={false}>
             {/* main item */}
             <VStack h={'full'}>

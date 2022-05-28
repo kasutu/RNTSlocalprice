@@ -19,51 +19,70 @@ import { eyeIcon } from '../../icons/localprice.icons';
 export default function ResetPasswordView() {
   return (
     <NativeBaseProvider>
-      <Box safeArea width={'full'} height={'full'} position={'absolute'}>
-        {/* HEADER */}
-        <TitleAndBackButtonHeader
-          onPressHandler={() => console.log(' back btn')}
-        />
-
-        {/* INPUTS */}
-        <VStack space={5} flex={1} alignItems={'center'}>
-          <Box marginBottom={'10'} alignItems={'center'} width={'full'}>
-            <Text color={'#9B69DD'} fontSize={24} fontWeight={'medium'}>
-              Reset Password
-            </Text>
-          </Box>
-
-          <TextInput placeholder="Email" />
-          <Input
-            variant="filled"
-            placeholder={'New Password'}
-            placeholderTextColor={'black'}
-            maxWidth={'75%'}
-            height={'8'}
-            bgColor={InputColor}
-            borderColor={InputColor}
-            borderRadius={'5'}
-            textAlignVertical={'center'}
-            InputRightElement={<Icon mr={2} as={eyeIcon} />}
+      <Box>
+        <VStack space={3} maxHeight={'full'} height={'full'}>
+          <TitleAndBackButtonHeader
+            title=" "
+            onPressHandler={() => console.log('Sign up back btn')}
           />
-          <Input
-            variant="filled"
-            placeholder={'Confirm Password'}
-            placeholderTextColor={'black'}
-            maxWidth={'75%'}
-            height={'8'}
-            bgColor={InputColor}
-            borderColor={InputColor}
-            borderRadius={'5'}
-            textAlignVertical={'center'}
-            InputRightElement={<Icon mr={2} as={eyeIcon} />}
-          />
+          <Center marginX={20} marginY={'3'} width={'200px'} height={'50px'}>
+            <Box>
+              <Text color={'#9B69DD'} fontSize={24}>
+                Reset Password
+              </Text>
+            </Box>
+          </Center>
+          <VStack
+            maxHeight={'full'}
+            height={'15%'}
+            alignItems={'center'}
+            space={5}
+          >
+            <TextInput placeholder="Email" />
+            <Input
+              variant="filled"
+              placeholder={'New Password'}
+              placeholderTextColor={'black'}
+              maxWidth={'75%'}
+              height={'8'}
+              bgColor={InputColor}
+              borderColor={InputColor}
+              borderRadius={'5'}
+              textAlignVertical={'center'}
+              InputRightElement={<Icon mr={2} as={eyeIcon} />}
+            />
+            <Input
+              variant="filled"
+              placeholder={'Confirm Password'}
+              placeholderTextColor={'black'}
+              maxWidth={'75%'}
+              height={'8'}
+              bgColor={InputColor}
+              borderColor={InputColor}
+              borderRadius={'5'}
+              textAlignVertical={'center'}
+              InputRightElement={<Icon mr={2} as={eyeIcon} />}
+            />
+          </VStack>
+          <Center
+            marginY={'3'}
+            bottom={'40px'}
+            position={'absolute'}
+            width={'full'}
+            maxWidth={'full'}
+          >
+            <HollowAndSolidButton solidButtonValue="Reset" />
+            <Box>
+              <Link
+                isExternal
+                _text={{ color: 'blue.400' }}
+                onPress={() => console.log('sign in btn click')}
+              >
+                Don't have an account?
+              </Link>
+            </Box>
+          </Center>
         </VStack>
-
-        {/* SAVE AND CANCEL BUTTON */}
-        <Center marginBottom={'5'}>
-          <HollowAndSolidButton solidButtonValue="Reset" />
-        </Center>
       </Box>
     </NativeBaseProvider>
   );

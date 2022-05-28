@@ -1,14 +1,11 @@
 import React from 'react';
 import {
   Box,
-  Button,
   Center,
   Icon,
-  IconButton,
   Input,
   Link,
   NativeBaseProvider,
-  Pressable,
   Text,
   VStack
 } from 'native-base';
@@ -22,18 +19,25 @@ import { eyeIcon } from '../../icons/localprice.icons';
 export default function RegisterView() {
   return (
     <NativeBaseProvider>
-      <Box safeArea width={'full'} height={'full'} position={'absolute'}>
-        <TitleAndBackButtonHeader
-          onPressHandler={() => console.log('Sign up back btn')}
-        />
-        <VStack flex={1}>
-          <Box paddingBottom={'10'} alignItems={'center'} width={'full'}>
-            <Text color={'#9B69DD'} fontSize={24} fontWeight={'medium'}>
-              Register
-            </Text>
-          </Box>
-
-          <VStack space={5} alignItems={'center'}>
+      <Box safeArea width={'full'} height={'full'}>
+        <VStack>
+          <TitleAndBackButtonHeader
+            title=" "
+            onPressHandler={() => console.log('Sign up back btn')}
+          />
+          <Center marginX={20} marginY={'3'} width={'200px'} height={'50px'}>
+            <Box>
+              <Text color={'#9B69DD'} fontSize={24}>
+                Register
+              </Text>
+            </Box>
+          </Center>
+          <VStack
+            maxHeight={'full'}
+            height={'30%'}
+            alignItems={'center'}
+            space={5}
+          >
             <TextInput placeholder="Full Name" />
             <TextInput placeholder="Username" />
             <TextInput placeholder="Email" />
@@ -47,12 +51,7 @@ export default function RegisterView() {
               borderColor={InputColor}
               borderRadius={'5'}
               textAlignVertical={'center'}
-              InputRightElement={
-                <IconButton
-                  icon={<Icon as={eyeIcon} />}
-                  onPress={() => console.log('eye pressed ')}
-                />
-              }
+              InputRightElement={<Icon mr={2} as={eyeIcon} />}
             />
             <Input
               variant="filled"
@@ -64,37 +63,28 @@ export default function RegisterView() {
               borderColor={InputColor}
               borderRadius={'5'}
               textAlignVertical={'center'}
-              InputRightElement={
-                <IconButton
-                  icon={<Icon as={eyeIcon} />}
-                  onPress={() => console.log('eye pressed ')}
-                />
-              }
+              InputRightElement={<Icon mr={2} as={eyeIcon} />}
             />
           </VStack>
         </VStack>
-        {/* REGISTER BUTTON */}
-        <Box marginBottom={5}>
-          <VStack space={5} alignItems={'center'}>
-            <Button
-              width={'200'}
-              height={'45'}
-              variant={'solid'}
-              onPress={() => console.log('Register Button Pressed')}
-              _text={{
-                fontSize: '15',
-                fontWeight: 'medium'
-              }}
-              borderRadius={'full'}
-              backgroundColor={'#9E6DDE'}
+        <Center
+          marginY={'3'}
+          bottom={'40px'}
+          position={'absolute'}
+          width={'full'}
+          maxWidth={'full'}
+        >
+          <SolidButton value="Register" />
+          <Box>
+            <Link
+              isExternal
+              _text={{ color: 'blue.400' }}
+              onPress={() => console.log('sign in btn click')}
             >
-              Register
-            </Button>
-            <Pressable onPress={() => console.log(`have an account btn click`)}>
-              <Text color={'blue.400'}>Have an account?</Text>
-            </Pressable>
-          </VStack>
-        </Box>
+              Have an account?
+            </Link>
+          </Box>
+        </Center>
       </Box>
     </NativeBaseProvider>
   );

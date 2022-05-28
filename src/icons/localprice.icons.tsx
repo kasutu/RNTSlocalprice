@@ -28,8 +28,6 @@ const solidNotifIcon = <Ionicon name="notifications" color="black" size={30} />;
 const hollowNotifIcon = (
   <Ionicon name="notifications-outline" color="black" size={30} />
 );
-
-const LocationIcon = <Icon name="location-on" color="black" />;
 export {
   arrowBack,
   addIcon,
@@ -42,6 +40,5 @@ export {
   solidBagIcon,
   hollowBagIcon,
   solidNotifIcon,
-  hollowNotifIcon,
-  LocationIcon
+  hollowNotifIcon
 };

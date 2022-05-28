@@ -16,7 +16,6 @@ import DbTest from './test/dbTest';
 import UserChatScreen from './src/screens/ChatScreen/user.chat.screen';
 import UserSearchContact from './src/screens/ChatScreen/user.SearchContact';
 import { HStack, NativeBaseProvider, ScrollView, VStack } from 'native-base';
-
 export default function App(): ReactNode {
   return (
     <>
@@ -26,13 +25,13 @@ export default function App(): ReactNode {
       {/* <EditAddressScreenUserSeller /> */}
       {/* <ReportUser /> */}
       {/* <SellOrEditItem /> */}
-      {/* <LogInView /> */}
+      <LogInView />
       {/* <RegisterView /> */}
       {/* <ResetPasswordView /> */}
       {/* <ProfileView /> */}
       {/* <MainHome /> */}
       {/* <UserChatScreen /> */}
-      <UserSearchContact />
+      {/* <UserSearchContact /> */}
 
       {/* -------------- test section -------------- */}
 
