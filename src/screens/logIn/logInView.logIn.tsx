@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState /* , { useState } */ } from 'react';
 import {
   Box,
   Center,
@@ -18,13 +18,15 @@ import { eyeIcon } from '../../icons/localprice.icons';
 
 const appLogo = require('../../assets/appLogo.png');
 
-interface AuthenticationStuff {
-  email: string,
-  password: string,
-  error: boolean
-}
-export default function LogInView() {
-  let [state, setState] = useState();
+export default function LogInView(/* { navigation } */) {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  /* const onRegisterPress = () => {
+    navigation.navigate('RegisterView');
+  };
+
+  const onLogInPress = () => {}; */
 
   return (
     <NativeBaseProvider>
@@ -44,10 +46,16 @@ export default function LogInView() {
             />
           </Center>
           <VStack flex={1} alignItems={'center'} space={5}>
-            <TextInput placeholder="Email" />
+            <TextInput
+              value={email}
+              placeholder="Email"
+              onChangeText={(text) => setEmail(text)}
+            />
             <Input
               variant="filled"
+              value={password}
               placeholder={'Password'}
+              onChangeText={(text) => setPassword(text)}
               placeholderTextColor={'black'}
               maxWidth={'75%'}
               height={'8'}
@@ -57,23 +65,15 @@ export default function LogInView() {
               textAlignVertical={'center'}
               InputRightElement={<Icon mr={2} as={eyeIcon} />}
             />
-            <Box width={'75%'} alignItems={'flex-end'} alignSelf={'center'}>
-              <Link
-                isExternal
-                _text={{ color: 'blue.400' }}
-                onPress={() => console.log('Forgot Password btn click')}
-              >
-                Forgot Password
-              </Link>
-            </Box>
           </VStack>
           <Center paddingY={'8'} width={'full'} maxWidth={'full'}>
             <VStack space={'5'}>
-              <SolidButton value="Log In" />
+              <SolidButton /* {...onLogInPress} */ value="Log In" />
               <Center>
                 <Link
                   isExternal
                   _text={{ color: 'blue.400' }}
+                  /* {...onRegisterPress} */
                   onPress={() => console.log(`Don't have an account btn click`)}
                 >
                   Don't have an account?
