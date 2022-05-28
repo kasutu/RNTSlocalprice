@@ -7,7 +7,7 @@ import SolidButton from '../../components/buttons/solid.button';
 export default function ReportUser() {
   return (
     <NativeBaseProvider>
-      <Box safeArea width={'full'} height={'full'}>
+      <Box safeArea width={'full'} height={'full'} position={'absolute'}>
         <VStack space={3} maxHeight={'full'}>
           {/* status bar */}
           <TitleAndBackButtonHeader
