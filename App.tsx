@@ -31,8 +31,8 @@ export default function App(): ReactNode {
       {/* <ResetPasswordView /> */}
       {/* <ProfileView /> */}
       {/* <MainHome /> */}
-      <UserChatScreen />
-      {/* <UserSearchContact /> */}
+      {/* <UserChatScreen /> */}
+      <UserSearchContact />
 
       {/* -------------- test section -------------- */}
 

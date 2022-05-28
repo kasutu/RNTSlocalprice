@@ -7,7 +7,8 @@ import {
   Avatar,
   ScrollView,
   Center,
-  Pressable
+  Pressable,
+  Container
 } from 'native-base';
 import React from 'react';
 import { TitleHeader } from '../../components/header/headers';
@@ -46,7 +47,7 @@ export default function UserChatScreen() {
 
             {
               <Pressable onPress={() => console.log('card pressed')}>
-                <Box alignItems={'center'} paddingX={2}>
+                <Container alignItems={'center'} paddingX={2}>
                   {/* CARD WRAPPER */}
                   <HStack
                     width={'full'}
@@ -109,7 +110,7 @@ export default function UserChatScreen() {
                       </HStack>
                     </Center>
                   </HStack>
-                </Box>
+                </Container>
               </Pressable>
             }
           </VStack>
