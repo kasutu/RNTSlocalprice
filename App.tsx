@@ -20,12 +20,12 @@ export default function App(): ReactNode {
   return (
     <>
       {/* <ItemView /> */}
-      <ShoppingBag />
+      {/* <ShoppingBag /> */}
       {/* <AddLocationMap /> */}
       {/* <EditAddressScreenUserSeller /> */}
       {/* <ReportUser /> */}
       {/* <SellOrEditItem /> */}
-      {/* <LogInView /> */}
+      <LogInView />
       {/* <RegisterView /> */}
       {/* <ResetPasswordView /> */}
       {/* <ProfileView /> */}

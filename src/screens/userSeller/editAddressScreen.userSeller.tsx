@@ -7,7 +7,7 @@ import { Box, Center, NativeBaseProvider, Text, VStack } from 'native-base';
 export default function EditAddressScreenUserSeller() {
   return (
     <NativeBaseProvider>
-      <Box safeArea width={'full'} height={'full'}>
+      <Box safeArea width={'full'} height={'full'} position={'absolute'}>
         <VStack space={3} maxHeight={'full'}>
           {/* status bar */}
           <TitleAndBackButtonHeader title="Edit location" />

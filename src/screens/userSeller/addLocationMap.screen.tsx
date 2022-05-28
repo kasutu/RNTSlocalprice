@@ -6,7 +6,7 @@ import TitleAndBackButtonHeader from '../../components/header/headers';
 export default function AddLocationMap() {
   return (
     <NativeBaseProvider>
-      <Box safeArea width={'full'} height={'full'}>
+      <Box safeArea width={'full'} height={'full'} position={'absolute'}>
         <VStack space={3} height={'full'}>
           {/* status bar */}
           <TitleAndBackButtonHeader title="Add location" />

@@ -1,8 +1,10 @@
 import React from 'react';
 import {
+  AspectRatio,
   Box,
   Center,
   Icon,
+  Image,
   Input,
   Link,
   NativeBaseProvider,
@@ -15,25 +17,27 @@ import SolidButton from './../../components/buttons/solid.button';
 import { InputColor } from './../../colors/localprice.colors';
 import { eyeIcon } from '../../icons/localprice.icons';
 
+const appLogo = require('../../assets/appLogo.png');
+
 export default function LogInView() {
   return (
     <NativeBaseProvider>
-      <Box safeArea width={'full'} height={'full'}>
+      <Box safeArea width={'full'} height={'full'} position={'absolute'}>
         <VStack space={2} width={'full'} height={'full'}>
           <TitleAndBackButtonHeader
             title=" "
             onPressHandler={() => console.log('Sign in back btn')}
           />
-          <Center
-            marginY={'3'}
-            width={'full'}
-            height={'200px'}
-            backgroundColor={'violet.300'}
-          >
-            {' '}
-            Logo
+          <Center paddingY={'3'} width={'full'} height={'200px'}>
+            {/* LOGO HERE */}
+            <Image
+              width={'250'}
+              resizeMode="contain"
+              alt="App Logo"
+              source={appLogo}
+            />
           </Center>
-          <VStack maxHeight={'full'} alignItems={'center'} space={5}>
+          <VStack flex={1} alignItems={'center'} space={5}>
             <TextInput placeholder="Email" />
             <Input
               variant="filled"
@@ -47,33 +51,29 @@ export default function LogInView() {
               textAlignVertical={'center'}
               InputRightElement={<Icon mr={2} as={eyeIcon} />}
             />
-          </VStack>
-          <Box width={'75%'} alignItems={'flex-end'} alignSelf={'center'}>
-            <Link
-              isExternal
-              _text={{ color: 'blue.400' }}
-              onPress={() => console.log('sign up btn click')}
-            >
-              Forgot Password
-            </Link>
-          </Box>
-          <Center
-            marginY={'3'}
-            bottom={'40px'}
-            position={'absolute'}
-            width={'full'}
-            maxWidth={'full'}
-          >
-            <SolidButton value="Log In" />
-           { <Center>
+            <Box width={'75%'} alignItems={'flex-end'} alignSelf={'center'}>
               <Link
                 isExternal
                 _text={{ color: 'blue.400' }}
-                onPress={() => console.log('sign up btn click')}
+                onPress={() => console.log('Forgot Password btn click')}
               >
-                Don't have an account?
+                Forgot Password
               </Link>
-            </Center>}
+            </Box>
+          </VStack>
+          <Center paddingY={'8'} width={'full'} maxWidth={'full'}>
+            <VStack space={'5'}>
+              <SolidButton value="Log In" />
+              <Center>
+                <Link
+                  isExternal
+                  _text={{ color: 'blue.400' }}
+                  onPress={() => console.log(`Don't have an account btn click`)}
+                >
+                  Don't have an account?
+                </Link>
+              </Center>
+            </VStack>
           </Center>
         </VStack>
       </Box>
