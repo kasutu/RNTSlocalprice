@@ -1,6 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
-  AspectRatio,
   Box,
   Center,
   Icon,
@@ -19,7 +18,14 @@ import { eyeIcon } from '../../icons/localprice.icons';
 
 const appLogo = require('../../assets/appLogo.png');
 
+interface AuthenticationStuff {
+  email: string,
+  password: string,
+  error: boolean
+}
 export default function LogInView() {
+  let [state, setState] = useState();
+
   return (
     <NativeBaseProvider>
       <Box safeArea width={'full'} height={'full'} position={'absolute'}>
