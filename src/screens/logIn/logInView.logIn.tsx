@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState /* , { useState } */ } from 'react';
 import {
   Text,
   Box,
@@ -20,6 +20,17 @@ import { eyeIcon } from '../../icons/localprice.icons';
 
 const appLogo = require('../../assets/appLogo.png');
 
+<<<<<<< HEAD
+export default function LogInView(/* { navigation } */) {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  /* const onRegisterPress = () => {
+    navigation.navigate('RegisterView');
+  };
+
+  const onLogInPress = () => {}; */
+=======
 interface AuthenticationStuff {
   email: string;
   password: string;
@@ -27,6 +38,7 @@ interface AuthenticationStuff {
 }
 export default function LogInView() {
   let [state, setState] = useState();
+>>>>>>> 70d17358ec40e5d1cbae159b5d3ada2ac35b2fa7
 
   return (
     <NativeBaseProvider>
@@ -45,6 +57,44 @@ export default function LogInView() {
               source={appLogo}
             />
           </Center>
+<<<<<<< HEAD
+          <VStack flex={1} alignItems={'center'} space={5}>
+            <TextInput
+              value={email}
+              placeholder="Email"
+              onChangeText={(text) => setEmail(text)}
+            />
+            <Input
+              variant="filled"
+              value={password}
+              placeholder={'Password'}
+              onChangeText={(text) => setPassword(text)}
+              placeholderTextColor={'black'}
+              maxWidth={'75%'}
+              height={'8'}
+              bgColor={InputColor}
+              borderColor={InputColor}
+              borderRadius={'5'}
+              textAlignVertical={'center'}
+              InputRightElement={<Icon mr={2} as={eyeIcon} />}
+            />
+          </VStack>
+          <Center paddingY={'8'} width={'full'} maxWidth={'full'}>
+            <VStack space={'5'}>
+              <SolidButton /* {...onLogInPress} */ value="Log In" />
+              <Center>
+                <Link
+                  isExternal
+                  _text={{ color: 'blue.400' }}
+                  /* {...onRegisterPress} */
+                  onPress={() => console.log(`Don't have an account btn click`)}
+                >
+                  Don't have an account?
+                </Link>
+              </Center>
+            </VStack>
+          </Center>
+=======
 
           <TextInput placeholder="Email" />
           <Input
@@ -75,6 +125,7 @@ export default function LogInView() {
               <Text color={'blue.400'}>Forgot Password</Text>
             </Pressable>
           </Box>
+>>>>>>> 70d17358ec40e5d1cbae159b5d3ada2ac35b2fa7
         </VStack>
 
         <Box bg={'black'}>
