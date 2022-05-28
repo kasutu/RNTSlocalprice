@@ -25,10 +25,10 @@ export default function App(): ReactNode {
       {/* <EditAddressScreenUserSeller /> */}
       {/* <ReportUser /> */}
       {/* <SellOrEditItem /> */}
-      <LogInView />
+      {/* <LogInView /> */}
       {/* <RegisterView /> */}
       {/* <ResetPasswordView /> */}
-      {/* <ProfileView /> */}
+      <ProfileView />
       {/* <MainHome /> */}
       {/* <UserChatScreen /> */}
       {/* <UserSearchContact /> */}
