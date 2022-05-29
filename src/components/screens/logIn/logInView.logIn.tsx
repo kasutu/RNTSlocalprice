@@ -19,9 +19,9 @@ import { InputColor } from '../../general/colors/localprice.colors';
 import { eyeIcon } from '../../general/icons/localprice.icons';
 import SolidButton from '../../general/buttons/solid.button';
 
-const appLogo = require('../../assets/appLogo.png');
+const appLogo = require('../../../assets/appLogo.png');
 
-export default function LogInView(/* { navigation } */) {
+export function LogInScreen(/* { navigation } */) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 

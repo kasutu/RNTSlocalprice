@@ -3,7 +3,7 @@ import React from 'react';
 import { Box, Center, NativeBaseProvider, Text, VStack } from 'native-base';
 import TitleAndBackButtonHeader from '../../general/header/headers';
 
-export default function AddLocationMap() {
+export function AddLocationMapScreen() {
   return (
     <NativeBaseProvider>
       <Box safeArea width={'full'} height={'full'} position={'absolute'}>

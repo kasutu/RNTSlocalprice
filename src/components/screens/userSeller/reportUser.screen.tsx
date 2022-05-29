@@ -4,7 +4,7 @@ import { Box, Center, NativeBaseProvider, VStack } from 'native-base';
 import { TextInputMultiline } from '../../general/forms/textInput.form';
 import SolidButton from '../../general/buttons/solid.button';
 
-export default function ReportUser() {
+export function ReportUserScreen() {
   return (
     <NativeBaseProvider>
       <Box safeArea width={'full'} height={'full'} position={'absolute'}>

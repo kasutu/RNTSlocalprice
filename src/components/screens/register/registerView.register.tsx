@@ -2,11 +2,9 @@ import React from 'react';
 import {
   Box,
   Button,
-  Center,
   Icon,
   IconButton,
   Input,
-  Link,
   NativeBaseProvider,
   Pressable,
   Text,
@@ -14,12 +12,11 @@ import {
 } from 'native-base';
 
 import TitleAndBackButtonHeader from '../../general/header/headers';
-import SolidButton from '../../general/buttons/solid.button';
 import TextInput from '../../general/forms/textInput.form';
 import { InputColor } from '../../general/colors/localprice.colors';
 import { eyeIcon } from '../../general/icons/localprice.icons';
 
-export default function RegisterView() {
+export function RegisterScreen() {
   return (
     <NativeBaseProvider>
       <Box safeArea width={'full'} height={'full'} position={'absolute'}>

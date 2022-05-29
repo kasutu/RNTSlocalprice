@@ -11,7 +11,10 @@ import {
 } from 'native-base';
 import React from 'react';
 import { TitleHeader } from '../../general/header/headers';
-import { LocationIcon, solidProfileIcon } from '../../general/icons/localprice.icons';
+import {
+  LocationIcon,
+  solidProfileIcon
+} from '../../general/icons/localprice.icons';
 
 const role: string = 'Anonymous';
 const fullName: string = 'Dave Jhaeson Alivio';
@@ -19,7 +22,7 @@ const phoneNumber: string = '096847236';
 const email: string = 'davejhaesonalivio@localprice.com';
 const address: string = 'Sool, Buntatala, leganes, Iloilo 5003';
 
-export default function ProfileView() {
+export function ProfileScreen() {
   return (
     <NativeBaseProvider>
       <Box safeArea width={'full'} height={'full'} position={'absolute'}>
