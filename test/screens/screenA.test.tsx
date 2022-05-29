@@ -29,6 +29,7 @@ function ScreenA() {
           </Center>
           <Center>
             {/* calls the addNewObject() method from the store */}
+            {/* put some protection, make sure the input is not an empty string */}
             <Button onPress={() => storeInstanceTest.addNewObject()}>
               Cache to store
             </Button>
