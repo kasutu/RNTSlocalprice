@@ -14,7 +14,7 @@ import {
 } from 'native-base';
 import AddPhotoButton from '../../../general/buttons/addPhoto.Button';
 
-export default function SellOrEditItem() {
+export function SellOrEditItemScreen() {
   return (
     <NativeBaseProvider>
       <Box safeArea width={'full'} height={'full'} position={'absolute'}>

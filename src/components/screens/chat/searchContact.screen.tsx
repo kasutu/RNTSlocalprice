@@ -13,7 +13,7 @@ import {
 import React from 'react';
 import { SearchHeader } from '../../general/header/headers';
 
-export default function UserChatScreen() {
+export function SearchContactScreen() {
   return (
     <NativeBaseProvider>
       <Box safeArea width={'full'} height={'full'} position={'absolute'}>

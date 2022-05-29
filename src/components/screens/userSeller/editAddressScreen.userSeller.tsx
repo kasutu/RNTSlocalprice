@@ -4,7 +4,7 @@ import TextInput from '../../general/forms/textInput.form';
 import TitleAndBackButtonHeader from '../../general/header/headers';
 import { Box, Center, NativeBaseProvider, Text, VStack } from 'native-base';
 
-export default function EditAddressScreenUserSeller() {
+export function EditAddressScreen() {
   return (
     <NativeBaseProvider>
       <Box safeArea width={'full'} height={'full'} position={'absolute'}>

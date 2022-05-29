@@ -1,17 +1,13 @@
 import {
   Box,
-  Button,
   Center,
   Container,
-  Fab,
   HStack,
-  Icon,
   NativeBaseProvider,
   Pressable,
   ScrollView,
   Text,
-  VStack,
-  ZStack
+  VStack
 } from 'native-base';
 import React from 'react';
 import { SearchHeader } from '../../general/header/headers';
@@ -23,7 +19,7 @@ const price: string = 'P100,000';
 const ratings: string = '5.0';
 const location: string = 'Iloilo';
 
-export default function ItemView() {
+export function ItemScreen() {
   return (
     <NativeBaseProvider>
       <Box safeArea width={'full'} height={'full'} position={'absolute'}>

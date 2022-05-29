@@ -11,9 +11,8 @@ import {
 import React from 'react';
 import { SearchHeader } from '../../general/header/headers';
 import FilterButton from './filterButton';
-import PhotoHolderButton from './photoHolder.home';
 
-export default function MainHome() {
+export function MainHomeScreen() {
   return (
     <NativeBaseProvider>
       <Box safeArea width={'full'} height={'full'} position={'absolute'}>

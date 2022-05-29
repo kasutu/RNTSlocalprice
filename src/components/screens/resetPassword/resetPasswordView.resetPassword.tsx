@@ -4,7 +4,6 @@ import {
   Center,
   Icon,
   Input,
-  Link,
   NativeBaseProvider,
   Text,
   VStack
@@ -16,7 +15,7 @@ import TextInput from '../../general/forms/textInput.form';
 import { InputColor } from '../../general/colors/localprice.colors';
 import { eyeIcon } from '../../general/icons/localprice.icons';
 
-export default function ResetPasswordView() {
+export function ResetPasswordScreen() {
   return (
     <NativeBaseProvider>
       <Box safeArea width={'full'} height={'full'} position={'absolute'}>

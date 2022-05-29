@@ -14,7 +14,7 @@ import React from 'react';
 import { TitleHeader } from '../../general/header/headers';
 import FilterButton from '../home/filterButton';
 
-export default function UserChatScreen() {
+export function UserChatScreen() {
   return (
     <NativeBaseProvider>
       <Box safeArea width={'full'} height={'full'} position={'absolute'}>
