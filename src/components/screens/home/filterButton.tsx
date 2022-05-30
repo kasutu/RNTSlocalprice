@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Pressable, Text } from 'native-base';
+import { Pressable, Text } from 'native-base';
 import { ButtonProps } from '../../../types/buttonProps.type';
 
 export default function FilterButton({

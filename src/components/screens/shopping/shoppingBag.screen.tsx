@@ -11,7 +11,7 @@ import {
   Container,
   Button
 } from 'native-base';
-import TitleAndBackButtonHeader from '../../general/header/headers';
+import { TitleAndBackButtonHeader } from '../../general/header/headers';
 
 const description: string = 'Apple Macbook pro 16gb ram';
 const itemDetails: string = 'More details about the product.';

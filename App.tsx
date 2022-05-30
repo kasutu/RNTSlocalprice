@@ -1,7 +1,6 @@
 import React from 'react';
 
 import type { ReactNode } from 'react';
-import AppTest from './test/App.test';
 import {
   AddLocationMapScreen,
   EditAddressScreen,
@@ -15,8 +14,9 @@ import {
   SearchContactScreen,
   SellOrEditItemScreen,
   ShoppingBagScreen,
-  UserChatScreen
+  AllChatsScreen
 } from './src/components/screens/index.screens';
+import AppTest from './test/App.test';
 
 export default function App(): ReactNode {
   return (
@@ -33,7 +33,7 @@ export default function App(): ReactNode {
       {/* <ResetPasswordScreen /> */}
       {/* <ProfileScreen /> */}
       {/* <MainHomeScreen /> */}
-      {/* <UserChatScreen /> */}
+      {/* <AllChatsScreen /> */}
       {/* <SearchContactScreen /> */}
     </>
   );

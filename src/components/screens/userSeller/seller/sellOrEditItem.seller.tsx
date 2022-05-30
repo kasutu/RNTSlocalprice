@@ -3,7 +3,7 @@ import React from 'react';
 import TextInput, {
   TextInputMultiline
 } from '../../../general/forms/textInput.form';
-import TitleAndBackButtonHeader from '../../../general/header/headers';
+import { TitleAndBackButtonHeader } from '../../../general/header/headers';
 import {
   Box,
   Center,

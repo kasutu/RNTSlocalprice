@@ -2,6 +2,7 @@ import React from 'react';
 import {
   Box,
   Center,
+  Heading,
   HStack,
   IconButton,
   Input,
@@ -12,7 +13,7 @@ import { HeaderProps } from '../../../types/headerProps.type';
 import { arrowBack } from '../icons/localprice.icons';
 import { InputColor } from '../colors/localprice.colors';
 
-export default function TitleAndBackButtonHeader({
+export function TitleAndBackButtonHeader({
   title,
   onPressHandler
 }: HeaderProps) {
@@ -30,9 +31,7 @@ export default function TitleAndBackButtonHeader({
                 : () => console.log('BACK pressed ')
             }
           />
-          <Text color="black" fontSize="20" fontWeight="bold">
-            {title}
-          </Text>
+          <Heading color="black">{title}</Heading>
         </HStack>
       </HStack>
     </>
@@ -46,9 +45,7 @@ export function TitleHeader({ title }: HeaderProps) {
       <Box safeAreaTop />
       <HStack alignItems="center">
         <Center marginLeft={'4'} marginTop={'3'}>
-          <Text color="black" fontSize="20" fontWeight="bold">
-            {title}
-          </Text>
+          <Heading color="black">{title}</Heading>
         </Center>
       </HStack>
     </>

@@ -1,7 +1,7 @@
 import HollowAndSolidButton from '../../general/buttons/hollowAndSolidButton.component';
 import React from 'react';
 import { Box, Center, NativeBaseProvider, Text, VStack } from 'native-base';
-import TitleAndBackButtonHeader from '../../general/header/headers';
+import { TitleAndBackButtonHeader } from '../../general/header/headers';
 
 export function AddLocationMapScreen() {
   return (

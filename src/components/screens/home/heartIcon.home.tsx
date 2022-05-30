@@ -2,7 +2,6 @@ import React from 'react';
 import { Box, HStack, IconButton, StatusBar, Text } from 'native-base';
 import { HeaderProps } from '../../../types/headerProps.type';
 // import { heartIcon } from '../../icons/localprice.icons';
-import { HeartColor } from '../../general/colors/localprice.colors';
 
 export default function HeartIcon({ onPressHandler }: HeaderProps) {
   return (
