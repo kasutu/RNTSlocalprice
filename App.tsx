@@ -14,14 +14,15 @@ import {
   SearchContactScreen,
   SellOrEditItemScreen,
   ShoppingBagScreen,
-  AllChatsScreen
+  AllChatsScreen,
+  ChatScreen
 } from './src/components/screens/index.screens';
 import AppTest from './test/App.test';
 
 export default function App(): ReactNode {
   return (
     <>
-      <AppTest />
+      {/* <AppTest /> */}
       {/* <ItemScreen /> */}
       {/* <ShoppingBagScreen /> */}
       {/* <AddLocationMapScreen /> */}
@@ -35,6 +36,7 @@ export default function App(): ReactNode {
       {/* <MainHomeScreen /> */}
       {/* <AllChatsScreen /> */}
       {/* <SearchContactScreen /> */}
+      <ChatScreen />
     </>
   );
 }

@@ -20,20 +20,21 @@ export function TitleAndBackButtonHeader({
   return (
     <>
       <StatusBar backgroundColor="white" barStyle="dark-content" />
-      <Box safeAreaTop />
-      <HStack alignItems="center">
-        <HStack alignItems="center" space={2}>
-          <IconButton
-            icon={arrowBack}
-            onPress={
-              onPressHandler
-                ? onPressHandler
-                : () => console.log('BACK pressed ')
-            }
-          />
-          <Heading color="black">{title}</Heading>
+      <Box safeAreaTop>
+        <HStack alignItems="center">
+          <HStack alignItems="center" space={2}>
+            <IconButton
+              icon={arrowBack}
+              onPress={
+                onPressHandler
+                  ? onPressHandler
+                  : () => console.log('BACK pressed ')
+              }
+            />
+            <Heading color="black">{title}</Heading>
+          </HStack>
         </HStack>
-      </HStack>
+      </Box>
     </>
   );
 }
@@ -42,12 +43,13 @@ export function TitleHeader({ title }: HeaderProps) {
   return (
     <>
       <StatusBar backgroundColor="white" barStyle="dark-content" />
-      <Box safeAreaTop />
-      <HStack alignItems="center">
-        <Center marginLeft={'4'} marginTop={'3'}>
-          <Heading color="black">{title}</Heading>
-        </Center>
-      </HStack>
+      <Box safeAreaTop>
+        <HStack alignItems="center">
+          <Center marginLeft={'4'} marginTop={'3'}>
+            <Heading color="black">{title}</Heading>
+          </Center>
+        </HStack>
+      </Box>
     </>
   );
 }
@@ -56,34 +58,35 @@ export function SearchHeader({ onPressHandler }: HeaderProps) {
   return (
     <>
       <StatusBar backgroundColor="white" barStyle="dark-content" />
-      <Box safeArea />
-      <HStack alignItems="center">
-        <HStack alignItems="center" space={2}>
-          <IconButton
-            icon={arrowBack}
-            onPress={
-              onPressHandler
-                ? onPressHandler
-                : () => console.log('BACK pressed ')
-            }
-          />
+      <Box safeArea>
+        <HStack alignItems="center">
+          <HStack alignItems="center" space={2}>
+            <IconButton
+              icon={arrowBack}
+              onPress={
+                onPressHandler
+                  ? onPressHandler
+                  : () => console.log('BACK pressed ')
+              }
+            />
 
-          {/* search input */}
-          <Input
-            variant="filled"
-            placeholder={'Search'}
-            placeholderTextColor={'black'}
-            width={'full'}
-            maxWidth={'300'}
-            height={'8'}
-            bgColor={InputColor}
-            borderColor={InputColor}
-            borderRadius={'full'}
-          />
+            {/* search input */}
+            <Input
+              variant="filled"
+              placeholder={'Search'}
+              placeholderTextColor={'black'}
+              width={'full'}
+              maxWidth={'300'}
+              height={'8'}
+              bgColor={InputColor}
+              borderColor={InputColor}
+              borderRadius={'full'}
+            />
 
-          {/* heart pressable icon soon */}
+            {/* heart pressable icon soon */}
+          </HStack>
         </HStack>
-      </HStack>
+      </Box>
     </>
   );
 }
