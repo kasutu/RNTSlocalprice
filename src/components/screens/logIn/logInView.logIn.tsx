@@ -13,7 +13,7 @@ import {
   Link
 } from 'native-base';
 
-import TitleAndBackButtonHeader from '../../general/header/headers';
+import { TitleAndBackButtonHeader } from '../../general/header/headers';
 import TextInput from '../../general/forms/textInput.form';
 import { InputColor } from '../../general/colors/localprice.colors';
 import { eyeIcon } from '../../general/icons/localprice.icons';

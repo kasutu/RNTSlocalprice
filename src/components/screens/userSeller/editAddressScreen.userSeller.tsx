@@ -1,7 +1,7 @@
 import HollowAndSolidButton from '../../general/buttons/hollowAndSolidButton.component';
 import React from 'react';
 import TextInput from '../../general/forms/textInput.form';
-import TitleAndBackButtonHeader from '../../general/header/headers';
+import { TitleAndBackButtonHeader } from '../../general/header/headers';
 import { Box, Center, NativeBaseProvider, Text, VStack } from 'native-base';
 
 export function EditAddressScreen() {

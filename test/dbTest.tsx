@@ -36,7 +36,7 @@ export default function DbTest() {
   }
 
   return (
-    <NativeBaseProvider>
+    <>
       <Box safeArea flex={1}>
         <VStack space={2}>
           <HStack space={2} justifyContent={'center'}>
@@ -48,6 +48,6 @@ export default function DbTest() {
           </Center>
         </VStack>
       </Box>
-    </NativeBaseProvider>
+    </>
   );
 }

@@ -5,7 +5,6 @@ import {
   NativeBaseProvider,
   Pressable,
   ScrollView,
-  Text,
   VStack
 } from 'native-base';
 import React from 'react';
