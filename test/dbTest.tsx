@@ -36,8 +36,8 @@ export default function DbTest() {
   }
 
   return (
-    <NativeBaseProvider>
-      <Box safeArea w={'full'} h={'full'}>
+    <>
+      <Box safeArea flex={1}>
         <VStack space={2}>
           <HStack space={2} justifyContent={'center'}>
             <Button onPress={() => uploadData()}>Upload data</Button>
@@ -48,6 +48,6 @@ export default function DbTest() {
           </Center>
         </VStack>
       </Box>
-    </NativeBaseProvider>
+    </>
   );
 }
