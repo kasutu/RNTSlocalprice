@@ -4,12 +4,12 @@ import { FooterProps } from '../../../types/footerProps.type';
 import {
   hollowNotifIcon,
   hollowBagIcon,
-  hollowChatIcon,
   hollowProfileIcon,
-  solidHomeIcon
+  hollowHomeIcon,
+  solidChatIcon
 } from '../icons/localprice.icons';
 
-export default function HomeIconButtonsFooter({ navigation, onPressHandler }: FooterProps) {
+export default function ChatIconButtonsFooter({ navigation, onPressHandler }: FooterProps) {
   return (
     <>
       <Box safeAreaBottom />
@@ -17,7 +17,7 @@ export default function HomeIconButtonsFooter({ navigation, onPressHandler }: Fo
         <HStack alignItems="center" space={4}>
           <Pressable>
             <IconButton
-              icon={solidHomeIcon}
+              icon={hollowHomeIcon}
               onPress={
                 onPressHandler ? onPressHandler : () => console.log('Home')
               }
@@ -33,7 +33,7 @@ export default function HomeIconButtonsFooter({ navigation, onPressHandler }: Fo
           </Pressable>
           <Pressable>
             <IconButton
-              icon={hollowChatIcon}
+              icon={solidChatIcon}
               onPress={
                 onPressHandler ? onPressHandler : () => console.log('Chat')
               }

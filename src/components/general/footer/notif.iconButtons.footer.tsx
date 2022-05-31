@@ -2,11 +2,11 @@ import React from 'react';
 import { Box, HStack, IconButton, Pressable, Text, Center } from 'native-base';
 import { FooterProps } from '../../../types/footerProps.type';
 import {
-  hollowNotifIcon,
   hollowBagIcon,
   hollowChatIcon,
   hollowProfileIcon,
-  solidHomeIcon
+  hollowHomeIcon,
+  solidNotifIcon
 } from '../icons/localprice.icons';
 
 export default function HomeIconButtonsFooter({ navigation, onPressHandler }: FooterProps) {
@@ -17,7 +17,7 @@ export default function HomeIconButtonsFooter({ navigation, onPressHandler }: Fo
         <HStack alignItems="center" space={4}>
           <Pressable>
             <IconButton
-              icon={solidHomeIcon}
+              icon={hollowHomeIcon}
               onPress={
                 onPressHandler ? onPressHandler : () => console.log('Home')
               }
@@ -65,7 +65,7 @@ export default function HomeIconButtonsFooter({ navigation, onPressHandler }: Fo
           </Pressable>
           <Pressable>
             <IconButton
-              icon={hollowNotifIcon}
+              icon={solidNotifIcon}
               onPress={
                 onPressHandler ? onPressHandler : () => console.log('Notif')
               }

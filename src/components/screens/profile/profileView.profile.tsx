@@ -10,12 +10,13 @@ import {
   VStack
 } from 'native-base';
 import React from 'react';
+import ProfileIconButtonsFooter from '../../general/footer/profile.iconButtons.footer';
 import { TitleHeader } from '../../general/header/headers';
 import {
   solidProfileIcon
 } from '../../general/icons/localprice.icons';
 
-export function ProfileScreen() {
+export function ProfileScreen({ navigation }) {
   return (
     <NativeBaseProvider>
       <Box safeArea width={'full'} height={'full'} position={'absolute'}>
@@ -112,6 +113,9 @@ export function ProfileScreen() {
               Login or Register
             </Text>
           </Pressable>
+          <Box width={'full'} height={'80px'}>
+          <ProfileIconButtonsFooter navigation={navigation} />
+        </Box>
         </Center>
       </Box>
     </NativeBaseProvider>

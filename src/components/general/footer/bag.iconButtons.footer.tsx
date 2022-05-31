@@ -3,13 +3,13 @@ import { Box, HStack, IconButton, Pressable, Text, Center } from 'native-base';
 import { FooterProps } from '../../../types/footerProps.type';
 import {
   hollowNotifIcon,
-  hollowBagIcon,
   hollowChatIcon,
   hollowProfileIcon,
-  solidHomeIcon
+  hollowHomeIcon,
+  solidBagIcon
 } from '../icons/localprice.icons';
 
-export default function HomeIconButtonsFooter({ navigation, onPressHandler }: FooterProps) {
+export default function BagIconButtonsFooter({ navigation, onPressHandler }: FooterProps) {
   return (
     <>
       <Box safeAreaBottom />
@@ -17,7 +17,7 @@ export default function HomeIconButtonsFooter({ navigation, onPressHandler }: Fo
         <HStack alignItems="center" space={4}>
           <Pressable>
             <IconButton
-              icon={solidHomeIcon}
+              icon={hollowHomeIcon}
               onPress={
                 onPressHandler ? onPressHandler : () => console.log('Home')
               }
@@ -49,7 +49,7 @@ export default function HomeIconButtonsFooter({ navigation, onPressHandler }: Fo
           </Pressable>
           <Pressable>
             <IconButton
-              icon={hollowBagIcon}
+              icon={solidBagIcon}
               onPress={
                 onPressHandler ? onPressHandler : () => console.log('Bag')
               }
