@@ -5,11 +5,11 @@ import {
   hollowNotifIcon,
   hollowBagIcon,
   hollowChatIcon,
-  hollowHomeIcon,
-  solidProfileIcon,
+  hollowProfileIcon,
+  solidHomeIcon
 } from '../icons/localprice.icons';
 
-export default function ProfileIconButtonsFooter({ navigation, onPressHandler }: FooterProps) {
+export default function HomeIconButtonsFooter({ navigation, onPressHandler }: FooterProps) {
   return (
     <>
       <Box safeAreaBottom />
@@ -17,7 +17,7 @@ export default function ProfileIconButtonsFooter({ navigation, onPressHandler }:
         <HStack alignItems="center" space={4}>
           <Pressable>
             <IconButton
-              icon={hollowHomeIcon}
+              icon={solidHomeIcon}
               onPress={
                 onPressHandler ? onPressHandler : () => console.log('Home')
               }
@@ -81,9 +81,9 @@ export default function ProfileIconButtonsFooter({ navigation, onPressHandler }:
           </Pressable>
           <Pressable>
             <IconButton
-              icon={solidProfileIcon}
+              icon={hollowProfileIcon}
               onPress={
-                () => navigation.navigate('LogInScreen')
+                onPressHandler ? onPressHandler : () => console.log('Profile')
               }
             />
             <Text

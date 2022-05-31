@@ -2,14 +2,14 @@ import React from 'react';
 import { Box, HStack, IconButton, Pressable, Text, Center } from 'native-base';
 import { FooterProps } from '../../../types/footerProps.type';
 import {
-  hollowNotifIcon,
   hollowBagIcon,
   hollowChatIcon,
+  hollowProfileIcon,
   hollowHomeIcon,
-  solidProfileIcon,
+  solidNotifIcon
 } from '../icons/localprice.icons';
 
-export default function ProfileIconButtonsFooter({ navigation, onPressHandler }: FooterProps) {
+export default function HomeIconButtonsFooter({ navigation, onPressHandler }: FooterProps) {
   return (
     <>
       <Box safeAreaBottom />
@@ -65,7 +65,7 @@ export default function ProfileIconButtonsFooter({ navigation, onPressHandler }:
           </Pressable>
           <Pressable>
             <IconButton
-              icon={hollowNotifIcon}
+              icon={solidNotifIcon}
               onPress={
                 onPressHandler ? onPressHandler : () => console.log('Notif')
               }
@@ -81,9 +81,9 @@ export default function ProfileIconButtonsFooter({ navigation, onPressHandler }:
           </Pressable>
           <Pressable>
             <IconButton
-              icon={solidProfileIcon}
+              icon={hollowProfileIcon}
               onPress={
-                () => navigation.navigate('LogInScreen')
+                onPressHandler ? onPressHandler : () => console.log('Profile')
               }
             />
             <Text
