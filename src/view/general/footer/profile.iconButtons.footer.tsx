@@ -9,7 +9,7 @@ import {
   solidProfileIcon,
 } from '../icons/localprice.icons';
 
-export default function ProfileIconButtonsFooter({ navigation, onPressHandler }: FooterProps) {
+export default function ProfileIconButtonsFooter({ onPressHandler }: FooterProps) {
   return (
     <>
       <Box safeAreaBottom />
@@ -82,9 +82,6 @@ export default function ProfileIconButtonsFooter({ navigation, onPressHandler }:
           <Pressable>
             <IconButton
               icon={solidProfileIcon}
-              onPress={
-                () => navigation.navigate('LogInScreen')
-              }
             />
             <Text
               textAlign={'center'}

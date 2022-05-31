@@ -66,9 +66,6 @@ export default function HomeIconButtonsFooter({ onPressHandler }: FooterProps) {
           <Pressable>
             <IconButton
               icon={solidNotifIcon}
-              onPress={
-                onPressHandler ? onPressHandler : () => console.log('Notif')
-              }
             />
             <Text
               textAlign={'center'}

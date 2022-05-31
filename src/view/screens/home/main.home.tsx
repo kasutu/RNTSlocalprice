@@ -9,7 +9,6 @@ import {
 } from 'native-base';
 import React from 'react';
 import HomeIconButtonsFooter from '../../general/footer/home.iconButtons.footer';
-import IconButtonsFooter from '../../general/footer/home.iconButtons.footer';
 import { SearchHeader } from '../../general/header/headers';
 import FilterButton from './filterButton';
 

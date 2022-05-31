@@ -9,19 +9,17 @@ import {
   solidHomeIcon
 } from '../icons/localprice.icons';
 
-export default function HomeIconButtonsFooter({ onPressHandler }: FooterProps) {
+export default function HomeIconButtonsFooter({
+  navigation,
+  onPressHandler
+}: FooterProps) {
   return (
     <>
       <Box safeAreaBottom />
       <Center>
         <HStack alignItems="center" space={4}>
           <Pressable>
-            <IconButton
-              icon={solidHomeIcon}
-              onPress={
-                onPressHandler ? onPressHandler : () => console.log('Home')
-              }
-            />
+            <IconButton icon={solidHomeIcon} />
             <Text
               textAlign={'center'}
               color="black"
@@ -34,9 +32,7 @@ export default function HomeIconButtonsFooter({ onPressHandler }: FooterProps) {
           <Pressable>
             <IconButton
               icon={hollowChatIcon}
-              onPress={
-                onPressHandler ? onPressHandler : () => console.log('Chat')
-              }
+              onPress={() => navigation.navigate('LogInScreen')}
             />
             <Text
               textAlign={'center'}
@@ -50,9 +46,7 @@ export default function HomeIconButtonsFooter({ onPressHandler }: FooterProps) {
           <Pressable>
             <IconButton
               icon={hollowBagIcon}
-              onPress={
-                onPressHandler ? onPressHandler : () => console.log('Bag')
-              }
+              onPress={() => navigation.navigate('LogInScreen')}
             />
             <Text
               textAlign={'center'}
@@ -66,9 +60,7 @@ export default function HomeIconButtonsFooter({ onPressHandler }: FooterProps) {
           <Pressable>
             <IconButton
               icon={hollowNotifIcon}
-              onPress={
-                onPressHandler ? onPressHandler : () => console.log('Notif')
-              }
+              onPress={() => navigation.navigate('LogInScreen')}
             />
             <Text
               textAlign={'center'}
@@ -82,9 +74,7 @@ export default function HomeIconButtonsFooter({ onPressHandler }: FooterProps) {
           <Pressable>
             <IconButton
               icon={hollowProfileIcon}
-              onPress={
-                onPressHandler ? onPressHandler : () => console.log('Profile')
-              }
+              onPress={() => navigation.navigate('LogInScreen')}
             />
             <Text
               textAlign={'center'}
