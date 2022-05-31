@@ -19,6 +19,10 @@ target 'RNTSlocalprice' do
     :app_path => "#{Pod::Config.instance.installation_root}/.."
   )
 
+  pod 'RNScreens', :path => '../node_modules/react-native-screens'
+
+  pod 'react-native-safe-area-context', :path => '../node_modules/react-native-safe-area-context'
+
   target 'RNTSlocalpriceTests' do
     inherit! :complete
     # Pods for testing
