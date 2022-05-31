@@ -13,6 +13,7 @@ import React from 'react';
 import ProfileIconButtonsFooter from '../../general/footer/profile.iconButtons.footer';
 import { TitleHeader } from '../../general/header/headers';
 import {
+  LocationIcon,
   solidProfileIcon
 } from '../../general/icons/localprice.icons';
 
@@ -25,10 +26,10 @@ export function ProfileScreen({ navigation }) {
         <ScrollView>
           <VStack flex={1} space={2}>
             <Center width={'full'}>
-              {<Icon size={'80px'} as={solidProfileIcon} />}
+              {<Icon size={'60px'} as={solidProfileIcon} />}
             </Center>
             <VStack width={'full'} alignItems={'center'} space={'1'}>
-              <Center
+             {/*  <Center
                 height={'20px'}
                 width={'100px'}
                 backgroundColor={'#D5C1F1'}
@@ -39,7 +40,7 @@ export function ProfileScreen({ navigation }) {
               <Text fontSize={'18px'} fontWeight={'bold'}>
                 {fullName}
               </Text>
-
+ */}
               {/* USER ADDRESS */}
               <HStack space={2}>
                 <Center
@@ -57,7 +58,7 @@ export function ProfileScreen({ navigation }) {
                   alignContent={'center'}
                 >
                   {/* ADDRESS DETAILS */}
-                  <Center>
+                {/*   <Center>
                     <Text fontSize={'12'}>{phoneNumber}</Text>
                   </Center>
                   <Center>
@@ -65,7 +66,7 @@ export function ProfileScreen({ navigation }) {
                   </Center>
                   <Center>
                     <Text fontSize={'12'}>{address}</Text>
-                  </Center>
+                  </Center> */}
                 </VStack>
                 <Box
                   marginRight={10}
@@ -92,31 +93,9 @@ export function ProfileScreen({ navigation }) {
             </Box>
           </VStack>
         </ScrollView>
-
-        {/* render when on anonymous user  */}
-        <Center width={'full'} marginBottom={'5'}>
-          {/* LOGIN AND REGISTER BUTTON */}
-          <Pressable
-            justifyContent={'center'}
-            width={'200'}
-            height={'35'}
-            borderRadius={'full'}
-            backgroundColor={'#9E6DDE'}
-            onPress={() => console.log(`Login or Register btn click`)}
-          >
-            <Text
-              alignSelf={'center'}
-              color={'white'}
-              fontSize={'15'}
-              fontWeight={'medium'}
-            >
-              Login or Register
-            </Text>
-          </Pressable>
           <Box width={'full'} height={'80px'}>
           <ProfileIconButtonsFooter navigation={navigation} />
         </Box>
-        </Center>
       </Box>
     </NativeBaseProvider>
   );

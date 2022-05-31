@@ -50,9 +50,6 @@ export default function BagIconButtonsFooter({ onPressHandler }: FooterProps) {
           <Pressable>
             <IconButton
               icon={solidBagIcon}
-              onPress={
-                onPressHandler ? onPressHandler : () => console.log('Bag')
-              }
             />
             <Text
               textAlign={'center'}

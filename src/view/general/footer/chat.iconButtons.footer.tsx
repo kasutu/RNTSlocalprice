@@ -34,9 +34,6 @@ export default function ChatIconButtonsFooter({ onPressHandler }: FooterProps) {
           <Pressable>
             <IconButton
               icon={solidChatIcon}
-              onPress={
-                onPressHandler ? onPressHandler : () => console.log('Chat')
-              }
             />
             <Text
               textAlign={'center'}
