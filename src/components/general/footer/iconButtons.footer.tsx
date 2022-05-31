@@ -9,7 +9,7 @@ import {
   solidProfileIcon
 } from '../icons/localprice.icons';
 
-export default function IconButtonsFooter({ onPressHandler }: FooterProps) {
+export default function IconButtonsFooter({ navigation, onPressHandler }: FooterProps) {
   return (
     <>
       <Box safeAreaBottom />
@@ -83,7 +83,7 @@ export default function IconButtonsFooter({ onPressHandler }: FooterProps) {
             <IconButton
               icon={solidProfileIcon}
               onPress={
-                onPressHandler ? onPressHandler : () => console.log('Profile')
+                () => navigation.navigate('LogInScreen')
               }
             />
             <Text

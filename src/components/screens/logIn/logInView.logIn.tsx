@@ -21,16 +21,7 @@ import SolidButton from '../../general/buttons/solid.button';
 
 const appLogo = require('../../../assets/appLogo.png');
 
-export function LogInScreen(/* { navigation } */) {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-
-  /* const onRegisterPress = () => {
-    navigation.navigate('RegisterView');
-  };
-
-  const onLogInPress = () => {}; */
-
+export function LogInScreen() {
   return (
     <NativeBaseProvider>
       <Box safeArea width={'full'} height={'full'} position={'absolute'}>
@@ -50,15 +41,11 @@ export function LogInScreen(/* { navigation } */) {
           </Center>
           <VStack flex={1} alignItems={'center'} space={5}>
             <TextInput
-              value={email}
               placeholder="Email"
-              onChangeText={(text) => setEmail(text)}
             />
             <Input
               variant="filled"
-              value={password}
               placeholder={'Password'}
-              onChangeText={(text) => setPassword(text)}
               placeholderTextColor={'black'}
               maxWidth={'75%'}
               height={'8'}
@@ -71,12 +58,11 @@ export function LogInScreen(/* { navigation } */) {
           </VStack>
           <Center paddingY={'8'} width={'full'} maxWidth={'full'}>
             <VStack space={'5'}>
-              <SolidButton /* {...onLogInPress} */ value="Log In" />
+              <SolidButton value="Log In" />
               <Center>
                 <Link
                   isExternal
                   _text={{ color: 'blue.400' }}
-                  /* {...onRegisterPress} */
                   onPress={() => console.log(`Don't have an account btn click`)}
                 >
                   Don't have an account?
