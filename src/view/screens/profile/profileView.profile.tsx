@@ -10,19 +10,13 @@ import {
   VStack
 } from 'native-base';
 import React from 'react';
+import ProfileIconButtonsFooter from '../../general/footer/profile.iconButtons.footer';
 import { TitleHeader } from '../../general/header/headers';
 import {
-  LocationIcon,
   solidProfileIcon
 } from '../../general/icons/localprice.icons';
 
-const role: string = 'Anonymous';
-const fullName: string = 'Dave Jhaeson Alivio';
-const phoneNumber: string = '096847236';
-const email: string = 'davejhaesonalivio@localprice.com';
-const address: string = 'Sool, Buntatala, leganes, Iloilo 5003';
-
-export function ProfileScreen() {
+export function ProfileScreen({ navigation }) {
   return (
     <NativeBaseProvider>
       <Box safeArea width={'full'} height={'full'} position={'absolute'}>
@@ -119,6 +113,9 @@ export function ProfileScreen() {
               Login or Register
             </Text>
           </Pressable>
+          <Box width={'full'} height={'80px'}>
+          <ProfileIconButtonsFooter navigation={navigation} />
+        </Box>
         </Center>
       </Box>
     </NativeBaseProvider>

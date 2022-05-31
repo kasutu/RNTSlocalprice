@@ -8,10 +8,12 @@ import {
   VStack
 } from 'native-base';
 import React from 'react';
+import HomeIconButtonsFooter from '../../general/footer/home.iconButtons.footer';
+import IconButtonsFooter from '../../general/footer/home.iconButtons.footer';
 import { SearchHeader } from '../../general/header/headers';
 import FilterButton from './filterButton';
 
-export function MainHomeScreen() {
+export function MainHomeScreen({ navigation }) {
   return (
     <NativeBaseProvider>
       <Box safeArea width={'full'} height={'full'} position={'absolute'}>
@@ -151,8 +153,8 @@ export function MainHomeScreen() {
             </Box>
           </ScrollView>
         </VStack>
-        <Box bg={'amber.700'} width={'full'} height={'60px'}>
-          tabs
+        <Box width={'full'} height={'80px'}>
+          <HomeIconButtonsFooter navigation={navigation} />
         </Box>
       </Box>
     </NativeBaseProvider>
