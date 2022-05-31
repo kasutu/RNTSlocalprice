@@ -9,7 +9,7 @@ import {
   solidChatIcon
 } from '../icons/localprice.icons';
 
-export default function ChatIconButtonsFooter({ navigation, onPressHandler }: FooterProps) {
+export default function ChatIconButtonsFooter({ onPressHandler }: FooterProps) {
   return (
     <>
       <Box safeAreaBottom />

@@ -9,7 +9,7 @@ import {
   solidNotifIcon
 } from '../icons/localprice.icons';
 
-export default function HomeIconButtonsFooter({ navigation, onPressHandler }: FooterProps) {
+export default function HomeIconButtonsFooter({ onPressHandler }: FooterProps) {
   return (
     <>
       <Box safeAreaBottom />
