@@ -1,6 +1,6 @@
 import React from 'react';
 import { Box, Container, ScrollView, Text, VStack } from 'native-base';
-import { TitleHeader } from '../../../src/components/general/header/headers';
+import { TitleHeader } from '../../../src/view/general/header/headers';
 
 export function ChatScreenTest() {
   return (

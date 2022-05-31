@@ -9,7 +9,7 @@ import {
   solidBagIcon
 } from '../icons/localprice.icons';
 
-export default function BagIconButtonsFooter({ navigation, onPressHandler }: FooterProps) {
+export default function BagIconButtonsFooter({ onPressHandler }: FooterProps) {
   return (
     <>
       <Box safeAreaBottom />
