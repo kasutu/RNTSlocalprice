@@ -1,10 +1,11 @@
-// refactored imports for clean on line imports
+// refactored imports for clean one-line imports
 // aka barreled imports
 
 // ######################
 // ## FOR SCREENS ONLY ##
 // ######################
 
+export { ChatDetailsScreen } from './chat/details.chat';
 export { CheckoutScreen } from './shopping/checkout.shopping';
 export { OrderDetailsScreen } from './shopping/orderDetails.shopping';
 export { NotificationScreen } from './notification/notification.screen';

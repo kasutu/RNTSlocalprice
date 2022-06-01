@@ -1,3 +1,12 @@
+import ProfileIconButtonsFooter from '../../general/footer/profile.iconButtons.footer';
+import React from 'react';
+import {
+  Address,
+  Email,
+  FullName,
+  PhoneNumber,
+  Role
+} from '../../../model/store/user/metadata.user';
 import {
   Box,
   Center,
@@ -9,13 +18,11 @@ import {
   Text,
   VStack
 } from 'native-base';
-import React from 'react';
-import ProfileIconButtonsFooter from '../../general/footer/profile.iconButtons.footer';
-import { TitleHeader } from '../../general/header/headers';
 import {
   LocationIcon,
   solidProfileIcon
 } from '../../general/icons/localprice.icons';
+import { TitleHeader } from '../../general/header/headers';
 
 export function ProfileScreen({ navigation }) {
   return (
@@ -28,19 +35,21 @@ export function ProfileScreen({ navigation }) {
             <Center width={'full'}>
               {<Icon size={'60px'} as={solidProfileIcon} />}
             </Center>
+
+            {/* USER DELIVERY DETAILS */}
             <VStack width={'full'} alignItems={'center'} space={'1'}>
-             {/*  <Center
+              <Center
                 height={'20px'}
                 width={'100px'}
                 backgroundColor={'#D5C1F1'}
                 borderRadius={'full'}
               >
-                <Text fontSize={'11px'}>{role}</Text>
+                <Text fontSize={'11px'}>{Role}</Text>
               </Center>
               <Text fontSize={'18px'} fontWeight={'bold'}>
-                {fullName}
+                {FullName}
               </Text>
- */}
+
               {/* USER ADDRESS */}
               <HStack space={2}>
                 <Center
@@ -58,15 +67,15 @@ export function ProfileScreen({ navigation }) {
                   alignContent={'center'}
                 >
                   {/* ADDRESS DETAILS */}
-                {/*   <Center>
-                    <Text fontSize={'12'}>{phoneNumber}</Text>
+                  <Center>
+                    <Text fontSize={'12'}>{PhoneNumber}</Text>
                   </Center>
                   <Center>
-                    <Text fontSize={'12'}>{email}</Text>
+                    <Text fontSize={'12'}>{Email}</Text>
                   </Center>
                   <Center>
-                    <Text fontSize={'12'}>{address}</Text>
-                  </Center> */}
+                    <Text fontSize={'12'}>{Address}</Text>
+                  </Center>
                 </VStack>
                 <Box
                   marginRight={10}
@@ -93,7 +102,7 @@ export function ProfileScreen({ navigation }) {
             </Box>
           </VStack>
         </ScrollView>
-          <Box width={'full'} height={'80px'}>
+        <Box width={'full'} height={'80px'}>
           <ProfileIconButtonsFooter navigation={navigation} />
         </Box>
       </Box>
