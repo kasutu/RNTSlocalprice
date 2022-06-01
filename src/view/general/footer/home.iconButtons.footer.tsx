@@ -11,7 +11,6 @@ import {
 
 export default function HomeIconButtonsFooter({
   navigation,
-  onPressHandler
 }: FooterProps) {
   return (
     <>
