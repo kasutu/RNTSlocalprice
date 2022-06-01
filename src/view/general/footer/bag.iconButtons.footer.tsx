@@ -9,7 +9,7 @@ import {
   solidBagIcon
 } from '../icons/localprice.icons';
 
-export default function BagIconButtonsFooter({ navigation, onPressHandler }: FooterProps) {
+export default function BagIconButtonsFooter({ onPressHandler }: FooterProps) {
   return (
     <>
       <Box safeAreaBottom />
@@ -50,9 +50,6 @@ export default function BagIconButtonsFooter({ navigation, onPressHandler }: Foo
           <Pressable>
             <IconButton
               icon={solidBagIcon}
-              onPress={
-                onPressHandler ? onPressHandler : () => console.log('Bag')
-              }
             />
             <Text
               textAlign={'center'}

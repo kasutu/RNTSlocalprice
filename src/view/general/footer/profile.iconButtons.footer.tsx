@@ -21,7 +21,7 @@ export default function ProfileIconButtonsFooter({ navigation, onPressHandler }:
               onPress={
                 onPressHandler ? onPressHandler : () => console.log('Home')
               }
-            />
+              />
             <Text
               textAlign={'center'}
               color="black"
@@ -34,9 +34,7 @@ export default function ProfileIconButtonsFooter({ navigation, onPressHandler }:
           <Pressable>
             <IconButton
               icon={hollowChatIcon}
-              onPress={
-                onPressHandler ? onPressHandler : () => console.log('Chat')
-              }
+              onPress={() => navigation.navigate('AllChatsScreen')}
             />
             <Text
               textAlign={'center'}
@@ -50,9 +48,7 @@ export default function ProfileIconButtonsFooter({ navigation, onPressHandler }:
           <Pressable>
             <IconButton
               icon={hollowBagIcon}
-              onPress={
-                onPressHandler ? onPressHandler : () => console.log('Bag')
-              }
+              onPress={() => navigation.navigate('ShoppingBagScreen')}
             />
             <Text
               textAlign={'center'}
@@ -82,9 +78,6 @@ export default function ProfileIconButtonsFooter({ navigation, onPressHandler }:
           <Pressable>
             <IconButton
               icon={solidProfileIcon}
-              onPress={
-                () => navigation.navigate('LogInScreen')
-              }
             />
             <Text
               textAlign={'center'}

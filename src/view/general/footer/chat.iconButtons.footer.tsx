@@ -9,7 +9,7 @@ import {
   solidChatIcon
 } from '../icons/localprice.icons';
 
-export default function ChatIconButtonsFooter({ navigation, onPressHandler }: FooterProps) {
+export default function ChatIconButtonsFooter({ onPressHandler }: FooterProps) {
   return (
     <>
       <Box safeAreaBottom />
@@ -34,9 +34,6 @@ export default function ChatIconButtonsFooter({ navigation, onPressHandler }: Fo
           <Pressable>
             <IconButton
               icon={solidChatIcon}
-              onPress={
-                onPressHandler ? onPressHandler : () => console.log('Chat')
-              }
             />
             <Text
               textAlign={'center'}

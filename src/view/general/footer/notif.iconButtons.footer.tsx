@@ -9,7 +9,7 @@ import {
   solidNotifIcon
 } from '../icons/localprice.icons';
 
-export default function HomeIconButtonsFooter({ navigation, onPressHandler }: FooterProps) {
+export default function HomeIconButtonsFooter({ onPressHandler }: FooterProps) {
   return (
     <>
       <Box safeAreaBottom />
@@ -66,9 +66,6 @@ export default function HomeIconButtonsFooter({ navigation, onPressHandler }: Fo
           <Pressable>
             <IconButton
               icon={solidNotifIcon}
-              onPress={
-                onPressHandler ? onPressHandler : () => console.log('Notif')
-              }
             />
             <Text
               textAlign={'center'}
