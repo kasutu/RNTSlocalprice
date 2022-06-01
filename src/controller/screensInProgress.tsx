@@ -11,9 +11,9 @@ export function ScreensInProgress() {
   return (
     <>
       {/* <CheckoutScreen /> */}
-      {/* <OrderDetailsScreen /> */}
+      <OrderDetailsScreen />
       {/* <ChatScreen /> */}
-      <NotificationScreen />
+      {/* <NotificationScreen /> */}
       {/* <ShoppingBagScreen navigation={''} /> */}
     </>
   );

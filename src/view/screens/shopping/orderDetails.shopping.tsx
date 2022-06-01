@@ -1,6 +1,8 @@
 import React from 'react';
-import { Box, Center, Text, VStack } from 'native-base';
+import { Box, Button, Center, Pressable, Text, VStack } from 'native-base';
 import { TitleAndBackButtonHeader } from '../../general/header/headers';
+import SolidButton from '../../general/buttons/solid.button';
+import { color } from 'native-base/lib/typescript/theme/styled-system';
 
 export function OrderDetailsScreen() {
   return (
@@ -53,7 +55,19 @@ export function OrderDetailsScreen() {
       </VStack>
       <Center padding={5}>
         {/* footer button */}
-        button
+        <Pressable
+          width={'250'}
+          height={'45'}
+          onPress={() => console.log('Button Pressed')}
+          borderRadius={'50'}
+          backgroundColor={'#9E6DDE'}
+          justifyContent={'center'}
+          alignItems={'center'}
+        >
+          <Text color={'white'} fontSize={'15'} fontWeight={'medium'}>
+            Continue Shopping
+          </Text>
+        </Pressable>
       </Center>
     </Box>
   );
