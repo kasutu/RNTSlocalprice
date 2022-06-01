@@ -4,10 +4,10 @@ import { Box, Center, Text } from 'native-base';
 export function ChatBubbleLeft({ content }: { content: string }) {
   return (
     <>
-      <Box padding={3} alignItems={'flex-start'}>
+      <Box alignItems={'flex-start'}>
         {/* chat bubble left */}
         <Center
-          maxWidth={'50%'}
+          maxWidth={'70%'}
           bg={'coolGray.300'}
           paddingX={5}
           paddingY={1}
@@ -23,10 +23,10 @@ export function ChatBubbleLeft({ content }: { content: string }) {
 export function ChatBubbleRight({ content }: { content: string }) {
   return (
     <>
-      <Box padding={3} alignItems={'flex-end'}>
+      <Box alignItems={'flex-end'}>
         {/* chat bubble right */}
         <Center
-          maxWidth={'50%'}
+          maxWidth={'70%'}
           bg={'#8244D5'}
           paddingX={5}
           paddingY={1}
