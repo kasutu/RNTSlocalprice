@@ -9,7 +9,7 @@ import {
   solidProfileIcon,
 } from '../icons/localprice.icons';
 
-export default function ProfileIconButtonsFooter({ onPressHandler }: FooterProps) {
+export default function ProfileIconButtonsFooter({ navigation, onPressHandler }: FooterProps) {
   return (
     <>
       <Box safeAreaBottom />
@@ -21,7 +21,7 @@ export default function ProfileIconButtonsFooter({ onPressHandler }: FooterProps
               onPress={
                 onPressHandler ? onPressHandler : () => console.log('Home')
               }
-            />
+              />
             <Text
               textAlign={'center'}
               color="black"
@@ -34,9 +34,7 @@ export default function ProfileIconButtonsFooter({ onPressHandler }: FooterProps
           <Pressable>
             <IconButton
               icon={hollowChatIcon}
-              onPress={
-                onPressHandler ? onPressHandler : () => console.log('Chat')
-              }
+              onPress={() => navigation.navigate('AllChatsScreen')}
             />
             <Text
               textAlign={'center'}
@@ -50,9 +48,7 @@ export default function ProfileIconButtonsFooter({ onPressHandler }: FooterProps
           <Pressable>
             <IconButton
               icon={hollowBagIcon}
-              onPress={
-                onPressHandler ? onPressHandler : () => console.log('Bag')
-              }
+              onPress={() => navigation.navigate('ShoppingBagScreen')}
             />
             <Text
               textAlign={'center'}
