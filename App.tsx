@@ -17,10 +17,11 @@ import {
   SellOrEditItemScreen,
   ShoppingBagScreen,
   AllChatsScreen,
-  ChatScreen
+  ChatScreen,
 } from './src/view/screens/index.screens';
 import AppTest from './test/App.test';
 import { NativeBaseProvider } from 'native-base';
+import { CheckoutScreen } from './src/view/screens/shopping/checkout.shopping';
 
 // #######################
 // SWITCH TO DEV MODE?

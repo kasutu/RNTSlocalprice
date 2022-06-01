@@ -2,10 +2,11 @@ import React from 'react';
 import { Button } from 'native-base';
 import { ButtonProps } from '../../../types/buttonProps.type';
 
-export default function LogInButton({
+export default function CheckOutButton({
   color,
   fontWeight,
-  navigation
+  navigation,
+  onPressHandler
 }: ButtonProps) {
   return (
     <>
@@ -13,15 +14,18 @@ export default function LogInButton({
         width={'150'}
         height={'45'}
         variant={'solid'}
-        onPress={() => navigation.navigate('ProfileScreen')}
+        /* onPress={() => navigation.navigate('CheckoutScreen')} */
+        onPress={
+            onPressHandler ? onPressHandler : () => console.log('Will Proceed to CheckoutScreen')
+          }
         _text={{
-          fontSize: '15',
+          fontSize: '13',
           fontWeight: fontWeight ? fontWeight : 'medium'
         }}
         borderRadius={'50'}
         backgroundColor={color ? color : '#9E6DDE'}
       >
-        Log In
+        Proceed to Checkout
       </Button>
     </>
   );
