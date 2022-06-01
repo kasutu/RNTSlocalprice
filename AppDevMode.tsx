@@ -1,7 +1,7 @@
 import React from 'react';
 import type { ReactNode } from 'react';
 import { Center, NativeBaseProvider, Text } from 'native-base';
-import { ChatDetailsScreen } from './src/view/screens/chat/details.chat';
+import { ScreensInProgress } from './src/controller/screensInProgress';
 
 export default function AppDevMode(): ReactNode {
   return (
@@ -11,7 +11,7 @@ export default function AppDevMode(): ReactNode {
           DEVELOPMENT MODE
         </Text>
       </Center>
-      <ChatDetailsScreen />
+      <ScreensInProgress />
     </NativeBaseProvider>
   );
 }
