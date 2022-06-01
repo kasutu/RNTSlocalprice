@@ -8,8 +8,8 @@ import {
 export function ScreensInProgress() {
   return (
     <>
-      <CheckoutScreen />
-      {/* <OrderDetailsScreen /> */}
+      {/* <CheckoutScreen /> */}
+      <OrderDetailsScreen />
       {/* <NotificationScreen /> */}
     </>
   );
