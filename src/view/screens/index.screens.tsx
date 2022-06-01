@@ -1,6 +1,13 @@
 // refactored imports for clean on line imports
 // aka barreled imports
 
+// ######################
+// ## FOR SCREENS ONLY ##
+// ######################
+
+export { CheckoutScreen } from './shopping/checkout.shopping';
+export { OrderDetailsScreen } from './shopping/orderDetails.shopping';
+export { NotificationScreen } from './notification/notification.screen';
 export { AllChatsScreen } from './chat/allChats.screen';
 export { SearchContactScreen } from './chat/searchContact.screen';
 export { MainHomeScreen } from './home/main.home';
