@@ -1,16 +1,20 @@
 import React from 'react';
 import {
+  ChatScreen,
   CheckoutScreen,
   NotificationScreen,
-  OrderDetailsScreen
+  OrderDetailsScreen,
+  ShoppingBagScreen
 } from '../view/screens/index.screens';
 
 export function ScreensInProgress() {
   return (
     <>
       {/* <CheckoutScreen /> */}
-      <OrderDetailsScreen />
-      {/* <NotificationScreen /> */}
+      {/* <OrderDetailsScreen /> */}
+      {/* <ChatScreen /> */}
+      <NotificationScreen />
+      {/* <ShoppingBagScreen navigation={''} /> */}
     </>
   );
 }

@@ -6,7 +6,7 @@ import { ScreensInProgress } from './src/controller/screensInProgress';
 export default function AppDevMode(): ReactNode {
   return (
     <NativeBaseProvider>
-      <Center opacity={50} bg={'warning.500'} w={'full'} position={'absolute'}>
+      <Center bg={'warning.400'} w={'full'} position={'absolute'}>
         <Text fontSize={'10px'} fontWeight={'bold'}>
           DEVELOPMENT MODE
         </Text>
