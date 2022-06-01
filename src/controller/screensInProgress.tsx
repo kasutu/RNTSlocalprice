@@ -1,4 +1,5 @@
 import React from 'react';
+import { MapViewComponent } from '../view/general/map/mapViewComponent.map';
 import {
   ChatScreen,
   CheckoutScreen,
@@ -11,10 +12,11 @@ export function ScreensInProgress() {
   return (
     <>
       {/* <CheckoutScreen /> */}
-      <OrderDetailsScreen />
+      {/* <OrderDetailsScreen /> */}
       {/* <ChatScreen /> */}
       {/* <NotificationScreen /> */}
       {/* <ShoppingBagScreen navigation={''} /> */}
+      <MapViewComponent />
     </>
   );
 }
