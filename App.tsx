@@ -22,6 +22,12 @@ import {
 import AppTest from './test/App.test';
 import { NativeBaseProvider } from 'native-base';
 
+// #######################
+// SWITCH TO DEV MODE?
+// set DEV_MODE to true
+export const DEV_MODE = false;
+// #######################
+
 const Stack = createNativeStackNavigator();
 
 export default function App(): ReactNode {

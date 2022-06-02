@@ -6,7 +6,6 @@ import {
   Image,
   Input,
   NativeBaseProvider,
-  Pressable,
   VStack,
   Link
 } from 'native-base';
@@ -25,7 +24,8 @@ export function LogInScreen({ navigation }) {
       <Box safeArea width={'full'} height={'full'} position={'absolute'}>
         r
         <TitleAndBackButtonHeader
-          onPressHandler={() => console.log('Sign in back btn')}
+          /* onPressHandler={() => navigation.navigate('MainHomeScreen')} */
+          onPressHandler={() => console.log('Proceed to MainHomeScreen')}
         />
         <VStack flex={1} alignItems={'center'} space={5}>
           <Center paddingY={'3'} width={'full'} height={'200px'}>
@@ -60,7 +60,7 @@ export function LogInScreen({ navigation }) {
                 <Link
                   isExternal
                   _text={{ color: 'blue.400' }}
-                  onPress={() => console.log(`Don't have an account btn click`)}
+                  onPress={() => navigation.navigate('RegisterScreen')}
                 >
                   Don't have an account?
                 </Link>
