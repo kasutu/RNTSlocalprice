@@ -12,7 +12,6 @@ export class Cards {
 function addCards() {
   class addCards {
     addItem: [];
-
     constructor(addItem: []) {
       this.addItem = addItem;
     }
