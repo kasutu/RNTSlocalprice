@@ -24,9 +24,10 @@ import { NativeBaseProvider } from 'native-base';
 
 // #######################
 // SWITCH TO DEV MODE?
-// set DEV_MODE to true
+// set DEV_MODE to true 
+// if you want to try some screens go to controller/screenInprogress and put your screen
 export const DEV_MODE = false;
-// #######################
+// ####################### 
 
 const Stack = createNativeStackNavigator();
 

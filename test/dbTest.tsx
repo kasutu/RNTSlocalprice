@@ -8,7 +8,7 @@ import {
   Text,
   VStack
 } from 'native-base';
-import Db from '../src/utils/db.utils';
+import Db from '../src/api/firebase/db.utils';
 
 const ref = Db.collection('users');
 

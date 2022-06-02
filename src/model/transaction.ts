@@ -1,4 +1,4 @@
-export class Transaction {
+export abstract class Transaction {
   public id: string;
   public buyerId: string;
   public sellerId: string;
