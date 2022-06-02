@@ -21,12 +21,11 @@ import {
 } from './src/view/screens/index.screens';
 import AppTest from './test/App.test';
 import { NativeBaseProvider } from 'native-base';
-import { CheckoutScreen } from './src/view/screens/shopping/checkout.shopping';
 
 // #######################
 // SWITCH TO DEV MODE?
 // set DEV_MODE to true
-export const DEV_MODE = true;
+export const DEV_MODE = false;
 // #######################
 
 const Stack = createNativeStackNavigator();
