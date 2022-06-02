@@ -1,15 +1,15 @@
 // ideal for owners and one to many objects
-export interface ObjectType {
+export interface IObjectType {
   id: string;
 }
 
 // ideal for objects that is related to each other
-export interface RelationalObjectType extends ObjectType {
+export interface IRelationalObjectType extends IObjectType {
   ownerID: string;
 }
 
 // main item type
-export interface ItemType extends RelationalObjectType {
+export interface IItemType extends IRelationalObjectType {
   imageID: string[];
   description: string;
   details: string;
