@@ -1,11 +1,18 @@
 export class Transaction {
-  public paymentMethod: string;
+  public id: string;
+  public buyerId: string;
+  public sellerId: string;
 
-  constructor(paymentMethod: string) {
-    this.paymentMethod = paymentMethod;
+
+  constructor(id: string, buyerId: string, sellerId: string) {
+    this.id = id;
+    this.buyerId = buyerId;
+    this.sellerId = sellerId;
   }
 }
 
-function pay() {
-  class 
+export class Order extends Transaction{
+  public parcel?: []
+  public paymentOption?: string
+
 }
