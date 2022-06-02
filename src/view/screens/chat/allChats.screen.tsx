@@ -1,14 +1,10 @@
 import {
   NativeBaseProvider,
   VStack,
-  Text,
   HStack,
   Box,
-  Avatar,
   ScrollView,
   Center,
-  Pressable,
-  Container
 } from 'native-base';
 import React from 'react';
 import { TitleHeader } from '../../general/header/headers';

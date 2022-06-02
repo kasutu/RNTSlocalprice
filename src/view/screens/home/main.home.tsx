@@ -8,7 +8,7 @@ import {
   VStack
 } from 'native-base';
 import React from 'react';
-import IconButtonsFooter from '../../general/footer/iconButtons.footer';
+import HomeIconButtonsFooter from '../../general/footer/home.iconButtons.footer';
 import { SearchHeader } from '../../general/header/headers';
 import FilterButton from './filterButton';
 
@@ -153,7 +153,7 @@ export function MainHomeScreen({ navigation }) {
           </ScrollView>
         </VStack>
         <Box width={'full'} height={'80px'}>
-          <IconButtonsFooter navigation={navigation} />
+          <HomeIconButtonsFooter navigation={navigation} />
         </Box>
       </Box>
     </NativeBaseProvider>

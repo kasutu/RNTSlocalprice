@@ -10,6 +10,9 @@ const eyeIcon = <Icon name="remove-red-eye" size={20} color="black" />;
 const solidProfileIcon = (
   <Ionicon name="person-circle" color="black" size={30} />
 );
+const hollowProfileIcon = (
+  <Ionicon name="ios-person-circle-outline" color="black" size={30} />
+);
 const solidHomeIcon = <Ionicon name="home" color="black" size={30} />;
 const hollowHomeIcon = <Ionicon name="home-outline" color="black" size={30} />;
 const solidChatIcon = (
@@ -33,11 +36,13 @@ const LocationIcon = <Icon name="location-on" color="black" />;
 
 const SendIcon = <Ionicon name="send" color="black" />;
 const CameraIcon = <Ionicon name="camera" color="black" />;
+
 export {
   arrowBack,
   addIcon,
   eyeIcon,
   solidProfileIcon,
+  hollowProfileIcon,
   solidHomeIcon,
   hollowHomeIcon,
   solidChatIcon,
