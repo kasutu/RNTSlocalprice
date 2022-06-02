@@ -11,10 +11,33 @@ export class Cards {
 }
 function addCards() {
   class addCards {
-    addItem!: [];
+    addItem: [];
     constructor(addItem: []) {
-      this.addItem;
-      addItem;
+      this.addItem = addItem;
     }
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
