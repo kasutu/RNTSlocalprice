@@ -21,6 +21,7 @@ import {
 } from './src/view/screens/index.screens';
 import AppTest from './test/App.test';
 import { NativeBaseProvider } from 'native-base';
+import Authentication from './src/api/firebase/authentications';
 
 // #######################
 // SWITCH TO DEV MODE?
@@ -30,6 +31,7 @@ export const DEV_MODE = false;
 // ####################### 
 
 const Stack = createNativeStackNavigator();
+const authentication = new Authentication();
 
 export default function App(): ReactNode {
   return (
@@ -56,12 +58,16 @@ export default function App(): ReactNode {
             name="SellOrEditItemScreen"
             component={SellOrEditItemScreen}
           />
-          <Stack.Screen name="LogInScreen" component={LogInScreen} />
+          <Stack.Screen name="LogInScreen">
+            {props => <LogInScreen {...props} auth={authentication} />}
+          </Stack.Screen>
           <Stack.Screen
             name="ResetPasswordScreen"
             component={ResetPasswordScreen}
           />
-          <Stack.Screen name="ProfileScreen" component={ProfileScreen} />
+          <Stack.Screen name="ProfileScreen">
+            {props => <ProfileScreen {...props} auth={authentication} />}
+          </Stack.Screen>
           <Stack.Screen name="AllChatsScreen" component={AllChatsScreen} />
           <Stack.Screen
             name="SearchContactScreen"

@@ -5,28 +5,26 @@ import {
   hollowNotifIcon,
   hollowBagIcon,
   hollowChatIcon,
-  hollowHomeIcon,
   solidProfileIcon,
+  hollowHomeIcon
 } from '../icons/localprice.icons';
 
-export default function ProfileIconButtonsFooter({ navigation, onPressHandler }: FooterProps) {
+export default function ProfileIconButtonsFooter({
+  navigation,
+}: FooterProps) {
   return (
     <>
       <Box safeAreaBottom />
       <Center>
         <HStack alignItems="center" space={4}>
           <Pressable>
-            <IconButton
-              icon={hollowHomeIcon}
-              onPress={
-                onPressHandler ? onPressHandler : () => console.log('Home')
-              }
-              />
+            <IconButton icon={hollowHomeIcon} />
             <Text
               textAlign={'center'}
               color="black"
               fontSize="15"
               fontWeight="normal"
+              onPress={() => navigation.navigate('Home')}
             >
               Home
             </Text>
@@ -34,7 +32,7 @@ export default function ProfileIconButtonsFooter({ navigation, onPressHandler }:
           <Pressable>
             <IconButton
               icon={hollowChatIcon}
-              onPress={() => navigation.navigate('AllChatsScreen')}
+              onPress={() => navigation.navigate('LogInScreen', { destination: 'AllChatScreen' })}
             />
             <Text
               textAlign={'center'}
@@ -48,7 +46,7 @@ export default function ProfileIconButtonsFooter({ navigation, onPressHandler }:
           <Pressable>
             <IconButton
               icon={hollowBagIcon}
-              onPress={() => navigation.navigate('ShoppingBagScreen')}
+              onPress={() => navigation.navigate('LogInScreen', { destination: 'ShoppingBagScreen' })}
             />
             <Text
               textAlign={'center'}
@@ -62,9 +60,7 @@ export default function ProfileIconButtonsFooter({ navigation, onPressHandler }:
           <Pressable>
             <IconButton
               icon={hollowNotifIcon}
-              onPress={
-                onPressHandler ? onPressHandler : () => console.log('Notif')
-              }
+              onPress={() => () => navigation.navigate('LogInScreen', { destination: 'NotificationView' })}
             />
             <Text
               textAlign={'center'}
@@ -78,6 +74,7 @@ export default function ProfileIconButtonsFooter({ navigation, onPressHandler }:
           <Pressable>
             <IconButton
               icon={solidProfileIcon}
+              onPress={() => console.log('already in profile')}
             />
             <Text
               textAlign={'center'}

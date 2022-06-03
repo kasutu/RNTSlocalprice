@@ -23,8 +23,26 @@ import {
   solidProfileIcon
 } from '../../general/icons/localprice.icons';
 import { TitleHeader } from '../../general/header/headers';
+import Authentication from './../../../api/firebase/authentications';
+import { stringifyKey } from 'mobx/dist/internal';
 
-export function ProfileScreen({ navigation }) {
+interface ProfileScreenProps {
+  navigation: any,
+  auth: Authentication
+}
+
+export function ProfileScreen({ navigation, auth }: ProfileScreenProps) {
+  const [state, setState] = React.useState({
+    email: ''
+  });
+
+  React.useEffect(() => {
+    const user = auth.getUser();
+    setState({
+      email: user?.email ? user.email : '',
+    })
+  }, []);
+
   return (
     <NativeBaseProvider>
       <Box safeArea width={'full'} height={'full'} position={'absolute'}>
@@ -71,7 +89,7 @@ export function ProfileScreen({ navigation }) {
                     <Text fontSize={'12'}>{PhoneNumber}</Text>
                   </Center>
                   <Center>
-                    <Text fontSize={'12'}>{Email}</Text>
+                    <Text fontSize={'12'}>{state.email}</Text>
                   </Center>
                   <Center>
                     <Text fontSize={'12'}>{Address}</Text>

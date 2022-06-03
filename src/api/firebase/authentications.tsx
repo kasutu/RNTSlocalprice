@@ -1,52 +1,42 @@
-import React, { useEffect, useState } from 'react';
 import auth, { FirebaseAuthTypes } from '@react-native-firebase/auth';
-import { LogInScreen } from '../../view/screens/logIn/logInView.logIn';
-import { ProfileScreen } from '../../view/screens/profile/profileView.profile';
+import { DeviceEventEmitter } from 'react-native';
 
-export default function Authentication() {
-  const [initializing, setInitializing] = useState(true);
-  const [user, setUser] = useState<FirebaseAuthTypes.User | null>();
+export default class Authentication {
+  private _user: FirebaseAuthTypes.User | null = null
+  private _initializing: boolean = true;
 
-  function onAuthStateChanged(user: FirebaseAuthTypes.User | null) {
-    setUser(user);
-    if (initializing) setInitializing(false);
+  async login(email: string, password: string) {
+    const result = await auth()
+      .signInWithEmailAndPassword(email, password);
+
+    this._user = result.user;
+    this._initializing = false;
   }
 
-  useEffect(() => {
-    const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
-    return subscriber; // unsubscribe on unmount
-  }, []);
+  async register(email: string, password: string) {
+    const result = await auth()
+      .createUserWithEmailAndPassword(email, password);
 
-  if (initializing) return null;
-
-  if (!user) {
-    return (
-      {LogInScreen}
-    );
+    this._user = result.user;
+    this._initializing = false;
   }
 
-  return (
-    {ProfileScreen}
-  );
+  getUser(): FirebaseAuthTypes.User | null {
+    if (this._initializing) {
+      return null;
+    }
+
+    return this._user;
+  }
+
+  isReady() {
+    return !this._initializing;
+  }
+
+  async signOut() {
+    if (this._initializing) return;
+
+    await auth().signOut();
+    this._initializing = true;
+  }
 }
-/*
-auth()
-  .createUserWithEmailAndPassword(
-    'jane.doe@example.com',
-    'SuperSecretPassword!'
-  )
-  .then(() => {
-    console.log('User account created & signed in!');
-  })
-  .catch((error) => {
-    if (error.code === 'auth/email-already-in-use') {
-      console.log('That email address is already in use!');
-    }
-
-    if (error.code === 'auth/invalid-email') {
-      console.log('That email address is invalid!');
-    }
-
-    console.error(error);
-  });
-*/

@@ -8,7 +8,8 @@ const TextInputColor = InputColor;
 export default function TextInput({
   placeholder,
   height,
-  VTextAlign
+  VTextAlign,
+  ...props
 }: InputProps) {
   return (
     <>
@@ -22,6 +23,7 @@ export default function TextInput({
         borderColor={TextInputColor}
         borderRadius={'5'}
         textAlignVertical={VTextAlign}
+        {...props}
       />
     </>
   );

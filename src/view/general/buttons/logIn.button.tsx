@@ -5,7 +5,7 @@ import { ButtonProps } from '../../../types/buttonProps.type';
 export default function LogInButton({
   color,
   fontWeight,
-  navigation
+  ...props
 }: ButtonProps) {
   return (
     <>
@@ -13,13 +13,13 @@ export default function LogInButton({
         width={'150'}
         height={'45'}
         variant={'solid'}
-        onPress={() => navigation.navigate('ProfileScreen')}
         _text={{
           fontSize: '15',
           fontWeight: fontWeight ? fontWeight : 'medium'
         }}
         borderRadius={'50'}
         backgroundColor={color ? color : '#9E6DDE'}
+        {...props}
       >
         Log In
       </Button>
