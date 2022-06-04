@@ -23,8 +23,8 @@ export function ScreensInProgress() {
       {/* <MapViewComponent /> */}
       {/* <MainHomeScreen navigation={undefined}/> */}
       {/* <ItemScreen /> */}
-      {/* <HomeScreen/> */}
-      <ProductScreen/>
+      <HomeScreen/>
+      {/* <ProductScreen/> */}
 
     </>
   );
