@@ -31,7 +31,7 @@ export default function AppDevMode(): ReactNode {
           </Text>
         </Center>
 
-        <MapViewComponent />
+        {/* <MapViewComponent />
 
         <VStack justifyContent={'center'} space={5}>
           <Button
@@ -77,10 +77,10 @@ export default function AppDevMode(): ReactNode {
           <Input value={text} onChangeText={(val) => setText(val)} />
         </VStack>
 
-        <Textrenedere />
+        <Textrenedere /> */}
 
         {/* <AppTest /> */}
-        {/* <ScreensInProgress /> */}
+        <ScreensInProgress />
       </Box>
     </NativeBaseProvider>
   );
