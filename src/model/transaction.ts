@@ -1,5 +1,5 @@
-import { transaction } from "mobx";
-import { Order } from "./order";
+import { transaction } from 'mobx';
+import { Order } from './order';
 export abstract class Transaction {
   public id: string;
   public buyerId: string;
@@ -12,6 +12,6 @@ export abstract class Transaction {
   }
 }
 // logic
-// make an array that holds the item and id 
-
-
+// make an array that holds the item and id
+let items = new Array();
+items = [''];

@@ -1,4 +1,3 @@
-import Db from '../api/firebase/db.utils';
 import { Transaction } from './transaction';
 import firestore from '@react-native-firebase/firestore';
 export abstract class Order extends Transaction {
