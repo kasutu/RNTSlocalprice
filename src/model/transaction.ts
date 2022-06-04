@@ -1,8 +1,9 @@
+import { transaction } from "mobx";
+import { Order } from "./order";
 export abstract class Transaction {
   public id: string;
   public buyerId: string;
   public sellerId: string;
-
 
   constructor(id: string, buyerId: string, sellerId: string) {
     this.id = id;
@@ -10,4 +11,6 @@ export abstract class Transaction {
     this.sellerId = sellerId;
   }
 }
+// logic
+//const findOrder = transaction.Find((parcel: any) => parcel )
 
