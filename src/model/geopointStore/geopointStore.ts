@@ -1,17 +1,15 @@
 // MobX implementation
 
 import { makeAutoObservable } from 'mobx';
-import { Region } from 'react-native-maps';
+import { ReactNativeGeoPoint } from '../../api/geoquery/common/util';
 
 // make this generic soon
 // 'export' is added for test purposes
-export class MapCoordsStore {
-  public recenttHash: string = '';
-  public data: Region = {
-    latitude: 0,
-    latitudeDelta: 0,
-    longitude: 0,
-    longitudeDelta: 0
+export class GeopointStore {
+  public recentGeopoint: ReactNativeGeoPoint = {
+    geohash: '',
+    lat: 0,
+    lng: 0
   };
 
   constructor() {
@@ -21,5 +19,5 @@ export class MapCoordsStore {
 }
 
 // make a store instance and export it
-const mapCoordsStore = new MapCoordsStore();
-export default mapCoordsStore;
+const geopointStore = new GeopointStore();
+export default geopointStore;

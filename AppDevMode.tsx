@@ -12,10 +12,10 @@ import {
 import { ScreensInProgress } from './src/controller/screensInProgress';
 import AppTest from './test/App.test';
 import Textrenedere from './test/textrenedere';
-import geoStore from './src/model/geoQueryStore/geoQuery.store';
 import { ReactNativeGeofire } from './src/api/geoquery/geoquery';
 import { MapViewComponent } from './src/view/general/map/mapViewComponent.map';
 import mapCoordsStore from './src/model/mapCoordsStore/mapCoordsStore';
+import geopointStore from './src/model/geopointStore/geopointStore';
 
 const shopsGeoFire = new ReactNativeGeofire('shops');
 
@@ -58,6 +58,21 @@ export default function AppDevMode(): ReactNode {
             }}
           >
             Add Location
+          </Button>
+          <Button
+            // custom geofire implementation
+            // geo point should go to the user
+            onPress={() => {
+              console.log(geopointStore.recentGeopoint);
+
+              shopsGeoFire.update(
+                geopointStore.recentGeopoint.geohash,
+                mapCoordsStore.data.latitude,
+                mapCoordsStore.data.longitude
+              );
+            }}
+          >
+            Update Geopoint
           </Button>
           <Input value={text} onChangeText={(val) => setText(val)} />
         </VStack>
