@@ -1,27 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import type { ReactNode } from 'react';
-import {
-  Box,
-  Button,
-  Center,
-  Input,
-  NativeBaseProvider,
-  Text,
-  VStack
-} from 'native-base';
+import { Box, Center, NativeBaseProvider, Text } from 'native-base';
 import { ScreensInProgress } from './src/controller/screensInProgress';
 import AppTest from './test/App.test';
-import Textrenedere from './test/textrenedere';
-import { ReactNativeGeofire } from './src/api/geoquery/geoquery';
-import { MapViewComponent } from './src/view/general/map/mapViewComponent.map';
-import mapCoordsStore from './src/model/mapCoordsStore/mapCoordsStore';
-import geopointStore from './src/model/geopointStore/geopointStore';
-
-const shopsGeoFire = new ReactNativeGeofire('shops');
 
 export default function AppDevMode(): ReactNode {
-  const [text, setText] = useState<string>('');
-
   return (
     <NativeBaseProvider>
       <Box safeArea width={'full'} height={'full'}>
@@ -30,54 +13,6 @@ export default function AppDevMode(): ReactNode {
             DEVELOPMENT MODE
           </Text>
         </Center>
-
-        {/* <MapViewComponent />
-
-        <VStack justifyContent={'center'} space={5}>
-          <Button
-            // custom geofire implementation
-            onPress={() =>
-              shopsGeoFire.query(
-                mapCoordsStore.data.latitude,
-                mapCoordsStore.data.longitude,
-                2
-              )
-            }
-          >
-            {'Search nearby (2Km)'}
-          </Button>
-          <Button
-            // custom geofire implementation
-            onPress={() => {
-              setText('');
-              shopsGeoFire.add(
-                { name: text },
-                mapCoordsStore.data.latitude,
-                mapCoordsStore.data.longitude
-              );
-            }}
-          >
-            Add Location
-          </Button>
-          <Button
-            // custom geofire implementation
-            // geo point should go to the user
-            onPress={() => {
-              console.log(geopointStore.recentGeopoint);
-
-              shopsGeoFire.update(
-                geopointStore.recentGeopoint.geohash,
-                mapCoordsStore.data.latitude,
-                mapCoordsStore.data.longitude
-              );
-            }}
-          >
-            Update Geopoint
-          </Button>
-          <Input value={text} onChangeText={(val) => setText(val)} />
-        </VStack>
-
-        <Textrenedere /> */}
 
         {/* <AppTest /> */}
         <ScreensInProgress />

@@ -60,10 +60,7 @@ export default function App(): ReactNode {
           <Stack.Screen name="LogInScreen">
             {(props) => <LogInScreen {...props} auth={authentication} />}
           </Stack.Screen>
-          <Stack.Screen
-            name="ResetPasswordScreen"
-            component={ResetPasswordScreen}
-          />
+
           <Stack.Screen name="ProfileScreen">
             {(props) => <ProfileScreen {...props} auth={authentication} />}
           </Stack.Screen>

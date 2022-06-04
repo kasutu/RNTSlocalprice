@@ -8,6 +8,10 @@ import {
   ShoppingBagScreen
 } from '../view/screens/index.screens';
 
+import ProductScreen from '../view/screens/itemView/productScreen';
+import GeoqueryDebug from './GeoQueryDebug';
+
+
 export function ScreensInProgress() {
   return (
     <>
@@ -16,7 +20,13 @@ export function ScreensInProgress() {
       {/* <ChatScreen /> */}
       {/* <NotificationScreen /> */}
       {/* <ShoppingBagScreen navigation={''} /> */}
-      <MapViewComponent />
+      {/* <MapViewComponent /> */}
+      {/* <MainHomeScreen navigation={undefined}/> */}
+      {/* <ItemScreen /> */}
+      {/* <HomeScreen/> */}
+      {/* <ProductScreen/> */}
+
+      <GeoqueryDebug />
     </>
   );
 }
