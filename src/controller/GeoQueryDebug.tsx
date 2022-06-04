@@ -23,11 +23,11 @@ export default function GeoqueryDebug() {
               shopsGeoFire.query(
                 mapCoordsStore.data.latitude,
                 mapCoordsStore.data.longitude,
-                2
+                30
               )
             }
           >
-            {'Search nearby (2Km)'}
+            {'Search nearby (30Km)'}
           </Button>
           <Button
             // custom geofire implementation
