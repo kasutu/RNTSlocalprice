@@ -15,3 +15,4 @@ export abstract class Transaction {
 // make an array that holds the item and id
 let items = new Array();
 items = [''];
+
