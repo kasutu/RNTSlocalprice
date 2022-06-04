@@ -2,7 +2,11 @@ import { distanceBetween, geohashQueryBounds } from 'geofire-common';
 import { runInAction } from 'mobx';
 import geoStore from '../../model/geoQueryStore/geoQuery.store';
 import Db from '../firebase/db.firebase';
-import { CollectionRef, GeoLocationsRef } from './common/definitions';
+import {
+  CollectionRef,
+  GeoLocationsRef,
+  ObjectBasicInfo
+} from './common/definitions';
 import { ReactNativeGeoPoint } from './common/util';
 
 export class ReactNativeGeofire {
@@ -14,7 +18,12 @@ export class ReactNativeGeofire {
     this.shopsRef = Db.collection(CollectionRef);
   }
 
-  public add(object: {}, lat: number, lng: number, ref?: string): void {
+  public add(
+    object: ObjectBasicInfo | {},
+    lat: number,
+    lng: number,
+    ref?: string
+  ): void {
     if (ref) {
       this.shopsRef = Db.collection(ref);
     }
@@ -24,12 +33,7 @@ export class ReactNativeGeofire {
     this.shopsRef.add(geoObject);
   }
 
-  public findWithin(
-    lat: number,
-    lng: number,
-    radiusInKm: number,
-    ref?: string
-  ) {
+  public query(lat: number, lng: number, radiusInKm: number, ref?: string) {
     if (ref) {
       this.shopsRef = Db.collection(ref);
     }
