@@ -3,6 +3,7 @@
 // render to mapview
 
 import { FirebaseFirestoreTypes } from '@react-native-firebase/firestore';
+import { ReactNativeGeoPoint } from './util';
 
 export type GeoPointRef = FirebaseFirestoreTypes.GeoPoint;
 
@@ -27,3 +28,5 @@ export interface ObjectWithGeoPoint extends ObjectBasicInfo {
 }
 
 export type GeoLocationsRef = 'shops';
+
+export type ReactNativeGeoPointRef = ReactNativeGeoPoint;
