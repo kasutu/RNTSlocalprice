@@ -4,6 +4,7 @@ import {
   geohashQueryBounds
 } from 'geofire-common';
 import Db from '../firebase/db.firebase';
+import { ObjectWithGeoPoint } from './common/definitions';
 
 export function runGeoQuery() {
   // Compute the GeoHash for a lat/lng point
@@ -11,18 +12,23 @@ export function runGeoQuery() {
   const lng = 122.705114;
   const hash = geohashForLocation([lat, lng]);
 
-  // Add the hash and the lat/lng to the document. We will use the hash
-  // for queries and the lat/lng for distance comparisons.
-  const londonRef = Db.collection('cities').doc('LON');
-  londonRef
-    .update({
+  const shopGeoPoint: ObjectWithGeoPoint = {
+    name: 'jewom',
+    geopoint: {
       geohash: hash,
       lat: lat,
       lng: lng
-    })
-    .then(() => {
-      console.log('added geohash document');
-    });
+    }
+  };
+
+  // Add the hash and the lat/lng to the document. We will use the hash
+  // for queries and the lat/lng for distance comparisons.
+  const shopsRef = Db.collection('shops');
+
+  // uploads to database
+  shopsRef.add(shopGeoPoint).then(() => {
+    console.log('added geohash document');
+  });
 
   // Find cities within 2km of barotac nuevo
   const center = [10.894707, 122.704063];
@@ -34,10 +40,7 @@ export function runGeoQuery() {
   const bounds = geohashQueryBounds(center, radiusInM);
   const promises = [];
   for (const b of bounds) {
-    const q = Db.collection('cities')
-      .orderBy('geohash')
-      .startAt(b[0])
-      .endAt(b[1]);
+    const q = shopsRef.orderBy('geopoint.geohash').startAt(b[0]).endAt(b[1]);
 
     promises.push(q.get());
   }
@@ -49,8 +52,8 @@ export function runGeoQuery() {
 
       for (const snap of snapshots) {
         for (const doc of snap.docs) {
-          const lat = doc.get('lat') as number;
-          const lng = doc.get('lng') as number;
+          const lat = doc.get('geopoint.lat') as number;
+          const lng = doc.get('geopoint.lng') as number;
 
           // We have to filter out a few false positives due to GeoHash
           // accuracy, but most will match
@@ -66,6 +69,12 @@ export function runGeoQuery() {
     })
     .then((matchingDocs) => {
       // Process the matching documents
-      return console.log(matchingDocs);
+
+      matchingDocs.forEach((doc) => {
+        return console.log(doc.data());
+      });
+    })
+    .catch((err) => {
+      throw new Error(err);
     });
 }

@@ -15,7 +15,7 @@ export default function AppDevMode(): ReactNode {
           </Text>
         </Center>
 
-        <Center>
+        <Center flex={1}>
           <Button onPress={() => runGeoQuery()}>runGeoQuery</Button>
         </Center>
 
