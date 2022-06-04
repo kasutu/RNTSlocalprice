@@ -13,12 +13,12 @@ export abstract class Order extends Transaction {
   }
 }
 // loogic
-function onResult(QuerySnapshot: any) {
-  console.log('Got Users collection result.');
-}
+// function onResult(QuerySnapshot: any) {
+//   console.log('Got Users collection result.');
+// }
 
-function onError(error: any) {
-  console.error(error);
-}
+// function onError(error: any) {
+//   console.error(error);
+// }
 
-firestore().collection('Users').onSnapshot(onResult, onError);
+// firestore().collection('Users').onSnapshot(onResult, onError);
