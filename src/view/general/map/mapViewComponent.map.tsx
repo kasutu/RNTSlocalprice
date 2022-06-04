@@ -1,14 +1,7 @@
-import { Box, Icon, NativeBaseProvider } from 'native-base';
+import { Box, NativeBaseProvider } from 'native-base';
 import React from 'react';
 import MapView from 'react-native-maps';
-import { LocationIcon } from '../icons/localprice.icons';
-
-const initRegion = {
-  latitude: 37.78825,
-  longitude: -122.4324,
-  latitudeDelta: 0.0922,
-  longitudeDelta: 0.0421
-};
+import mapCoordsStore from '../../../model/mapCoordsStore/mapCoordsStore';
 
 export function MapViewComponent() {
   return (
@@ -19,7 +12,9 @@ export function MapViewComponent() {
             loadingEnabled={true}
             provider={'google'}
             style={{ flex: 1 }}
-            onRegionChangeComplete={(region) => console.log(region)}
+            onRegionChangeComplete={(region) => {
+              mapCoordsStore.data = region;
+            }}
           />
         </Box>
       </Box>
