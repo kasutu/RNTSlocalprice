@@ -4895,6 +4895,11 @@
   "resolved" "https://registry.npmjs.org/gensync/-/gensync-1.0.0-beta.2.tgz"
   "version" "1.0.0-beta.2"
 
+"geofire-common@^5.2.0":
+  "integrity" "sha512-b3RCXxzdc/ZAoNag/F8n4myWYiBPI1eeQ/gtjLvBKKeILNnYb6Qw0GL/AVfYUKk3Z19Pw+xVBSlYcjqy5OHVzg=="
+  "resolved" "https://registry.npmjs.org/geofire-common/-/geofire-common-5.2.0.tgz"
+  "version" "5.2.0"
+
 "get-caller-file@^2.0.1", "get-caller-file@^2.0.5":
   "integrity" "sha512-DyFP3BM/3YHTQOCUL/w0OZHR0lpKeGrxotcHWcqNEdnltqFwXVfhEBQ94eIo34AfQpo0rGki4cyIiftY06h2Fg=="
   "resolved" "https://registry.npmjs.org/get-caller-file/-/get-caller-file-2.0.5.tgz"
