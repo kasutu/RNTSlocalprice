@@ -16,13 +16,13 @@ export default function FilterButton({
             : () => console.log('Filter Button Pressed')
         }
         w="20"
-        h="8"
+        h="4"
         bg={color ? color : 'violet.300'}
         rounded="full"
         justifyContent={'center'}
         alignItems={'center'}
       >
-        <Text fontSize={'13'}>{value}</Text>
+        <Text fontSize={'10'}>{value}</Text>
       </Pressable>
     </>
   );
