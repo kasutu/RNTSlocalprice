@@ -1,7 +1,7 @@
-export class Transaction {
-  public id: string = '';
-  public buyerId: string = '';
-  public sellerId: string = '';
+export abstract class Transaction {
+  public id: string;
+  public buyerId: string;
+  public sellerId: string;
 
 
   // constructor(id: string, buyerId: string, sellerId: string) {
