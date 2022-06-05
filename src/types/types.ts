@@ -56,6 +56,16 @@ export interface TransactionMetadataType extends ObjectType {
   chatId: string;
 }
 
+export interface MessageType {
+  from: string;
+  msg: string;
+}
+
+export interface ConversationType extends ObjectType {
+  buyerName: string;
+  sellerName: string;
+}
+
 export type UserRole = 'seller' | 'not verified' | 'not logged in';
 
 export type PaymentOptions = 'cash on delivery' | 'pickup and pay';
