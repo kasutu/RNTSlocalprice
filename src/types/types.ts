@@ -28,7 +28,7 @@ export interface ItemType extends RelationalObjectType, PackingStatusType {
  * and activities
  */
 export interface UserDataType {
-  role: 'seller' | 'not verified' | 'not logged in';
+  role: UserRole;
   email: string;
   fullName: string;
   userId: string;
@@ -46,7 +46,7 @@ export interface TransactionMetadataType extends ObjectType {
   id: string;
   buyerId: string;
   sellerId: string;
-  paymentOption: 'cash on delivery' | 'pickup and pay';
+  paymentOption: PaymentOptions;
   placedOrder: boolean;
   confirmed: boolean;
   itemIds: string[];
@@ -55,3 +55,9 @@ export interface TransactionMetadataType extends ObjectType {
   totalAmount: number;
   chatId: string;
 }
+
+export type UserRole = 'seller' | 'not verified' | 'not logged in';
+
+export type PaymentOptions = 'cash on delivery' | 'pickup and pay';
+
+export type GenericObjectType = { [key: string]: any };
