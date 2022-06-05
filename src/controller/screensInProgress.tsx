@@ -11,7 +11,7 @@ import {
 } from '../view/screens/index.screens';
 
 import GeoqueryDebug from './GeoQueryDebug';
-
+import UtilTester from './utilTester';
 
 export function ScreensInProgress() {
   return (
@@ -26,9 +26,10 @@ export function ScreensInProgress() {
       {/* <ItemScreen /> */}
       {/* <HomeScreen/> */}
       {/* <ProductScreen/> */}
-      <Router/>
+      {/* <Router/> */}
 
       {/* <GeoqueryDebug /> */}
+      <UtilTester />
     </>
   );
 }

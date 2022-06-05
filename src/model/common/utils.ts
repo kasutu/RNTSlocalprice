@@ -15,7 +15,6 @@ import { ValueCallback } from './types';
  */
 export function documentUpdateHandler(
   collection: string,
-  where: string,
   targetId: string,
   newData: GenericObjectType
 ): void {
@@ -26,7 +25,7 @@ export function documentUpdateHandler(
 
   // returns an object when matched
   ref
-    .where(where, '==', targetId)
+    .where('id', '==', targetId)
     .limit(1)
     .get()
     .then((snapshots) => {
@@ -70,7 +69,6 @@ export function documentAddHandler(
 export function documentDeleteHandler(
   collection: string,
   targetId: string,
-  where: string,
   success?: () => void,
   fail?: () => void
 ): void {
@@ -81,7 +79,7 @@ export function documentDeleteHandler(
 
   // returns an object when matched
   ref
-    .where(where, '==', targetId)
+    .where('id', '==', targetId)
     .limit(1)
     .get()
     .then((snapshots) => {
