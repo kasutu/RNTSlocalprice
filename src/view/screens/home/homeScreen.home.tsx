@@ -7,10 +7,10 @@ import { Box, Center, HStack, ScrollView } from 'native-base';
 import FilterButton from './filterButton';
 import HomeIconButtonsFooter from '../../general/footer/home.iconButtons.footer';
 
-const HomeScreen = (navigation: any) => {
+const HomeScreen = () => {
   return (
     <>
-    <Box marginTop={'5'}><HomeSearch /></Box>
+    <Box marginTop={'2'}><HomeSearch /></Box>
       <Center width={'full'} paddingY={'2'}>
         <HStack space={3}>
           <FilterButton value="All" />
@@ -23,7 +23,6 @@ const HomeScreen = (navigation: any) => {
         </HStack>
       </Center>
       
-      <ScrollView>
       <View style={styles.page}>
         <FlatList
           data={products}
@@ -31,8 +30,6 @@ const HomeScreen = (navigation: any) => {
           showsVerticalScrollIndicator={false}
         />
       </View>
-      </ScrollView>
-      <HomeIconButtonsFooter navigation={navigation} />
     </>
   );
 };

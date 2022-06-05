@@ -5,7 +5,7 @@ const styles = StyleSheet.create({
         margin: 5,
         flexDirection: 'row',
         borderWidth: 2,
-        borderRadius: 10,
+        borderRadius: 11,
         backgroundColor: '#ffff',
         borderColor: '#d5c1f1',
     },
@@ -20,6 +20,7 @@ const styles = StyleSheet.create({
     },
     title: {
       fontSize: 18,
+      color: 'black'
     },
     ratings: {
       flexDirection: 'row',

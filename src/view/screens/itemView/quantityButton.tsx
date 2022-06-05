@@ -29,9 +29,8 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between',
-        // borderCorlor: '#d5c1f1',
-        width: 130,
-        height: 100,
+        width: 140,
+        height: 80,
     },
     button: {
         width: 40,
@@ -39,15 +38,15 @@ const styles = StyleSheet.create({
         borderRadius: 5,
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: '#8244d5',
+        backgroundColor: '#9e6dde',
 
     },
     buttonText: {
         fontSize: 25,
+        color: '#ffff'
     },
     count: {
         fontSize: 18,
-        color: '#ffff'
     }
 })
 

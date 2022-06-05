@@ -17,7 +17,7 @@ export function HomeSearch({ onPressHandler }: HeaderProps) {
                 onPress={
                   onPressHandler
                     ? onPressHandler
-                    : () => console.log('BACK pressed ')
+                    : () => console.log('BACK Button pressed ')
                 }
               />
   

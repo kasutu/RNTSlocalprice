@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
 
     },
     image: {
-        margin: 10,
+        margin: 11,
         height: 250,
         resizeMode: 'contain'
     },

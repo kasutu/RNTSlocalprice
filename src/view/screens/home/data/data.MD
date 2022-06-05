@@ -28,7 +28,6 @@
   - avgRating
   - ratings
   - price
-  - oldPrice (optional)
 - **product.ts**: Product details
   - id
   - title
@@ -39,9 +38,7 @@
   - avgRating
   - ratings
   - price
-  - oldPrice (optional)
 - **cart.ts**: Items in the cart
   - id
   - item
   - quantity
-  - option (selected option)
