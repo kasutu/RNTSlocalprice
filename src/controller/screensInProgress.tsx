@@ -1,5 +1,7 @@
 import React from 'react';
 import { MapViewComponent } from '../view/general/map/mapViewComponent.map';
+import Router from '../view/router';
+import HomeScreen from '../view/screens/home/homeScreen.home';
 import {
   ChatScreen,
   CheckoutScreen,
@@ -24,8 +26,9 @@ export function ScreensInProgress() {
       {/* <ItemScreen /> */}
       {/* <HomeScreen/> */}
       {/* <ProductScreen/> */}
+      <Router/>
 
-      <GeoqueryDebug />
+      {/* <GeoqueryDebug /> */}
     </>
   );
 }
