@@ -6,9 +6,10 @@ import {
   IconButton,
   Input,
   NativeBaseProvider,
-  Pressable,
+  Link,
   Text,
-  VStack
+  VStack,
+  Center
 } from 'native-base';
 
 import { TitleAndBackButtonHeader } from '../../general/header/headers';
@@ -87,9 +88,15 @@ export function RegisterScreen({ navigation }) {
             >
               Register
             </Button>
-            <Pressable onPress={() => console.log(`have an account btn click`)}>
-              <Text color={'blue.400'}>Have an account?</Text>
-            </Pressable>
+            <Center>
+              <Link
+                isExternal
+                _text={{ color: 'blue.400' }}
+                onPress={() => navigation.navigate('LogInScreen')}
+              >
+                Have an account?
+              </Link>
+            </Center>
           </VStack>
         </Box>
       </Box>

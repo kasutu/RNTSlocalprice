@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import auth, { FirebaseAuthTypes } from '@react-native-firebase/auth';
-import { Text, View } from 'react-native';
-import { LogInScreen } from '../components/screens/logIn/logInView.logIn';
-import { ProfileScreen } from './../components/screens/profile/profileView.profile';
+import { LogInScreen } from '../../view/screens/logIn/logInView.logIn';
+import { ProfileScreen } from '../../view/screens/profile/profileView.profile';
 
 export default function Authentication() {
   const [initializing, setInitializing] = useState(true);
@@ -22,12 +21,12 @@ export default function Authentication() {
 
   if (!user) {
     return (
-      <LogInScreen/>
+      {LogInScreen}
     );
   }
 
   return (
-    <ProfileScreen/>
+    {ProfileScreen}
   );
 }
 /*
