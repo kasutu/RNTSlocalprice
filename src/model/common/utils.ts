@@ -1,6 +1,7 @@
 import { FirebaseFirestoreTypes } from '@react-native-firebase/firestore';
 import Db from '../../api/firebase/db.firebase';
 import { firestoreDocumentData } from '../../api/geoquery/common/definitions';
+import { uuid } from '../../api/uuid/index.uuid';
 import { GenericObjectType, MessageType } from '../../types/types';
 import { Conversation, Message } from './classes/messageClass';
 import { ValueCallback } from './types';
@@ -127,6 +128,21 @@ export function addConversationHandler(buyerName: string, sellerName: string) {
   ref.add(new Conversation(buyerName, sellerName));
 }
 
-export function addMessageHandler(): void {
+export function addMessageHandler(from: string, msg: string): void {
+  const tempId = uuid.v4();
+
   // under construction
+  Db.collection('conversations')
+    .doc(tempId)
+    .collection('messages')
+    .doc()
+    .set(new Message(from, msg));
+}
+
+export function addNestedCollection() {
+  Db.collection('conversations').doc().collection('kudasai').doc().set({
+    basket: 'hiho',
+    amount: 20000,
+    created: 'mamamia'
+  });
 }

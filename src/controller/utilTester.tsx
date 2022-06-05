@@ -2,6 +2,9 @@ import { Box, Button, NativeBaseProvider } from 'native-base';
 import React from 'react';
 import { Message } from '../model/common/classes/messageClass';
 import {
+  addConversationHandler,
+  addMessageHandler,
+  addNestedCollection,
   documentAddHandler,
   documentDeleteHandler,
   documentGetCollectionHandler,
@@ -35,6 +38,15 @@ export default function UtilTester() {
           }
         >
           {'get collection'}
+        </Button>
+        <Button onPress={() => addConversationHandler('jiv', 'jam')}>
+          {'add convo'}
+        </Button>
+        <Button onPress={() => addNestedCollection()}>
+          {'add Nested Collection'}
+        </Button>
+        <Button onPress={() => addMessageHandler('jiv', 'ta valo ta dyamm')}>
+          {'add Nested message'}
         </Button>
       </Box>
     </NativeBaseProvider>
