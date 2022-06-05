@@ -13,7 +13,6 @@ import {
   ProfileScreen,
   RegisterScreen,
   ReportUserScreen,
-  ResetPasswordScreen,
   SearchContactScreen,
   SellOrEditItemScreen,
   ShoppingBagScreen,
@@ -26,10 +25,10 @@ import Authentication from './src/api/firebase/authentications';
 
 // #######################
 // SWITCH TO DEV MODE?
-// set DEV_MODE to true 
+// set DEV_MODE to true
 // if you want to try some screens go to controller/screenInprogress and put your screen
 export const DEV_MODE = true;
-// ####################### 
+// #######################
 
 const Stack = createNativeStackNavigator();
 const authentication = new Authentication();
@@ -60,14 +59,11 @@ export default function App(): ReactNode {
             component={SellOrEditItemScreen}
           />
           <Stack.Screen name="LogInScreen">
-            {props => <LogInScreen {...props} auth={authentication} />}
+            {(props) => <LogInScreen {...props} auth={authentication} />}
           </Stack.Screen>
-          <Stack.Screen
-            name="ResetPasswordScreen"
-            component={ResetPasswordScreen}
-          />
+
           <Stack.Screen name="ProfileScreen">
-            {props => <ProfileScreen {...props} auth={authentication} />}
+            {(props) => <ProfileScreen {...props} auth={authentication} />}
           </Stack.Screen>
           <Stack.Screen name="AllChatsScreen" component={AllChatsScreen} />
           <Stack.Screen

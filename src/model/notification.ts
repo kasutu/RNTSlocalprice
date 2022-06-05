@@ -1,3 +1,4 @@
+import Db from "../api/firebase/db.firebase";
 export class Notification {
   public id: string;
   public sellerId: string;
@@ -15,6 +16,4 @@ export class Notification {
     this.buyerId = buyerId;
     this.typeOfItem = typeOfItem;
   }
-
-
 }
