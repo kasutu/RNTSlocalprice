@@ -16,6 +16,7 @@ import { TitleAndBackButtonHeader } from '../../general/header/headers';
 import TextInput from '../../general/forms/textInput.form';
 import { InputColor } from '../../general/colors/localprice.colors';
 import { eyeIcon } from '../../general/icons/localprice.icons';
+import RegisterButton from '../../general/buttons/register.button';
 
 export function RegisterScreen({ navigation }) {
   return (
@@ -74,7 +75,7 @@ export function RegisterScreen({ navigation }) {
         {/* REGISTER BUTTON */}
         <Box marginBottom={5}>
           <VStack space={5} alignItems={'center'}>
-            <Button
+            {/* <Button
               width={'200'}
               height={'45'}
               variant={'solid'}
@@ -87,7 +88,8 @@ export function RegisterScreen({ navigation }) {
               backgroundColor={'#9E6DDE'}
             >
               Register
-            </Button>
+            </Button> */}
+            <RegisterButton />
             <Center>
               <Link
                 isExternal
