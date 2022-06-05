@@ -1,19 +1,22 @@
+import { FirebaseFirestoreTypes } from '@react-native-firebase/firestore';
 import Db from '../../api/firebase/db.firebase';
-import { GenericObjectType } from '../../types/types';
+import { firestoreDocumentData } from '../../api/geoquery/common/definitions';
+import { GenericObjectType, MessageType } from '../../types/types';
+import { Conversation, Message } from './classes/messageClass';
 import { ValueCallback } from './types';
 
 /**
- * @function documentUpdateHandler hadles role update via targeted user id
+ * @function documentUpdateHandler hadles specific property updates via targeted user id
  *
  * @param collection collection name @example 'shops'
  * @param where the property of the do, use dot notation wen you want to access deeply nested objects
- * @param targetUserId target id
+ * @param targetId target id
  * @param newData any object
  */
 export function documentUpdateHandler(
   collection: string,
   where: string,
-  targetUserId: string,
+  targetId: string,
   newData: GenericObjectType
 ): void {
   const ref = Db.collection(collection);
@@ -23,7 +26,7 @@ export function documentUpdateHandler(
 
   // returns an object when matched
   ref
-    .where(where, '==', targetUserId)
+    .where(where, '==', targetId)
     .limit(1)
     .get()
     .then((snapshots) => {
@@ -58,10 +61,15 @@ export function documentAddHandler(
 
 /**
  * @function documentDeleteHandler deletes documents specified by id in the db
+ *
+ * @param where the property of the do, use dot notation wen you want to access deeply nested objects
+ * @param targetId target id
+ * @callback success triggers if the operations succeded
+ * @callback fail triggers that handles error
  */
 export function documentDeleteHandler(
   collection: string,
-  targetUserId: string,
+  targetId: string,
   where: string,
   success?: () => void,
   fail?: () => void
@@ -73,7 +81,7 @@ export function documentDeleteHandler(
 
   // returns an object when matched
   ref
-    .where(where, '==', targetUserId)
+    .where(where, '==', targetId)
     .limit(1)
     .get()
     .then((snapshots) => {
@@ -89,4 +97,38 @@ export function documentDeleteHandler(
         .then(() => success)
         .catch(() => fail);
     });
+}
+
+/**
+ * @function documentGetCollectionHandler gets all the docs inside the collection
+ *
+ * @param collection reference to firebase collection
+ * @param cb callback returns the docs inside a collection
+ */
+export function documentGetCollectionHandler(
+  collection: string,
+  cb: ValueCallback<firestoreDocumentData[]>
+) {
+  const ref = Db.collection(collection);
+  const docs: firestoreDocumentData[] = [];
+
+  ref
+    .get()
+    .then((snapshots) => {
+      // saves the result
+      snapshots.docs.forEach((snap) => docs.push(snap.data()));
+
+      return docs;
+    })
+    .then((docs) => cb(docs));
+}
+
+export function addConversationHandler(buyerName: string, sellerName: string) {
+  const ref = Db.collection('conversations');
+
+  ref.add(new Conversation(buyerName, sellerName));
+}
+
+export function addMessageHandler(): void {
+  // under construction
 }
