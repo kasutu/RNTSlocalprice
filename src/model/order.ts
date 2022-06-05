@@ -1,24 +1,17 @@
 import { Transaction } from './transaction';
-import firestore from '@react-native-firebase/firestore';
-export abstract class Order extends Transaction {
-  public parcel: [];
-  public cod: string;
-  public orderCompleted: boolean;
+export class Order extends Transaction {
+  public paymentOption: 'cash on delivery' | 'pickup and pay';
+  public paid: boolean;
 
-  constructor(id: string, sellerId: string, buyerId: string) {
-    super(id, buyerId, sellerId);
-    this.parcel = [];
-    this.cod = '90';
-    this.orderCompleted = false;
+  constructor(
+    sellerId: string,
+    buyerId: string,
+    orderId: string,
+    paymentOption: 'cash on delivery' | 'pickup and pay'
+  ) {
+    super(buyerId, sellerId, orderId);
+    this.paymentOption = paymentOption;
+    this.paid = false;
   }
 }
-// loogic
-// function onResult(QuerySnapshot: any) {
-//   console.log('Got Users collection result.');
-// }
-
-// function onError(error: any) {
-//   console.error(error);
-// }
-
-// firestore().collection('Users').onSnapshot(onResult, onError);
+// console.log(new Order('basilio', 'lappii', 'hhhhhhh', 'cash on delivery'))
