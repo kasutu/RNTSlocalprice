@@ -32,10 +32,11 @@ const hollowNotifIcon = (
   <Ionicon name="notifications-outline" color="black" size={30} />
 );
 
-const LocationIcon = <Icon name="location-on" color="black" />;
+const LocationIcon = <Icon name="location-on" color="red" size={40} />;
 
 const SendIcon = <Ionicon name="send" color="black" />;
 const CameraIcon = <Ionicon name="camera" color="black" />;
+
 export {
   arrowBack,
   addIcon,

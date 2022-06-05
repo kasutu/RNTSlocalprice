@@ -16,7 +16,6 @@ export { ItemScreen } from './itemView/itemView';
 export { LogInScreen } from './logIn/logInView.logIn';
 export { ProfileScreen } from './profile/profileView.profile';
 export { RegisterScreen } from './register/registerView.register';
-export { ResetPasswordScreen } from './resetPassword/resetPasswordView.resetPassword';
 export { ShoppingBagScreen } from './shopping/shoppingBag.screen';
 export { AddLocationMapScreen } from './userSeller/addLocationMap.screen';
 export { EditAddressScreen } from './userSeller/editAddressScreen.userSeller';

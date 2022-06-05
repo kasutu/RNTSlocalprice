@@ -10,11 +10,10 @@ export default function AppTest() {
   return (
     <NativeBaseProvider>
       {/* -------------- test section -------------- */}
-      {/* <ScreenATest /> */}
-      {/* <ScreenB /> */}
-      {/* <ScreenC /> */}
-      {/* <DbTest /> */}
-      <ChatScreenTest />
+      <ScreenATest />
+      <ScreenB />
+
+      {/* <ChatScreenTest /> */}
     </NativeBaseProvider>
   );
 }
