@@ -8,13 +8,50 @@ export interface RelationalObjectType extends ObjectType {
   ownerID: string;
 }
 
-// main item type
-export interface ItemType extends RelationalObjectType {
-  imageID: string[];
-  description: string;
-  details: string;
+export interface PackingStatusType {
+  isPacked: boolean;
+}
 
-  // uncomment for later use
+// main item type
+export interface ItemType extends RelationalObjectType, PackingStatusType {
+  imageIDs: string[];
+  description: string;
+  price: number;
+  details: string;
   rating: number;
-  location: string;
+  locationName: string;
+}
+
+/**
+ * @interface UserDataType
+ * everything that is essencial to the user relation
+ * and activities
+ */
+export interface UserDataType {
+  role: 'seller' | 'not verified' | 'not logged in';
+  email: string;
+  fullName: string;
+  userId: string;
+  contactNumber: string;
+  address: string;
+  geohash: string;
+  transactionIds: string[];
+  convoIds: string[];
+}
+
+/**
+ * @interface TransactionMetadataType center of 2 parties
+ */
+export interface TransactionMetadataType extends ObjectType {
+  id: string;
+  buyerId: string;
+  sellerId: string;
+  paymentOption: 'cash on delivery' | 'pickup and pay';
+  placedOrder: boolean;
+  confirmed: boolean;
+  itemIds: string[];
+  shippingFee: number;
+  subtotal: number;
+  totalAmount: number;
+  chatId: string;
 }
