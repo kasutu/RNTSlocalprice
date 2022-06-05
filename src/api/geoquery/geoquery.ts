@@ -8,7 +8,8 @@ import Db from '../firebase/db.firebase';
 import {
   CollectionRef,
   GeoLocationsRef,
-  ObjectBasicInfo
+  ObjectBasicInfo,
+  ObjectWithGeoPoint
 } from './common/definitions';
 import { ReactNativeGeoPoint } from './common/util';
 
@@ -143,7 +144,9 @@ export class ReactNativeGeofire {
 
         matchingDocs.forEach((doc) => {
           // set array contents
-          runInAction(() => geoStore.docs.push(doc.data()));
+          runInAction(() =>
+            geoStore.docs.push(doc.data() as ObjectWithGeoPoint)
+          );
         });
       })
       .catch((err) => {

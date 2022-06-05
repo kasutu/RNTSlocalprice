@@ -8,7 +8,6 @@ import {
   ShoppingBagScreen
 } from '../view/screens/index.screens';
 
-import ProductScreen from '../view/screens/itemView/productScreen';
 import GeoqueryDebug from './GeoQueryDebug';
 
 

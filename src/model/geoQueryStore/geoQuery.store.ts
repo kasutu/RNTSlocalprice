@@ -1,15 +1,16 @@
 // MobX implementation
 
 import { makeAutoObservable } from 'mobx';
+import { ObjectWithGeoPoint } from '../../api/geoquery/common/definitions';
 
 // make this generic soon
 // 'export' is added for test purposes
-export class GeoStore<T> {
+export class GeoStore {
   /**
    * atleast 1 property to hold data
    * you want to broadcast all over any screen
    */
-  public docs: T[] = [];
+  public docs: ObjectWithGeoPoint[] = [];
 
   constructor() {
     // let MobX observe this class and use this to any screen
@@ -32,7 +33,7 @@ export class GeoStore<T> {
 const geoStore = new GeoStore();
 
 /**
- * @exports geoStore 
+ * @exports geoStore
  * import this to any screen and use a dot notation
  * geoStore.dacs // exposes the docs contents
  */
