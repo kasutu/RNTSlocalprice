@@ -1,1 +1,1 @@
-export type ValueErrorCallback<T> = (val: T, err?: any) => void;
+export type ValueCallback<T> = (val: T) => void;
