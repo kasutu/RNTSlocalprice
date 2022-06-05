@@ -1,9 +1,7 @@
 import { distanceBetween, geohashQueryBounds } from 'geofire-common';
 import { runInAction } from 'mobx';
-import { LatLng } from 'react-native-maps';
 import geopointStore from '../../model/geopointStore/geopointStore';
 import geoStore from '../../model/geoQueryStore/geoQuery.store';
-import { MapCoordsStore } from '../../model/mapCoordsStore/mapCoordsStore';
 import Db from '../firebase/db.firebase';
 import {
   CollectionRef,
