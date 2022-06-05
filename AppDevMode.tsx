@@ -16,6 +16,7 @@ import geoStore from './src/model/geoQueryStore/geoQuery.store';
 import { ReactNativeGeofire } from './src/api/geoquery/geoquery';
 import { MapViewComponent } from './src/view/general/map/mapViewComponent.map';
 import mapCoordsStore from './src/model/mapCoordsStore/mapCoordsStore';
+import HomeScreen from './src/view/screens/home/homeScreen.home';
 
 const shopsGeoFire = new ReactNativeGeofire('shops');
 
@@ -25,13 +26,13 @@ export default function AppDevMode(): ReactNode {
   return (
     <NativeBaseProvider>
       <Box safeArea width={'full'} height={'full'}>
-        <Center bg={'warning.400'} w={'full'} position={'absolute'}>
+        {/* <Center bg={'warning.400'} w={'full'} position={'absolute'}>
           <Text fontSize={'10px'} fontWeight={'bold'}>
             DEVELOPMENT MODE
           </Text>
-        </Center>
+        </Center> */}
 
-        <MapViewComponent />
+        {/* <MapViewComponent />
 
         <VStack justifyContent={'center'} space={5}>
           <Button
@@ -62,10 +63,10 @@ export default function AppDevMode(): ReactNode {
           <Input value={text} onChangeText={(val) => setText(val)} />
         </VStack>
 
-        <Textrenedere />
+        <Textrenedere /> */}
 
         {/* <AppTest /> */}
-        {/* <ScreensInProgress /> */}
+        <ScreensInProgress />
       </Box>
     </NativeBaseProvider>
   );
