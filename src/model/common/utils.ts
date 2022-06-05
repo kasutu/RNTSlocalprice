@@ -4,12 +4,18 @@ import { ValueCallback } from './types';
 
 /**
  * @function documentUpdateHandler hadles role update via targeted user id
+ *
+ * @param collection collection name @example 'shops'
+ * @param where the property of the do, use dot notation wen you want to access deeply nested objects
+ * @param targetUserId target id
+ * @param newData any object
  */
 export function documentUpdateHandler(
   collection: string,
+  where: string,
   targetUserId: string,
   newData: GenericObjectType
-) {
+): void {
   const ref = Db.collection(collection);
 
   // stores the documentId
@@ -17,7 +23,7 @@ export function documentUpdateHandler(
 
   // returns an object when matched
   ref
-    .where('role', '==', targetUserId)
+    .where(where, '==', targetUserId)
     .limit(1)
     .get()
     .then((snapshots) => {
@@ -48,4 +54,39 @@ export function documentAddHandler(
     .add(data)
     .then(() => success)
     .catch(() => fail);
+}
+
+/**
+ * @function documentDeleteHandler deletes documents specified by id in the db
+ */
+export function documentDeleteHandler(
+  collection: string,
+  targetUserId: string,
+  where: string,
+  success?: () => void,
+  fail?: () => void
+): void {
+  const ref = Db.collection(collection);
+
+  // stores the documentId
+  let documentIdSnap: string;
+
+  // returns an object when matched
+  ref
+    .where(where, '==', targetUserId)
+    .limit(1)
+    .get()
+    .then((snapshots) => {
+      // saves the first result
+      snapshots.docs.forEach((snap) => (documentIdSnap = snap.id));
+
+      return documentIdSnap;
+    })
+    .then((SnapId) => {
+      ref
+        .doc(SnapId)
+        .delete()
+        .then(() => success)
+        .catch(() => fail);
+    });
 }
