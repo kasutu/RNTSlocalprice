@@ -39,6 +39,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         backgroundColor: '#9e6dde',
+        marginLeft: 4
 
     },
     buttonText: {
@@ -47,6 +48,7 @@ const styles = StyleSheet.create({
     },
     count: {
         fontSize: 18,
+        color: 'black',
     }
 })
 
