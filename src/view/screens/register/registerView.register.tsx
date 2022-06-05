@@ -6,9 +6,10 @@ import {
   IconButton,
   Input,
   NativeBaseProvider,
-  Pressable,
+  Link,
   Text,
-  VStack
+  VStack,
+  Center
 } from 'native-base';
 
 import { TitleAndBackButtonHeader } from '../../general/header/headers';
@@ -16,12 +17,12 @@ import TextInput from '../../general/forms/textInput.form';
 import { InputColor } from '../../general/colors/localprice.colors';
 import { eyeIcon } from '../../general/icons/localprice.icons';
 
-export function RegisterScreen() {
+export function RegisterScreen({ navigation }) {
   return (
     <NativeBaseProvider>
       <Box safeArea width={'full'} height={'full'} position={'absolute'}>
         <TitleAndBackButtonHeader
-          onPressHandler={() => console.log('Sign up back btn')}
+          onPressHandler={() => navigation.navigate('LogInScreen')}
         />
         <VStack flex={1}>
           <Box paddingBottom={'10'} alignItems={'center'} width={'full'}>
@@ -87,9 +88,15 @@ export function RegisterScreen() {
             >
               Register
             </Button>
-            <Pressable onPress={() => console.log(`have an account btn click`)}>
-              <Text color={'blue.400'}>Have an account?</Text>
-            </Pressable>
+            <Center>
+              <Link
+                isExternal
+                _text={{ color: 'blue.400' }}
+                onPress={() => navigation.navigate('LogInScreen')}
+              >
+                Have an account?
+              </Link>
+            </Center>
           </VStack>
         </Box>
       </Box>

@@ -1,3 +1,12 @@
+import ProfileIconButtonsFooter from '../../general/footer/profile.iconButtons.footer';
+import React from 'react';
+import {
+  Address,
+  Email,
+  FullName,
+  PhoneNumber,
+  Role
+} from '../../../model/store/user/metadata.user';
 import {
   Box,
   Center,
@@ -9,14 +18,31 @@ import {
   Text,
   VStack
 } from 'native-base';
-import React from 'react';
-import ProfileIconButtonsFooter from '../../general/footer/profile.iconButtons.footer';
-import { TitleHeader } from '../../general/header/headers';
 import {
+  LocationIcon,
   solidProfileIcon
 } from '../../general/icons/localprice.icons';
+import { TitleHeader } from '../../general/header/headers';
+import Authentication from './../../../api/firebase/authentications';
+import { stringifyKey } from 'mobx/dist/internal';
 
-export function ProfileScreen({ navigation }) {
+interface ProfileScreenProps {
+  navigation: any,
+  auth: Authentication
+}
+
+export function ProfileScreen({ navigation, auth }: ProfileScreenProps) {
+  const [state, setState] = React.useState({
+    email: ''
+  });
+
+  React.useEffect(() => {
+    const user = auth.getUser();
+    setState({
+      email: user?.email ? user.email : '',
+    })
+  }, []);
+
   return (
     <NativeBaseProvider>
       <Box safeArea width={'full'} height={'full'} position={'absolute'}>
@@ -25,8 +51,10 @@ export function ProfileScreen({ navigation }) {
         <ScrollView>
           <VStack flex={1} space={2}>
             <Center width={'full'}>
-              {<Icon size={'80px'} as={solidProfileIcon} />}
+              {<Icon size={'60px'} as={solidProfileIcon} />}
             </Center>
+
+            {/* USER DELIVERY DETAILS */}
             <VStack width={'full'} alignItems={'center'} space={'1'}>
               <Center
                 height={'20px'}
@@ -34,10 +62,10 @@ export function ProfileScreen({ navigation }) {
                 backgroundColor={'#D5C1F1'}
                 borderRadius={'full'}
               >
-                <Text fontSize={'11px'}>{role}</Text>
+                <Text fontSize={'11px'}>{Role}</Text>
               </Center>
               <Text fontSize={'18px'} fontWeight={'bold'}>
-                {fullName}
+                {FullName}
               </Text>
 
               {/* USER ADDRESS */}
@@ -58,13 +86,13 @@ export function ProfileScreen({ navigation }) {
                 >
                   {/* ADDRESS DETAILS */}
                   <Center>
-                    <Text fontSize={'12'}>{phoneNumber}</Text>
+                    <Text fontSize={'12'}>{PhoneNumber}</Text>
                   </Center>
                   <Center>
-                    <Text fontSize={'12'}>{email}</Text>
+                    <Text fontSize={'12'}>{state.email}</Text>
                   </Center>
                   <Center>
-                    <Text fontSize={'12'}>{address}</Text>
+                    <Text fontSize={'12'}>{Address}</Text>
                   </Center>
                 </VStack>
                 <Box
@@ -92,31 +120,9 @@ export function ProfileScreen({ navigation }) {
             </Box>
           </VStack>
         </ScrollView>
-
-        {/* render when on anonymous user  */}
-        <Center width={'full'} marginBottom={'5'}>
-          {/* LOGIN AND REGISTER BUTTON */}
-          <Pressable
-            justifyContent={'center'}
-            width={'200'}
-            height={'35'}
-            borderRadius={'full'}
-            backgroundColor={'#9E6DDE'}
-            onPress={() => console.log(`Login or Register btn click`)}
-          >
-            <Text
-              alignSelf={'center'}
-              color={'white'}
-              fontSize={'15'}
-              fontWeight={'medium'}
-            >
-              Login or Register
-            </Text>
-          </Pressable>
-          <Box width={'full'} height={'80px'}>
+        <Box width={'full'} height={'80px'}>
           <ProfileIconButtonsFooter navigation={navigation} />
         </Box>
-        </Center>
       </Box>
     </NativeBaseProvider>
   );
