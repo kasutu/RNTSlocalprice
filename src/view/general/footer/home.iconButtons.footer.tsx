@@ -31,7 +31,7 @@ export default function HomeIconButtonsFooter({
           <Pressable>
             <IconButton
               icon={hollowChatIcon}
-              onPress={() => navigation.navigate('LogInScreen')}
+              onPress={() => navigation.navigate('LogInScreen', { destination: 'AllChatScreen' })}
             />
             <Text
               textAlign={'center'}
@@ -45,7 +45,7 @@ export default function HomeIconButtonsFooter({
           <Pressable>
             <IconButton
               icon={hollowBagIcon}
-              onPress={() => navigation.navigate('LogInScreen')}
+              onPress={() => navigation.navigate('LogInScreen', { destination: 'ShoppingBagScreen' })}
             />
             <Text
               textAlign={'center'}
@@ -59,7 +59,7 @@ export default function HomeIconButtonsFooter({
           <Pressable>
             <IconButton
               icon={hollowNotifIcon}
-              onPress={() => navigation.navigate('LogInScreen')}
+              onPress={() => navigation.navigate('LogInScreen', { destination: 'NotificationView' })}
             />
             <Text
               textAlign={'center'}
@@ -73,7 +73,7 @@ export default function HomeIconButtonsFooter({
           <Pressable>
             <IconButton
               icon={hollowProfileIcon}
-              onPress={() => navigation.navigate('LogInScreen')}
+              onPress={() => navigation.navigate('LogInScreen', { destination: 'ProfileScreen' })}
             />
             <Text
               textAlign={'center'}

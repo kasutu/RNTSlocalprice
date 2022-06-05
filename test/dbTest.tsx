@@ -1,14 +1,6 @@
 import React, { useState } from 'react';
-import {
-  Box,
-  Button,
-  Center,
-  HStack,
-  NativeBaseProvider,
-  Text,
-  VStack
-} from 'native-base';
-import Db from '../src/api/firebase/db.utils';
+import { Box, Button, Center, HStack, Text, VStack } from 'native-base';
+import Db from '../src/api/firebase/db.firebase';
 
 const ref = Db.collection('users');
 

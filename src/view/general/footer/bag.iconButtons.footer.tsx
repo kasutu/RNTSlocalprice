@@ -2,31 +2,29 @@ import React from 'react';
 import { Box, HStack, IconButton, Pressable, Text, Center } from 'native-base';
 import { FooterProps } from '../../../types/footerProps.type';
 import {
+  hollowHomeIcon,
   hollowNotifIcon,
   hollowChatIcon,
   hollowProfileIcon,
-  hollowHomeIcon,
   solidBagIcon
 } from '../icons/localprice.icons';
 
-export default function BagIconButtonsFooter({ onPressHandler }: FooterProps) {
+export default function BagIconButtonsFooter({
+  navigation,
+}: FooterProps) {
   return (
     <>
       <Box safeAreaBottom />
       <Center>
         <HStack alignItems="center" space={4}>
           <Pressable>
-            <IconButton
-              icon={hollowHomeIcon}
-              onPress={
-                onPressHandler ? onPressHandler : () => console.log('Home')
-              }
-            />
+            <IconButton icon={hollowHomeIcon} />
             <Text
               textAlign={'center'}
               color="black"
               fontSize="15"
               fontWeight="normal"
+              onPress={() => navigation.navigate('Home')}
             >
               Home
             </Text>
@@ -34,9 +32,7 @@ export default function BagIconButtonsFooter({ onPressHandler }: FooterProps) {
           <Pressable>
             <IconButton
               icon={hollowChatIcon}
-              onPress={
-                onPressHandler ? onPressHandler : () => console.log('Chat')
-              }
+              onPress={() => navigation.navigate('LogInScreen', { destination: 'AllChatScreen' })}
             />
             <Text
               textAlign={'center'}
@@ -50,6 +46,7 @@ export default function BagIconButtonsFooter({ onPressHandler }: FooterProps) {
           <Pressable>
             <IconButton
               icon={solidBagIcon}
+              onPress={() => console.log('already in bag')}
             />
             <Text
               textAlign={'center'}
@@ -63,9 +60,7 @@ export default function BagIconButtonsFooter({ onPressHandler }: FooterProps) {
           <Pressable>
             <IconButton
               icon={hollowNotifIcon}
-              onPress={
-                onPressHandler ? onPressHandler : () => console.log('Notif')
-              }
+              onPress={() => navigation.navigate('LogInScreen', { destination: 'NotificationView' })}
             />
             <Text
               textAlign={'center'}
@@ -79,9 +74,7 @@ export default function BagIconButtonsFooter({ onPressHandler }: FooterProps) {
           <Pressable>
             <IconButton
               icon={hollowProfileIcon}
-              onPress={
-                onPressHandler ? onPressHandler : () => console.log('Profile')
-              }
+              onPress={() => navigation.navigate('LogInScreen', { destination: 'ProfileScreen' })}
             />
             <Text
               textAlign={'center'}
