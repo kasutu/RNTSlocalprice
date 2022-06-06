@@ -4,10 +4,12 @@ import { ConversationType, MessageType } from '../../../types/types';
 export class Message implements MessageType {
   from: string;
   msg: string;
+  id: string;
 
   constructor(from: string, msg: string) {
     this.from = from;
     this.msg = msg;
+    this.id = uuid.v4();
   }
 }
 
