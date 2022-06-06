@@ -47,12 +47,12 @@ export function LogInScreen(props: LogInProps) {
   }
 
   const loginUser = () => {
-    /*
+    
     props.auth.register('xdbruh@yahoo.com', 'aaaaaaaaaaxd')
       .then(() => {
         console.log('registered')
       })
-      .catch(e => console.error(e)); */
+      .catch(e => console.error(e));
 
 
     props.auth.login(state.email, state.password)
