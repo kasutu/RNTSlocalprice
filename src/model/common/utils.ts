@@ -1,23 +1,24 @@
-import { FirebaseFirestoreTypes } from '@react-native-firebase/firestore';
+import firebase from '@react-native-firebase/app';
+import { runInAction } from 'mobx';
 import Db from '../../api/firebase/db.firebase';
 import { firestoreDocumentData } from '../../api/geoquery/common/definitions';
-import { uuid } from '../../api/uuid/index.uuid';
 import {
   Collections,
-  ConversationType,
   GenericObjectType,
   GenericObjectWithIdType,
   MessageType
 } from '../../types/types';
+import convoStore from '../convoStore/convoStore';
+import messageStore from '../messageStore/messageStore';
 import { Conversation, Message } from './classes/messageClass';
 import { ValueCallback } from './types';
+
+export const RNTimestamp = firebase.firestore.FieldValue.serverTimestamp();
 
 /**
  * @function documentUpdateHandler handles specific property updates via targeted user id
  *
  * @param collection collection name @example 'shops'
- * @param where the property of the do, use dot notation wen you want to access deeply nested objects
- * @param targetId target id
  * @param newData any object
  */
 export function documentUpdateHandler(
@@ -185,7 +186,7 @@ export function NewMessage(
  * @param id document ID
  * @returns boolean
  */
-export async function isExisting(collection: Collections, id: string) {
+export async function isExisting(collection: Collections | string, id: string) {
   const result = await Db.collection(collection)
     .doc(id)
     .get({ source: 'server' });
@@ -193,25 +194,49 @@ export async function isExisting(collection: Collections, id: string) {
   return result.exists;
 }
 
-export async function getAllMessagesHandler(
-  convoId: string,
-  callback: (messages: MessageType[]) => void
-) {
+export async function getAllMessagesHandler() {
   let retries = 0;
 
-  while (!isExisting('conversations', convoId) && retries < 10) {
+  while (
+    !isExisting('conversations', convoStore.currentConvoId) &&
+    retries < 10
+  ) {
     console.log('conversations exist:', false);
     retries++;
   }
 
-  const docs = await Db.collection('conversations')
-    .doc(convoId)
+  Db.collection('conversations')
+    .doc(convoStore.currentConvoId)
     .collection('messages')
-    .get();
+    .orderBy('timestamp', 'asc')
+    .onSnapshot((snapshot) => {
+      const messages: MessageType[] = [];
 
-  const data: MessageType[] = [];
+      // pushes the messages to the store
+      snapshot.forEach((msg) => {
+        messages.push(msg.data() as MessageType);
+      });
 
-  docs.forEach((doc) => data.push(doc.data() as MessageType));
+      runInAction(() => (messageStore.data = messages));
+    });
+}
 
-  callback(data);
+export async function sendNewMessageHandler(
+  owners: {
+    buyerName: string;
+    sellerName: string;
+  },
+  from: string,
+  msg: string
+) {
+  {
+    /**
+     * checks if id exists then send message else make a new one
+     */
+    if (await isExisting('conversations', convoStore.currentConvoId)) {
+      NewMessage(from, msg, convoStore.currentConvoId);
+    } else {
+      NewMessage(from, msg, owners, (val) => (convoStore.currentConvoId = val));
+    }
+  }
 }

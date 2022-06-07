@@ -2,16 +2,14 @@ import React from 'react';
 import { StyleSheet, View, FlatList } from 'react-native';
 import HomeItems from './homeItems.home';
 import products from './data/products';
-import { HomeSearch } from './searchButton.home';
-import { Box, Center, HStack, ScrollView } from 'native-base';
+import { Center, HStack, ScrollView } from 'native-base';
 import FilterButton from './filterButton';
 import HomeIconButtonsFooter from '../../general/footer/home.iconButtons.footer';
 
-const HomeScreen = () => {
+const HomeScreen = ({searchInput}: {searchInput: string}) => {
   return (
     <>
-    {/* <Box marginTop={'2'}><HomeSearch /></Box>
-      <Center width={'full'} paddingY={'2'}>
+      {/* <Center width={'full'} paddingY={'2'}>
         <HStack space={3}>
           <FilterButton value="All" />
 
