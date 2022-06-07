@@ -19,10 +19,6 @@ const ProductScreen = () => {
 
   return (
     <>
-      <Box marginTop={'5'}>
-        <HomeSearch />
-      </Box>
-
       <View>
         {/* image carousle */}
         <ImageScroll images={product.images} />
