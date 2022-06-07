@@ -1,22 +1,29 @@
 
 
-export class AddToCart {
-    public itemId: string[];
-    public itemName: string;
-    public itemPrice: number;
-    public itemQuantity: number;
-    public itemImage: string;
-    public itemDescription: string;
-    public itemCategory: string;
+export class AddToCartItems {
+        public itemId: string[];
+        public itemPrice: number;
+        public image: string;
+        public itemQuantitiy: number; 
 
-    constructor(itemId: string[], itemName: string, itemPrice: number, itemQuantity: number, itemImage: string, itemDescription: string, itemCategory: string) {
-        this.itemId = itemId;
-        this.itemName = itemName;
-        this.itemPrice = itemPrice;
-        this.itemQuantity = itemQuantity;
-        this.itemImage = itemImage;
-        this.itemDescription = itemDescription;
-        this.itemCategory = itemCategory;
+        constructor(itemId: string[], itemPrice: number, image: string, itemQuantitiy: number) {
+            this.itemId = itemId;
+            this.itemPrice = itemPrice;
+            this.image = image;
+            this.itemQuantitiy = itemQuantitiy;
+        }
     }
+
+class Cart {
+    public itemsInCart: boolean;
+    public sumOfItems: number;
+
+    constructor(itemsInCart: boolean, sumOfItems: number) {
+        this.itemsInCart = itemsInCart;
+        this.sumOfItems = sumOfItems;
+    }
+
 }
+
+
 
