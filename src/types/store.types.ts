@@ -8,17 +8,6 @@ export interface IRelationalObjectType extends IObjectType {
   ownerID: string;
 }
 
-<<<<<<< HEAD:src/types/store.types.ts
-// main item type
-export interface IItemType extends IRelationalObjectType {
-  imageID: string[];
-  description: string;
-  details: string;
-
-  // uncomment for later use
-  rating: number;
-  location: string;
-=======
 export interface PackingStatusType {
   isPacked: boolean;
 }
@@ -39,7 +28,7 @@ export interface ItemType extends RelationalObjectType, PackingStatusType {
  * and activities
  */
 export interface UserDataType {
-  role: UserRole;
+  role: 'seller' | 'not verified' | 'not logged in';
   email: string;
   fullName: string;
   userId: string;
@@ -57,7 +46,7 @@ export interface TransactionMetadataType extends ObjectType {
   id: string;
   buyerId: string;
   sellerId: string;
-  paymentOption: PaymentOptions;
+  paymentOption: 'cash on delivery' | 'pickup and pay';
   placedOrder: boolean;
   confirmed: boolean;
   itemIds: string[];
@@ -65,11 +54,4 @@ export interface TransactionMetadataType extends ObjectType {
   subtotal: number;
   totalAmount: number;
   chatId: string;
->>>>>>> db94568502f58fd09f810715f393a65e1b536d11:src/types/types.tsx
 }
-
-export type UserRole = 'seller' | 'not verified' | 'not logged in';
-
-export type PaymentOptions = 'cash on delivery' | 'pickup and pay';
-
-export type GenericObjectType = { [key: string]: any };
