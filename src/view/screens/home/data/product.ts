@@ -1,20 +1,34 @@
 <<<<<<< Updated upstream
 export default {
-  id: '5',
+  id: '2',
   title: "Logitech MX Master 3 Advanced Wireless Mouse for Mac - Bluetooth/USB",
   description: `Features & details
-  - MAGSPEED WHEEL: Ultra-fast, precise, quiet MagSpeed electromagnetic scrolling
-  - DARKFIELD 4000 DPI SENSOR: Darkfield 4000 DPI sensor for precise tracking on any surface, even glass (up to 4mm in thickness)
-  - COMFORTABLE DESIGN: Tactile reference for hand positioning makes it easy to stay oriented and in your flow`,
-  image: 'https://notjustdev-dummy.s3.us-east-2.amazonaws.com/images/products/mouse1.jpg',
+  Display	- 13.4 inches (Full HD+, Full HD, + touch, 3.5K OLED or 4K LCD)
+  CPU -	12th Gen Intel Core i5 1240P
+  12th - Gen Intel Core i7 1280P
+  GPU	- Intel Iris X
+  RAM -	16GB RAM (Upto 32GB Support)
+  Storage	- 1TB NVMe SSD with up to 2TB Support
+  Ports	- 2 Thunderbolt 4 (USB-C), USB-C to USB-A adapter
+  Size	11.6 X 7.8 X 0.6 inches
+  Weight	2.73 pounds
+  Battery -	55WHr
+  Connectivity	Intel Killer WiFi 6E AX211, Bluetooth 5.2
+  Webcam	720p, IR Camera with Face Recognition`,
+  image: 'https://techuda.com/wp-content/uploads/2022/03/Dell_XPS_13_Plus-1-e1647158175696.jpg',
   images: [
-    'https://notjustdev-dummy.s3.us-east-2.amazonaws.com/images/products/mouse1.jpg',
-    'https://notjustdev-dummy.s3.us-east-2.amazonaws.com/images/products/mouse2.jpg',
-    'https://notjustdev-dummy.s3.us-east-2.amazonaws.com/images/products/mouse3.jpg',
+    'https://techuda.com/wp-content/uploads/2022/03/Dell_XPS_13_Plus-1-e1647158175696.jpg',
+    'https://techuda.com/wp-content/uploads/2022/03/Dell_XPS_13_Plus-2.jpg',
+    'https://techuda.com/wp-content/uploads/2022/03/Dell_XPS_13_Plus-5-e1647264993358.jpg',
+    'https://techuda.com/wp-content/uploads/2022/03/Dell_XPS_13_Plus-7.jpg',
+    'https://techuda.com/wp-content/uploads/2022/03/Dell_XPS_13_Plus-8.jpg',
+    'https://techuda.com/wp-content/uploads/2022/03/Dell_XPS_13_Plus-10.jpg',
   ],
   price: 4500,
   rating: 4,
+  location: 'Iloilo City'
 };
+<<<<<<< HEAD
 
 =======
 export default {
@@ -35,3 +49,5 @@ export default {
 };
 
 >>>>>>> Stashed changes
+=======
+>>>>>>> e5d0b7c0d682f17d8f7b4ef72d6d69f4b0744931

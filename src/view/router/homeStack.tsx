@@ -15,7 +15,8 @@ interface HeaderStyleProps {
 const HeaderStyle = ({searchInput, setSearchInput}: HeaderStyleProps) => {
     return (
     <SafeAreaView>
-            <TextInput style={{padding: 10 ,margin: 10, backgroundColor: InputColor, borderRadius: 15}} placeholder="Search" value={searchInput} onChangeText={setSearchInput}/>
+            <TextInput style={{padding: 10 ,margin: 10, backgroundColor: InputColor, borderRadius: 15}} 
+            placeholder="Search" value={searchInput} onChangeText={setSearchInput}/>
     </SafeAreaView>
     )
 };
