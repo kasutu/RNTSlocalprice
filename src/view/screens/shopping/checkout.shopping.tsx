@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import {
   Box,
   Center,
@@ -18,6 +18,8 @@ import {
 } from '../../../model/store/user/metadata.user';
 import { LocationIcon } from '../../general/icons/localprice.icons';
 import SolidButton from '../../general/buttons/solid.button';
+import { CALLBACK_TYPE } from 'react-native-gesture-handler/lib/typescript/handlers/gestures/gesture';
+import temptransactionstore from '../../../model/transactionStore/tempTransactio';
 
 export function CheckoutScreen({ navigation }) {
   return (
@@ -187,7 +189,7 @@ export function CheckoutScreen({ navigation }) {
                   </Text>
                 </Center>
                 <Center>
-                  <SolidButton value="Place Order" />
+                  <SolidButton value="Place Order" onPressHandler={() => temptransactionstore.addToDatabase()} />
                 </Center>
               </HStack>
             </VStack>
@@ -197,3 +199,4 @@ export function CheckoutScreen({ navigation }) {
     </>
   );
 }
+

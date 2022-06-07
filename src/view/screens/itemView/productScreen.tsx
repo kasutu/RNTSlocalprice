@@ -1,25 +1,20 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, ScrollView} from 'react-native';
 import product from '../home/data/product';
 import styles from './styles';
 import QuantityButton from './quantityButton';
-import { useRoute } from '@react-navigation/native';
 import { Box, Center } from 'native-base';
 import HollowAndSolidButton from '../../general/buttons/hollowAndSolidButton.component';
-import HomeIconButtonsFooter from '../../general/footer/home.iconButtons.footer';
 import ImageScroll from './imageScroll';
-import { HomeSearch } from '../home/searchButton.home';
 import AntDesign from 'react-native-vector-icons/AntDesign';
+import ShowLocationButton from './showLocButton';
 
 const ProductScreen = () => {
   const [quantity, setQuantity] = useState(1);
 
-  const route = useRoute();
-  console.log(route.params)
-
   return (
     <>
-      <View>
+      <ScrollView>
         {/* image carousle */}
         <ImageScroll images={product.images} />
 
@@ -43,19 +38,25 @@ const ProductScreen = () => {
           <Text>{product.rating}</Text>
 
           {/* locationButton */}
-          
+          <ShowLocationButton/>
+
         </View>
+
+        {/* Location */}
+        <Text style={styles.location}>{product.location}</Text>
 
         {/* Description */}
         <Text style={styles.description}>{product.description}</Text>
 
         {/* quantity selector */}
-        <QuantityButton quantity={quantity} setQuantity={setQuantity}/>
-      </View>
+          <QuantityButton quantity={quantity} setQuantity={setQuantity}/>
+        
+      </ScrollView>
 
       {/* button */}
       <View>
-      <Center marginTop={4}>
+        
+      <Center marginBottom={2} marginTop={2}>
         <HollowAndSolidButton
           hollowButtonValue="Buy Now"
           solidButtonValue="Add to Cart"
@@ -65,5 +66,6 @@ const ProductScreen = () => {
     </>
   );
 };
+
 
 export default ProductScreen;

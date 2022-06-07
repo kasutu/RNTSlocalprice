@@ -1,4 +1,4 @@
-import DbTest from './dbTest';
+
 import React from 'react';
 import ScreenATest from './screens/screenA.test';
 import ScreenB from './screens/screenB.test';
