@@ -8,10 +8,12 @@ import {
   NotificationScreen,
   OrderDetailsScreen,
   ShoppingBagScreen,
-  LogInScreen
+  LogInScreen,
+  EditAddressScreen
 } from '../view/screens/index.screens';
 
 import GeoqueryDebug from './GeoQueryDebug';
+import MapModal from './MapModal';
 import UtilTester from './utilTester';
 
 export function ScreensInProgress() {
