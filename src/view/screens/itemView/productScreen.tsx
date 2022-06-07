@@ -1,21 +1,16 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet} from 'react-native';
 import product from '../home/data/product';
 import styles from './styles';
 import QuantityButton from './quantityButton';
-import { useRoute } from '@react-navigation/native';
 import { Box, Center } from 'native-base';
 import HollowAndSolidButton from '../../general/buttons/hollowAndSolidButton.component';
-import HomeIconButtonsFooter from '../../general/footer/home.iconButtons.footer';
 import ImageScroll from './imageScroll';
-import { HomeSearch } from '../home/searchButton.home';
 import AntDesign from 'react-native-vector-icons/AntDesign';
+import ShowLocationButton from './showLocButton';
 
 const ProductScreen = () => {
   const [quantity, setQuantity] = useState(1);
-
-  const route = useRoute();
-  console.log(route.params)
 
   return (
     <>
@@ -43,6 +38,7 @@ const ProductScreen = () => {
           <Text>{product.rating}</Text>
 
           {/* locationButton */}
+          <ShowLocationButton/>
           
         </View>
 
@@ -50,7 +46,8 @@ const ProductScreen = () => {
         <Text style={styles.description}>{product.description}</Text>
 
         {/* quantity selector */}
-        <QuantityButton quantity={quantity} setQuantity={setQuantity}/>
+          <QuantityButton quantity={quantity} setQuantity={setQuantity}/>
+        
       </View>
 
       {/* button */}
@@ -65,5 +62,6 @@ const ProductScreen = () => {
     </>
   );
 };
+
 
 export default ProductScreen;
