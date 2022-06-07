@@ -1,4 +1,3 @@
-import Db from "../api/firebase/db.firebase";
 export class Notification {
   public id: string;
   public sellerId: string;
