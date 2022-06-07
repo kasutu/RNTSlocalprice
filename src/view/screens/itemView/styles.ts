@@ -24,11 +24,15 @@ const styles = StyleSheet.create({
     ratings: {
         flexDirection: 'row',
         alignItems: 'center',
-        marginBottom: 15,
     },
     star: {
         margin: 2,
-    },  
+    },
+    location: {
+        fontSize: 15,
+        marginLeft: 4,
+        marginBottom: 10
+    }
 });
 
 export default styles;
