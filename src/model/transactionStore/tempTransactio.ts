@@ -20,7 +20,7 @@ export class TempTransactionstore implements Transaction {
   }
   public addToDatabase() {
     documentAddHandler(
-      'transaction',
+      'transactions',
       new Transaction(
         this.itemIds,
         this.buyerId,
