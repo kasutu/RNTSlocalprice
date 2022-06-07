@@ -13,6 +13,7 @@ import {
 } from 'native-base';
 import { TitleAndBackButtonHeader } from '../../general/header/headers';
 import CheckOutButton from '../../general/buttons/checkOut.button';
+import BagIconButtonsFooter from '../../general/footer/bag.iconButtons.footer';
 
 const description: string = 'Apple Macbook pro 16gb ram';
 const itemDetails: string = 'More details about the product.';
@@ -208,6 +209,9 @@ export function ShoppingBagScreen({ navigation }) {
             </VStack>
           </HStack>
           <CheckOutButton navigation={navigation} />
+          <Box width={'full'} height={'50px'}>
+            <BagIconButtonsFooter navigation={navigation} />
+          </Box>
         </Center>
       </Box>
     </NativeBaseProvider>

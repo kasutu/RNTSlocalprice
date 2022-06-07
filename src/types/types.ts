@@ -1,3 +1,6 @@
+import { RNTimestamp } from "../model/common/utils";
+
+
 // ideal for owners and one to many objects
 export interface IObjectType {
   id: string;
@@ -24,7 +27,7 @@ export interface ItemType extends RelationalObjectType, PackingStatusType {
 
 /**
  * @interface UserDataType
- * everything that is essencial to the user relation
+ * everything that is essential to the user relation
  * and activities
  */
 export interface UserDataType {
@@ -56,8 +59,27 @@ export interface TransactionMetadataType extends ObjectType {
   chatId: string;
 }
 
+export interface MessageType extends ObjectType {
+  from: string;
+  msg: string;
+  timestamp: typeof RNTimestamp;
+}
+
+export interface ConversationType extends ObjectType {
+  buyerName: string;
+  sellerName: string;
+}
+
 export type UserRole = 'seller' | 'not verified' | 'not logged in';
 
 export type PaymentOptions = 'cash on delivery' | 'pickup and pay';
 
-export type GenericObjectType = { [key: string]: any };
+export interface GenericObjectType {
+  [key: string]: any;
+}
+
+export interface GenericObjectWithIdType extends GenericObjectType {
+  id?: string;
+}
+
+export type Collections = 'items' | 'conversations';

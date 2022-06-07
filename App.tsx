@@ -1,3 +1,4 @@
+import 'react-native-gesture-handler';
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -16,7 +17,8 @@ import {
   SellOrEditItemScreen,
   ShoppingBagScreen,
   AllChatsScreen,
-  ChatScreen
+  ChatScreen,
+  NotificationScreen
 } from './src/view/screens/index.screens';
 import AppTest from './test/App.test';
 import { NativeBaseProvider } from 'native-base';
@@ -26,7 +28,7 @@ import Authentication from './src/api/firebase/authentications';
 // SWITCH TO DEV MODE?
 // set DEV_MODE to true
 // if you want to try some screens go to controller/screenInprogress and put your screen
-export const DEV_MODE = true;
+export const DEV_MODE = false;
 // #######################
 
 const Stack = createNativeStackNavigator();
@@ -44,6 +46,7 @@ export default function App(): ReactNode {
             name="ShoppingBagScreen"
             component={ShoppingBagScreen}
           />
+          <Stack.Screen name="NotificationScreen" component={NotificationScreen}/>
           <Stack.Screen
             name="AddLocationMapScreen"
             component={AddLocationMapScreen}

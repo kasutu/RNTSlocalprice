@@ -9,9 +9,7 @@ import {
   solidHomeIcon
 } from '../icons/localprice.icons';
 
-export default function HomeIconButtonsFooter({
-  navigation,
-}: FooterProps) {
+export default function HomeIconButtonsFooter({ navigation }: FooterProps) {
   return (
     <>
       <Box safeAreaBottom />
@@ -31,7 +29,11 @@ export default function HomeIconButtonsFooter({
           <Pressable>
             <IconButton
               icon={hollowChatIcon}
-              onPress={() => navigation.navigate('LogInScreen', { destination: 'AllChatScreen' })}
+              onPress={() =>
+                navigation.navigate('LogInScreen', {
+                  destination: 'AllChatsScreen'
+                })
+              }
             />
             <Text
               textAlign={'center'}
@@ -45,7 +47,11 @@ export default function HomeIconButtonsFooter({
           <Pressable>
             <IconButton
               icon={hollowBagIcon}
-              onPress={() => navigation.navigate('LogInScreen', { destination: 'ShoppingBagScreen' })}
+              onPress={() =>
+                navigation.navigate('LogInScreen', {
+                  destination: 'ShoppingBagScreen'
+                })
+              }
             />
             <Text
               textAlign={'center'}
@@ -59,7 +65,11 @@ export default function HomeIconButtonsFooter({
           <Pressable>
             <IconButton
               icon={hollowNotifIcon}
-              onPress={() => navigation.navigate('LogInScreen', { destination: 'NotificationView' })}
+              onPress={() =>
+                navigation.navigate('LogInScreen', {
+                  destination: 'NotificationScreen'
+                })
+              }
             />
             <Text
               textAlign={'center'}
@@ -73,7 +83,11 @@ export default function HomeIconButtonsFooter({
           <Pressable>
             <IconButton
               icon={hollowProfileIcon}
-              onPress={() => navigation.navigate('LogInScreen', { destination: 'ProfileScreen' })}
+              onPress={() =>
+                navigation.navigate('LogInScreen', {
+                  destination: 'ProfileScreen'
+                })
+              }
             />
             <Text
               textAlign={'center'}

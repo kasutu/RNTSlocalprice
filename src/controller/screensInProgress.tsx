@@ -1,15 +1,18 @@
 import React from 'react';
 import { MapViewComponent } from '../view/general/map/mapViewComponent.map';
+import Router from '../view/router';
+import HomeScreen from '../view/screens/home/homeScreen.home';
 import {
   ChatScreen,
   CheckoutScreen,
   NotificationScreen,
   OrderDetailsScreen,
-  ShoppingBagScreen
+  ShoppingBagScreen,
+  LogInScreen
 } from '../view/screens/index.screens';
 
 import GeoqueryDebug from './GeoQueryDebug';
-
+import UtilTester from './utilTester';
 
 export function ScreensInProgress() {
   return (
@@ -24,8 +27,10 @@ export function ScreensInProgress() {
       {/* <ItemScreen /> */}
       {/* <HomeScreen/> */}
       {/* <ProductScreen/> */}
+      <Router/>
 
-      <GeoqueryDebug />
+      {/* <GeoqueryDebug /> */}
+      {/* <UtilTester /> */}
     </>
   );
 }
