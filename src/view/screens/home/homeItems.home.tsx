@@ -12,6 +12,7 @@ interface ProductProps {
     title: string;
     rating: number;
     price: number;
+    location: string;
   };
 }
 
@@ -33,7 +34,7 @@ const HomeItems = ({ item }: ProductProps) => {
             <AntDesign
               key={`${item.id} - ${i}`}
               style={styles.star}
-              name={i < item.rating ? 'star' : 'stars'}
+              name={i < item.rating ? 'star' : 'staro'}
               size={18}
               color={'#e47911'}
             />
@@ -42,6 +43,7 @@ const HomeItems = ({ item }: ProductProps) => {
           <Text>{item.rating}</Text>
         </View>
         <Text style={styles.price}>₱{item.price}</Text>
+        <Text style ={styles.location}>{item.location}</Text>
       </View>
     </Pressable>
   );
