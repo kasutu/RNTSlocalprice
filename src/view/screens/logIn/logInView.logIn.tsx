@@ -7,8 +7,7 @@ import {
   Input,
   NativeBaseProvider,
   VStack,
-  Link,
-  Text
+  Link
 } from 'native-base';
 
 import { TitleAndBackButtonHeader } from '../../general/header/headers';
@@ -21,9 +20,9 @@ import Authentication from './../../../api/firebase/authentications';
 const appLogo = require('../../../assets/appLogo.png');
 
 interface LogInProps {
-  navigation: any,
-  auth: Authentication,
-  route?: any,
+  navigation: any;
+  auth: Authentication;
+  route?: any;
 }
 
 export function LogInScreen(props: LogInProps) {
@@ -35,37 +34,37 @@ export function LogInScreen(props: LogInProps) {
   const onEmailChange = (text: string) => {
     setState({
       ...state,
-      email: text,
+      email: text
     });
-  }
+  };
 
   const onPasswordChange = (text: string) => {
     setState({
       ...state,
       password: text
     });
-  }
+  };
 
   const loginUser = () => {
-    
-    props.auth.register('xdbruh@yahoo.com', 'aaaaaaaaaaxd')
+   /*  props.auth
+      .register('user.example@email.com', 'User12345')
       .then(() => {
-        console.log('registered')
+        console.log('Registered');
       })
-      .catch(e => console.error(e));
+      .catch((e) => console.error(e)); */
 
-
-    props.auth.login(state.email, state.password)
+    props.auth
+      .login(state.email, state.password)
       .then(() => {
-        console.log('logged in');
+        console.log('Logged in');
         props.navigation.navigate(props.route.params?.destination);
       })
-      .catch(e => console.error(e));
-  }
+      .catch((e) => console.error(e));
+  };
 
   if (props.auth.isReady() && props.route?.destination !== '') {
     props.navigation.navigate(props.route.params?.destination);
-    return (<NativeBaseProvider></NativeBaseProvider>);
+    return <NativeBaseProvider></NativeBaseProvider>;
   }
 
   return (
