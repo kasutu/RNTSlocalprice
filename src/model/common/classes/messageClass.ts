@@ -1,14 +1,18 @@
+import { FirebaseFirestoreTypes } from '@react-native-firebase/firestore';
 import { uuid } from '../../../api/uuid/index.uuid';
 import { ConversationType, MessageType } from '../../../types/types';
+import { RNTimestamp } from '../utils';
 
 export class Message implements MessageType {
   from: string;
   msg: string;
   id: string;
+  timestamp: FirebaseFirestoreTypes.FieldValue;
 
   constructor(from: string, msg: string) {
     this.from = from;
     this.msg = msg;
+    this.timestamp = RNTimestamp;
     this.id = uuid.v4();
   }
 }

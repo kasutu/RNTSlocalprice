@@ -1,3 +1,6 @@
+import { RNTimestamp } from "../model/common/utils";
+
+
 // ideal for owners and one to many objects
 export interface ObjectType {
   id: string;
@@ -59,6 +62,7 @@ export interface TransactionMetadataType extends ObjectType {
 export interface MessageType extends ObjectType {
   from: string;
   msg: string;
+  timestamp: typeof RNTimestamp;
 }
 
 export interface ConversationType extends ObjectType {
