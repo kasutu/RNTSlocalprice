@@ -7,7 +7,8 @@ import {
   CheckoutScreen,
   NotificationScreen,
   OrderDetailsScreen,
-  ShoppingBagScreen
+  ShoppingBagScreen,
+  LogInScreen
 } from '../view/screens/index.screens';
 
 import GeoqueryDebug from './GeoQueryDebug';
