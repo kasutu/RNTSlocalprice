@@ -1,9 +1,7 @@
 import React from "react";
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import { AllChatsScreen, NotificationScreen, ProfileScreen } from "../screens/index.screens";
-import HomeScreen from "../screens/home/homeScreen.home";
+import { AllChatsScreen, LogInScreen, NotificationScreen, ProfileScreen, ShoppingBagScreen } from "../screens/index.screens";
 import Ionicons from "react-native-vector-icons/Ionicons";
-import FontAwesome from "react-native-vector-icons/FontAwesome";
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 import HomeStack from "./homeStack";
 
@@ -33,7 +31,7 @@ const BottomTabNav = () => {
             />
 
             <Tab.Screen 
-            component={HomeScreen} 
+            component={ShoppingBagScreen} 
             name='Bag' 
             options={{
                 tabBarIcon: ({color: color}) => (
@@ -53,7 +51,7 @@ const BottomTabNav = () => {
             />
 
             <Tab.Screen 
-            component={HomeScreen} 
+            component={LogInScreen} 
             name='Me' 
             options={{
                 tabBarIcon: ({color: color}) => (

@@ -8,11 +8,11 @@ export default function AppDevMode(): ReactNode {
   return (
     <NativeBaseProvider>
       <Box safeArea width={'full'} height={'full'}>
-        {/* <Center bg={'warning.400'} w={'full'} position={'absolute'}>
+        <Center bg={'warning.400'} w={'full'} position={'absolute'}>
           <Text fontSize={'10px'} fontWeight={'bold'}>
             DEVELOPMENT MODE
           </Text>
-        </Center> */}
+        </Center>
 
         {/* <AppTest /> */}
         <ScreensInProgress />
