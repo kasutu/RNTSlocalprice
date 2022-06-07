@@ -4,6 +4,7 @@ import { AllChatsScreen, LogInScreen, NotificationScreen, ProfileScreen, Shoppin
 import Ionicons from "react-native-vector-icons/Ionicons";
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 import HomeStack from "./homeStack";
+import CartScreen from "../screens/cartScreen/cartScreen";
 
 const Tab = createBottomTabNavigator();
 
@@ -31,7 +32,7 @@ const BottomTabNav = () => {
             />
 
             <Tab.Screen 
-            component={ShoppingBagScreen} 
+            component={CartScreen} 
             name='Bag' 
             options={{
                 tabBarIcon: ({color: color}) => (

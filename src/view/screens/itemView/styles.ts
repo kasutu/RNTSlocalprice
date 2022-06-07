@@ -32,6 +32,12 @@ const styles = StyleSheet.create({
         fontSize: 15,
         marginLeft: 4,
         marginBottom: 10
+    },
+    locationText: {
+        fontSize: 20,
+        marginLeft: 4,
+        color: 'black',
+        marginBottom: 10
     }
 });
 

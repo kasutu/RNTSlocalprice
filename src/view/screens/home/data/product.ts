@@ -1,6 +1,6 @@
 export default {
   id: '2',
-  title: "Logitech MX Master 3 Advanced Wireless Mouse for Mac - Bluetooth/USB",
+  title: "Dell XPS 13 Plus 2022 Laptop – Thin and Powerful",
   description: `Features & details
   Display	- 13.4 inches (Full HD+, Full HD, + touch, 3.5K OLED or 4K LCD)
   CPU -	12th Gen Intel Core i5 1240P
@@ -23,7 +23,7 @@ export default {
     'https://techuda.com/wp-content/uploads/2022/03/Dell_XPS_13_Plus-8.jpg',
     'https://techuda.com/wp-content/uploads/2022/03/Dell_XPS_13_Plus-10.jpg',
   ],
-  price: 4500,
+  price: 115000,
   rating: 4,
   location: 'Iloilo City'
 };

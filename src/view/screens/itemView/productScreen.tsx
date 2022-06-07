@@ -43,14 +43,13 @@ const ProductScreen = () => {
         </View>
 
         {/* Location */}
-        <Text style={styles.location}>{product.location}</Text>
+        <Text style={styles.locationText}>{product.location}</Text>
 
         {/* Description */}
         <Text style={styles.description}>{product.description}</Text>
 
         {/* quantity selector */}
           <QuantityButton quantity={quantity} setQuantity={setQuantity}/>
-        
       </ScrollView>
 
       {/* button */}
