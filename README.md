@@ -1,6 +1,6 @@
 # Localprice
 
-### An ecomerce app.
+### An ecommerce app.
 
 Mission Vision
 
