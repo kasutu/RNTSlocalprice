@@ -10,7 +10,7 @@ import HomeIconButtonsFooter from '../../general/footer/home.iconButtons.footer'
 const HomeScreen = () => {
   return (
     <>
-    <Box marginTop={'2'}><HomeSearch /></Box>
+    {/* <Box marginTop={'2'}><HomeSearch /></Box>
       <Center width={'full'} paddingY={'2'}>
         <HStack space={3}>
           <FilterButton value="All" />
@@ -21,7 +21,7 @@ const HomeScreen = () => {
 
           <FilterButton value="Filter" />
         </HStack>
-      </Center>
+      </Center> */}
       
       <View style={styles.page}>
         <FlatList
