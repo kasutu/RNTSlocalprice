@@ -9,7 +9,6 @@ import {
 } from 'native-base';
 import React, { useState } from 'react';
 import { Keyboard } from 'react-native';
-import Db from '../api/firebase/db.firebase';
 import { Message } from '../model/common/classes/messageClass';
 import {
   addConversationHandler,
@@ -18,15 +17,12 @@ import {
   documentGetCollectionHandler,
   documentUpdateHandler,
   getAllMessagesHandler,
-  isExisting,
-  NewMessage
+  sendNewMessageHandler
 } from '../model/common/utils';
-import { MessageType } from '../types/types';
+import convoStore from '../model/convoStore/convoStore';
+import TextRender from './textRender';
 
 export default function UtilTester() {
-  const [currentConvoId, setCurrentConvoId] = useState<string>('');
-  const [messages, setMessages] = useState<MessageType[]>([]);
-
   const convoOwners = {
     buyerName: 'jam',
     sellerName: 'jiv'
@@ -89,13 +85,13 @@ export default function UtilTester() {
             <Button
               bg={from === convoOwners.sellerName ? 'orange.900' : 'muted.400'}
               onPress={() => setFrom(convoOwners.sellerName)}
-            >{`Buyer: ${convoOwners.sellerName}`}</Button>
+            >{`Seller: ${convoOwners.sellerName}`}</Button>
           </HStack>
           <Text>conversation id:</Text>
           <Input
-            value={currentConvoId}
+            value={convoStore.currentConvoId}
             placeholder="conversation id (if any)"
-            onChangeText={(val) => setCurrentConvoId(val)}
+            onChangeText={(val) => (convoStore.currentConvoId = val)}
           />
 
           <Input
@@ -104,33 +100,21 @@ export default function UtilTester() {
             onChangeText={(val) => setMsg(val)}
           />
           <Button
-            onPress={async () => {
+            onPress={() => {
               setMsg('');
               Keyboard.dismiss();
-
-              /**
-               * checks if id exists then send message else make a new one
-               */
-              if (await isExisting('conversations', currentConvoId)) {
-                NewMessage(from, msg, currentConvoId);
-              } else {
-                NewMessage(from, msg, convoOwners, (val) =>
-                  setCurrentConvoId(val)
-                );
-              }
-
-              getAllMessagesHandler(currentConvoId, (arr) => {
-                setMessages(arr);
-              });
+              sendNewMessageHandler(convoOwners, from, msg);
             }}
           >
             {'send'}
           </Button>
+          <Button onPress={() => getAllMessagesHandler()}>
+            {'init listener (press once)'}
+          </Button>
         </VStack>
         <VStack>
-          {messages.map((msg) => {
-            return <Text key={msg.id}>{`${msg.from}: ${msg.msg}`}</Text>;
-          })}
+          {/* text render here */}
+          <TextRender />
         </VStack>
       </Box>
     </NativeBaseProvider>

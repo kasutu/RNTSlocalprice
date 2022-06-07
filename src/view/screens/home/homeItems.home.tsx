@@ -19,7 +19,7 @@ const HomeItems = ({ item }: ProductProps) => {
   const navigation = useNavigation<NativeStackNavigationProp<any>>();
 
   const onPress = () => {
-    navigation.navigate('ProductDetails', {id: item.id});
+    navigation.navigate('ProductDetails', { id: item.id });
   };
   return (
     <Pressable onPress={onPress} style={styles.root}>
@@ -29,15 +29,15 @@ const HomeItems = ({ item }: ProductProps) => {
           {item.title}
         </Text>
         <View style={styles.ratings}>
-          {[0,0,0,0,0].map((el, i) => 
+          {[0, 0, 0, 0, 0].map((el, i) => (
             <AntDesign
               key={`${item.id} - ${i}`}
               style={styles.star}
-              name={i < item.rating ? 'star': 'staro'}
+              name={i < item.rating ? 'star' : 'stars'}
               size={18}
               color={'#e47911'}
             />
-          )}
+          ))}
 
           <Text>{item.rating}</Text>
         </View>
