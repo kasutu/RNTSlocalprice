@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet} from 'react-native';
+import { View, Text, StyleSheet, ScrollView} from 'react-native';
 import product from '../home/data/product';
 import styles from './styles';
 import QuantityButton from './quantityButton';
@@ -14,7 +14,7 @@ const ProductScreen = () => {
 
   return (
     <>
-      <View>
+      <ScrollView>
         {/* image carousle */}
         <ImageScroll images={product.images} />
 
@@ -39,8 +39,11 @@ const ProductScreen = () => {
 
           {/* locationButton */}
           <ShowLocationButton/>
-          
+
         </View>
+
+        {/* Location */}
+        <Text style={styles.location}>{product.location}</Text>
 
         {/* Description */}
         <Text style={styles.description}>{product.description}</Text>
@@ -48,11 +51,12 @@ const ProductScreen = () => {
         {/* quantity selector */}
           <QuantityButton quantity={quantity} setQuantity={setQuantity}/>
         
-      </View>
+      </ScrollView>
 
       {/* button */}
       <View>
-      <Center marginTop={4}>
+        
+      <Center marginBottom={2} marginTop={2}>
         <HollowAndSolidButton
           hollowButtonValue="Buy Now"
           solidButtonValue="Add to Cart"

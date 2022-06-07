@@ -12,6 +12,7 @@ const styles = StyleSheet.create({
     image: {
       flex: 2,
       height: 150,
+      width: 150,
       resizeMode: 'contain',
     },  
     rightDetails: {
@@ -33,7 +34,10 @@ const styles = StyleSheet.create({
       color: "#692abb"
     },
     star: {
-        margin: 2,
+      margin: 2,
+    },
+    location: {
+      color: 'black'
     }
   });
 
