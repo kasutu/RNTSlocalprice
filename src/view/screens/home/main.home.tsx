@@ -12,7 +12,7 @@ import HomeIconButtonsFooter from '../../general/footer/home.iconButtons.footer'
 import { SearchHeader } from '../../general/header/headers';
 import FilterButton from './filterButton';
 
-export function MainHomeScreen() {
+export function MainHomeScreen({ navigation }) {
   return (
     <NativeBaseProvider>
       <Box safeArea width={'full'} height={'full'} position={'absolute'}>

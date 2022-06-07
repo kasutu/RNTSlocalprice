@@ -9,9 +9,7 @@ import {
   hollowHomeIcon
 } from '../icons/localprice.icons';
 
-export default function ChatIconButtonsFooter({
-  navigation,
-}: FooterProps) {
+export default function ChatIconButtonsFooter({ navigation }: FooterProps) {
   return (
     <>
       <Box safeAreaBottom />
@@ -24,7 +22,9 @@ export default function ChatIconButtonsFooter({
               color="black"
               fontSize="15"
               fontWeight="normal"
-              onPress={() => navigation.navigate('Home')}
+              onPress={() =>
+                navigation.navigate('MainHomeScreen')
+              }
             >
               Home
             </Text>
@@ -46,7 +46,11 @@ export default function ChatIconButtonsFooter({
           <Pressable>
             <IconButton
               icon={hollowBagIcon}
-              onPress={() => navigation.navigate('LogInScreen', { destination: 'ShoppingBagScreen' })}
+              onPress={() =>
+                navigation.navigate('LogInScreen', {
+                  destination: 'ShoppingBagScreen'
+                })
+              }
             />
             <Text
               textAlign={'center'}
@@ -60,7 +64,11 @@ export default function ChatIconButtonsFooter({
           <Pressable>
             <IconButton
               icon={hollowNotifIcon}
-              onPress={() => navigation.navigate('LogInScreen', { destination: 'NotificationView' })}
+              onPress={() =>
+                navigation.navigate('LogInScreen', {
+                  destination: 'NotificationView'
+                })
+              }
             />
             <Text
               textAlign={'center'}
@@ -74,7 +82,11 @@ export default function ChatIconButtonsFooter({
           <Pressable>
             <IconButton
               icon={hollowProfileIcon}
-              onPress={() => navigation.navigate('LogInScreen', { destination: 'ProfileScreen' })}
+              onPress={() =>
+                navigation.navigate('LogInScreen', {
+                  destination: 'ProfileScreen'
+                })
+              }
             />
             <Text
               textAlign={'center'}

@@ -1,5 +1,4 @@
 import auth, { FirebaseAuthTypes } from '@react-native-firebase/auth';
-import { DeviceEventEmitter } from 'react-native';
 
 export default class Authentication {
   private _user: FirebaseAuthTypes.User | null = null
