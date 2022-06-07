@@ -2,6 +2,7 @@ import firebase from '@react-native-firebase/app';
 import { runInAction } from 'mobx';
 import Db from '../../api/firebase/db.firebase';
 import { firestoreDocumentData } from '../../api/geoquery/common/definitions';
+import { ReactNativeGeoPoint } from '../../api/geoquery/common/util';
 import {
   Collections,
   GenericObjectType,
@@ -23,7 +24,7 @@ export const RNTimestamp = firebase.firestore.FieldValue.serverTimestamp();
  */
 export function documentUpdateHandler(
   collection: string,
-  newData: { targetId: string; data: GenericObjectType }
+  newData: { targetId: string; data: GenericObjectType | ReactNativeGeoPoint }
 ): void {
   const ref = Db.collection(collection);
 
