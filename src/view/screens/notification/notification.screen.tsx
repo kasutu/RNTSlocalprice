@@ -9,7 +9,8 @@ import {
   Pressable,
   ScrollView,
   Text,
-  VStack
+  VStack,
+  Image
 } from 'native-base';
 import { TitleAndBackButtonHeader } from '../../general/header/headers';
 
@@ -101,11 +102,12 @@ function NotifCard() {
           width={'20'}
           height={'20'}
           backgroundColor={'muted.500'}
-          borderRadius={10}
+          
         >
-          <Text fontSize={'10'}>Placeholder</Text>
+         <Image source={{
+      uri: "https://www.notebookcheck.net/fileadmin/Notebooks/News/_nc3/Untitled1569.png"
+    }}  alt="Alternate Text" size="full"/>
         </Center>
-
         {/* TEXT PORTION */}
         <VStack flex={1}>
           <HStack justifyContent={'space-between'}>

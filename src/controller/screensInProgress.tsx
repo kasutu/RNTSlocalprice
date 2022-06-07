@@ -20,17 +20,17 @@ export function ScreensInProgress() {
       {/* <CheckoutScreen /> */}
       {/* <OrderDetailsScreen /> */}
       {/* <ChatScreen /> */}
-      {/* <NotificationScreen /> */}
+       <NotificationScreen /> 
       {/* <ShoppingBagScreen navigation={''} /> */}
       {/* <MapViewComponent /> */}
       {/* <MainHomeScreen navigation={undefined}/> */}
       {/* <ItemScreen /> */}
       {/* <HomeScreen/> */}
       {/* <ProductScreen/> */}
-      <Router/>
+     {/* <Router/>*/}
 
       {/* <GeoqueryDebug /> */}
-      {/* <UtilTester /> */}
+       {/*(<UtilTester /> */}
     </>
   );
 }
