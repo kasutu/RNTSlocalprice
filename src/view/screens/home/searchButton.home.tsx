@@ -10,31 +10,21 @@ export function HomeSearch({ onPressHandler }: HeaderProps) {
       <>
         <StatusBar backgroundColor="white" barStyle="dark-content" />
         <Box safeArea>
-          <HStack alignItems="center">
-            <HStack alignItems="center" space={2}>
-              <IconButton
-                icon={arrowBack}
-                onPress={
-                  onPressHandler
-                    ? onPressHandler
-                    : () => console.log('BACK Button pressed ')
-                }
-              />
+          
   
               {/* search input */}
               <Input
                 variant="filled"
                 placeholder={'Search'}
                 placeholderTextColor={'black'}
+                alignSelf={'center'}
                 width={'full'}
-                maxWidth={'300'}
+                maxWidth={360}
                 height={'10'}
                 bgColor={InputColor}
                 borderColor={InputColor}
                 borderRadius={'full'}
               />
-            </HStack>
-          </HStack>
         </Box>
       </>
     );
