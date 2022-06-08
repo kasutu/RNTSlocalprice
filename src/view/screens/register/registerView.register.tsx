@@ -18,14 +18,14 @@ import { eyeIcon } from '../../general/icons/localprice.icons';
 import RegisterButton from '../../general/buttons/register.button';
 import Authentication from '../../../api/firebase/authentications';
 
-interface LogInProps {
+/* interface LogInProps {
   navigation: any;
   auth: Authentication;
   route?: any;
 }
-
-export function RegisterScreen(props: LogInProps) {
-  const [state, setState] = React.useState({
+ */
+export function RegisterScreen(/* props: LogInProps */) {
+  /* const [state, setState] = React.useState({
     fullName: '',
     userName: '',
     email: '',
@@ -67,7 +67,7 @@ export function RegisterScreen(props: LogInProps) {
       confirmPassword: text
     });
   };
-
+ */
   return (
     <NativeBaseProvider>
       <Box safeArea width={'full'} height={'full'} position={'absolute'}>
@@ -84,10 +84,10 @@ export function RegisterScreen(props: LogInProps) {
           <VStack space={5} alignItems={'center'}>
             <TextInput
               placeholder="Full Name"
-              onChangeText={onFullNameChange}
+              /* onChangeText={onFullNameChange} */
             />
-            <TextInput placeholder="Username" onChangeText={onUserNameChange} />
-            <TextInput placeholder="Email" onChangeText={onEmailChange} />
+            <TextInput placeholder="Username" /* onChangeText={onUserNameChange}  *//>
+            <TextInput placeholder="Email" /* onChangeText={onEmailChange} */ />
             <Input
               variant="filled"
               placeholder={'Password'}
@@ -104,7 +104,7 @@ export function RegisterScreen(props: LogInProps) {
                   onPress={() => console.log('eye pressed ')}
                 />
               }
-              onChangeText={onPasswordChange}
+              /* onChangeText={onPasswordChange} */
             />
             <Input
               variant="filled"
@@ -122,7 +122,7 @@ export function RegisterScreen(props: LogInProps) {
                   onPress={() => console.log('eye pressed ')}
                 />
               }
-              onChangeText={onConfirmPasswordChange}
+             /*  onChangeText={onConfirmPasswordChange} */
             />
           </VStack>
         </VStack>

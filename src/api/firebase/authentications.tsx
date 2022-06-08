@@ -1,20 +1,19 @@
 import auth, { FirebaseAuthTypes } from '@react-native-firebase/auth';
+import { DeviceEventEmitter } from 'react-native';
 
 export default class Authentication {
-  private _user: FirebaseAuthTypes.User | null = null
+  private _user: FirebaseAuthTypes.User | null = null;
   private _initializing: boolean = true;
 
   async login(email: string, password: string) {
-    const result = await auth()
-      .signInWithEmailAndPassword(email, password);
+    const result = await auth().signInWithEmailAndPassword(email, password);
 
     this._user = result.user;
     this._initializing = false;
   }
 
   async register(email: string, password: string) {
-    const result = await auth()
-      .createUserWithEmailAndPassword(email, password);
+    const result = await auth().createUserWithEmailAndPassword(email, password);
 
     this._user = result.user;
     this._initializing = false;

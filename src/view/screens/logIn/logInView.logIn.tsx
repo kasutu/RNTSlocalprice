@@ -15,14 +15,14 @@ import TextInput from '../../general/forms/textInput.form';
 import { InputColor } from '../../general/colors/localprice.colors';
 import { eyeIcon } from '../../general/icons/localprice.icons';
 import LogInButton from '../../general/buttons/logIn.button';
-import Authentication from './../../../api/firebase/authentications';
+import Authentication from '../../../api/firebase/authentications';
 
 const appLogo = require('../../../assets/appLogo.png');
 
 interface LogInProps {
-  navigation: any;
-  auth: Authentication;
-  route?: any;
+  navigation: any,
+  auth: Authentication,
+  route?: any,
 }
 
 export function LogInScreen(props: LogInProps) {
@@ -64,7 +64,7 @@ export function LogInScreen(props: LogInProps) {
 
   if (props.auth.isReady() && props.route?.destination !== '') {
     props.navigation.navigate(props.route.params?.destination);
-    return <NativeBaseProvider></NativeBaseProvider>;
+    return (<NativeBaseProvider></NativeBaseProvider>);
   }
 
   return (
