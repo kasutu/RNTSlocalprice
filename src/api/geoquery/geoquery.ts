@@ -1,20 +1,22 @@
-import { FirebaseFirestoreTypes } from '@react-native-firebase/firestore';
-import { distanceBetween, geohashQueryBounds } from 'geofire-common';
-import { runInAction } from 'mobx';
-import {
-  documentAddHandler,
-  documentUpdateHandler
-} from '../../model/common/utils';
+import Db from '../firebase/db.firebase';
 import geopointStore from '../../model/geopointStore/geopointStore';
 import geoStore from '../../model/geoQueryStore/geoQuery.store';
-import Db from '../firebase/db.firebase';
 import {
   CollectionRef,
   GeoLocationsRef,
   ObjectBasicInfo,
   ObjectWithGeoPoint
 } from './common/definitions';
+import { distanceBetween, geohashQueryBounds } from 'geofire-common';
+import {
+  documentAddHandler,
+  documentUpdateHandler
+} from '../../model/common/utils';
+import { GenericObjectType } from '../../types/types';
 import { ReactNativeGeoPoint } from './common/util';
+import { runInAction } from 'mobx';
+import { uuid } from '../uuid/index.uuid';
+import userStore from '../../model/UserStore/UserStore';
 
 export class ReactNativeGeofire {
   // Add the hash and the lat/lng to the document. We will use the hash
@@ -30,16 +32,22 @@ export class ReactNativeGeofire {
   /**
    * @function add add a custom GeoDocument to firebase
    *
-   * @param object accepts any objecs
+   * @param object accepts any objects
    * @param lat latitude
    * @param lng longitude
    * @param ref collection reference
    */
-  public add(object: ObjectBasicInfo | {}, lat: number, lng: number): void {
-    let recentGeopoint: ReactNativeGeoPoint = new ReactNativeGeoPoint(lat, lng);
+  public add(object: GenericObjectType, lat: number, lng: number): void {
+    const recentGeopoint: ReactNativeGeoPoint = new ReactNativeGeoPoint(
+      lat,
+      lng
+    );
+    const id: string = uuid.v4();
+
     // uploads to database
-    let geoObject = { ...object, geopoint: recentGeopoint };
+    let geoObject = { ...object, id, geopoint: recentGeopoint };
     geopointStore.recentGeopoint = geoObject.geopoint;
+    userStore.geoPointId = id;
     documentAddHandler(this.collectionRef, geoObject);
   }
 
@@ -62,7 +70,7 @@ export class ReactNativeGeofire {
    *
    * @param lat latitude
    * @param lng longitude
-   * @param radiusInKm radius in kilimeter
+   * @param radiusInKm radius in kilometer
    * @param ref collection reference
    */
   public query(lat: number, lng: number, radiusInKm: number) {
