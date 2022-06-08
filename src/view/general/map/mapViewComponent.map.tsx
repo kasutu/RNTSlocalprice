@@ -5,24 +5,23 @@ import React, { useEffect, useState } from 'react';
 import { LocationIcon } from '../icons/localprice.icons';
 import { StyleSheet, Text, View } from 'react-native';
 import Geolocation from '@react-native-community/geolocation';
+import { runInAction } from 'mobx';
 
 export function MapViewComponent() {
   const [show, setShow] = useState(false);
-  const initialRegion = {
-    latitude: 10.885762273697036,
+
+  let initialRegion = {
+    latitude: 10.71981501905315,
     latitudeDelta: 0.02162698862344392,
-    longitude: 122.6996417529881,
+    longitude: 122.56110632792117,
     longitudeDelta: 0.011763162910938263
   };
-
-  useEffect(() => {
-    Geolocation.getCurrentPosition((info) => console.log(info));
-  }, []);
 
   return (
     <View style={styles.map}>
       <MapView
         initialRegion={initialRegion}
+        followsUserLocation={true}
         onMarkerPress={() => setShow(false)}
         onMarkerDeselect={() => setShow(true)}
         onPanDrag={() => setShow(true)}
@@ -33,7 +32,6 @@ export function MapViewComponent() {
         provider={'google'}
         style={styles.map}
         onRegionChangeComplete={(region) => {
-          console.log(region);
           mapCoordsStore.data = region;
         }}
       >
