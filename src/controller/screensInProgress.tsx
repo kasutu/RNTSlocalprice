@@ -23,7 +23,7 @@ export function ScreensInProgress() {
       {/* <CheckoutScreen /> */}
       {/* <OrderDetailsScreen /> */}
       {/* <ChatScreen /> */}
-      {/* <NotificationScreen /> */}
+       {/* <NotificationScreen />  */}
       {/* <ShoppingBagScreen navigation={''} /> */}
       {/* <MapViewComponent /> */}
       {/* <MainHomeScreen navigation={undefined}/> */}
@@ -34,6 +34,7 @@ export function ScreensInProgress() {
       <MapScreen />
 
       {/* <GeoqueryDebug /> */}
+      {/*<UtilTester />*/}
       {/* <UtilTester /> */}
     </>
   );
