@@ -32,7 +32,7 @@ export function ScreensInProgress() {
       {/* <Router/> */}
 
       {/* <GeoqueryDebug /> */}
-      <UtilTester />
+      {/*<UtilTester />*/}
     </>
   );
 }
