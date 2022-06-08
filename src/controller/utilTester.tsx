@@ -38,7 +38,7 @@ export default function UtilTester() {
         <VStack space={1}>
           <Button
             onPress={() =>
-              documentAddHandler('basil', new Message('hiho', 'hello world'))
+              documentAddHandler('basil', new Message('test', 'hello'))
             }
           >
             {'add doc'}
@@ -57,7 +57,7 @@ export default function UtilTester() {
             onPress={() =>
               documentDeleteHandler(
                 'basil',
-                'd97ae85d-b24a-4dfa-8084-3b12ab2497d4'
+                '3f77c92f-1825-4fa1-bc1e-6f3ca3241b13'
               )
             }
           >
@@ -65,7 +65,7 @@ export default function UtilTester() {
           </Button>
           <Button
             onPress={() =>
-              documentGetCollectionHandler('jiv', (e) => console.log(e))
+              documentGetCollectionHandler('basil', (e) => console.log(e))
             }
           >
             {'get collection'}

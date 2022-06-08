@@ -1,5 +1,4 @@
-import { RNTimestamp } from "../model/common/utils";
-
+import { RNTimestamp } from '../model/common/utils';
 
 // ideal for owners and one to many objects
 export interface ObjectType {
@@ -36,8 +35,11 @@ export interface UserDataType {
   fullName: string;
   userId: string;
   contactNumber: string;
-  address: string;
-  geohash: string;
+  brgy: string;
+  town: string;
+  city: string;
+  zipCode: string | number;
+  geoPointId: string;
   transactionIds: string[];
   convoIds: string[];
 }
@@ -62,10 +64,15 @@ export interface TransactionMetadataType extends ObjectType {
 export interface MessageType extends ObjectType {
   from: string;
   msg: string;
-  timestamp: typeof RNTimestamp;
+  timestamp?: typeof RNTimestamp;
 }
 
 export interface ConversationType extends ObjectType {
+  buyerName: string;
+  sellerName: string;
+}
+
+export interface ConversationOwnersType {
   buyerName: string;
   sellerName: string;
 }

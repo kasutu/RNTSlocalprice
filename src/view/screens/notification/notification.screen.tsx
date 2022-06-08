@@ -4,12 +4,12 @@ import {
   Box,
   Center,
   Checkbox,
-  Container,
   HStack,
   Pressable,
   ScrollView,
   Text,
-  VStack
+  VStack,
+  Image
 } from 'native-base';
 import { TitleAndBackButtonHeader } from '../../general/header/headers';
 
@@ -19,10 +19,13 @@ const price: string = 'P100,000';
 const ratings: string = '5.0';
 const location: string = 'Iloilo';
 
-export function NotificationScreen() {
+export function NotificationScreen({ navigation }) {
   return (
     <Box safeArea width={'full'} height={'full'} position={'absolute'}>
-      <TitleAndBackButtonHeader title="Notification" />
+      <TitleAndBackButtonHeader
+        title="Notification"
+        onPressHandler={() => navigation.navigate('MainHomeScreen')}
+      />
 
       <VStack paddingX={5}>
         <HStack space={'3'} marginBottom={3} justifyContent={'space-between'}>
@@ -38,6 +41,7 @@ export function NotificationScreen() {
                 height: 15
               }}
               _text={{ fontSize: '12' }}
+              value={''}
             >
               Select All
             </Checkbox>
@@ -97,15 +101,15 @@ function NotifCard() {
         />
 
         {/* PHOTO PLACEHOLDER */}
-        <Center
-          width={'20'}
-          height={'20'}
-          backgroundColor={'muted.500'}
-          borderRadius={10}
-        >
-          <Text fontSize={'10'}>Placeholder</Text>
+        <Center width={'20'} height={'20'} backgroundColor={'muted.500'}>
+          <Image
+            source={{
+              uri: 'https://www.notebookcheck.net/fileadmin/Notebooks/News/_nc3/Untitled1569.png'
+            }}
+            alt="Alternate Text"
+            size="full"
+          />
         </Center>
-
         {/* TEXT PORTION */}
         <VStack flex={1}>
           <HStack justifyContent={'space-between'}>

@@ -3,6 +3,7 @@ import { ReactNativeGeoPoint } from '../../api/geoquery/common/util';
 import { UserDataType, UserRole } from '../../types/types';
 import { documentAddHandler } from '../common/utils';
 import geopointStore from '../geopointStore/geopointStore';
+import mapCoordsStore from '../mapCoordsStore/mapCoordsStore';
 
 export class UserStore implements UserDataType {
   /**
@@ -45,6 +46,10 @@ export class UserStore implements UserDataType {
     this.geoPointId = '';
     this.transactionIds = [];
     this.convoIds = [];
+  }
+
+  public addToDatabase() {
+    documentAddHandler('users', this);
   }
 }
 

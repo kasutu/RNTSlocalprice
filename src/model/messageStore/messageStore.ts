@@ -33,7 +33,7 @@ export class MessageStore {
 const messageStore = new MessageStore();
 
 /**
- * @exports geoStore
+ * @exports messageStore
  * import this to any screen and use a dot notation
  * geoStore.dacs // exposes the docs contents
  */
