@@ -11,8 +11,8 @@ export default [
     id: '2',
     title: "Dell XPS 13 Plus 2022 Laptop – Thin and Powerful",
     image: 'https://techuda.com/wp-content/uploads/2022/03/Dell_XPS_13_Plus-1-e1647158175696.jpg',
-    rating: 5,
-    price: 1500,
+    rating: 4,
+    price: 115000,
     location: 'Mandurriao'
   },
   {
@@ -68,7 +68,7 @@ export default [
     title: "Dell G7 Inch Gaming Laptop with Intel 10th Gen Cpu",
     image: 'https://i.dell.com/is/image/DellContent//content/dam/ss2/product-images/dell-client-products/notebooks/g-series/17-7700/global-spi/ng/notebook-g7-17-7700-campaign-hero-504x350-ng.psd?fmt=jpg',
     rating: 4,
-    price: 800,
+    price: 105000,
     location: 'Iloilo City'
   },
   {
@@ -76,7 +76,7 @@ export default [
     title: "Apple Watch Series & GPS + Cellular, 45mm Blue Aluminum Case with Abyss Blue Sport Band",
     image: 'https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/MKUW3_VW_34FR+watch-45-alum-blue-cell-7s_VW_34FR_WF_CO?wid=1400&hei=1400&trim=1%2C0&fmt=p-jpg&qlt=95&.v=1632171100000%2C1631661588000',
     rating: 4,
-    price: 800,
+    price: 37000,
     location: 'Iloilo City'
   },
   {
@@ -84,7 +84,7 @@ export default [
     title: "NBA Xiaomi Mi 11 Ultra (12GB + 256Gb) Black",
     image: 'https://www.xda-developers.com/files/2021/04/Xiaomi-Mi-11-Ultra.png',
     rating: 4,
-    price: 800,
+    price: 52000,
     location: 'Iloilo City'
   },
   {
@@ -92,7 +92,7 @@ export default [
     title: "Apple iMac (4.5k retina, 24-inche, 2021)",
     image: 'https://www.imore.com/sites/imore.com/files/styles/large_wm_brw/public/field/image/2021/07/blue-imac-2021-hero.jpg',
     rating: 4,
-    price: 800,
+    price: 160000,
     location: 'Iloilo City'
   },
 ];

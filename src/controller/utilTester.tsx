@@ -20,6 +20,7 @@ import {
   sendNewMessageHandler
 } from '../model/common/utils';
 import convoStore from '../model/convoStore/convoStore';
+import temptransactionstore from '../model/transactionStore/tempTransactio';
 import TextRender from './textRender';
 
 export default function UtilTester() {
@@ -110,6 +111,14 @@ export default function UtilTester() {
           </Button>
           <Button onPress={() => getAllMessagesHandler()}>
             {'init listener (press once)'}
+          </Button>
+          <Button
+            onPress={() => {
+              temptransactionstore.buyerId = 'basilio'
+              temptransactionstore.addToDatabase();
+            }}
+          >
+            {'tranaction'}
           </Button>
         </VStack>
         <VStack>

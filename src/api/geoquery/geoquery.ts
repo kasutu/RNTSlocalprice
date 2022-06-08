@@ -1,5 +1,10 @@
+import { FirebaseFirestoreTypes } from '@react-native-firebase/firestore';
 import { distanceBetween, geohashQueryBounds } from 'geofire-common';
 import { runInAction } from 'mobx';
+import {
+  documentAddHandler,
+  documentUpdateHandler
+} from '../../model/common/utils';
 import geopointStore from '../../model/geopointStore/geopointStore';
 import geoStore from '../../model/geoQueryStore/geoQuery.store';
 import Db from '../firebase/db.firebase';
@@ -15,9 +20,11 @@ export class ReactNativeGeofire {
   // Add the hash and the lat/lng to the document. We will use the hash
   // for queries and the lat/lng for distance comparisons.
   protected ref: CollectionRef;
+  protected collectionRef: string;
 
   constructor(CollectionRef: GeoLocationsRef | string) {
     this.ref = Db.collection(CollectionRef);
+    this.collectionRef = CollectionRef;
   }
 
   /**
@@ -28,23 +35,12 @@ export class ReactNativeGeofire {
    * @param lng longitude
    * @param ref collection reference
    */
-  public add(
-    object: ObjectBasicInfo | {},
-    lat: number,
-    lng: number,
-    ref?: string
-  ): void {
-    if (ref) {
-      this.ref = Db.collection(ref);
-    }
-
+  public add(object: ObjectBasicInfo | {}, lat: number, lng: number): void {
     let recentGeopoint: ReactNativeGeoPoint = new ReactNativeGeoPoint(lat, lng);
-
     // uploads to database
     let geoObject = { ...object, geopoint: recentGeopoint };
-    this.ref
-      .add(geoObject)
-      .then(() => (geopointStore.recentGeopoint = recentGeopoint));
+    geopointStore.recentGeopoint = geoObject.geopoint;
+    documentAddHandler(this.collectionRef, geoObject);
   }
 
   /**
@@ -54,33 +50,11 @@ export class ReactNativeGeofire {
    * @param geopoint
    * @param ref
    */
-  public update(targetGeohash: string, Lat: number, lng: number, ref?: string) {
-    if (ref) {
-      this.ref = Db.collection(ref);
-    }
-
-    // stores the documentId
-    let documentIdSnap: string;
-
-    // fresh recent geopoint
-    let newGeopoint = new ReactNativeGeoPoint(Lat, lng);
-
-    // returns an object when matched
-    this.ref
-      .where('geopoint.geohash', '==', targetGeohash)
-      .limit(1)
-      .get()
-      .then((snapshots) => {
-        // saves the first result
-        snapshots.docs.forEach((snap) => (documentIdSnap = snap.id));
-
-        return documentIdSnap;
-      })
-      .then((SnapId) => {
-        this.ref.doc(SnapId).update({
-          geopoint: newGeopoint
-        });
-      });
+  public update(targetGeohash: string, Lat: number, lng: number) {
+    documentUpdateHandler('geoPoints', {
+      targetId: targetGeohash,
+      data: new ReactNativeGeoPoint(Lat, lng)
+    });
   }
 
   /**
@@ -91,11 +65,7 @@ export class ReactNativeGeofire {
    * @param radiusInKm radius in kilimeter
    * @param ref collection reference
    */
-  public query(lat: number, lng: number, radiusInKm: number, ref?: string) {
-    if (ref) {
-      this.ref = Db.collection(ref);
-    }
-
+  public query(lat: number, lng: number, radiusInKm: number) {
     // Find cities within 2km of barotac nuevo
     const center = [lat, lng];
     const radiusInM = radiusInKm * 1000;
@@ -137,7 +107,7 @@ export class ReactNativeGeofire {
         // Process the matching documents
         // store matching doc data to  persisted client storage
 
-        // empties the array first before reendering
+        // empties the array first before rendering
         runInAction(() => geoStore.empty());
 
         matchingDocs.forEach((doc) => {

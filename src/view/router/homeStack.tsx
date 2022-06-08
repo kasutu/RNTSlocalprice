@@ -4,6 +4,7 @@ import HomeScreen from '../screens/home/homeScreen.home';
 import ProductScreen from '../screens/itemView/productScreen';
 import { SafeAreaView, TextInput } from 'react-native';
 import { InputColor } from '../general/colors/localprice.colors';
+import CartScreen from '../screens/cartScreen/cartScreen';
 
 const Stack = createStackNavigator();
 

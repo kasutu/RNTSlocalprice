@@ -1,27 +1,50 @@
 import { makeAutoObservable } from 'mobx';
-import { UserDataType } from '../../types/types';
+import { ReactNativeGeoPoint } from '../../api/geoquery/common/util';
+import { UserDataType, UserRole } from '../../types/types';
+import { documentAddHandler } from '../common/utils';
+import geopointStore from '../geopointStore/geopointStore';
 
-export class UserStore {
+export class UserStore implements UserDataType {
   /**
    * atleast 1 property to hold data
    * you want to broadcast all over any screen
    */
-  public data: UserDataType = {
-    role: 'seller',
-    email: '',
-    fullName: '',
-    userId: '',
-    contactNumber: '',
-    address: '',
-    geohash: '',
-    transactionIds: [],
-    convoIds: []
-  };
+  public role: UserRole = 'not logged in';
+  public email: string = '';
+  public fullName: string = '';
+  public userId: string = '';
+  public contactNumber: string = '';
+  public brgy: string = '';
+  public town: string = '';
+  public city: string = '';
+  public zipCode: string | number = '';
+  public geoPointId: string = '';
+  public transactionIds: string[] = [];
+  public convoIds: string[] = [];
 
   constructor() {
     // let MobX observe this class and use this to any screen
     // important
     makeAutoObservable(this);
+  }
+
+  public addToServer() {
+    documentAddHandler('user', this);
+  }
+
+  public clear() {
+    this.role = 'not logged in';
+    this.email = '';
+    this.fullName = '';
+    this.userId = '';
+    this.contactNumber = '';
+    this.brgy = '';
+    this.town = '';
+    this.city = '';
+    this.zipCode = '';
+    this.geoPointId = '';
+    this.transactionIds = [];
+    this.convoIds = [];
   }
 }
 
