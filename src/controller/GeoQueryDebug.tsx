@@ -1,7 +1,7 @@
 import geopointStore from '../model/geopointStore/geopointStore';
 import mapCoordsStore from '../model/mapCoordsStore/mapCoordsStore';
 import React, { useState } from 'react';
-import TextDisplay from '../../test/textrenedere';
+import TextDisplay from '../../test/textDisplay';
 import { Box, Button, Input, VStack } from 'native-base';
 import { MapViewComponent } from '../view/general/map/mapViewComponent.map';
 import { ReactNativeGeofire } from '../api/geoquery/geoquery';
