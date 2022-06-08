@@ -136,6 +136,8 @@ export function addConversationHandler(
 export function addMessageHandler(convoId: string, from: string, msg: string) {
   const message = new Message(from, msg);
 
+  runInAction(() => convoStore.data.push(message));
+
   // adds a message to an existing convo
   Db.collection('conversations')
     .doc(convoId)
@@ -195,7 +197,7 @@ export async function isExisting(collection: Collections | string, id: string) {
   return result.exists;
 }
 
-export async function getAllMessagesHandler() {
+export function getAllMessagesHandler() {
   let retries = 0;
 
   while (
@@ -218,7 +220,7 @@ export async function getAllMessagesHandler() {
         messages.push(msg.data() as MessageType);
       });
 
-      runInAction(() => (messageStore.data = messages));
+      runInAction(() => (convoStore.data = messages));
     });
 }
 
