@@ -4,29 +4,27 @@ import { FooterProps } from '../../../types/footerProps.type';
 import {
   hollowNotifIcon,
   hollowBagIcon,
+  solidChatIcon,
   hollowProfileIcon,
-  hollowHomeIcon,
-  solidChatIcon
+  hollowHomeIcon
 } from '../icons/localprice.icons';
 
-export default function ChatIconButtonsFooter({ navigation, onPressHandler }: FooterProps) {
+export default function ChatIconButtonsFooter({ navigation }: FooterProps) {
   return (
     <>
       <Box safeAreaBottom />
       <Center>
         <HStack alignItems="center" space={4}>
           <Pressable>
-            <IconButton
-              icon={hollowHomeIcon}
-              onPress={
-                onPressHandler ? onPressHandler : () => console.log('Home')
-              }
-            />
+            <IconButton icon={hollowHomeIcon} />
             <Text
               textAlign={'center'}
               color="black"
               fontSize="15"
               fontWeight="normal"
+              onPress={() =>
+                navigation.navigate('MainHomeScreen')
+              }
             >
               Home
             </Text>
@@ -34,9 +32,7 @@ export default function ChatIconButtonsFooter({ navigation, onPressHandler }: Fo
           <Pressable>
             <IconButton
               icon={solidChatIcon}
-              onPress={
-                onPressHandler ? onPressHandler : () => console.log('Chat')
-              }
+              onPress={() => console.log('already in chat')}
             />
             <Text
               textAlign={'center'}
@@ -50,8 +46,10 @@ export default function ChatIconButtonsFooter({ navigation, onPressHandler }: Fo
           <Pressable>
             <IconButton
               icon={hollowBagIcon}
-              onPress={
-                onPressHandler ? onPressHandler : () => console.log('Bag')
+              onPress={() =>
+                navigation.navigate('LogInScreen', {
+                  destination: 'ShoppingBagScreen'
+                })
               }
             />
             <Text
@@ -66,8 +64,10 @@ export default function ChatIconButtonsFooter({ navigation, onPressHandler }: Fo
           <Pressable>
             <IconButton
               icon={hollowNotifIcon}
-              onPress={
-                onPressHandler ? onPressHandler : () => console.log('Notif')
+              onPress={() =>
+                navigation.navigate('LogInScreen', {
+                  destination: 'NotificationView'
+                })
               }
             />
             <Text
@@ -82,8 +82,10 @@ export default function ChatIconButtonsFooter({ navigation, onPressHandler }: Fo
           <Pressable>
             <IconButton
               icon={hollowProfileIcon}
-              onPress={
-                onPressHandler ? onPressHandler : () => console.log('Profile')
+              onPress={() =>
+                navigation.navigate('LogInScreen', {
+                  destination: 'ProfileScreen'
+                })
               }
             />
             <Text

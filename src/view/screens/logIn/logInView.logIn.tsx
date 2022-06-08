@@ -1,15 +1,12 @@
 import React from 'react';
 import {
-  Text,
   Box,
   Center,
   Icon,
   Image,
   Input,
   NativeBaseProvider,
-  Pressable,
   VStack,
-  Button,
   Link
 } from 'native-base';
 
@@ -17,18 +14,66 @@ import { TitleAndBackButtonHeader } from '../../general/header/headers';
 import TextInput from '../../general/forms/textInput.form';
 import { InputColor } from '../../general/colors/localprice.colors';
 import { eyeIcon } from '../../general/icons/localprice.icons';
-import SolidButton from '../../general/buttons/solid.button';
+import LogInButton from '../../general/buttons/logIn.button';
+import Authentication from './../../../api/firebase/authentications';
 
 const appLogo = require('../../../assets/appLogo.png');
 
-export function LogInScreen() {
+interface LogInProps {
+  navigation: any;
+  auth: Authentication;
+  route?: any;
+}
+
+export function LogInScreen(props: LogInProps) {
+  const [state, setState] = React.useState({
+    email: '',
+    password: ''
+  });
+
+  const onEmailChange = (text: string) => {
+    setState({
+      ...state,
+      email: text
+    });
+  };
+
+  const onPasswordChange = (text: string) => {
+    setState({
+      ...state,
+      password: text
+    });
+  };
+
+  const loginUser = () => {
+   /*  props.auth
+      .register('user.example@email.com', 'User12345')
+      .then(() => {
+        console.log('Registered');
+      })
+      .catch((e) => console.error(e)); */
+
+    props.auth
+      .login(state.email, state.password)
+      .then(() => {
+        console.log('Logged in');
+        props.navigation.navigate(props.route.params?.destination);
+      })
+      .catch((e) => console.error(e));
+  };
+
+  if (props.auth.isReady() && props.route?.destination !== '') {
+    props.navigation.navigate(props.route.params?.destination);
+    return <NativeBaseProvider></NativeBaseProvider>;
+  }
+
   return (
     <NativeBaseProvider>
       <Box safeArea width={'full'} height={'full'} position={'absolute'}>
         <TitleAndBackButtonHeader
-          onPressHandler={() => console.log('Sign in back btn')}
+          /* onPressHandler={() => navigation.navigate('MainHomeScreen')} */
+          onPressHandler={() => console.log('Proceed to MainHomeScreen')}
         />
-
         <VStack flex={1} alignItems={'center'} space={5}>
           <Center paddingY={'3'} width={'full'} height={'200px'}>
             {/* LOGO HERE */}
@@ -40,7 +85,7 @@ export function LogInScreen() {
             />
           </Center>
           <VStack flex={1} alignItems={'center'} space={5}>
-            <TextInput placeholder="Email" />
+            <TextInput placeholder="Email" onChangeText={onEmailChange} />
             <Input
               variant="filled"
               placeholder={'Password'}
@@ -52,17 +97,18 @@ export function LogInScreen() {
               borderRadius={'5'}
               textAlignVertical={'center'}
               InputRightElement={<Icon mr={2} as={eyeIcon} />}
+              onChangeText={onPasswordChange}
             />
           </VStack>
           {/* LOG IN BUTTON */}
           <Center paddingY={'8'} width={'full'} maxWidth={'full'}>
             <VStack space={'5'}>
-              <SolidButton value="Log In" />
+              <LogInButton onPress={loginUser} />
               <Center>
                 <Link
                   isExternal
                   _text={{ color: 'blue.400' }}
-                  onPress={() => console.log(`Don't have an account btn click`)}
+                  onPress={() => props.navigation.navigate('RegisterScreen')}
                 >
                   Don't have an account?
                 </Link>

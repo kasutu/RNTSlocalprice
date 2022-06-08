@@ -12,6 +12,8 @@ import {
   Button
 } from 'native-base';
 import { TitleAndBackButtonHeader } from '../../general/header/headers';
+import CheckOutButton from '../../general/buttons/checkOut.button';
+import BagIconButtonsFooter from '../../general/footer/bag.iconButtons.footer';
 
 const description: string = 'Apple Macbook pro 16gb ram';
 const itemDetails: string = 'More details about the product.';
@@ -19,7 +21,7 @@ const price: string = 'P100,000';
 const ratings: string = '5.0';
 const location: string = 'Iloilo';
 
-export function ShoppingBagScreen() {
+export function ShoppingBagScreen({ navigation }) {
   return (
     <NativeBaseProvider>
       <Box safeArea width={'full'} height={'full'} position={'absolute'}>
@@ -38,6 +40,7 @@ export function ShoppingBagScreen() {
                 height: 15
               }}
               _text={{ fontSize: '12' }}
+              value={''}
             >
               Select All
             </Checkbox>
@@ -65,6 +68,7 @@ export function ShoppingBagScreen() {
                   width: 15,
                   height: 15
                 }}
+                value={''}
               />
             </Center>
             <Center>
@@ -85,6 +89,7 @@ export function ShoppingBagScreen() {
                     width: 15,
                     height: 15
                   }}
+                  value={''}
                 />
               </Center>
 
@@ -203,20 +208,10 @@ export function ShoppingBagScreen() {
               </Text>
             </VStack>
           </HStack>
-          <Button
-            width={'250'}
-            height={'45'}
-            variant={'solid'}
-            onPress={() => console.log('Button Pressed')}
-            _text={{
-              fontSize: '15',
-              fontWeight: 'medium'
-            }}
-            borderRadius={'50'}
-            backgroundColor={'#9E6DDE'}
-          >
-            Proceed to Checkout
-          </Button>
+          <CheckOutButton navigation={navigation} />
+          <Box width={'full'} height={'50px'}>
+            <BagIconButtonsFooter navigation={navigation} />
+          </Box>
         </Center>
       </Box>
     </NativeBaseProvider>

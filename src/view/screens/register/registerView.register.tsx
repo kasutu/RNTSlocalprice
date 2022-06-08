@@ -1,27 +1,78 @@
 import React from 'react';
 import {
   Box,
-  Button,
   Icon,
   IconButton,
   Input,
   NativeBaseProvider,
-  Pressable,
+  Link,
   Text,
-  VStack
+  VStack,
+  Center
 } from 'native-base';
 
 import { TitleAndBackButtonHeader } from '../../general/header/headers';
 import TextInput from '../../general/forms/textInput.form';
 import { InputColor } from '../../general/colors/localprice.colors';
 import { eyeIcon } from '../../general/icons/localprice.icons';
+import RegisterButton from '../../general/buttons/register.button';
+import Authentication from '../../../api/firebase/authentications';
 
-export function RegisterScreen() {
+interface LogInProps {
+  navigation: any;
+  auth: Authentication;
+  route?: any;
+}
+
+export function RegisterScreen(props: LogInProps) {
+  const [state, setState] = React.useState({
+    fullName: '',
+    userName: '',
+    email: '',
+    password: '',
+    confirmPassword: ''
+  });
+
+  const onFullNameChange = (text: string) => {
+    setState({
+      ...state,
+      fullName: text
+    });
+  };
+
+  const onUserNameChange = (text: string) => {
+    setState({
+      ...state,
+      userName: text
+    });
+  };
+
+  const onEmailChange = (text: string) => {
+    setState({
+      ...state,
+      email: text
+    });
+  };
+
+  const onPasswordChange = (text: string) => {
+    setState({
+      ...state,
+      password: text
+    });
+  };
+
+  const onConfirmPasswordChange = (text: string) => {
+    setState({
+      ...state,
+      confirmPassword: text
+    });
+  };
+
   return (
     <NativeBaseProvider>
       <Box safeArea width={'full'} height={'full'} position={'absolute'}>
         <TitleAndBackButtonHeader
-          onPressHandler={() => console.log('Sign up back btn')}
+          onPressHandler={() => navigation.navigate('LogInScreen')}
         />
         <VStack flex={1}>
           <Box paddingBottom={'10'} alignItems={'center'} width={'full'}>
@@ -31,9 +82,12 @@ export function RegisterScreen() {
           </Box>
 
           <VStack space={5} alignItems={'center'}>
-            <TextInput placeholder="Full Name" />
-            <TextInput placeholder="Username" />
-            <TextInput placeholder="Email" />
+            <TextInput
+              placeholder="Full Name"
+              onChangeText={onFullNameChange}
+            />
+            <TextInput placeholder="Username" onChangeText={onUserNameChange} />
+            <TextInput placeholder="Email" onChangeText={onEmailChange} />
             <Input
               variant="filled"
               placeholder={'Password'}
@@ -50,6 +104,7 @@ export function RegisterScreen() {
                   onPress={() => console.log('eye pressed ')}
                 />
               }
+              onChangeText={onPasswordChange}
             />
             <Input
               variant="filled"
@@ -67,29 +122,23 @@ export function RegisterScreen() {
                   onPress={() => console.log('eye pressed ')}
                 />
               }
+              onChangeText={onConfirmPasswordChange}
             />
           </VStack>
         </VStack>
         {/* REGISTER BUTTON */}
         <Box marginBottom={5}>
           <VStack space={5} alignItems={'center'}>
-            <Button
-              width={'200'}
-              height={'45'}
-              variant={'solid'}
-              onPress={() => console.log('Register Button Pressed')}
-              _text={{
-                fontSize: '15',
-                fontWeight: 'medium'
-              }}
-              borderRadius={'full'}
-              backgroundColor={'#9E6DDE'}
-            >
-              Register
-            </Button>
-            <Pressable onPress={() => console.log(`have an account btn click`)}>
-              <Text color={'blue.400'}>Have an account?</Text>
-            </Pressable>
+            <RegisterButton />
+            <Center>
+              <Link
+                isExternal
+                _text={{ color: 'blue.400' }}
+                onPress={() => navigation.navigate('LogInScreen')}
+              >
+                Have an account?
+              </Link>
+            </Center>
           </VStack>
         </Box>
       </Box>

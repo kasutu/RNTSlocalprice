@@ -1,4 +1,4 @@
-import DbTest from './dbTest';
+
 import React from 'react';
 import ScreenATest from './screens/screenA.test';
 import ScreenB from './screens/screenB.test';
@@ -10,11 +10,10 @@ export default function AppTest() {
   return (
     <NativeBaseProvider>
       {/* -------------- test section -------------- */}
-      {/* <ScreenATest /> */}
-      {/* <ScreenB /> */}
-      {/* <ScreenC /> */}
-      {/* <DbTest /> */}
-      <ChatScreenTest />
+      <ScreenATest />
+      <ScreenB />
+
+      {/* <ChatScreenTest /> */}
     </NativeBaseProvider>
   );
 }

@@ -1,21 +1,18 @@
 import {
   NativeBaseProvider,
   VStack,
-  Text,
   HStack,
   Box,
-  Avatar,
   ScrollView,
-  Center,
-  Pressable,
-  Container
+  Center
 } from 'native-base';
 import React from 'react';
+import ChatIconButtonsFooter from '../../general/footer/chat.iconButtons.footer';
 import { TitleHeader } from '../../general/header/headers';
 import FilterButton from '../home/filterButton';
 import { HCardChat } from './HCard.chat';
 
-export function AllChatsScreen() {
+export function AllChatsScreen({ navigation }) {
   return (
     <NativeBaseProvider>
       <Box safeArea width={'full'} height={'full'} position={'absolute'}>
@@ -51,6 +48,9 @@ export function AllChatsScreen() {
             <HCardChat />
           </VStack>
         </ScrollView>
+        <Box width={'full'} height={'80px'}>
+          <ChatIconButtonsFooter navigation={navigation} />
+        </Box>
       </Box>
     </NativeBaseProvider>
   );

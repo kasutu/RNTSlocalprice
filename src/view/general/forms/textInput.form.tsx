@@ -8,11 +8,13 @@ const TextInputColor = InputColor;
 export default function TextInput({
   placeholder,
   height,
-  VTextAlign
+  VTextAlign,
+  onChangeHandler
 }: InputProps) {
   return (
     <>
       <Input
+        onChangeText={(val) => (onChangeHandler ? onChangeHandler(val) : null)}
         variant="filled"
         placeholder={placeholder}
         placeholderTextColor={'black'}
@@ -27,10 +29,15 @@ export default function TextInput({
   );
 }
 
-export function TextInputMultiline({ placeholder, height }: InputProps) {
+export function TextInputMultiline({
+  placeholder,
+  height,
+  onChangeHandler
+}: InputProps) {
   return (
     <>
       <TextArea
+        onChangeText={(val) => (onChangeHandler ? onChangeHandler(val) : null)}
         variant="filled"
         placeholder={placeholder}
         placeholderTextColor={'black'}
