@@ -2,6 +2,7 @@ import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import {
   AllChatsScreen,
+  ChatScreen,
   LogInScreen,
   NotificationScreen,
   ProfileScreen,
@@ -35,7 +36,7 @@ const BottomTabNav = () => {
       />
 
       <Tab.Screen
-        component={AllChatsScreen}
+        component={ChatScreen}
         name="Chat"
         options={{
           tabBarIcon: ({ color: color }) => (
