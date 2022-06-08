@@ -14,11 +14,6 @@ const CartItems = ({ cartProps }: CartItemProps) => {
 
   const [quantity, setQuantity] = useState(quantityProp);
 
-  // const navigation = useNavigation<NativeStackNavigationProp<any>>();
-
-  // const onPress = () => {
-  //   navigation.navigate('ProductDetails', { id: item.id });
-  // };
   return (
     <View style={styles.root}>
       <View style={styles.row}>

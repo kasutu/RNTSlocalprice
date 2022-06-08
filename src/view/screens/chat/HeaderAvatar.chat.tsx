@@ -8,10 +8,17 @@ import {
   IconButton,
   Pressable
 } from 'native-base';
-import React from 'react';
+import React, { useState } from 'react';
+import convoStore from '../../../model/convoStore/convoStore';
 import { arrowBack } from '../../general/icons/localprice.icons';
 
-export function ChatHeaderAvatar() {
+export function ChatHeaderAvatar({
+  name,
+  badge
+}: {
+  name: string;
+  badge?: string;
+}) {
   return (
     <>
       <HStack alignItems="center">
@@ -37,15 +44,21 @@ export function ChatHeaderAvatar() {
             <VStack space={1}>
               <Box>
                 <Text fontWeight={'medium'} fontSize={'15'} noOfLines={1}>
-                  {'Dave Jhaeson Alivio'}
+                  {name}
                 </Text>
               </Box>
 
               <Box>
                 {/* ORDER STATUS BADGE CONTAINER */}
-                <Center w="130px" h="4" bg="#8244D5" rounded="full">
+                <Center
+                  paddingX={3}
+                  maxWidth="130px"
+                  h="4"
+                  bg={badge !== '' ? '#8244D5' : 'white'}
+                  rounded="full"
+                >
                   <Text fontSize={'10'} color={'white'}>
-                    {'Order/s Confirmed'}
+                    {badge}
                   </Text>
                 </Center>
               </Box>

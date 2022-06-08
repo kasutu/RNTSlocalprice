@@ -1,11 +1,10 @@
 import geopointStore from '../model/geopointStore/geopointStore';
 import mapCoordsStore from '../model/mapCoordsStore/mapCoordsStore';
 import React, { useState } from 'react';
-import Textrenedere from '../../test/textrenedere';
+import TextDisplay from '../../test/textDisplay';
 import { Box, Button, Input, VStack } from 'native-base';
 import { MapViewComponent } from '../view/general/map/mapViewComponent.map';
 import { ReactNativeGeofire } from '../api/geoquery/geoquery';
-import { uuid } from '../api/uuid/index.uuid';
 
 const shopsGeoFire = new ReactNativeGeofire('shops');
 
@@ -24,7 +23,7 @@ export default function GeoqueryDebug() {
               shopsGeoFire.query(
                 mapCoordsStore.data.latitude,
                 mapCoordsStore.data.longitude,
-                50
+                30
               )
             }
           >
@@ -35,7 +34,7 @@ export default function GeoqueryDebug() {
             onPress={() => {
               setText('');
               shopsGeoFire.add(
-                { name: text, id: uuid.v4() },
+                { name: text },
                 mapCoordsStore.data.latitude,
                 mapCoordsStore.data.longitude
               );
@@ -61,7 +60,7 @@ export default function GeoqueryDebug() {
           <Input value={text} onChangeText={(val) => setText(val)} />
         </VStack>
 
-        <Textrenedere />
+        <TextDisplay />
       </Box>
     </>
   );

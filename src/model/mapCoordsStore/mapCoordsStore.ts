@@ -6,7 +6,7 @@ import { Region } from 'react-native-maps';
 // make this generic soon
 // 'export' is added for test purposes
 export class MapCoordsStore {
-  public recenttHash: string = '';
+  public recentHash: string = '';
   public data: Region = {
     latitude: 0,
     latitudeDelta: 0,
