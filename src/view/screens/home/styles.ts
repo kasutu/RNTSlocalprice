@@ -2,12 +2,12 @@ import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
     root: {
-        margin: 5,
-        flexDirection: 'row',
-        borderWidth: 2,
-        borderRadius: 11,
-        backgroundColor: '#ffff',
-        borderColor: '#d5c1f1',
+      margin: 5,
+      flexDirection: 'row',
+      borderWidth: 2,
+      borderRadius: 11,
+      backgroundColor: '#ffff',
+      borderColor: '#d5c1f1',
     },
     image: {
       flex: 2,
