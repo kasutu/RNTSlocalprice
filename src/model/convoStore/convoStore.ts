@@ -1,7 +1,8 @@
 // MobX implementation
 
 import { makeAutoObservable } from 'mobx';
-import { MessageType } from '../../types/types';
+import { ConversationOwnersType, MessageType } from '../../types/types';
+import { getAllMessagesHandler, sendNewMessageHandler } from '../common/utils';
 
 // make this generic soon
 // 'export' is added for test purposes
@@ -12,6 +13,12 @@ export class ConvoStore {
    */
   public data: MessageType[] = [];
   public currentConvoId: string = '';
+  public msg: string = '';
+  public currentUser: string = '';
+  public owners: ConversationOwnersType = {
+    buyerName: '',
+    sellerName: ''
+  };
 
   constructor() {
     // let MobX observe this class and use this to any screen
@@ -26,6 +33,14 @@ export class ConvoStore {
    */
   public empty(): void {
     this.data = [];
+  }
+
+  public send() {
+    sendNewMessageHandler(this.owners, this.currentUser, this.msg);
+  }
+
+  public init() {
+    getAllMessagesHandler();
   }
 }
 
