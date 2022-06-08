@@ -17,7 +17,10 @@ export function MainHomeScreen({ navigation }) {
     <NativeBaseProvider>
       <Box safeArea width={'full'} height={'full'} position={'absolute'}>
         {/* HEADER HERE */}
-        <SearchHeader />
+        <SearchHeader
+        
+
+         />
 
         {/* BODY AND CONTENT */}
         <VStack space={2} flex={1}>

@@ -21,13 +21,13 @@ export function ScreensInProgress() {
     <>
       {/* <CheckoutScreen /> */}
       {/* <OrderDetailsScreen /> */}
-      {/* <ChatScreen /> */}
-       <NotificationScreen /> 
+      {/*<ChatScreen/> }*/}
+      {/* <NotificationScreen /> */}
       {/* <ShoppingBagScreen navigation={''} /> */}
       {/* <MapViewComponent /> */}
       {/* <MainHomeScreen navigation={undefined}/> */}
       {/* <ItemScreen /> */}
-      {/* <HomeScreen/> */}
+      { <HomeScreen/> }
       {/* <ProductScreen/> */}
       {/* <Router/> */}
 

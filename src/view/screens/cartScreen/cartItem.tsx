@@ -6,21 +6,8 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { useState } from 'react';
 import styles from './styles';
 import QuantityButton from './quantityButton';
+import { CartItemProps } from '../../../model/AddToCartStore/addToCart';
 
-interface CartItemProps {
-  cartProps: {
-    id: string;
-    quantity: number;
-    item: {
-      id: string;
-      title: string;
-      image: string;
-      rating: number;
-      price: number;
-      location: string;
-    };
-  };
-}
 
 const CartItems = ({ cartProps }: CartItemProps) => {
   const { quantity: quantityProp, item } = cartProps;

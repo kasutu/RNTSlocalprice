@@ -81,6 +81,7 @@ export function SearchHeader({ onPressHandler }: HeaderProps) {
               bgColor={InputColor}
               borderColor={InputColor}
               borderRadius={'full'}
+              onChangeText={text => console.log(text)}
             />
 
             {/* heart pressable icon soon */}
