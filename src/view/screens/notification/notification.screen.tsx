@@ -97,9 +97,7 @@ function NotifCard() {
           style={{
             width: 15,
             height: 15
-          }}
-        />
-
+          }} />
         {/* PHOTO PLACEHOLDER */}
         <Center width={'20'} height={'20'} backgroundColor={'muted.500'}>
           <Image
