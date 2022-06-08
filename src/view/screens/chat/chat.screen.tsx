@@ -22,6 +22,8 @@ export function ChatScreen() {
 
   useEffect(() => {
     runInAction(() => {
+      convoStore.badge = 'confirmed';
+      convoStore.otherUser = convoOwners.buyerName;
       convoStore.owners = convoOwners;
       convoStore.currentUser = currentUser;
       convoStore.init();
@@ -33,7 +35,10 @@ export function ChatScreen() {
       <Box safeArea width={'full'} height={'full'} position={'absolute'}>
         <StatusBar backgroundColor="white" barStyle="dark-content" />
         {/* header */}
-        <ChatHeaderAvatar />
+        <ChatHeaderAvatar
+          name={convoStore.otherUser}
+          badge={convoStore.badge}
+        />
 
         <ScrollView>
           {/* body */}

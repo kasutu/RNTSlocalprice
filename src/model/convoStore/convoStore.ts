@@ -15,6 +15,8 @@ export class ConvoStore {
   public currentConvoId: string = '';
   public msg: string = '';
   public currentUser: string = '';
+  public otherUser: string = '';
+  public badge: string = '';
   public owners: ConversationOwnersType = {
     buyerName: '',
     sellerName: ''
