@@ -35,8 +35,11 @@ export interface UserDataType {
   fullName: string;
   userId: string;
   contactNumber: string;
-  address: string;
-  geohash: string;
+  brgy: string;
+  town: string;
+  city: string;
+  zipCode: string | number;
+  geoPointId: string;
   transactionIds: string[];
   convoIds: string[];
 }
