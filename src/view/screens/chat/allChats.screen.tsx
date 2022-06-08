@@ -48,9 +48,6 @@ export function AllChatsScreen({ navigation }) {
             <HCardChat />
           </VStack>
         </ScrollView>
-        <Box width={'full'} height={'80px'}>
-          <ChatIconButtonsFooter navigation={navigation} />
-        </Box>
       </Box>
     </NativeBaseProvider>
   );
