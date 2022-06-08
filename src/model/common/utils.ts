@@ -243,3 +243,12 @@ export async function sendNewMessageHandler(
     }
   }
 }
+
+Db 
+ .collection('Users')
+  // Filter results
+  .where('languages', 'in', ['en', 'fr'])
+  .get()
+  .then(querySnapshot => {
+    /* ... */
+  });
