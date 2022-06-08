@@ -36,7 +36,7 @@ export function ChatScreen() {
         <StatusBar backgroundColor="white" barStyle="dark-content" />
         {/* header */}
         <ChatHeaderAvatar
-          name={convoStore.otherUser}
+          name={convoOwners.buyerName}
           badge={convoStore.badge}
         />
 
