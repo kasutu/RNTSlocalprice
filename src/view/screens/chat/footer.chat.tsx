@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Box,
   Center,
@@ -10,14 +10,17 @@ import {
 } from 'native-base';
 import { CameraIcon, SendIcon } from '../../general/icons/localprice.icons';
 import { InputColor } from '../../general/colors/localprice.colors';
+import convoStore from '../../../model/convoStore/convoStore';
+import { sendNewMessageHandler } from '../../../model/common/utils';
 
 export function ChatFooter() {
+  const [text, setText] = useState('');
   return (
     <>
       {/* footer */}
       <Box width={'full'} padding={2}>
         <HStack space={2} alignItems={'center'}>
-          <Box>
+          {/* <Box>
             <Pressable
               // custom icon button
 
@@ -28,10 +31,15 @@ export function ChatFooter() {
             >
               <Icon as={CameraIcon} color={'#8244D5'} size={'25px'} />
             </Pressable>
-          </Box>
+          </Box> */}
 
           <Box flex={1}>
             <TextArea
+              value={text}
+              onChangeText={(val) => {
+                setText(val);
+                convoStore.msg = val;
+              }}
               rounded={'full'}
               bg={InputColor}
               variant="filled"
@@ -53,7 +61,10 @@ export function ChatFooter() {
               paddingX={3}
               justifyContent={'center'}
               alignItems={'center'}
-              onPress={() => console.log('send pressed ')}
+              onPress={() => {
+                setText('');
+                convoStore.send();
+              }}
             >
               <Icon as={SendIcon} color={'black'} size={'25px'} />
             </Pressable>

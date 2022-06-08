@@ -46,6 +46,10 @@ export class UserStore implements UserDataType {
     this.transactionIds = [];
     this.convoIds = [];
   }
+
+  public addToDatabase() {
+    documentAddHandler('users', this);
+  }
 }
 
 // make a store instance and export it

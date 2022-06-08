@@ -11,8 +11,8 @@ import {
   LogInScreen,
   EditAddressScreen
 } from '../view/screens/index.screens';
+import GeoqueryDebug from './geoQueryDebug';
 
-import GeoqueryDebug from './GeoQueryDebug';
 import MapModal from './MapModal';
 import UtilTester from './utilTester';
 
@@ -33,6 +33,7 @@ export function ScreensInProgress() {
 
       {/* <GeoqueryDebug /> */}
       {/*<UtilTester />*/}
+      {/* <UtilTester /> */}
     </>
   );
 }
