@@ -30,11 +30,9 @@ export function ScreensInProgress() {
       {/* <ItemScreen /> */}
       {/* <HomeScreen/> */}
       {/* <ProductScreen/> */}
-      {/* <Router/> */}
-      <MapScreen />
+      <Router/>
 
       {/* <GeoqueryDebug /> */}
-      {/*<UtilTester />*/}
       {/* <UtilTester /> */}
     </>
   );

@@ -3,11 +3,12 @@ import { View, Text, StyleSheet, ScrollView} from 'react-native';
 import product from '../home/data/product';
 import styles from './styles';
 import QuantityButton from './quantityButton';
-import { Box, Center } from 'native-base';
+import { Center, HStack } from 'native-base';
 import HollowAndSolidButton from '../../general/buttons/hollowAndSolidButton.component';
 import ImageScroll from './imageScroll';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import ShowLocationButton from './showLocButton';
+import Button from './add-buyNowButton';
 
 const ProductScreen = () => {
   const [quantity, setQuantity] = useState(1);
@@ -53,15 +54,12 @@ const ProductScreen = () => {
       </ScrollView>
 
       {/* button */}
-      <View>
-        
-      <Center marginBottom={2} marginTop={2}>
-        <HollowAndSolidButton
-          hollowButtonValue="Buy Now"
-          solidButtonValue="Add to Cart"
-        />
+      <Center>
+        <HStack marginBottom={2} marginTop={2}space={5}>
+          <Button text={'Buy Now'} onPress={() => {return console.warn('Buy Now');}} />
+            <Button text={'Add to Cart'} onPress={() => {return console.warn('Added to Cart');}} />
+        </HStack>
       </Center>
-      </View>
     </>
   );
 };
