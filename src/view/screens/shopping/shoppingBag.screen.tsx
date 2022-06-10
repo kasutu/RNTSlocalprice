@@ -8,8 +8,7 @@ import {
   HStack,
   Pressable,
   Text,
-  Container,
-  Button
+  Container
 } from 'native-base';
 import { TitleAndBackButtonHeader } from '../../general/header/headers';
 import CheckOutButton from '../../general/buttons/checkOut.button';
@@ -21,7 +20,7 @@ const price: string = 'P100,000';
 const ratings: string = '5.0';
 const location: string = 'Iloilo';
 
-export function ShoppingBagScreen({ navigation }) {
+export function ShoppingBagScreen() {
   return (
     <NativeBaseProvider>
       <Box safeArea width={'full'} height={'full'} position={'absolute'}>
@@ -40,7 +39,6 @@ export function ShoppingBagScreen({ navigation }) {
                 height: 15
               }}
               _text={{ fontSize: '12' }}
-              value={''}
             >
               Select All
             </Checkbox>
@@ -68,7 +66,6 @@ export function ShoppingBagScreen({ navigation }) {
                   width: 15,
                   height: 15
                 }}
-                value={''}
               />
             </Center>
             <Center>
@@ -89,7 +86,6 @@ export function ShoppingBagScreen({ navigation }) {
                     width: 15,
                     height: 15
                   }}
-                  value={''}
                 />
               </Center>
 
@@ -208,10 +204,7 @@ export function ShoppingBagScreen({ navigation }) {
               </Text>
             </VStack>
           </HStack>
-          <CheckOutButton navigation={navigation} />
-          <Box width={'full'} height={'50px'}>
-            <BagIconButtonsFooter navigation={navigation} />
-          </Box>
+          <CheckOutButton />
         </Center>
       </Box>
     </NativeBaseProvider>

@@ -1,32 +1,28 @@
 import React from 'react';
-import { Button } from 'native-base';
+import { Pressable, Text } from 'native-base';
 import { ButtonProps } from '../../../types/buttonProps.type';
+import { Colors } from '../colors/localprice.colors';
 
-export default function CheckOutButton({
-  color,
-  fontWeight,
-  navigation,
-  onPressHandler
-}: ButtonProps) {
+export default function CheckOutButton({ onPressHandler }: ButtonProps) {
   return (
     <>
-      <Button
-        width={'150'}
-        height={'45'}
-        variant={'solid'}
-        /* onPress={() => navigation.navigate('CheckoutScreen')} */
+      <Pressable
+        width={'300'}
+        height={'35'}
+        justifyContent={'center'}
+        alignItems={'center'}
         onPress={
-            onPressHandler ? onPressHandler : () => console.log('Will Proceed to CheckoutScreen')
-          }
-        _text={{
-          fontSize: '13',
-          fontWeight: fontWeight ? fontWeight : 'medium'
-        }}
+          onPressHandler
+            ? onPressHandler
+            : () => console.log('Will Proceed to CheckoutScreen')
+        }
         borderRadius={'50'}
-        backgroundColor={color ? color : '#9E6DDE'}
+        bg={Colors.TrademarkViolet}
       >
-        Proceed to Checkout
-      </Button>
+        <Text color={Colors.White} fontSize={'15'} fontWeight={'medium'}>
+          {'Proceed to Checkout'}
+        </Text>
+      </Pressable>
     </>
   );
 }
