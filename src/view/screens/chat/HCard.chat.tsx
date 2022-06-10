@@ -1,5 +1,4 @@
 import {
-  Container,
   HStack,
   Center,
   Avatar,
@@ -12,7 +11,13 @@ import React from 'react';
 import { BadgeProps, HCardProps } from '../../../types/types';
 import { Colors } from '../../general/colors/localprice.colors';
 
-export function HCardChat({ onCardPress }: HCardProps) {
+export function HCardChat({
+  onCardPress,
+  name,
+  ImageUri,
+  status,
+  lastMsg
+}: HCardProps) {
   return (
     <>
       <Pressable
@@ -34,7 +39,7 @@ export function HCardChat({ onCardPress }: HCardProps) {
               <Avatar
                 size={'50px'}
                 source={{
-                  uri: 'https://i.kym-cdn.com/entries/icons/facebook/000/026/152/gigachad.jpg'
+                  uri: ImageUri
                 }}
               />
             </Center>
@@ -44,7 +49,7 @@ export function HCardChat({ onCardPress }: HCardProps) {
               <VStack>
                 <Box>
                   <Text fontWeight={'medium'} fontSize={'16'} noOfLines={1}>
-                    {'Dave Jhaeson Alivio'}
+                    {name}
                   </Text>
                 </Box>
                 <Box>
@@ -53,12 +58,12 @@ export function HCardChat({ onCardPress }: HCardProps) {
                     fontSize={'10'}
                     color={'gray.600'}
                   >
-                    {'You: Sml sir?'}
+                    {lastMsg}
                   </Text>
                 </Box>
                 <Box>
                   {/* ORDER STATUS BADGE CONTAINER */}
-                  <StatusBadge status="confirmed" />
+                  <StatusBadge status={status} />
                 </Box>
               </VStack>
             </Box>

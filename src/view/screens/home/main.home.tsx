@@ -1,15 +1,8 @@
-import {
-  Box,
-  Center,
-  HStack,
-  NativeBaseProvider,
-  Pressable,
-  ScrollView,
-  VStack
-} from 'native-base';
 import React from 'react';
-import { SearchBarHeader } from '../../general/header/headers';
+import { Box, NativeBaseProvider, ScrollView, VStack } from 'native-base';
 import { FilterButtons } from './filterBtnsComponent';
+import { ItemCardsRenderer } from '../../render/ItemCards.renderer';
+import { SearchBarHeader } from '../../general/header/headers';
 
 export function MainHomeScreen() {
   return (
@@ -34,106 +27,7 @@ export function MainHomeScreen() {
               justifyContent={'space-around'}
             >
               {/* make a linked list loop that returns an item */}
-              <Box padding={2} width={'50%'} height={'250'}>
-                <Pressable
-                  bg={'dark.500'}
-                  width={'full'}
-                  height={'full'}
-                  onPress={() => console.log('item pressed')}
-                >
-                  <Box>item container</Box>
-                </Pressable>
-              </Box>
-              <Box padding={2} width={'50%'} height={'250'}>
-                <Pressable
-                  bg={'dark.500'}
-                  width={'full'}
-                  height={'full'}
-                  onPress={() => console.log('item pressed')}
-                >
-                  <Box>item container</Box>
-                </Pressable>
-              </Box>
-              <Box padding={2} width={'50%'} height={'250'}>
-                <Pressable
-                  bg={'dark.500'}
-                  width={'full'}
-                  height={'full'}
-                  onPress={() => console.log('item pressed')}
-                >
-                  <Box>item container</Box>
-                </Pressable>
-              </Box>
-              <Box padding={2} width={'50%'} height={'250'}>
-                <Pressable
-                  bg={'dark.500'}
-                  width={'full'}
-                  height={'full'}
-                  onPress={() => console.log('item pressed')}
-                >
-                  <Box>item container</Box>
-                </Pressable>
-              </Box>
-              <Box padding={2} width={'50%'} height={'250'}>
-                <Pressable
-                  bg={'dark.500'}
-                  width={'full'}
-                  height={'full'}
-                  onPress={() => console.log('item pressed')}
-                >
-                  <Box>item container</Box>
-                </Pressable>
-              </Box>
-              <Box padding={2} width={'50%'} height={'250'}>
-                <Pressable
-                  bg={'dark.500'}
-                  width={'full'}
-                  height={'full'}
-                  onPress={() => console.log('item pressed')}
-                >
-                  <Box>item container</Box>
-                </Pressable>
-              </Box>
-              <Box padding={2} width={'50%'} height={'250'}>
-                <Pressable
-                  bg={'dark.500'}
-                  width={'full'}
-                  height={'full'}
-                  onPress={() => console.log('item pressed')}
-                >
-                  <Box>item container</Box>
-                </Pressable>
-              </Box>
-              <Box padding={2} width={'50%'} height={'250'}>
-                <Pressable
-                  bg={'dark.500'}
-                  width={'full'}
-                  height={'full'}
-                  onPress={() => console.log('item pressed')}
-                >
-                  <Box>item container</Box>
-                </Pressable>
-              </Box>
-              <Box padding={2} width={'50%'} height={'250'}>
-                <Pressable
-                  bg={'dark.500'}
-                  width={'full'}
-                  height={'full'}
-                  onPress={() => console.log('item pressed')}
-                >
-                  <Box>item container</Box>
-                </Pressable>
-              </Box>
-              <Box padding={2} width={'50%'} height={'250'}>
-                <Pressable
-                  bg={'dark.500'}
-                  width={'full'}
-                  height={'full'}
-                  onPress={() => console.log('item pressed')}
-                >
-                  <Box>item container</Box>
-                </Pressable>
-              </Box>
+              <ItemCardsRenderer />
             </Box>
           </ScrollView>
         </VStack>

@@ -95,11 +95,11 @@ export interface BadgeProps {
   status?: 'unconfirmed' | 'confirmed' | 'canceled';
 }
 
-export type CallbackHandler = (...args: any) => void;
+export type CallbackHandler = () => void;
 
 export interface HCardProps extends BadgeProps {
   name?: string;
-  recentMsg?: string;
+  lastMsg?: string;
   ImageUri?: string;
   onCardPress?: CallbackHandler;
 }

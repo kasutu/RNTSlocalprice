@@ -4,5 +4,6 @@ export const Colors = {
   White: '#FFFFFF',
   HeartColor: '#9E6DDE',
   LightViolet: '#D5C1F1',
-  DarkViolet: '#8244D5'
+  DarkViolet: '#8244D5',
+  TrademarkViolet: '#9E6DDE'
 };

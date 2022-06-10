@@ -3,15 +3,12 @@ import {
   VStack,
   HStack,
   Box,
-  ScrollView,
-  Center
+  ScrollView
 } from 'native-base';
 import React from 'react';
-import ChatIconButtonsFooter from '../../general/footer/chat.iconButtons.footer';
 import { TitleHeader } from '../../general/header/headers';
+import { ChatCardRenderer } from '../../render/chatCard.render';
 import { ChatFilterButtons } from '../home/filterBtnsComponent';
-import FilterButton from '../home/filterButton';
-import { HCardChat } from './HCard.chat';
 
 export function AllChatsScreen() {
   return (
@@ -28,24 +25,7 @@ export function AllChatsScreen() {
           <VStack flex={1} width={'full'}>
             {/* MAKE A LOOP THAT RETURNS THE CHAT CARD */}
 
-            <HCardChat />
-            <HCardChat />
-            <HCardChat />
-            <HCardChat />
-            <HCardChat />
-            <HCardChat />
-            <HCardChat />
-            <HCardChat />
-            <HCardChat />
-            <HCardChat />
-            <HCardChat />
-            <HCardChat />
-            <HCardChat />
-            <HCardChat />
-            <HCardChat />
-            <HCardChat />
-            <HCardChat />
-            <HCardChat />
+            <ChatCardRenderer />
           </VStack>
         </ScrollView>
       </Box>
