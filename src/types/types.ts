@@ -90,3 +90,16 @@ export interface GenericObjectWithIdType extends GenericObjectType {
 }
 
 export type Collections = 'items' | 'conversations';
+
+export interface BadgeProps {
+  status?: 'unconfirmed' | 'confirmed' | 'canceled';
+}
+
+export type CallbackHandler = (...args: any) => void;
+
+export interface HCardProps extends BadgeProps {
+  name?: string;
+  recentMsg?: string;
+  ImageUri?: string;
+  onCardPress?: CallbackHandler;
+}

@@ -9,10 +9,11 @@ import {
 import React from 'react';
 import ChatIconButtonsFooter from '../../general/footer/chat.iconButtons.footer';
 import { TitleHeader } from '../../general/header/headers';
+import { ChatFilterButtons } from '../home/filterBtnsComponent';
 import FilterButton from '../home/filterButton';
 import { HCardChat } from './HCard.chat';
 
-export function AllChatsScreen({ navigation }) {
+export function AllChatsScreen() {
   return (
     <NativeBaseProvider>
       <Box safeArea width={'full'} height={'full'} position={'absolute'}>
@@ -20,23 +21,7 @@ export function AllChatsScreen({ navigation }) {
 
         {/* Select all order status row */}
 
-        <Center width={'full'} paddingY={'3'}>
-          <HStack space={3}>
-            {/* all filters must be sorted based on the latest activity */}
-
-            {/* display all chat related to the user */}
-            <FilterButton value="All" />
-
-            {/* filters everything that has pending orders */}
-            <FilterButton value="Orders" />
-
-            {/* filters chats with completed status */}
-            <FilterButton value="Completed" />
-
-            {/* filters cancelled order */}
-            <FilterButton value="Canceled" />
-          </HStack>
-        </Center>
+        <ChatFilterButtons />
 
         {/* Username and Message */}
         <ScrollView>
@@ -46,11 +31,23 @@ export function AllChatsScreen({ navigation }) {
             <HCardChat />
             <HCardChat />
             <HCardChat />
+            <HCardChat />
+            <HCardChat />
+            <HCardChat />
+            <HCardChat />
+            <HCardChat />
+            <HCardChat />
+            <HCardChat />
+            <HCardChat />
+            <HCardChat />
+            <HCardChat />
+            <HCardChat />
+            <HCardChat />
+            <HCardChat />
+            <HCardChat />
+            <HCardChat />
           </VStack>
         </ScrollView>
-        <Box width={'full'} height={'80px'}>
-          <ChatIconButtonsFooter navigation={navigation} />
-        </Box>
       </Box>
     </NativeBaseProvider>
   );

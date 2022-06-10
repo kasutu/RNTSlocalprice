@@ -9,18 +9,30 @@ import {
   Text
 } from 'native-base';
 import React from 'react';
+import { BadgeProps, HCardProps } from '../../../types/types';
+import { Colors } from '../../general/colors/localprice.colors';
 
-export function HCardChat() {
+export function HCardChat({ onCardPress }: HCardProps) {
   return (
     <>
-      <Pressable onPress={() => console.log('card pressed')}>
-        <Container alignItems={'center'} paddingX={2}>
+      <Pressable
+        width={'full'}
+        onPress={() =>
+          onCardPress ? onCardPress : console.log('card pressed')
+        }
+      >
+        <Box width={'full'} alignItems={'center'}>
           {/* CARD WRAPPER */}
-          <HStack width={'full'} justifyContent={'space-around'} paddingX={'3'}>
+          <HStack
+            width={'full'}
+            justifyContent={'space-around'}
+            paddingY={2}
+            paddingX={'3'}
+          >
             <Center>
               {/* IMAGE WRAPPER */}
               <Avatar
-                size={'60px'}
+                size={'50px'}
                 source={{
                   uri: 'https://i.kym-cdn.com/entries/icons/facebook/000/026/152/gigachad.jpg'
                 }}
@@ -31,27 +43,27 @@ export function HCardChat() {
             <Box flex={1} paddingX={'3'}>
               <VStack>
                 <Box>
-                  <Text fontWeight={'medium'} fontSize={'18'} noOfLines={1}>
-                    Dave Jhaeson Alivio
+                  <Text fontWeight={'medium'} fontSize={'16'} noOfLines={1}>
+                    {'Dave Jhaeson Alivio'}
                   </Text>
                 </Box>
                 <Box>
-                  <Text fontSize={'12'} color={'gray.600'}>
-                    You: Sml sir?
+                  <Text
+                    fontWeight={'normal'}
+                    fontSize={'10'}
+                    color={'gray.600'}
+                  >
+                    {'You: Sml sir?'}
                   </Text>
                 </Box>
                 <Box>
                   {/* ORDER STATUS BADGE CONTAINER */}
-                  <Center w="130px" h="4" bg="violet.600" rounded="full">
-                    <Text fontSize={'10'} color={'white'}>
-                      Order/s Confirmed
-                    </Text>
-                  </Center>
+                  <StatusBadge status="confirmed" />
                 </Box>
               </VStack>
             </Box>
 
-            {/* CHAT DELIVERY STATUS */}
+            {/* CHAT DELIVERY STATUS
             <Center paddingX={3}>
               <HStack space={'2'} alignItems={'center'}>
                 <Box
@@ -62,10 +74,53 @@ export function HCardChat() {
                 />
                 <Text fontSize={'10'}>Now</Text>
               </HStack>
-            </Center>
+            </Center> */}
           </HStack>
-        </Container>
+        </Box>
       </Pressable>
     </>
   );
+}
+
+export function StatusBadge({ status }: BadgeProps) {
+  if (status === 'confirmed') {
+    return (
+      <>
+        <Center w="80px" h="4" bg={Colors.DarkViolet} rounded="full">
+          <Text fontWeight={'medium'} fontSize={'9'} color={'white'}>
+            {'Confirmed'}
+          </Text>
+        </Center>
+      </>
+    );
+  } else if (status === 'canceled') {
+    return (
+      <>
+        <Center
+          w="80px"
+          h="4"
+          bg={Colors.White}
+          borderColor={Colors.Red}
+          borderWidth={'1px'}
+          rounded="full"
+        >
+          <Text fontWeight={'medium'} fontSize={'9'} color={Colors.Red}>
+            {'Canceled'}
+          </Text>
+        </Center>
+      </>
+    );
+  } else if (status === 'unconfirmed') {
+    return (
+      <>
+        <Center w="90px" h="4" bg={Colors.Red} rounded="full">
+          <Text fontWeight={'medium'} fontSize={'9'} color={'white'}>
+            {'Unconfirmed'}
+          </Text>
+        </Center>
+      </>
+    );
+  } else {
+    return <></>;
+  }
 }

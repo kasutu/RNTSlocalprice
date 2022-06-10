@@ -6,12 +6,13 @@ import {
   HStack,
   IconButton,
   Input,
-  StatusBar,
-  Text
+  StatusBar
 } from 'native-base';
 import { HeaderProps } from '../../../types/headerProps.type';
-import { arrowBack } from '../icons/localprice.icons';
-import { InputColor } from '../colors/localprice.colors';
+import { arrowBack, searchIcon } from '../icons/localprice.icons';
+import { Colors } from '../colors/localprice.colors';
+
+const InputColor = Colors.LightViolet;
 
 export function TitleAndBackButtonHeader({
   title,
@@ -84,6 +85,42 @@ export function SearchHeader({ onPressHandler }: HeaderProps) {
             />
 
             {/* heart pressable icon soon */}
+          </HStack>
+        </HStack>
+      </Box>
+    </>
+  );
+}
+
+export function SearchBarHeader({ onPressHandler }: HeaderProps) {
+  return (
+    <>
+      <StatusBar backgroundColor="white" barStyle="dark-content" />
+      <Box safeArea width={'full'} alignItems={'center'}>
+        <HStack alignItems="center">
+          <HStack alignItems="center" space={2}>
+            {/* search input */}
+            <Input
+              variant="filled"
+              placeholder={'Search'}
+              placeholderTextColor={'black'}
+              width={'full'}
+              maxWidth={'300'}
+              height={'8'}
+              bgColor={InputColor}
+              borderColor={InputColor}
+              borderRadius={'full'}
+            />
+
+            {/* heart pressable icon soon */}
+            <IconButton
+              icon={searchIcon}
+              onPress={
+                onPressHandler
+                  ? onPressHandler
+                  : () => console.log('BACK pressed ')
+              }
+            />
           </HStack>
         </HStack>
       </Box>

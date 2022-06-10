@@ -8,34 +8,19 @@ import {
   VStack
 } from 'native-base';
 import React from 'react';
-import HomeIconButtonsFooter from '../../general/footer/home.iconButtons.footer';
-import { SearchHeader } from '../../general/header/headers';
-import FilterButton from './filterButton';
+import { SearchBarHeader } from '../../general/header/headers';
+import { FilterButtons } from './filterBtnsComponent';
 
-export function MainHomeScreen({ navigation }) {
+export function MainHomeScreen() {
   return (
     <NativeBaseProvider>
       <Box safeArea width={'full'} height={'full'} position={'absolute'}>
         {/* HEADER HERE */}
-        <SearchHeader />
+        <SearchBarHeader />
 
         {/* BODY AND CONTENT */}
         <VStack space={2} flex={1}>
-          <Center width={'full'} paddingY={'2'}>
-            <HStack space={3}>
-              {/* displays everything but renders up to 6 items only and loads another when scrolled */}
-              <FilterButton value="All" />
-
-              {/* filters everything that you posted */}
-              <FilterButton value="My posts" />
-
-              {/* filters item near your geolocation */}
-              <FilterButton value="Near you" />
-
-              {/* filters by a price range preset */}
-              <FilterButton value="Filter" />
-            </HStack>
-          </Center>
+          <FilterButtons />
 
           <ScrollView
             showsVerticalScrollIndicator={false}
@@ -152,9 +137,6 @@ export function MainHomeScreen({ navigation }) {
             </Box>
           </ScrollView>
         </VStack>
-        <Box width={'full'} height={'80px'}>
-          <HomeIconButtonsFooter navigation={navigation} />
-        </Box>
       </Box>
     </NativeBaseProvider>
   );
