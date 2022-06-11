@@ -19,13 +19,10 @@ const price: string = 'P100,000';
 const ratings: string = '5.0';
 const location: string = 'Iloilo';
 
-export function NotificationScreen({ navigation }) {
+export function NotificationScreen() {
   return (
     <Box safeArea width={'full'} height={'full'} position={'absolute'}>
-      <TitleAndBackButtonHeader
-        title="Notification"
-        onPressHandler={() => navigation.navigate('MainHomeScreen')}
-      />
+      <TitleAndBackButtonHeader title="Notification" />
 
       <VStack paddingX={5}>
         <HStack space={'3'} marginBottom={3} justifyContent={'space-between'}>
@@ -102,8 +99,10 @@ function NotifCard() {
         />
 
         {/* PHOTO PLACEHOLDER */}
-        <Center width={'20'} height={'20'} backgroundColor={'muted.500'}>
+        <Center width={'20'} height={'20'}>
           <Image
+            resizeMode={'contain'}
+            borderRadius={10}
             source={{
               uri: 'https://www.notebookcheck.net/fileadmin/Notebooks/News/_nc3/Untitled1569.png'
             }}

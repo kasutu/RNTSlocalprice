@@ -244,6 +244,7 @@ export async function sendNewMessageHandler(
   }
 }
 
+<<<<<<< HEAD
 Db 
  .collection('Users')
   // Filter results
@@ -252,3 +253,11 @@ Db
   .then(querySnapshot => {
     /* ... */
   });
+=======
+export function RemoveFromArr<T>(array: T[], item: T) {
+  const index: number = array.indexOf(item);
+  if (index !== -1) {
+    array.splice(index, 1);
+  }
+}
+>>>>>>> ed340a9d1917905ec3c0842ea3402a6785e464c2

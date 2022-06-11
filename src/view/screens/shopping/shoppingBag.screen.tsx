@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Box,
   Center,
@@ -8,20 +8,38 @@ import {
   HStack,
   Pressable,
   Text,
-  Container,
-  Button
+  ScrollView
 } from 'native-base';
 import { TitleAndBackButtonHeader } from '../../general/header/headers';
 import CheckOutButton from '../../general/buttons/checkOut.button';
-import BagIconButtonsFooter from '../../general/footer/bag.iconButtons.footer';
+import { uuid } from '../../../api/uuid/index.uuid';
+import { Colors } from '../../general/colors/localprice.colors';
+import { Item, ShoppingBagItems } from '../../render/ShoppingBagCards';
+import shoppingBagStore from '../../../model/shoppingBagStrore/shoppingBagStore';
+import { observer } from 'mobx-react-lite';
+import { runInAction } from 'mobx';
+import { RemoveFromArr } from '../../../model/common/utils';
 
-const description: string = 'Apple Macbook pro 16gb ram';
-const itemDetails: string = 'More details about the product.';
-const price: string = 'P100,000';
-const ratings: string = '5.0';
-const location: string = 'Iloilo';
+// simulating json data comes from the server
+const uri = 'https://etech.com.pk/wp-content/uploads/2020/07/ROG.jpg';
+const name = 'Apple Magic Mouse adwiowdhahwdoadhoahdhoaiwdhoad';
+const price = 6500;
+const loc = 'iloilo';
+const description =
+  'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat, molestias. Odit non accusamus quam, sit porro illo nemo optio est excepturi. Veniam sapiente, aliquid nobis sit ipsa eligendi laudantium odio?';
 
-export function ShoppingBagScreen({ navigation }) {
+for (let i = 0; i < 10; i++) {
+  // data from the server comes and gets converted into an object
+  runInAction(() => {
+    shoppingBagStore.data.push(
+      new Item(uri, name, description, price, loc, 1, uuid.v4())
+    );
+  });
+}
+
+export function ShoppingBag() {
+  const [selectedAll, setSelectedAll] = useState<boolean>(false);
+
   return (
     <NativeBaseProvider>
       <Box safeArea width={'full'} height={'full'} position={'absolute'}>
@@ -30,8 +48,22 @@ export function ShoppingBagScreen({ navigation }) {
         <HStack space={'3'} paddingX={5} mb={3}>
           {/* SELECT AND DELETE ALL BUTTON */}
           <Box>
-            {/* // alternative: pressing the text will also trigger onChange */}
             <Checkbox
+              onChange={() => {
+                if (!selectedAll) {
+                  runInAction(() => {
+                    shoppingBagStore.selectedItems = [...shoppingBagStore.data];
+                    shoppingBagStore.compute();
+                  });
+                  setSelectedAll(true);
+                } else {
+                  runInAction(() => {
+                    shoppingBagStore.selectedItems = [];
+                    shoppingBagStore.compute();
+                  });
+                  setSelectedAll(false);
+                }
+              }}
               color={'#9B69DD'}
               borderRadius={'full'}
               borderColor={'#9B69DD'}
@@ -40,7 +72,6 @@ export function ShoppingBagScreen({ navigation }) {
                 height: 15
               }}
               _text={{ fontSize: '12' }}
-              value={''}
             >
               Select All
             </Checkbox>
@@ -48,141 +79,43 @@ export function ShoppingBagScreen({ navigation }) {
 
           <Box flex={1} alignItems={'flex-end'}>
             {/* DELETE BUTTON */}
-            <Pressable onPress={() => console.log('deleted')}>
+            <Pressable
+              onPress={() => {
+                shoppingBagStore.selectedItems.forEach((item) =>
+                  runInAction(() => {
+                    RemoveFromArr(shoppingBagStore.data, item);
+                    RemoveFromArr(shoppingBagStore.selectedItems, item);
+                  })
+                );
+
+                shoppingBagStore.compute();
+              }}
+            >
               <Text fontSize={'12'}>Delete</Text>
             </Pressable>
           </Box>
         </HStack>
 
         {/* LIST SECTION */}
-        <VStack width={'full'} paddingX={'5'} space={3}>
-          {/* the shop name */}
-          <HStack space={2}>
-            <Center>
-              <Checkbox
-                accessibilityLabel="all"
-                color={'#9B69DD'}
-                borderRadius={'full'}
-                borderColor={'#9B69DD'}
-                style={{
-                  width: 15,
-                  height: 15
-                }}
-                value={''}
-              />
-            </Center>
-            <Center>
-              <Text fontWeight={'bold'}>Gadget Headz</Text>
-            </Center>
-          </HStack>
-
-          <VStack space={5}>
-            <HStack space={2}>
-              {/* items that one shop owns  */}
-              <Center>
-                <Checkbox
-                  accessibilityLabel="all"
-                  color={'#9B69DD'}
-                  borderRadius={'full'}
-                  borderColor={'#9B69DD'}
-                  style={{
-                    width: 15,
-                    height: 15
-                  }}
-                  value={''}
-                />
-              </Center>
-
-              <Center
-                width={'20'}
-                height={'20'}
-                backgroundColor={'muted.500'}
-                borderRadius={10}
-              >
-                <Text fontSize={'10'}>Placeholder</Text>
-              </Center>
-              <Box flex={1}>
-                {/* CARD DETAILS AND DESCRIPTION */}
-                <Box maxH={'20'}>
-                  {/* description */}
-                  <Text fontWeight={'medium'} fontSize={15}>
-                    {description}
-                  </Text>
-                </Box>
-                <HStack>
-                  <Box flex={1}>
-                    <VStack>
-                      <Container>
-                        {/* price */}
-                        <Box>
-                          <Text
-                            fontWeight={'normal'}
-                            fontSize={15}
-                            color={'#8244d5'}
-                          >
-                            {price}
-                          </Text>
-                        </Box>
-                      </Container>
-                      <Box>
-                        {/* ratings and location */}
-                        <Text fontSize={12}>{ratings}</Text>
-                        <Text fontSize={12} color={'gray.500'}>
-                          {location}
-                        </Text>
-                      </Box>
-                    </VStack>
-                  </Box>
-                  <Box
-                    flex={1}
-                    justifyContent={'flex-end'}
-                    alignItems={'flex-end'}
-                  >
-                    {/* buttons */}
-                    <HStack
-                      borderColor={'#BA97E7'}
-                      borderWidth={'2px'}
-                      borderRadius={'full'}
-                      space={2}
-                      padding={'2px'}
-                    >
-                      <Box
-                        borderRadius={'full'}
-                        width={'20px'}
-                        height={'20px'}
-                        bg={'blue.500'}
-                      ></Box>
-                      <Box
-                        borderRadius={'full'}
-                        width={'20px'}
-                        height={'20px'}
-                        bg={'black'}
-                      ></Box>
-                      <Box
-                        borderRadius={'full'}
-                        width={'20px'}
-                        height={'20px'}
-                        bg={'blue.500'}
-                      ></Box>
-                    </HStack>
-                  </Box>
-                </HStack>
-              </Box>
-            </HStack>
+        <ScrollView showsVerticalScrollIndicator={false}>
+          <VStack width={'full'} paddingX={'5'} space={3}>
+            {/* ITEMS HERE */}
+            <ShoppingBagItems override={selectedAll} />
           </VStack>
-        </VStack>
+        </ScrollView>
 
         <Center
-          backgroundColor={'white'}
+          backgroundColor={Colors.White}
           bottom={'0'}
           position={'absolute'}
           width={'full'}
-          paddingY={5}
+          paddingTop={2}
         >
           {/* order summary */}
-          <HStack padding={5}>
+
+          <HStack paddingX={5}>
             <VStack flex={1} space={2}>
-              <Text fontWeight={'bold'}>Gadget Headz</Text>
+              <Text fontWeight={'bold'}>Order Summary</Text>
               <Text fontWeight={'normal'} fontSize={12}>
                 Subtotal
               </Text>
@@ -190,30 +123,43 @@ export function ShoppingBagScreen({ navigation }) {
                 Shipping Fee
               </Text>
               <Text fontWeight={'normal'} fontSize={12}>
-                Subtotal
+                Total
               </Text>
             </VStack>
             <VStack flex={1} alignItems={'flex-end'} space={2}>
-              <Text fontWeight={'bold'} color={'#9E6DDE'}>
-                3 Items
+              <Text fontWeight={'bold'} color={Colors.TrademarkViolet}>
+                {shoppingBagStore.selectedItems.length} Items
               </Text>
-              <Text fontWeight={'normal'} fontSize={12} color={'#9E6DDE'}>
-                P89,000
+              <Text
+                fontWeight={'normal'}
+                fontSize={12}
+                color={Colors.TrademarkViolet}
+              >
+                P {shoppingBagStore.Subtotal}
               </Text>
-              <Text fontWeight={'normal'} fontSize={12} color={'#9E6DDE'}>
-                P0
+              <Text
+                fontWeight={'normal'}
+                fontSize={12}
+                color={Colors.TrademarkViolet}
+              >
+                P {shoppingBagStore.ShippingFee}
               </Text>
-              <Text fontWeight={'normal'} fontSize={12} color={'#9E6DDE'}>
-                P89,000
+              <Text
+                fontWeight={'normal'}
+                fontSize={12}
+                color={Colors.TrademarkViolet}
+              >
+                P {shoppingBagStore.Total}
               </Text>
             </VStack>
           </HStack>
-          <CheckOutButton navigation={navigation} />
-          <Box width={'full'} height={'50px'}>
-            <BagIconButtonsFooter navigation={navigation} />
+          <Box paddingY={4}>
+            <CheckOutButton />
           </Box>
         </Center>
       </Box>
     </NativeBaseProvider>
   );
 }
+
+export const ShoppingBagScreen = observer(ShoppingBag);

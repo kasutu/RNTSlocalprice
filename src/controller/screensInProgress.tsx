@@ -1,6 +1,6 @@
 import React from 'react';
 import { MapViewComponent } from '../view/general/map/mapViewComponent.map';
-import Router from '../view/router';
+import Router from './router';
 import HomeScreen from '../view/screens/home/homeScreen.home';
 import {
   ChatScreen,

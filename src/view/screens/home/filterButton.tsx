@@ -1,10 +1,11 @@
 import React from 'react';
 import { Pressable, Text } from 'native-base';
 import { ButtonProps } from '../../../types/buttonProps.type';
+import { Colors } from '../../general/colors/localprice.colors';
 
 export default function FilterButton({
   value,
-  color,
+  toggle,
   onPressHandler
 }: ButtonProps) {
   return (
@@ -16,13 +17,15 @@ export default function FilterButton({
             : () => console.log('Filter Button Pressed')
         }
         w="20"
-        h="8"
-        bg={color ? color : 'violet.300'}
+        h={5}
+        bg={toggle ? Colors.DarkViolet : Colors.LightViolet}
         rounded="full"
         justifyContent={'center'}
         alignItems={'center'}
       >
-        <Text fontSize={'13'}>{value}</Text>
+        <Text fontSize={'10'} color={toggle ? Colors.White : Colors.Black}>
+          {value}
+        </Text>
       </Pressable>
     </>
   );
