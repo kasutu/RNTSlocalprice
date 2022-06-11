@@ -243,3 +243,10 @@ export async function sendNewMessageHandler(
     }
   }
 }
+
+export function RemoveFromArr<T>(array: T[], item: T) {
+  const index: number = array.indexOf(item);
+  if (index !== -1) {
+    array.splice(index, 1);
+  }
+}

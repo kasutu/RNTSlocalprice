@@ -1,8 +1,7 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   Box,
   Center,
-  Checkbox,
   Container,
   HStack,
   Icon,
@@ -11,11 +10,16 @@ import {
   Text,
   VStack
 } from 'native-base';
-import { Colors } from 'react-native/Libraries/NewAppScreen';
 import { PlusIcon, MinusIcon } from '../general/icons/localprice.icons';
-import { uuid } from '../../api/uuid/index.uuid';
 
-class Item {
+import shoppingBagStore from '../../model/shoppingBagStrore/shoppingBagStore';
+
+import { Colors } from '../general/colors/localprice.colors';
+import { runInAction } from 'mobx';
+import { RemoveFromArr } from '../../model/common/utils';
+import { observer } from 'mobx-react-lite';
+
+export class Item {
   constructor(
     public uri: string,
     public name: string,
@@ -25,42 +29,46 @@ class Item {
     public qty: number,
     public id: string
   ) {}
+
+  public plusQty(): void {
+    this.qty++;
+  }
+
+  public minusQty(): void {
+    if (this.qty !== 1) {
+      this.qty--;
+    }
+  }
+
+  public getThis(): this {
+    return this;
+  }
 }
 
-const uri = 'https://etech.com.pk/wp-content/uploads/2020/07/ROG.jpg';
-const name = 'Apple Magic Mouse adwiowdhahwdoadhoahdhoaiwdhoad';
-const price = 6500;
-const loc = 'iloilo';
-const description =
-  'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat, molestias. Odit non accusamus quam, sit porro illo nemo optio est excepturi. Veniam sapiente, aliquid nobis sit ipsa eligendi laudantium odio?';
-
-const items: Item[] = [];
-
-for (let i = 0; i < 10; i++) {
-  items.push(new Item(uri, name, description, price, loc, 1, uuid.v4()));
-}
-
-export function ShoppingBagItems() {
+export function ShoppingBag({ override }: { override?: boolean }) {
   return (
     <>
-      {items.map((item) => {
+      {shoppingBagStore.data.map((item) => {
         return (
           <Box key={item.id} paddingY={1}>
             <VStack space={5}>
               <HStack space={2}>
                 {/* items that one shop owns  */}
-                <Center>
-                  <Checkbox
-                    accessibilityLabel="all"
-                    color={'#9B69DD'}
-                    borderRadius={'full'}
-                    borderColor={'#9B69DD'}
-                    style={{
-                      width: 15,
-                      height: 15
-                    }}
-                  />
-                </Center>
+                <RadioButton
+                  override={override}
+                  on={() => {
+                    runInAction(() => {
+                      shoppingBagStore.selectedItems.push(item);
+                      shoppingBagStore.compute();
+                    });
+                  }}
+                  off={() => {
+                    runInAction(() => {
+                      RemoveFromArr(shoppingBagStore.selectedItems, item);
+                      shoppingBagStore.compute();
+                    });
+                  }}
+                />
 
                 <Center
                   width={'20'}
@@ -111,40 +119,18 @@ export function ShoppingBagItems() {
                     </Box>
                     <Box flex={1} justifyContent={'flex-end'}>
                       <Center>
-                        {/* buttons */}
-                        <HStack space={2} alignItems={'center'}>
-                          <Pressable
-                            rounded={'full'}
-                            bg={Colors.HeartColor}
-                            width={'20px'}
-                            height={'20px'}
-                            justifyContent={'center'}
-                            alignItems={'center'}
-                          >
-                            <Icon
-                              as={MinusIcon}
-                              color={Colors.White}
-                              size={'20px'}
-                            />
-                          </Pressable>
-                          <Center paddingX={2}>
-                            <Text fontSize={18}>{item.qty}</Text>
-                          </Center>
-                          <Pressable
-                            rounded={'full'}
-                            bg={Colors.HeartColor}
-                            width={'20px'}
-                            height={'20px'}
-                            justifyContent={'center'}
-                            alignItems={'center'}
-                          >
-                            <Icon
-                              as={PlusIcon}
-                              color={Colors.White}
-                              size={'20px'}
-                            />
-                          </Pressable>
-                        </HStack>
+                        {/* button component */}
+                        <QtyButtons
+                          add={() => {
+                            item.plusQty();
+                            shoppingBagStore.compute();
+                          }}
+                          minus={() => {
+                            item.minusQty();
+                            shoppingBagStore.compute();
+                          }}
+                          item={item}
+                        />
                       </Center>
                     </Box>
                   </HStack>
@@ -154,6 +140,100 @@ export function ShoppingBagItems() {
           </Box>
         );
       })}
+    </>
+  );
+}
+
+export const ShoppingBagItems = observer(ShoppingBag);
+
+function RadioButton({
+  on,
+  off,
+  override
+}: {
+  on: () => void;
+  off: () => void;
+  override?: boolean;
+}) {
+  const [selected, setSelected] = useState<boolean>(
+    override ? override : false
+  );
+
+  return (
+    <>
+      <Center>
+        <Pressable
+          onPress={() => {
+            if (!selected) {
+              on();
+              setSelected(true);
+            } else {
+              off();
+              setSelected(false);
+            }
+          }}
+        >
+          <Box
+            width={'10px'}
+            height={'10px'}
+            rounded={'full'}
+            bg={selected ? Colors.DarkViolet : Colors.LightViolet}
+          ></Box>
+        </Pressable>
+      </Center>
+    </>
+  );
+}
+
+function QtyButtons({
+  add,
+  minus,
+  item
+}: {
+  add: () => void;
+  minus: () => void;
+  item: Item;
+}) {
+  const [currentQty, setCurrentQty] = useState<number>(item.qty);
+
+  return (
+    <>
+      <Box bg={'dark.700'} paddingX={1} rounded={'full'}>
+        {/* buttons */}
+        <HStack space={2} alignItems={'center'}>
+          <Pressable
+            rounded={'full'}
+            bg={Colors.HeartColor}
+            width={'20px'}
+            height={'20px'}
+            justifyContent={'center'}
+            alignItems={'center'}
+            onPress={() => {
+              minus();
+              setCurrentQty(item.qty);
+            }}
+          >
+            <Icon as={MinusIcon} color={Colors.White} size={'20px'} />
+          </Pressable>
+          <Center paddingX={2}>
+            <Text fontSize={18}>{currentQty}</Text>
+          </Center>
+          <Pressable
+            rounded={'full'}
+            bg={Colors.HeartColor}
+            width={'20px'}
+            height={'20px'}
+            justifyContent={'center'}
+            alignItems={'center'}
+            onPress={() => {
+              add();
+              setCurrentQty(item.qty);
+            }}
+          >
+            <Icon as={PlusIcon} color={Colors.White} size={'20px'} />
+          </Pressable>
+        </HStack>
+      </Box>
     </>
   );
 }

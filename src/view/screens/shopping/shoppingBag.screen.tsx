@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Box,
   Center,
@@ -8,19 +8,38 @@ import {
   HStack,
   Pressable,
   Text,
-  Container,
-  Image,
-  ScrollView,
-  Icon
+  ScrollView
 } from 'native-base';
 import { TitleAndBackButtonHeader } from '../../general/header/headers';
 import CheckOutButton from '../../general/buttons/checkOut.button';
 import { uuid } from '../../../api/uuid/index.uuid';
 import { Colors } from '../../general/colors/localprice.colors';
-import { PlusIcon, MinusIcon } from '../../general/icons/localprice.icons';
-import { ShoppingBagItems } from '../../render/ShoppingBagCards';
+import { Item, ShoppingBagItems } from '../../render/ShoppingBagCards';
+import shoppingBagStore from '../../../model/shoppingBagStrore/shoppingBagStore';
+import { observer } from 'mobx-react-lite';
+import { runInAction } from 'mobx';
+import { RemoveFromArr } from '../../../model/common/utils';
 
-export function ShoppingBagScreen() {
+// simulating json data comes from the server
+const uri = 'https://etech.com.pk/wp-content/uploads/2020/07/ROG.jpg';
+const name = 'Apple Magic Mouse adwiowdhahwdoadhoahdhoaiwdhoad';
+const price = 6500;
+const loc = 'iloilo';
+const description =
+  'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat, molestias. Odit non accusamus quam, sit porro illo nemo optio est excepturi. Veniam sapiente, aliquid nobis sit ipsa eligendi laudantium odio?';
+
+for (let i = 0; i < 10; i++) {
+  // data from the server comes and gets converted into an object
+  runInAction(() => {
+    shoppingBagStore.data.push(
+      new Item(uri, name, description, price, loc, 1, uuid.v4())
+    );
+  });
+}
+
+export function ShoppingBag() {
+  const [selectedAll, setSelectedAll] = useState<boolean>(false);
+
   return (
     <NativeBaseProvider>
       <Box safeArea width={'full'} height={'full'} position={'absolute'}>
@@ -29,8 +48,22 @@ export function ShoppingBagScreen() {
         <HStack space={'3'} paddingX={5} mb={3}>
           {/* SELECT AND DELETE ALL BUTTON */}
           <Box>
-            {/* // alternative: pressing the text will also trigger onChange */}
             <Checkbox
+              onChange={() => {
+                if (!selectedAll) {
+                  runInAction(() => {
+                    shoppingBagStore.selectedItems = [...shoppingBagStore.data];
+                    shoppingBagStore.compute();
+                  });
+                  setSelectedAll(true);
+                } else {
+                  runInAction(() => {
+                    shoppingBagStore.selectedItems = [];
+                    shoppingBagStore.compute();
+                  });
+                  setSelectedAll(false);
+                }
+              }}
               color={'#9B69DD'}
               borderRadius={'full'}
               borderColor={'#9B69DD'}
@@ -46,7 +79,18 @@ export function ShoppingBagScreen() {
 
           <Box flex={1} alignItems={'flex-end'}>
             {/* DELETE BUTTON */}
-            <Pressable onPress={() => console.log('deleted')}>
+            <Pressable
+              onPress={() => {
+                shoppingBagStore.selectedItems.forEach((item) =>
+                  runInAction(() => {
+                    RemoveFromArr(shoppingBagStore.data, item);
+                    RemoveFromArr(shoppingBagStore.selectedItems, item);
+                  })
+                );
+
+                shoppingBagStore.compute();
+              }}
+            >
               <Text fontSize={'12'}>Delete</Text>
             </Pressable>
           </Box>
@@ -55,27 +99,8 @@ export function ShoppingBagScreen() {
         {/* LIST SECTION */}
         <ScrollView showsVerticalScrollIndicator={false}>
           <VStack width={'full'} paddingX={'5'} space={3}>
-            {/* the shop name */}
-            {/* <HStack space={2}>
-            <Center>
-              <Checkbox
-                accessibilityLabel="all"
-                color={'#9B69DD'}
-                borderRadius={'full'}
-                borderColor={'#9B69DD'}
-                style={{
-                  width: 15,
-                  height: 15
-                }}
-              />
-            </Center>
-            <Center>
-              <Text fontWeight={'bold'}>Gadget Headz</Text>
-            </Center>
-          </HStack> */}
-
             {/* ITEMS HERE */}
-            <ShoppingBagItems />
+            <ShoppingBagItems override={selectedAll} />
           </VStack>
         </ScrollView>
 
@@ -87,6 +112,7 @@ export function ShoppingBagScreen() {
           paddingTop={2}
         >
           {/* order summary */}
+
           <HStack paddingX={5}>
             <VStack flex={1} space={2}>
               <Text fontWeight={'bold'}>Order Summary</Text>
@@ -97,33 +123,33 @@ export function ShoppingBagScreen() {
                 Shipping Fee
               </Text>
               <Text fontWeight={'normal'} fontSize={12}>
-                Subtotal
+                Total
               </Text>
             </VStack>
             <VStack flex={1} alignItems={'flex-end'} space={2}>
               <Text fontWeight={'bold'} color={Colors.TrademarkViolet}>
-                3 Items
+                {shoppingBagStore.selectedItems.length} Items
               </Text>
               <Text
                 fontWeight={'normal'}
                 fontSize={12}
                 color={Colors.TrademarkViolet}
               >
-                P89,000
+                P {shoppingBagStore.Subtotal}
               </Text>
               <Text
                 fontWeight={'normal'}
                 fontSize={12}
                 color={Colors.TrademarkViolet}
               >
-                P0
+                P {shoppingBagStore.ShippingFee}
               </Text>
               <Text
                 fontWeight={'normal'}
                 fontSize={12}
                 color={Colors.TrademarkViolet}
               >
-                P89,000
+                P {shoppingBagStore.Total}
               </Text>
             </VStack>
           </HStack>
@@ -135,3 +161,5 @@ export function ShoppingBagScreen() {
     </NativeBaseProvider>
   );
 }
+
+export const ShoppingBagScreen = observer(ShoppingBag);
