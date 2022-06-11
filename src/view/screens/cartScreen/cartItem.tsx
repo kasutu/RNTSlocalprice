@@ -1,8 +1,5 @@
 import React from 'react';
-import { Text, View, Image, Pressable } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
-import AntDesign from 'react-native-vector-icons/AntDesign';
-import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { Text, View, Image } from 'react-native';
 import { useState } from 'react';
 import styles from './styles';
 import QuantityButton from './quantityButton';
@@ -11,7 +8,6 @@ import { CartItemProps } from '../../../model/AddToCartStore/addToCart';
 
 const CartItems = ({ cartProps }: CartItemProps) => {
   const { quantity: quantityProp, item } = cartProps;
-
   const [quantity, setQuantity] = useState(quantityProp);
 
   return (

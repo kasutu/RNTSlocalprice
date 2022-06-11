@@ -72,7 +72,7 @@ export function LogInScreen(props: LogInProps) {
       <Box safeArea width={'full'} height={'full'} position={'absolute'}>
         <TitleAndBackButtonHeader
           /* onPressHandler={() => navigation.navigate('MainHomeScreen')} */
-          onPressHandler={() => console.log('Proceed to MainHomeScreen')}
+          onPressHandler={() => console.log('Proceed to MainHomeScreen') }
         />
         <VStack flex={1} alignItems={'center'} space={5}>
           <Center paddingY={'3'} width={'full'} height={'200px'}>
