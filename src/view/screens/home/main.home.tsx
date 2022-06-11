@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Box, NativeBaseProvider, ScrollView, VStack } from 'native-base';
 import { FilterButtons } from './filterBtnsComponent';
 import { ItemCardsRenderer } from '../../render/ItemCards.renderer';
 import { SearchBarHeader } from '../../general/header/headers';
+import { observer } from 'mobx-react-lite';
 
-export function MainHomeScreen() {
+export function MainHome() {
   return (
     <NativeBaseProvider>
       <Box safeArea width={'full'} height={'full'} position={'absolute'}>
@@ -13,7 +14,7 @@ export function MainHomeScreen() {
 
         {/* BODY AND CONTENT */}
         <VStack space={2} flex={1}>
-          <FilterButtons />
+          <FilterButtons cb={(e) => console.log(e)} />
 
           <ScrollView
             showsVerticalScrollIndicator={false}
@@ -35,3 +36,7 @@ export function MainHomeScreen() {
     </NativeBaseProvider>
   );
 }
+
+export const MainHomeScreen = observer(MainHome);
+
+// still broken tho

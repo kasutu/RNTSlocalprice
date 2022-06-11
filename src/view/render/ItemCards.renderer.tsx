@@ -2,6 +2,7 @@ import React from 'react';
 import { Box, Center, Image, Pressable, Text, VStack } from 'native-base';
 import { uuid } from '../../api/uuid/index.uuid';
 import { Colors } from '../general/colors/localprice.colors';
+import { observer } from 'mobx-react-lite';
 
 class Item {
   constructor(
@@ -24,7 +25,7 @@ for (let i = 0; i < 10; i++) {
   items.push(new Item(uri, name, price, loc, uuid.v4()));
 }
 
-export function ItemCardsRenderer() {
+export function ItemCards() {
   return (
     <>
       {items.map((item) => {
@@ -74,3 +75,5 @@ export function ItemCardsRenderer() {
     </>
   );
 }
+
+export const ItemCardsRenderer = observer(ItemCards);

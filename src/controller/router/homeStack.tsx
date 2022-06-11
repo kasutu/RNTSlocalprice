@@ -3,7 +3,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import HomeScreen from '../../view/screens/home/homeScreen.home';
 import ProductScreen from '../../view/screens/itemView/productScreen';
 import { SafeAreaView, TextInput } from 'react-native';
-import { InputColor } from '../../view/general/colors/localprice.colors';
+import { Colors } from '../../view/general/colors/localprice.colors';
 
 const Stack = createStackNavigator();
 
@@ -19,7 +19,7 @@ const HeaderStyle = ({ searchInput, setSearchInput }: HeaderStyleProps) => {
         style={{
           padding: 10,
           margin: 10,
-          backgroundColor: InputColor,
+          backgroundColor: Colors.LightViolet,
           borderRadius: 15
         }}
         placeholder="Search"

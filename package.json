@@ -8,7 +8,8 @@
     "start": "react-native start",
     "test": "jest",
     "lint": "tsc --noEmit && eslint --ext .js,.jsx,.ts,.tsx ./",
-    "prettier:write": "npx prettier --write **/*.{js,jsx,ts,tsx,json} && npx prettier --write *.{js,jsx,ts,tsx,json}"
+    "prettier:write": "npx prettier --write **/*.{js,jsx,ts,tsx,json} && npx prettier --write *.{js,jsx,ts,tsx,json}",
+    "build-debug-apk": "react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res && cd android && ./gradlew assembleDebug cd .."
   },
   "dependencies": {
     "@react-native-community/geolocation": "^2.1.0",
