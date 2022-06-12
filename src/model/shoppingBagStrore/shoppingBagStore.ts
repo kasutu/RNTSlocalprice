@@ -1,8 +1,7 @@
 // MobX implementation
 
 import { makeAutoObservable, runInAction } from 'mobx';
-import { Item } from '../../view/render/ShoppingBagCards';
-import { RemoveFromArr } from '../common/utils';
+import { ShoppingBagItem } from '../../view/render/ShoppingBagCards';
 
 // make this generic soon
 // 'export' is added for test purposes
@@ -11,8 +10,9 @@ export class ShoppingBagStore {
    * atleast 1 property to hold data
    * you want to broadcast all over any screen
    */
-  public data: Item[] = [];
-  public selectedItems: Item[] = [];
+  public id: string = '' // set id before upload
+  public data: ShoppingBagItem[] = [];
+  public selectedItems: ShoppingBagItem[] = [];
   public ShippingFee: number = 120;
   public Subtotal: number = 0;
   public Total: number = 0;

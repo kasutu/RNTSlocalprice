@@ -21,22 +21,28 @@ import {
   solidProfileIcon
 } from '../../general/icons/localprice.icons';
 import { TitleHeader } from '../../general/header/headers';
-import Authentication from './../../../api/firebase/authentications';
-import { ItemCardsRenderer } from '../../render/ItemCards.renderer';
+import { authLocal } from './../../../api/firebase/authentications';
+import { Item, ItemCardsRenderer } from '../../render/ItemCards.renderer';
+import { uuid } from '../../../api/uuid/index.uuid';
 
-interface ProfileScreenProps {
-  navigation: any;
+const uri = 'https://etech.com.pk/wp-content/uploads/2020/07/ROG.jpg';
+const name = 'ROG ni dave';
+const price = 6500;
+const loc = 'iloilo';
+
+const items: Item[] = [];
+
+for (let i = 0; i < 10; i++) {
+  items.push(new Item(uri, name, price, loc, uuid.v4()));
 }
 
-const auth = new Authentication();
-
-export function ProfileScreen({ navigation }: ProfileScreenProps) {
+export function ProfileScreen() {
   const [state, setState] = React.useState({
     email: ''
   });
 
   React.useEffect(() => {
-    const user = auth.getUser();
+    const user = authLocal.getUser();
     setState({
       email: user?.email ? user.email : ''
     });
@@ -123,7 +129,7 @@ export function ProfileScreen({ navigation }: ProfileScreenProps) {
                 justifyContent={'space-around'}
               >
                 {/* returns an item */}
-                <ItemCardsRenderer />
+                <ItemCardsRenderer items={items} />
               </Box>
             </Box>
           </VStack>

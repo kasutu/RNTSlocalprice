@@ -22,3 +22,4 @@ export { EditAddressScreen } from './userSeller/editAddressScreen.userSeller';
 export { ReportUserScreen } from './userSeller/reportUser.screen';
 export { SellOrEditItemScreen } from './userSeller/seller/sellOrEditItem.seller';
 export { ChatScreen } from './chat/chat.screen';
+export { LoadingScreen } from './loadingScreen/loadingScreen';

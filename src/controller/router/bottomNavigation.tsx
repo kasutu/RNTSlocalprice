@@ -9,6 +9,9 @@ import {
 } from '../../view/screens/index.screens';
 import Ionicons from 'react-native-vector-icons/Ionicons.js';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import { Colors } from '../../view/general/colors/localprice.colors';
+import { HomeStack } from './homeStack';
+import { CheckoutStack } from './checkoutStack';
 
 const Tab = createBottomTabNavigator();
 
@@ -17,12 +20,12 @@ const BottomTabNav = () => {
     <Tab.Navigator
       screenOptions={{
         headerShown: false,
-        tabBarInactiveTintColor: '#363636',
-        tabBarActiveTintColor: '#9e6dde'
+        tabBarInactiveTintColor: Colors.Inactive,
+        tabBarActiveTintColor: Colors.TrademarkViolet
       }}
     >
       <Tab.Screen
-        component={MainHomeScreen}
+        component={HomeStack}
         name="Home"
         options={{
           tabBarIcon: ({ color: color }) => (
@@ -42,7 +45,7 @@ const BottomTabNav = () => {
       />
 
       <Tab.Screen
-        component={ShoppingBagScreen}
+        component={CheckoutStack}
         name="Bag"
         options={{
           tabBarIcon: ({ color: color }) => (

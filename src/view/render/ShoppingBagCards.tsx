@@ -19,15 +19,15 @@ import { runInAction } from 'mobx';
 import { RemoveFromArr } from '../../model/common/utils';
 import { observer } from 'mobx-react-lite';
 
-export class Item {
+export class ShoppingBagItem {
   constructor(
+    public id: string,
     public uri: string,
     public name: string,
-    public description: string,
     public price: number,
     public location: string,
     public qty: number,
-    public id: string
+    public description: string
   ) {}
 
   public plusQty(): void {
@@ -192,7 +192,7 @@ function QtyButtons({
 }: {
   add: () => void;
   minus: () => void;
-  item: Item;
+  item: ShoppingBagItem;
 }) {
   const [currentQty, setCurrentQty] = useState<number>(item.qty);
 

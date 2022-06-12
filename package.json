@@ -24,6 +24,7 @@
     "@react-navigation/native-stack": "^6.6.2",
     "@react-navigation/stack": "^6.2.1",
     "geofire-common": "^5.2.0",
+    "geolib": "^3.3.3",
     "mobx": "^6.5.0",
     "mobx-react-lite": "^3.4.0",
     "native-base": "^3.4.4",
@@ -31,7 +32,6 @@
     "react-native": "0.68.2",
     "react-native-gesture-handler": "^2.4.2",
     "react-native-get-random-values": "^1.8.0",
-    "react-native-gifted-chat": "^1.0.0",
     "react-native-image-picker": "^4.8.3",
     "react-native-maps": "^0.31.1",
     "react-native-mmkv": "^2.4.1",
@@ -41,6 +41,7 @@
     "react-native-svg": "^12.3.0",
     "react-native-vector-icons": "^9.1.0",
     "react-navigation": "^4.4.4",
+    "ts-toolbelt": "^9.6.0",
     "tslib": "^2.4.0",
     "uuid": "^8.3.2"
   },

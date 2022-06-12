@@ -1,10 +1,22 @@
 import React, { useEffect, useState } from 'react';
 import { Box, NativeBaseProvider, ScrollView, VStack } from 'native-base';
 import { FilterButtons } from './filterBtnsComponent';
-import { ItemCardsRenderer } from '../../render/ItemCards.renderer';
+import { Item, ItemCardsRenderer } from '../../render/ItemCards.renderer';
 import { SearchBarHeader } from '../../general/header/headers';
 import { observer } from 'mobx-react-lite';
 import MapNearbyScreen from '../mapScreen/mapNearbyScreen';
+import { uuid } from '../../../api/uuid/index.uuid';
+
+const uri = 'https://etech.com.pk/wp-content/uploads/2020/07/ROG.jpg';
+const name = 'ROG nga baklon ni dave';
+const price = 6500;
+const loc = 'iloilo';
+
+const items: Item[] = [];
+
+for (let i = 0; i < 10; i++) {
+  items.push(new Item(uri, name, price, loc, uuid.v4()));
+}
 
 export function MainHome() {
   const [displayMap, setDisplayMap] = useState<string>('all');
@@ -27,7 +39,7 @@ export function MainHome() {
                 justifyContent={'space-around'}
               >
                 {/* returns an item */}
-                <ItemCardsRenderer />
+                <ItemCardsRenderer items={items} />
               </Box>
             </ScrollView>
           </VStack>

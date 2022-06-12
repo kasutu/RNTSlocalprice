@@ -26,3 +26,25 @@ export default function CheckOutButton({ onPressHandler }: ButtonProps) {
     </>
   );
 }
+
+export function GoToCartButton({ onPressHandler }: ButtonProps) {
+  return (
+    <>
+      <Pressable
+        width={'300'}
+        height={'35'}
+        justifyContent={'center'}
+        alignItems={'center'}
+        onPress={
+          onPressHandler ? onPressHandler : () => console.log('goto cart')
+        }
+        borderRadius={'50'}
+        bg={Colors.TrademarkViolet}
+      >
+        <Text color={Colors.White} fontSize={'15'} fontWeight={'medium'}>
+          {'Goto my Bag'}
+        </Text>
+      </Pressable>
+    </>
+  );
+}

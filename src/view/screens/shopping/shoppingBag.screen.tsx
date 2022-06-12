@@ -12,38 +12,28 @@ import {
 } from 'native-base';
 import { TitleAndBackButtonHeader } from '../../general/header/headers';
 import CheckOutButton from '../../general/buttons/checkOut.button';
-import { uuid } from '../../../api/uuid/index.uuid';
 import { Colors } from '../../general/colors/localprice.colors';
-import { Item, ShoppingBagItems } from '../../render/ShoppingBagCards';
+import { ShoppingBagItems } from '../../render/ShoppingBagCards';
 import shoppingBagStore from '../../../model/shoppingBagStrore/shoppingBagStore';
 import { observer } from 'mobx-react-lite';
 import { runInAction } from 'mobx';
 import { RemoveFromArr } from '../../../model/common/utils';
-
-// simulating json data comes from the server
-const uri = 'https://etech.com.pk/wp-content/uploads/2020/07/ROG.jpg';
-const name = 'Apple Magic Mouse adwiowdhahwdoadhoahdhoaiwdhoad';
-const price = 6500;
-const loc = 'iloilo';
-const description =
-  'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat, molestias. Odit non accusamus quam, sit porro illo nemo optio est excepturi. Veniam sapiente, aliquid nobis sit ipsa eligendi laudantium odio?';
-
-for (let i = 0; i < 10; i++) {
-  // data from the server comes and gets converted into an object
-  runInAction(() => {
-    shoppingBagStore.data.push(
-      new Item(uri, name, description, price, loc, 1, uuid.v4())
-    );
-  });
-}
+import { useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { StackParams } from '../../../types/navigationProps';
 
 export function ShoppingBag() {
+  const stack = useNavigation<NativeStackNavigationProp<StackParams>>();
+
   const [selectedAll, setSelectedAll] = useState<boolean>(false);
 
   return (
     <NativeBaseProvider>
       <Box safeArea width={'full'} height={'full'} position={'absolute'}>
-        <TitleAndBackButtonHeader title="Shopping bag" />
+        <TitleAndBackButtonHeader
+          onPressHandler={() => stack.goBack()}
+          title="Shopping bag"
+        />
 
         <HStack space={'3'} paddingX={5} mb={3}>
           {/* SELECT AND DELETE ALL BUTTON */}

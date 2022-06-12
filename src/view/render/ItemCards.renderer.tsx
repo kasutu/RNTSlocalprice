@@ -1,10 +1,13 @@
 import React from 'react';
 import { Box, Center, Image, Pressable, Text, VStack } from 'native-base';
-import { uuid } from '../../api/uuid/index.uuid';
 import { Colors } from '../general/colors/localprice.colors';
 import { observer } from 'mobx-react-lite';
+import { useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { StackParams } from '../../types/navigationProps';
+import currentItemStore from '../../model/itemViewStore/itemViewstore';
 
-class Item {
+export class Item {
   constructor(
     public uri: string,
     public name: string,
@@ -14,18 +17,9 @@ class Item {
   ) {}
 }
 
-const uri = 'https://etech.com.pk/wp-content/uploads/2020/07/ROG.jpg';
-const name = 'Apple Magic Mouse adwiowdhahwdoadhoahdhoaiwdhoad';
-const price = 6500;
-const loc = 'iloilo';
+export function ItemCards({ items }: { items: Item[] }) {
+  const stack = useNavigation<NativeStackNavigationProp<StackParams>>();
 
-const items: Item[] = [];
-
-for (let i = 0; i < 10; i++) {
-  items.push(new Item(uri, name, price, loc, uuid.v4()));
-}
-
-export function ItemCards() {
   return (
     <>
       {items.map((item) => {
@@ -34,7 +28,12 @@ export function ItemCards() {
             <Pressable
               width={'full'}
               height={'full'}
-              onPress={() => console.log('item pressed')}
+              onPress={() => {
+                // navigate to item view
+                currentItemStore.item = item;
+                console.log('navigating to: ', item.name);
+                stack.navigate('ItemScreen');
+              }}
             >
               <VStack flex={1}>
                 <Center h={'160px'} w={'full'}>
@@ -44,7 +43,7 @@ export function ItemCards() {
                     source={{
                       uri: item.uri
                     }}
-                    alt="Alternate Text"
+                    alt={item.name}
                     size="full"
                   />
                 </Center>
