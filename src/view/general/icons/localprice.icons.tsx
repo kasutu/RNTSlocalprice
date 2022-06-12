@@ -2,6 +2,7 @@ import AntDesignIcon from 'react-native-vector-icons/AntDesign.js';
 import Icon from 'react-native-vector-icons/MaterialIcons.js';
 import React from 'react';
 import Ionicon from 'react-native-vector-icons/Ionicons.js';
+import Entypo from 'react-native-vector-icons/Entypo.js';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons.js';
 
 const arrowBack = <Icon name="arrow-back" size={30} color="black" />;
@@ -36,8 +37,14 @@ const LocationIcon = <Icon name="location-on" color="red" size={40} />;
 
 const SendIcon = <Ionicon name="send" color="black" />;
 const CameraIcon = <Ionicon name="camera" color="black" />;
+const searchIcon = <Ionicon name="search" color="black" size={20} />;
+const PlusIcon = <MaterialCommunityIcons name="plus" />;
+const MinusIcon = <MaterialCommunityIcons name="minus" />;
 
 export {
+  MinusIcon,
+  PlusIcon,
+  searchIcon,
   arrowBack,
   addIcon,
   eyeIcon,

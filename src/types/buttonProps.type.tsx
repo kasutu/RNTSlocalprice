@@ -3,6 +3,7 @@ import { GestureResponderEvent } from 'react-native';
 
 export type ButtonProps = {
   value?: string;
+  toggle?: boolean;
   onPressHandler?: onPressAcceptedValue;
 } & IButtonProps;
 

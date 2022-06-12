@@ -28,5 +28,5 @@ for consumers and sellers who wants to find a product nearby fast and to save ti
 
 ### Notes
 
-- Rename files in tsx
-- always use targeted imports (n curly braces)
+chore: `needs refactoring` 
+apply: `factory design`
