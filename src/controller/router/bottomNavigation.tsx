@@ -12,6 +12,7 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import { Colors } from '../../view/general/colors/localprice.colors';
 import { HomeStack } from './homeStack';
 import { CheckoutStack } from './checkoutStack';
+import { ProfileStack } from './profileStack';
 
 const Tab = createBottomTabNavigator();
 
@@ -65,7 +66,7 @@ const BottomTabNav = () => {
       />
 
       <Tab.Screen
-        component={ProfileScreen}
+        component={ProfileStack}
         name="Me"
         options={{
           tabBarIcon: ({ color: color }) => (

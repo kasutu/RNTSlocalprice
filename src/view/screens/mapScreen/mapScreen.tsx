@@ -6,10 +6,15 @@ import { Center } from 'native-base';
 import { ReactNativeGeofire } from '../../../api/geoquery/geoquery';
 import mapCoordsStore from '../../../model/mapCoordsStore/mapCoordsStore';
 import userStore from '../../../model/UserStore/UserStore';
+import { useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { StackParams } from '../../../types/navigationProps';
 
 const shopsGeoFire = new ReactNativeGeofire('shops');
 
 export default function MapScreen() {
+  const stack = useNavigation<NativeStackNavigationProp<StackParams>>();
+
   return (
     <View style={styles.body}>
       <MapViewComponent />
@@ -26,8 +31,7 @@ export default function MapScreen() {
                 mapCoordsStore.data.longitude
               );
             }}
-
-            // onPressCancelHandler={() => /* navigate back */ }
+            onPressCancelHandler={() => stack.goBack()}
           />
         </Center>
       </View>

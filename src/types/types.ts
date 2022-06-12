@@ -77,7 +77,11 @@ export interface ConversationOwnersType {
   sellerName: string;
 }
 
-export type UserRole = 'seller' | 'not verified' | 'not logged in';
+export type UserRole =
+  | 'seller'
+  | 'not verified'
+  | 'not logged in'
+  | 'verified seller';
 
 export type PaymentOptions = 'cash on delivery' | 'pickup and pay';
 

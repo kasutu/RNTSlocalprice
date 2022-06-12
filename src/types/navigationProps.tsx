@@ -19,4 +19,5 @@ export type StackParams = {
   LoadingScreen: any;
   BottomTabNav: any;
   CheckoutStack: any;
+  MapScreen: any;
 };

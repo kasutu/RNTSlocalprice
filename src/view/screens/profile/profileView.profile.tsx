@@ -1,10 +1,4 @@
-import React from 'react';
-import {
-  Address,
-  FullName,
-  PhoneNumber,
-  Role
-} from '../../../model/store/user/metadata.user';
+import React, { useEffect, useState } from 'react';
 import {
   Box,
   Center,
@@ -21,9 +15,15 @@ import {
   solidProfileIcon
 } from '../../general/icons/localprice.icons';
 import { TitleHeader } from '../../general/header/headers';
-import { authLocal } from './../../../api/firebase/authentications';
 import { Item, ItemCardsRenderer } from '../../render/ItemCards.renderer';
 import { uuid } from '../../../api/uuid/index.uuid';
+import { useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { StackParams } from '../../../types/navigationProps';
+import persistedUserData from '../../../model/UserStore/persistedUserData';
+import { observer } from 'mobx-react-lite';
+import SolidButton from '../../general/buttons/solid.button';
+import LogInButton from '../../general/buttons/logIn.button';
 
 const uri = 'https://etech.com.pk/wp-content/uploads/2020/07/ROG.jpg';
 const name = 'ROG ni dave';
@@ -36,16 +36,11 @@ for (let i = 0; i < 10; i++) {
   items.push(new Item(uri, name, price, loc, uuid.v4()));
 }
 
-export function ProfileScreen() {
-  const [state, setState] = React.useState({
-    email: ''
-  });
+export function ProfileScreenMain() {
+  const stack = useNavigation<NativeStackNavigationProp<StackParams>>();
 
-  React.useEffect(() => {
-    const user = authLocal.getUser();
-    setState({
-      email: user?.email ? user.email : ''
-    });
+  useEffect(() => {
+    persistedUserData.cacheData();
   }, []);
 
   return (
@@ -53,88 +48,121 @@ export function ProfileScreen() {
       <Box safeArea width={'full'} height={'full'} position={'absolute'}>
         <TitleHeader title="Profile" />
         {/* USER DETAILS */}
-        <ScrollView>
-          <VStack flex={1} space={2}>
-            <Center width={'full'}>
-              {<Icon size={'60px'} as={solidProfileIcon} />}
+        <VStack space={2}>
+          <Center width={'full'}>
+            {<Icon size={'60px'} as={solidProfileIcon} />}
+          </Center>
+
+          {/* USER DELIVERY DETAILS */}
+          <VStack width={'full'} alignItems={'center'} space={'1'}>
+            <Center
+              width={'100px'}
+              backgroundColor={'#D5C1F1'}
+              borderRadius={'full'}
+            >
+              <Text fontSize={'11px'}>{persistedUserData.data.role}</Text>
             </Center>
+            <Text fontSize={'18px'} fontWeight={'bold'}>
+              {persistedUserData.data.fullName}
+            </Text>
 
-            {/* USER DELIVERY DETAILS */}
-            <VStack width={'full'} alignItems={'center'} space={'1'}>
+            {/* USER ADDRESS */}
+            <HStack space={2}>
               <Center
-                height={'20px'}
-                width={'100px'}
-                backgroundColor={'#D5C1F1'}
-                borderRadius={'full'}
+                justifyContent={'center'}
+                alignContent={'center'}
+                marginLeft={10}
               >
-                <Text fontSize={'11px'}>{Role}</Text>
+                {/* ADDRESS ICON */}
+                {<Icon color={'black'} size={'30px'} as={LocationIcon} />}
               </Center>
-              <Text fontSize={'18px'} fontWeight={'bold'}>
-                {FullName}
-              </Text>
-
-              {/* USER ADDRESS */}
-              <HStack space={2}>
-                <Center
-                  justifyContent={'center'}
-                  alignContent={'center'}
-                  marginLeft={10}
-                >
-                  {/* ADDRESS ICON */}
-                  {<Icon color={'black'} size={'30px'} as={LocationIcon} />}
-                </Center>
-                <VStack
-                  paddingLeft={'2'}
-                  flex={1}
-                  justifyContent={'center'}
-                  alignContent={'center'}
-                >
-                  {/* ADDRESS DETAILS */}
-                  <Center>
-                    <Text fontSize={'12'}>{PhoneNumber}</Text>
-                  </Center>
-                  <Center>
-                    <Text fontSize={'12'}>{state.email}</Text>
-                  </Center>
-                  <Center>
-                    <Text fontSize={'12'}>{Address}</Text>
-                  </Center>
-                </VStack>
-                <Box
-                  marginRight={10}
-                  justifyContent={'center'}
-                  alignContent={'center'}
-                >
-                  {/* EDIT ADDRESS */}
-                  <Pressable onPress={() => console.log(`Edit btn click`)}>
-                    <Text
-                      alignSelf={'center'}
-                      color={'blue.400'}
-                      fontSize={'15'}
-                      fontWeight={'medium'}
-                    >
-                      Edit
-                    </Text>
-                  </Pressable>
-                </Box>
-              </HStack>
-            </VStack>
-            <Box paddingX={3} flex={1}>
-              {/* USER ROLE SPECIFIED CONTENT */}
-              {/* ITEM LIST CONTAINER */}
-              <Box
-                // container for grid effect
-                flexDirection={'row'}
-                flexWrap={'wrap'}
-                justifyContent={'space-around'}
+              <VStack
+                paddingLeft={'2'}
+                flex={1}
+                justifyContent={'center'}
+                alignContent={'center'}
               >
-                {/* returns an item */}
-                <ItemCardsRenderer items={items} />
+                {/* ADDRESS DETAILS */}
+                <Center>
+                  <Text fontSize={'12'}>
+                    {persistedUserData.data.contactNumber}
+                  </Text>
+                </Center>
+                <Center>
+                  <Text fontSize={'12'}>{persistedUserData.data.email}</Text>
+                </Center>
+                <Center>
+                  <Text fontSize={'12'}>{persistedUserData.address}</Text>
+                </Center>
+              </VStack>
+              <Box
+                marginRight={10}
+                justifyContent={'center'}
+                alignContent={'center'}
+              >
+                {/* EDIT ADDRESS */}
+                <Pressable onPress={() => stack.push('EditAddressScreen')}>
+                  <Text
+                    alignSelf={'center'}
+                    color={'blue.400'}
+                    fontSize={'15'}
+                    fontWeight={'medium'}
+                  >
+                    Edit
+                  </Text>
+                </Pressable>
               </Box>
-            </Box>
+            </HStack>
           </VStack>
-        </ScrollView>
+        </VStack>
+        <RenderUserContent
+          condition={persistedUserData.data.role === 'not verified'}
+        />
       </Box>
     </NativeBaseProvider>
   );
+}
+
+export const ProfileScreen = observer(ProfileScreenMain);
+
+function RenderUserContent({ condition }: { condition: boolean }) {
+  const stack = useNavigation<NativeStackNavigationProp<StackParams>>();
+
+  if (condition) {
+    return (
+      <>
+        <ScrollView>
+          <Box paddingX={3} flex={1}>
+            {/* USER ROLE SPECIFIED CONTENT */}
+            {/* ITEM LIST CONTAINER */}
+            <Box
+              // container for grid effect
+              flexDirection={'row'}
+              flexWrap={'wrap'}
+              justifyContent={'space-around'}
+            >
+              {/* returns an item */}
+              <ItemCardsRenderer items={items} />
+            </Box>
+          </Box>
+        </ScrollView>
+      </>
+    );
+  } else {
+    return (
+      <>
+        <Box flex={1}>
+          <Center flex={1}>
+            <Text>Please Login Your Debugging Account</Text>
+          </Center>
+          <Center width={'full'} bottom={5} position={'absolute'}>
+            <SolidButton
+              value="Login"
+              onPressHandler={() => stack.navigate('LogInScreen')}
+            />
+          </Center>
+        </Box>
+      </>
+    );
+  }
 }

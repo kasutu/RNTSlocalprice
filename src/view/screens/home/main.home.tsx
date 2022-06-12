@@ -21,35 +21,6 @@ for (let i = 0; i < 10; i++) {
 export function MainHome() {
   const [displayMap, setDisplayMap] = useState<string>('all');
 
-  function RenderMap({ event }: { event: string }) {
-    if (event !== 'map') {
-      return (
-        <>
-          {/* BODY AND CONTENT */}
-          <VStack space={2} flex={1}>
-            <ScrollView
-              showsVerticalScrollIndicator={false}
-              showsHorizontalScrollIndicator={false}
-            >
-              {/* ITEM LIST CONTAINER */}
-              <Box
-                // container for grid effect
-                flexDirection={'row'}
-                flexWrap={'wrap'}
-                justifyContent={'space-around'}
-              >
-                {/* returns an item */}
-                <ItemCardsRenderer items={items} />
-              </Box>
-            </ScrollView>
-          </VStack>
-        </>
-      );
-    } else {
-      return <MapNearbyScreen />;
-    }
-  }
-
   return (
     <NativeBaseProvider>
       <Box safeArea width={'full'} height={'full'} position={'absolute'}>
@@ -68,3 +39,32 @@ export function MainHome() {
 }
 
 export const MainHomeScreen = observer(MainHome);
+
+function RenderMap({ event }: { event: string }) {
+  if (event !== 'map') {
+    return (
+      <>
+        {/* BODY AND CONTENT */}
+        <VStack space={2} flex={1}>
+          <ScrollView
+            showsVerticalScrollIndicator={false}
+            showsHorizontalScrollIndicator={false}
+          >
+            {/* ITEM LIST CONTAINER */}
+            <Box
+              // container for grid effect
+              flexDirection={'row'}
+              flexWrap={'wrap'}
+              justifyContent={'space-around'}
+            >
+              {/* returns an item */}
+              <ItemCardsRenderer items={items} />
+            </Box>
+          </ScrollView>
+        </VStack>
+      </>
+    );
+  } else {
+    return <MapNearbyScreen />;
+  }
+}

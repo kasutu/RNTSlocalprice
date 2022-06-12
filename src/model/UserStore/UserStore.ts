@@ -1,8 +1,11 @@
 import { makeAutoObservable } from 'mobx';
-import { ReactNativeGeoPoint } from '../../api/geoquery/common/util';
+import { userLocation } from '../../api/geoquery/rnGeoFire';
+import { storeData } from '../../api/mmkv';
 import { UserDataType, UserRole } from '../../types/types';
-import { documentAddHandler } from '../common/utils';
-import geopointStore from '../geopointStore/geopointStore';
+import {
+  documentAddHandler,
+  documentGetCollectionHandler
+} from '../common/utils';
 import mapCoordsStore from '../mapCoordsStore/mapCoordsStore';
 
 export class UserStore implements UserDataType {
@@ -18,8 +21,8 @@ export class UserStore implements UserDataType {
   public brgy: string = '';
   public town: string = '';
   public city: string = '';
-  public zipCode: string | number = '';
-  public geoPointId: string = '';
+  public zipCode: string = '';
+  public geoPointId: string = ''; // automated
   public transactionIds: string[] = [];
   public convoIds: string[] = [];
 
@@ -30,7 +33,15 @@ export class UserStore implements UserDataType {
   }
 
   public addToServer() {
-    documentAddHandler('user', this);
+    userLocation.add(
+      { name: this.fullName },
+      mapCoordsStore.data.latitude,
+      mapCoordsStore.data.longitude
+    );
+
+    documentAddHandler('users', this);
+
+    storeData('user', this);
   }
 
   public clear() {
@@ -46,10 +57,6 @@ export class UserStore implements UserDataType {
     this.geoPointId = '';
     this.transactionIds = [];
     this.convoIds = [];
-  }
-
-  public addToDatabase() {
-    documentAddHandler('users', this);
   }
 }
 

@@ -1,19 +1,21 @@
 import React from 'react';
 import { Input, TextArea } from 'native-base';
 import { InputProps } from '../../../types/inputProps.type';
-import { InputColor } from '../colors/localprice.colors';
+import { Colors } from '../colors/localprice.colors';
 
-const TextInputColor = InputColor;
+const TextInputColor = Colors.LightViolet;
 
 export default function TextInput({
   placeholder,
   height,
   VTextAlign,
+  value,
   onChangeHandler
 }: InputProps) {
   return (
     <>
       <Input
+        value={value}
         onChangeText={(val) => (onChangeHandler ? onChangeHandler(val) : null)}
         variant="filled"
         placeholder={placeholder}

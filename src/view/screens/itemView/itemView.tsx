@@ -103,7 +103,9 @@ export function ItemScreenMain() {
                       <Pressable
                         width={'100'}
                         height={'6'}
-                        onPress={() => console.log('item location pressed')}
+                        onPress={() =>
+                          console.log('show location comming soon')
+                        }
                         borderRadius={'50'}
                         borderWidth={'1'}
                         borderColor={'#8244d5'}

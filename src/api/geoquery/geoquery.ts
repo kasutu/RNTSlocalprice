@@ -4,7 +4,6 @@ import geoStore from '../../model/geoQueryStore/geoQuery.store';
 import {
   CollectionRef,
   GeoLocationsRef,
-  ObjectBasicInfo,
   ObjectWithGeoPoint
 } from './common/definitions';
 import { distanceBetween, geohashQueryBounds } from 'geofire-common';
