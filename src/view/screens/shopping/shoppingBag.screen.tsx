@@ -154,7 +154,9 @@ export function ShoppingBag() {
             </VStack>
           </HStack>
           <Box paddingY={4}>
-            <CheckOutButton />
+            <CheckOutButton
+              onPressHandler={() => console.log('proceeed to checkout')}
+            />
           </Box>
         </Center>
       </Box>

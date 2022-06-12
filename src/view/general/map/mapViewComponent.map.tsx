@@ -1,26 +1,49 @@
 import mapCoordsStore from '../../../model/mapCoordsStore/mapCoordsStore';
-import MapView from 'react-native-maps';
+import MapView, { Region } from 'react-native-maps';
 import MarkerRenderer from './markerRenderer';
 import React, { useEffect, useState } from 'react';
 import { LocationIcon } from '../icons/localprice.icons';
 import { StyleSheet, Text, View } from 'react-native';
+import { observer } from 'mobx-react-lite';
 import Geolocation from '@react-native-community/geolocation';
-import { runInAction } from 'mobx';
 
-export function MapViewComponent() {
+const config = {
+  enableHighAccuracy: true,
+  timeout: 2000,
+  maximumAge: 3600000
+};
+
+export function MapViewMain() {
   const [show, setShow] = useState(false);
 
-  let initialRegion = {
-    latitude: 10.71981501905315,
-    latitudeDelta: 0.02162698862344392,
-    longitude: 122.56110632792117,
-    longitudeDelta: 0.011763162910938263
-  };
+  const [position, setPosition] = useState({
+    latitude: 10.71294152149179,
+    longitude: 122.56281288340688,
+    latitudeDelta: 0.2386657037109785,
+    longitudeDelta: 0.15681501477956772
+  });
+
+  useEffect(() => {
+    Geolocation.getCurrentPosition((pos) => {
+      try {
+        const crd = pos.coords;
+
+        setPosition({
+          latitude: crd.latitude,
+          longitude: crd.longitude,
+          latitudeDelta: 0.0421,
+          longitudeDelta: 0.0421
+        });
+      } catch (error) {
+        console.log('ERROR', error), config;
+      }
+    });
+  }, []);
 
   return (
     <View style={styles.map}>
       <MapView
-        initialRegion={initialRegion}
+        initialRegion={position}
         followsUserLocation={true}
         onMarkerPress={() => setShow(false)}
         onMarkerDeselect={() => setShow(true)}
@@ -61,3 +84,5 @@ const styles = StyleSheet.create({
     margin: 20
   }
 });
+
+export const MapViewComponent = observer(MapViewMain);

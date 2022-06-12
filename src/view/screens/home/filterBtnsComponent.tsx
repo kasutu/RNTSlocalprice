@@ -2,7 +2,26 @@ import { Center, HStack } from 'native-base';
 import React, { useState } from 'react';
 import FilterButton from './filterButton';
 
-const buttonName = {
+export interface ButtonName {
+  all: 'all';
+  myPost: 'my post';
+  nearby: 'nearby';
+  map: 'map';
+  confirmed: 'confirmed';
+  unconfirmed: 'unconfirmed';
+  cancelled: 'cancelled';
+}
+
+export type ButtonNamesValues =
+  | 'all'
+  | 'my post'
+  | 'nearby'
+  | 'map'
+  | 'confirmed'
+  | 'unconfirmed'
+  | 'cancelled';
+
+export const buttonName: ButtonName = {
   all: 'all',
   myPost: 'my post',
   nearby: 'nearby',
@@ -12,7 +31,7 @@ const buttonName = {
   cancelled: 'cancelled'
 };
 
-export function FilterButtons() {
+export function FilterButtons({ cb }: { cb: (selectedBtn: string) => void }) {
   const [pressed, setPressed] = useState('all');
 
   return (
@@ -24,6 +43,7 @@ export function FilterButtons() {
             toggle={pressed === buttonName.all ? true : false}
             value="All"
             onPressHandler={() => {
+              cb(buttonName.all);
               setPressed(buttonName.all);
             }}
           />
@@ -33,6 +53,7 @@ export function FilterButtons() {
             toggle={pressed === buttonName.myPost ? true : false}
             value="My post"
             onPressHandler={() => {
+              cb(buttonName.myPost);
               setPressed(buttonName.myPost);
             }}
           />
@@ -42,6 +63,7 @@ export function FilterButtons() {
             toggle={pressed === buttonName.nearby ? true : false}
             value="Nearby"
             onPressHandler={() => {
+              cb(buttonName.nearby);
               setPressed(buttonName.nearby);
             }}
           />
@@ -51,6 +73,7 @@ export function FilterButtons() {
             toggle={pressed === buttonName.map ? true : false}
             value="Map"
             onPressHandler={() => {
+              cb(buttonName.map);
               setPressed(buttonName.map);
             }}
           />

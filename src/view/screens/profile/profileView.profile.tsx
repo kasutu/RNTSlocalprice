@@ -1,8 +1,6 @@
-import ProfileIconButtonsFooter from '../../general/footer/profile.iconButtons.footer';
 import React from 'react';
 import {
   Address,
-  Email,
   FullName,
   PhoneNumber,
   Role
@@ -24,14 +22,15 @@ import {
 } from '../../general/icons/localprice.icons';
 import { TitleHeader } from '../../general/header/headers';
 import Authentication from './../../../api/firebase/authentications';
-import { stringifyKey } from 'mobx/dist/internal';
+import { ItemCardsRenderer } from '../../render/ItemCards.renderer';
 
 interface ProfileScreenProps {
-  navigation: any,
-  auth: Authentication
+  navigation: any;
 }
 
-export function ProfileScreen({ navigation, auth }: ProfileScreenProps) {
+const auth = new Authentication();
+
+export function ProfileScreen({ navigation }: ProfileScreenProps) {
   const [state, setState] = React.useState({
     email: ''
   });
@@ -39,8 +38,8 @@ export function ProfileScreen({ navigation, auth }: ProfileScreenProps) {
   React.useEffect(() => {
     const user = auth.getUser();
     setState({
-      email: user?.email ? user.email : '',
-    })
+      email: user?.email ? user.email : ''
+    });
   }, []);
 
   return (
@@ -114,15 +113,21 @@ export function ProfileScreen({ navigation, auth }: ProfileScreenProps) {
                 </Box>
               </HStack>
             </VStack>
-            <Box paddingX={3} flex={1} bg={'amber.200'}>
+            <Box paddingX={3} flex={1}>
               {/* USER ROLE SPECIFIED CONTENT */}
-              <Text>stuff</Text>
+              {/* ITEM LIST CONTAINER */}
+              <Box
+                // container for grid effect
+                flexDirection={'row'}
+                flexWrap={'wrap'}
+                justifyContent={'space-around'}
+              >
+                {/* returns an item */}
+                <ItemCardsRenderer />
+              </Box>
             </Box>
           </VStack>
         </ScrollView>
-        <Box width={'full'} height={'80px'}>
-          <ProfileIconButtonsFooter navigation={navigation} />
-        </Box>
       </Box>
     </NativeBaseProvider>
   );
