@@ -1,4 +1,5 @@
 import { makeAutoObservable } from 'mobx';
+import { uuid } from '../../api/uuid/index.uuid';
 import { Transaction } from '../common/classes/transaction';
 import { documentAddHandler } from '../common/utils';
 
@@ -17,21 +18,11 @@ export class TempTransactionstore implements Transaction {
   public chatId: string = '';
   constructor() {
     makeAutoObservable(this);
+    this.id = uuid.v4()
   }
   public addToDatabase() {
-    documentAddHandler(
-      'transactions',
-      new Transaction(
-        this.itemIds,
-        this.buyerId,
-        this.sellerId,
-        this.chatId,
-        this.paymentOption
-      )
-    );
+    documentAddHandler('transactions', this);
   }
-
 }
 const temptransactionstore = new TempTransactionstore();
 export default temptransactionstore;
-

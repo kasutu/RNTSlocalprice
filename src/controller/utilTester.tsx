@@ -114,6 +114,8 @@ export default function UtilTester() {
           </Button>
           <Button
             onPress={() => {
+              temptransactionstore.shippingFee = 200
+              temptransactionstore.sellerId = 'jerome'
               temptransactionstore.buyerId = 'basilio'
               temptransactionstore.addToDatabase();
             }}
