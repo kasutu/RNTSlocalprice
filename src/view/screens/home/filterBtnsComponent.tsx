@@ -12,6 +12,15 @@ export interface ButtonName {
   cancelled: 'cancelled';
 }
 
+export type ButtonNamesValues =
+  | 'all'
+  | 'my post'
+  | 'nearby'
+  | 'map'
+  | 'confirmed'
+  | 'unconfirmed'
+  | 'cancelled';
+
 export const buttonName: ButtonName = {
   all: 'all',
   myPost: 'my post',

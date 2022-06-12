@@ -7,13 +7,15 @@ import geoStore from '../../../model/geoQueryStore/geoQuery.store';
 export function MarkerRenderer() {
   return (
     <>
-      {geoStore.docs.map((doc) => {
+      {geoStore.geopoints.map((point) => {
         let latlng: LatLng = {
-          latitude: doc.geopoint.lat,
-          longitude: doc.geopoint.lng
+          latitude: point.geopoint.lat,
+          longitude: point.geopoint.lng
         };
 
-        return <Marker key={uuid.v1()} title={doc.name} coordinate={latlng} />;
+        return (
+          <Marker key={uuid.v1()} title={point.name} coordinate={latlng} />
+        );
       })}
     </>
   );

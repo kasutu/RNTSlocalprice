@@ -1,7 +1,10 @@
 // MobX implementation
 
 import { makeAutoObservable } from 'mobx';
-import { ObjectWithGeoPoint } from '../../api/geoquery/common/definitions';
+import {
+  GeoPointWithHash,
+  ObjectWithGeoPoint
+} from '../../api/geoquery/common/definitions';
 
 // make this generic soon
 // 'export' is added for test purposes
@@ -26,6 +29,12 @@ export class GeoStore {
   public empty(): void {
     this.docs = [];
   }
+
+  public get geopoints() {
+    return this.docs.map(
+      (point) => new geopointFactory(point.geopoint, point.id, point.name)
+    );
+  }
 }
 
 // make a store instance and export it
@@ -38,3 +47,11 @@ const geoStore = new GeoStore();
  * geoStore.dacs // exposes the docs contents
  */
 export default geoStore;
+
+class geopointFactory implements ObjectWithGeoPoint {
+  constructor(
+    public geopoint: GeoPointWithHash,
+    public id?: string | undefined,
+    public name?: string | undefined
+  ) {}
+}
