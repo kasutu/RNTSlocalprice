@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Box,
   Center,
@@ -12,67 +12,32 @@ import {
 
 import { TitleAndBackButtonHeader } from '../../general/header/headers';
 import TextInput from '../../general/forms/textInput.form';
-import { InputColor } from '../../general/colors/localprice.colors';
+import { Colors } from '../../general/colors/localprice.colors';
 import { eyeIcon } from '../../general/icons/localprice.icons';
 import LogInButton from '../../general/buttons/logIn.button';
-import Authentication from './../../../api/firebase/authentications';
+import { useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { StackParams } from '../../../types/navigationProps';
+import { login } from '../../../api/firebase/authentications';
+import persistedUserData from '../../../model/UserStore/persistedUserData';
+import { runInAction } from 'mobx';
+import { Alert, AlertButton, Keyboard } from 'react-native';
+import { observer } from 'mobx-react-lite';
 
 const appLogo = require('../../../assets/appLogo.png');
 
-interface LogInProps {
-  navigation: any;
-  auth: Authentication;
-  route?: any;
-}
+export function LogInScreenMain() {
+  const stack = useNavigation<NativeStackNavigationProp<StackParams>>();
 
-export function LogInScreen(props: LogInProps) {
-  const [state, setState] = React.useState({
-    email: '',
-    password: ''
-  });
-
-  const onEmailChange = (text: string) => {
-    setState({
-      ...state,
-      email: text
-    });
-  };
-
-  const onPasswordChange = (text: string) => {
-    setState({
-      ...state,
-      password: text
-    });
-  };
-
-  const loginUser = () => {
-   /*  props.auth
-      .register('user.example@email.com', 'User12345')
-      .then(() => {
-        console.log('Registered');
-      })
-      .catch((e) => console.error(e)); */
-
-    props.auth
-      .login(state.email, state.password)
-      .then(() => {
-        console.log('Logged in');
-        props.navigation.navigate(props.route.params?.destination);
-      })
-      .catch((e) => console.error(e));
-  };
-
-  if (props.auth.isReady() && props.route?.destination !== '') {
-    props.navigation.navigate(props.route.params?.destination);
-    return <NativeBaseProvider></NativeBaseProvider>;
-  }
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
   return (
     <NativeBaseProvider>
       <Box safeArea width={'full'} height={'full'} position={'absolute'}>
         <TitleAndBackButtonHeader
           /* onPressHandler={() => navigation.navigate('MainHomeScreen')} */
-          onPressHandler={() => console.log('Proceed to MainHomeScreen')}
+          onPressHandler={() => stack.goBack()}
         />
         <VStack flex={1} alignItems={'center'} space={5}>
           <Center paddingY={'3'} width={'full'} height={'200px'}>
@@ -85,38 +50,105 @@ export function LogInScreen(props: LogInProps) {
             />
           </Center>
           <VStack flex={1} alignItems={'center'} space={5}>
-            <TextInput placeholder="Email" onChangeText={onEmailChange} />
+            <TextInput
+              placeholder="Email"
+              value={email}
+              onChangeHandler={(text) => setEmail(text)}
+            />
             <Input
               variant="filled"
               placeholder={'Password'}
               placeholderTextColor={'black'}
               maxWidth={'75%'}
               height={'8'}
-              bgColor={InputColor}
-              borderColor={InputColor}
+              bgColor={Colors.LightViolet}
+              borderColor={Colors.LightViolet}
               borderRadius={'5'}
               textAlignVertical={'center'}
               InputRightElement={<Icon mr={2} as={eyeIcon} />}
-              onChangeText={onPasswordChange}
+              value={password}
+              onChangeText={(text) => setPassword(text)}
             />
           </VStack>
-          {/* LOG IN BUTTON */}
-          <Center paddingY={'8'} width={'full'} maxWidth={'full'}>
-            <VStack space={'5'}>
-              <LogInButton onPress={loginUser} />
-              <Center>
-                <Link
-                  isExternal
-                  _text={{ color: 'blue.400' }}
-                  onPress={() => props.navigation.navigate('RegisterScreen')}
-                >
-                  Don't have an account?
-                </Link>
-              </Center>
-            </VStack>
-          </Center>
         </VStack>
+        {/* LOG IN BUTTON */}
+        <Box
+          flex={1}
+          width={'full'}
+          justifyContent={'center'}
+          alignItems={'center'}
+          position={'absolute'}
+          bottom={5}
+        >
+          <VStack space={'5'}>
+            <LogInButton
+              onPressHandler={() => {
+                if (email === '' || password === '') {
+                  runInAction(() => {
+                    persistedUserData.loggedIn = false;
+                    console.log('empty');
+                  });
+
+                  triggerAlert(
+                    'Just trying the buttons mate?',
+                    'Please enter a valid email or password. NOW!',
+                    [
+                      {
+                        text: `i'll do it`
+                      }
+                    ]
+                  );
+                } else {
+                  login(email, password)
+                    .then((e) => {
+                      Keyboard.dismiss();
+
+                      runInAction(() => {
+                        persistedUserData.loggedIn = true;
+                        console.log(e.user.uid);
+                      });
+
+                      setEmail('');
+                      setPassword('');
+
+                      stack.navigate('ProfileScreen');
+                    })
+                    .catch(() => {
+                      triggerAlert(
+                        'Well well',
+                        `Couldn't find your Localprice Account`,
+                        [
+                          {
+                            text: 'aight!'
+                          }
+                        ]
+                      );
+                    });
+                }
+              }}
+            />
+            <Center>
+              <Link
+                isExternal
+                _text={{ color: 'blue.400' }}
+                onPress={() => stack.navigate('RegisterScreen')}
+              >
+                Don't have an account?
+              </Link>
+            </Center>
+          </VStack>
+        </Box>
       </Box>
     </NativeBaseProvider>
   );
+}
+
+export const LogInScreen = observer(LogInScreenMain);
+
+function triggerAlert(
+  header: string,
+  msg: string,
+  buttons?: AlertButton[] | undefined
+) {
+  Alert.alert(header, msg, buttons);
 }

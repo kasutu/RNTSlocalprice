@@ -13,67 +13,20 @@ import {
 
 import { TitleAndBackButtonHeader } from '../../general/header/headers';
 import TextInput from '../../general/forms/textInput.form';
-import { InputColor } from '../../general/colors/localprice.colors';
+import { Colors } from '../../general/colors/localprice.colors';
 import { eyeIcon } from '../../general/icons/localprice.icons';
 import RegisterButton from '../../general/buttons/register.button';
-import Authentication from '../../../api/firebase/authentications';
+import { useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { StackParams } from '../../../types/navigationProps';
 
-interface LogInProps {
-  navigation: any;
-  auth: Authentication;
-  route?: any;
-}
-
-export function RegisterScreen(props: LogInProps) {
-  const [state, setState] = React.useState({
-    fullName: '',
-    userName: '',
-    email: '',
-    password: '',
-    confirmPassword: ''
-  });
-
-  const onFullNameChange = (text: string) => {
-    setState({
-      ...state,
-      fullName: text
-    });
-  };
-
-  const onUserNameChange = (text: string) => {
-    setState({
-      ...state,
-      userName: text
-    });
-  };
-
-  const onEmailChange = (text: string) => {
-    setState({
-      ...state,
-      email: text
-    });
-  };
-
-  const onPasswordChange = (text: string) => {
-    setState({
-      ...state,
-      password: text
-    });
-  };
-
-  const onConfirmPasswordChange = (text: string) => {
-    setState({
-      ...state,
-      confirmPassword: text
-    });
-  };
+export function RegisterScreen() {
+  const stack = useNavigation<NativeStackNavigationProp<StackParams>>();
 
   return (
     <NativeBaseProvider>
       <Box safeArea width={'full'} height={'full'} position={'absolute'}>
-        <TitleAndBackButtonHeader
-          onPressHandler={() => navigation.navigate('LogInScreen')}
-        />
+        <TitleAndBackButtonHeader onPressHandler={() => stack.goBack()} />
         <VStack flex={1}>
           <Box paddingBottom={'10'} alignItems={'center'} width={'full'}>
             <Text color={'#9B69DD'} fontSize={24} fontWeight={'medium'}>
@@ -82,20 +35,17 @@ export function RegisterScreen(props: LogInProps) {
           </Box>
 
           <VStack space={5} alignItems={'center'}>
-            <TextInput
-              placeholder="Full Name"
-              onChangeText={onFullNameChange}
-            />
-            <TextInput placeholder="Username" onChangeText={onUserNameChange} />
-            <TextInput placeholder="Email" onChangeText={onEmailChange} />
+            <TextInput placeholder="Full Name" />
+            <TextInput placeholder="Username" />
+            <TextInput placeholder="Email" />
             <Input
               variant="filled"
               placeholder={'Password'}
               placeholderTextColor={'black'}
               maxWidth={'75%'}
               height={'8'}
-              bgColor={InputColor}
-              borderColor={InputColor}
+              bgColor={Colors.LightViolet}
+              borderColor={Colors.LightViolet}
               borderRadius={'5'}
               textAlignVertical={'center'}
               InputRightElement={
@@ -104,7 +54,6 @@ export function RegisterScreen(props: LogInProps) {
                   onPress={() => console.log('eye pressed ')}
                 />
               }
-              onChangeText={onPasswordChange}
             />
             <Input
               variant="filled"
@@ -112,8 +61,8 @@ export function RegisterScreen(props: LogInProps) {
               placeholderTextColor={'black'}
               maxWidth={'75%'}
               height={'8'}
-              bgColor={InputColor}
-              borderColor={InputColor}
+              bgColor={Colors.LightViolet}
+              borderColor={Colors.LightViolet}
               borderRadius={'5'}
               textAlignVertical={'center'}
               InputRightElement={
@@ -122,7 +71,6 @@ export function RegisterScreen(props: LogInProps) {
                   onPress={() => console.log('eye pressed ')}
                 />
               }
-              onChangeText={onConfirmPasswordChange}
             />
           </VStack>
         </VStack>
@@ -134,7 +82,7 @@ export function RegisterScreen(props: LogInProps) {
               <Link
                 isExternal
                 _text={{ color: 'blue.400' }}
-                onPress={() => navigation.navigate('LogInScreen')}
+                onPress={() => stack.navigate('LogInScreen')}
               >
                 Have an account?
               </Link>

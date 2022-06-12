@@ -20,4 +20,5 @@ export type StackParams = {
   BottomTabNav: any;
   CheckoutStack: any;
   MapScreen: any;
+  LoginStack: any;
 };

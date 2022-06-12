@@ -115,9 +115,7 @@ export function ProfileScreenMain() {
             </HStack>
           </VStack>
         </VStack>
-        <RenderUserContent
-          condition={persistedUserData.data.role === 'not verified'}
-        />
+        <RenderUserContent condition={persistedUserData.loggedIn} />
       </Box>
     </NativeBaseProvider>
   );
@@ -158,7 +156,7 @@ function RenderUserContent({ condition }: { condition: boolean }) {
           <Center width={'full'} bottom={5} position={'absolute'}>
             <SolidButton
               value="Login"
-              onPressHandler={() => stack.navigate('LogInScreen')}
+              onPressHandler={() => stack.navigate('LoginStack')}
             />
           </Center>
         </Box>

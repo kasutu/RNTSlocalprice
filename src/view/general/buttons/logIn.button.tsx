@@ -5,7 +5,7 @@ import { ButtonProps } from '../../../types/buttonProps.type';
 export default function LogInButton({
   color,
   fontWeight,
-  ...props
+  onPressHandler
 }: ButtonProps) {
   return (
     <>
@@ -19,7 +19,7 @@ export default function LogInButton({
         }}
         borderRadius={'50'}
         backgroundColor={color ? color : '#9E6DDE'}
-        {...props}
+        onPress={onPressHandler}
       >
         Log In
       </Button>
