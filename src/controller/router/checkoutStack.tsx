@@ -2,6 +2,7 @@ import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import {
   CheckoutScreen,
+  EditAddressScreen,
   OrderDetailsScreen,
   ShoppingBagScreen
 } from '../../view/screens/index.screens';
@@ -19,6 +20,7 @@ export function CheckoutStack() {
       <Stack.Screen name="ShoppingBagScreen" component={ShoppingBagScreen} />
       <Stack.Screen name="CheckoutScreen" component={CheckoutScreen} />
       <Stack.Screen name="OrderDetailsScreen" component={OrderDetailsScreen} />
+      <Stack.Screen name="EditAddressScreen" component={EditAddressScreen} />
     </Stack.Navigator>
   );
 }

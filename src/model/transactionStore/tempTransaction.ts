@@ -6,8 +6,7 @@ export class TempTransactionstore implements Transaction {
   public id: string = '';
   public buyerId: string = '';
   public sellerId: string = '';
-  public paymentOption: 'cash on delivery' | 'pickup and pay' =
-    'cash on delivery';
+  public paymentOption: 'cash on delivery' | 'pickup and pay' | '' = '';
   public placedOrder: boolean = false;
   public confirmed: boolean = false;
   public itemIds: string[] = [];
@@ -30,8 +29,6 @@ export class TempTransactionstore implements Transaction {
       )
     );
   }
-
 }
 const temptransactionstore = new TempTransactionstore();
 export default temptransactionstore;
-

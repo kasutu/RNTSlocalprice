@@ -9,7 +9,7 @@ import {
   TextArea
 } from 'native-base';
 import { CameraIcon, SendIcon } from '../../general/icons/localprice.icons';
-import { InputColor } from '../../general/colors/localprice.colors';
+import { Colors } from '../../general/colors/localprice.colors';
 import convoStore from '../../../model/convoStore/convoStore';
 import { sendNewMessageHandler } from '../../../model/common/utils';
 
@@ -41,12 +41,12 @@ export function ChatFooter() {
                 convoStore.msg = val;
               }}
               rounded={'full'}
-              bg={InputColor}
+              bg={Colors.LightViolet}
               variant="filled"
               placeholder="Type a message.."
               maxWidth={'full'}
-              bgColor={InputColor}
-              borderColor={InputColor}
+              bgColor={Colors.LightViolet}
+              borderColor={Colors.LightViolet}
               autoCompleteType={undefined}
               h={35}
             />

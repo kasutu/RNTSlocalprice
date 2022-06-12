@@ -1,36 +1,43 @@
-import React, { useCallback } from 'react';
+import persistedUserData from '../../../model/UserStore/persistedUserData';
+import React from 'react';
+import SolidButton from '../../general/buttons/solid.button';
+import temptransactionstore from '../../../model/transactionStore/tempTransaction';
 import {
   Box,
   Center,
   HStack,
   Icon,
+  VStack,
   Pressable,
   ScrollView,
-  Text,
-  VStack
+  Text
 } from 'native-base';
-import { TitleAndBackButtonHeader } from '../../general/header/headers';
-import {
-  FullName,
-  PhoneNumber,
-  Email,
-  Address
-} from '../../../model/store/user/metadata.user';
 import { LocationIcon } from '../../general/icons/localprice.icons';
-import SolidButton from '../../general/buttons/solid.button';
-import temptransactionstore from '../../../model/transactionStore/tempTransactio';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { observer } from 'mobx-react-lite';
+import { PaymentOptions } from '../../../types/types';
+import { RadioButton } from '../../render/ShoppingBagCards';
+import { runInAction } from 'mobx';
+import { StackParams } from '../../../types/navigationProps';
+import { TitleAndBackButtonHeader } from '../../general/header/headers';
+import { useNavigation } from '@react-navigation/native';
 
-export function CheckoutScreen() {
+export function CheckoutScreenMain() {
+  const stack = useNavigation<NativeStackNavigationProp<StackParams>>();
+
   return (
     <>
       <Box safeArea width={'full'} height={'full'} position={'absolute'}>
-        <TitleAndBackButtonHeader title="Checkout" />
+        <TitleAndBackButtonHeader
+          title="Checkout"
+          onPressHandler={() => stack.goBack()}
+        />
 
         {/* USER DELIVERY DETAILS */}
         <VStack space={'1'}>
           <Center>
             <Text fontSize={'18px'} fontWeight={'bold'}>
-              {FullName}
+              {persistedUserData.data.fullName}
             </Text>
           </Center>
 
@@ -52,13 +59,15 @@ export function CheckoutScreen() {
             >
               {/* ADDRESS DETAILS */}
               <Center>
-                <Text fontSize={'12'}>{PhoneNumber}</Text>
+                <Text fontSize={'12'}>
+                  {persistedUserData.data.contactNumber}
+                </Text>
               </Center>
               <Center>
-                <Text fontSize={'12'}>{Email}</Text>
+                <Text fontSize={'12'}>{persistedUserData.data.email}</Text>
               </Center>
               <Center>
-                <Text fontSize={'12'}>{Address}</Text>
+                <Text fontSize={'12'}>{persistedUserData.address}</Text>
               </Center>
             </VStack>
             <Box
@@ -67,7 +76,7 @@ export function CheckoutScreen() {
               alignContent={'center'}
             >
               {/* EDIT ADDRESS */}
-              <Pressable onPress={() => console.log(`Edit btn click`)}>
+              <Pressable onPress={() => stack.navigate('EditAddressScreen')}>
                 <Text
                   alignSelf={'center'}
                   color={'blue.400'}
@@ -125,7 +134,10 @@ export function CheckoutScreen() {
 
                 <HStack space={2}>
                   <Center>
-                    <Text fontSize={10}>{'button'}</Text>
+                    <RadioButton
+                      on={() => setDelivery('cash on delivery')}
+                      off={() => setDelivery('')}
+                    />
                   </Center>
                   <Center>
                     <Text fontSize={10}>Cash On Delivery</Text>
@@ -133,7 +145,10 @@ export function CheckoutScreen() {
                 </HStack>
                 <HStack space={2}>
                   <Center>
-                    <Text fontSize={10}>{'button'}</Text>
+                    <RadioButton
+                      on={() => setDelivery('pickup and pay')}
+                      off={() => setDelivery('')}
+                    />
                   </Center>
                   <Center>
                     <Text fontSize={10}>Pickup and Pay</Text>
@@ -200,4 +215,12 @@ export function CheckoutScreen() {
       </Box>
     </>
   );
+}
+
+export const CheckoutScreen = observer(CheckoutScreenMain);
+
+function setDelivery(condition: PaymentOptions) {
+  runInAction(() => {
+    temptransactionstore.paymentOption = condition;
+  });
 }

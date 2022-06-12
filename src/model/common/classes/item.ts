@@ -32,3 +32,29 @@ export class Item implements ItemType {
     this.id = uuid.v4();
   }
 }
+
+export class ShoppingBagItem {
+  constructor(
+    public id: string,
+    public uri: string,
+    public name: string,
+    public price: number,
+    public location: string,
+    public qty: number,
+    public description: string
+  ) {}
+
+  public plusQty(): void {
+    this.qty++;
+  }
+
+  public minusQty(): void {
+    if (this.qty !== 1) {
+      this.qty--;
+    }
+  }
+
+  public getThis(): this {
+    return this;
+  }
+}

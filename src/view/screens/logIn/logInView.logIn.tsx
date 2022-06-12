@@ -86,7 +86,6 @@ export function LogInScreenMain() {
                 if (email === '' || password === '') {
                   runInAction(() => {
                     persistedUserData.loggedIn = false;
-                    console.log('empty');
                   });
 
                   triggerAlert(
@@ -105,7 +104,7 @@ export function LogInScreenMain() {
 
                       runInAction(() => {
                         persistedUserData.loggedIn = true;
-                        console.log(e.user.uid);
+                        persistedUserData.data.userId = e.user.uid;
                       });
 
                       setEmail('');
@@ -145,10 +144,6 @@ export function LogInScreenMain() {
 
 export const LogInScreen = observer(LogInScreenMain);
 
-function triggerAlert(
-  header: string,
-  msg: string,
-  buttons?: AlertButton[] | undefined
-) {
+function triggerAlert(header: string, msg: string, buttons?: AlertButton[]) {
   Alert.alert(header, msg, buttons);
 }

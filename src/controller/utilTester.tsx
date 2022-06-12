@@ -20,7 +20,7 @@ import {
   sendNewMessageHandler
 } from '../model/common/utils';
 import convoStore from '../model/convoStore/convoStore';
-import temptransactionstore from '../model/transactionStore/tempTransactio';
+import temptransactionstore from '../model/transactionStore/tempTransaction';
 import TextRender from './textRender';
 
 export default function UtilTester() {

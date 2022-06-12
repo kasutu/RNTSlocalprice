@@ -2,7 +2,7 @@
 
 import { makeAutoObservable } from 'mobx';
 import { Item } from '../../view/render/ItemCards.renderer';
-import { ShoppingBagItem } from '../../view/render/ShoppingBagCards';
+import { ShoppingBagItem } from '../common/classes/item';
 
 import shoppingBagStore from '../shoppingBagStrore/shoppingBagStore';
 

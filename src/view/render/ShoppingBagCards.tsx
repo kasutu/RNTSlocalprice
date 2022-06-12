@@ -18,32 +18,7 @@ import { Colors } from '../general/colors/localprice.colors';
 import { runInAction } from 'mobx';
 import { RemoveFromArr } from '../../model/common/utils';
 import { observer } from 'mobx-react-lite';
-
-export class ShoppingBagItem {
-  constructor(
-    public id: string,
-    public uri: string,
-    public name: string,
-    public price: number,
-    public location: string,
-    public qty: number,
-    public description: string
-  ) {}
-
-  public plusQty(): void {
-    this.qty++;
-  }
-
-  public minusQty(): void {
-    if (this.qty !== 1) {
-      this.qty--;
-    }
-  }
-
-  public getThis(): this {
-    return this;
-  }
-}
+import { ShoppingBagItem } from '../../model/common/classes/item';
 
 export function ShoppingBag({ override }: { override?: boolean }) {
   return (
@@ -146,7 +121,7 @@ export function ShoppingBag({ override }: { override?: boolean }) {
 
 export const ShoppingBagItems = observer(ShoppingBag);
 
-function RadioButton({
+export function RadioButton({
   on,
   off,
   override

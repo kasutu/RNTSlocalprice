@@ -30,6 +30,7 @@
     "rexml",
     "rntslocalprice",
     "Slocalprice",
+    "temptransactionstore",
     "zeitwerk"
   ]
 }

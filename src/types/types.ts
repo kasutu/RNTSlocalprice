@@ -83,7 +83,7 @@ export type UserRole =
   | 'not logged in'
   | 'verified seller';
 
-export type PaymentOptions = 'cash on delivery' | 'pickup and pay';
+export type PaymentOptions = 'cash on delivery' | 'pickup and pay' | '';
 
 export interface GenericObjectType {
   [key: string]: any;

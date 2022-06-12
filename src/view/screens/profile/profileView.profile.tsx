@@ -39,10 +39,6 @@ for (let i = 0; i < 10; i++) {
 export function ProfileScreenMain() {
   const stack = useNavigation<NativeStackNavigationProp<StackParams>>();
 
-  useEffect(() => {
-    persistedUserData.cacheData();
-  }, []);
-
   return (
     <NativeBaseProvider>
       <Box safeArea width={'full'} height={'full'} position={'absolute'}>
@@ -101,7 +97,7 @@ export function ProfileScreenMain() {
                 alignContent={'center'}
               >
                 {/* EDIT ADDRESS */}
-                <Pressable onPress={() => stack.push('EditAddressScreen')}>
+                <Pressable onPress={() => stack.navigate('EditAddressScreen')}>
                   <Text
                     alignSelf={'center'}
                     color={'blue.400'}

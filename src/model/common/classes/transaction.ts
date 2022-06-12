@@ -1,11 +1,11 @@
 import { uuid } from '../../../api/uuid/index.uuid';
-import { TransactionMetadataType } from '../../../types/types';
+import { PaymentOptions, TransactionMetadataType } from '../../../types/types';
 
 export class Transaction implements TransactionMetadataType {
   public id: string;
   public buyerId: string;
   public sellerId: string;
-  public paymentOption: 'cash on delivery' | 'pickup and pay';
+  public paymentOption: 'cash on delivery' | 'pickup and pay' | '';
   public placedOrder: boolean;
   public confirmed: boolean;
   public itemIds: string[];
@@ -19,7 +19,7 @@ export class Transaction implements TransactionMetadataType {
     buyerId: string,
     sellerId: string,
     chatId: string,
-    paymentOption: 'cash on delivery' | 'pickup and pay'
+    paymentOption: PaymentOptions
   ) {
     this.buyerId = buyerId;
     this.sellerId = sellerId;
