@@ -6,6 +6,7 @@ import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { StackParams } from '../../types/navigationProps';
 import currentItemStore from '../../model/itemViewStore/itemViewstore';
+import { runInAction } from 'mobx';
 
 export class Item {
   constructor(
@@ -30,9 +31,11 @@ export function ItemCards({ items }: { items: Item[] }) {
               height={'full'}
               onPress={() => {
                 // navigate to item view
-                currentItemStore.item = item;
-                console.log('navigating to: ', item.name);
-                stack.navigate('ItemScreen');
+
+                runInAction(() => {
+                  currentItemStore.item = item;
+                  stack.navigate('ItemScreen');
+                });
               }}
             >
               <VStack flex={1}>

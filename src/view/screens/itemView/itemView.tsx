@@ -10,7 +10,7 @@ import {
   Text,
   VStack
 } from 'native-base';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { SearchHeader } from '../../general/header/headers';
 import HollowAndSolidButton from '../../general/buttons/hollowAndSolidButton.component';
 import { observer } from 'mobx-react-lite';

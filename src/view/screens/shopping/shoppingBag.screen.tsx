@@ -144,9 +144,7 @@ export function ShoppingBag() {
             </VStack>
           </HStack>
           <Box paddingY={4}>
-            <CheckOutButton
-              onPressHandler={() => stack.navigate('CheckoutScreen')}
-            />
+            <RenderIf />
           </Box>
         </Center>
       </Box>
@@ -155,3 +153,15 @@ export function ShoppingBag() {
 }
 
 export const ShoppingBagScreen = observer(ShoppingBag);
+
+function RenderIf() {
+  const stack = useNavigation<NativeStackNavigationProp<StackParams>>();
+
+  if (shoppingBagStore.selectedItems.length !== 0) {
+    return (
+      <CheckOutButton onPressHandler={() => stack.navigate('CheckoutScreen')} />
+    );
+  } else {
+    return <></>;
+  }
+}

@@ -94,7 +94,7 @@ export function EditAddress() {
               }
             />
             <TextInput
-              value={userStore.zipCode}
+              value={userStore.zipCode.toString()}
               placeholder="Zip Code"
               onChangeHandler={(val) =>
                 runInAction(() => {

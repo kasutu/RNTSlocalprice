@@ -23,6 +23,8 @@ import persistedUserData from '../../../model/UserStore/persistedUserData';
 import { runInAction } from 'mobx';
 import { Alert, AlertButton, Keyboard } from 'react-native';
 import { observer } from 'mobx-react-lite';
+import { storeData } from '../../../api/mmkv';
+import userStore from '../../../model/UserStore/UserStore';
 
 const appLogo = require('../../../assets/appLogo.png');
 
@@ -31,6 +33,48 @@ export function LogInScreenMain() {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  function loginHandler() {
+    if (email === '' || password === '') {
+      triggerAlert(
+        'Just trying the buttons mate?',
+        'Please enter a valid email or password. NOW!',
+        [
+          {
+            text: `i'll do it`
+          }
+        ]
+      );
+    } else {
+      login(email, password)
+        .then((response) => {
+          Keyboard.dismiss();
+
+          runInAction(() => {
+            userStore.pullFromServer(response.user.uid);
+            userStore.id = response.user.uid;
+            storeData('loginData', response.user);
+            storeData('loginStatus', true);
+          });
+
+          setEmail('');
+          setPassword('');
+
+          stack.navigate('ProfileScreen');
+        })
+        .catch(() => {
+          triggerAlert(
+            'Well well',
+            `Couldn't find your Localprice Account tho`,
+            [
+              {
+                text: 'aight!'
+              }
+            ]
+          );
+        });
+    }
+  }
 
   return (
     <NativeBaseProvider>
@@ -81,51 +125,7 @@ export function LogInScreenMain() {
           bottom={5}
         >
           <VStack space={'5'}>
-            <LogInButton
-              onPressHandler={() => {
-                if (email === '' || password === '') {
-                  runInAction(() => {
-                    persistedUserData.loggedIn = false;
-                  });
-
-                  triggerAlert(
-                    'Just trying the buttons mate?',
-                    'Please enter a valid email or password. NOW!',
-                    [
-                      {
-                        text: `i'll do it`
-                      }
-                    ]
-                  );
-                } else {
-                  login(email, password)
-                    .then((e) => {
-                      Keyboard.dismiss();
-
-                      runInAction(() => {
-                        persistedUserData.loggedIn = true;
-                        persistedUserData.data.userId = e.user.uid;
-                      });
-
-                      setEmail('');
-                      setPassword('');
-
-                      stack.navigate('ProfileScreen');
-                    })
-                    .catch(() => {
-                      triggerAlert(
-                        'Well well',
-                        `Couldn't find your Localprice Account`,
-                        [
-                          {
-                            text: 'aight!'
-                          }
-                        ]
-                      );
-                    });
-                }
-              }}
-            />
+            <LogInButton onPressHandler={() => loginHandler()} />
             <Center>
               <Link
                 isExternal

@@ -21,6 +21,8 @@ import { runInAction } from 'mobx';
 import { StackParams } from '../../../types/navigationProps';
 import { TitleAndBackButtonHeader } from '../../general/header/headers';
 import { useNavigation } from '@react-navigation/native';
+import { CheckoutItems } from '../../render/horizontalItemCard';
+import shoppingBagStore from '../../../model/shoppingBagStrore/shoppingBagStore';
 
 export function CheckoutScreenMain() {
   const stack = useNavigation<NativeStackNavigationProp<StackParams>>();
@@ -103,21 +105,7 @@ export function CheckoutScreenMain() {
               <ScrollView showsVerticalScrollIndicator={false}>
                 {/* ITEM LIST */}
                 <VStack space={'2'} paddingX={2}>
-                  <Box bg={'blue.500'} height={'80px'}>
-                    Horizontal Item Card
-                  </Box>
-                  <Box bg={'blue.500'} height={'80px'}>
-                    Horizontal Item Card
-                  </Box>
-                  <Box bg={'blue.500'} height={'80px'}>
-                    Horizontal Item Card
-                  </Box>
-                  <Box bg={'blue.500'} height={'80px'}>
-                    Horizontal Item Card
-                  </Box>
-                  <Box bg={'blue.500'} height={'80px'}>
-                    Horizontal Item Card
-                  </Box>
+                  <CheckoutItems items={shoppingBagStore.selectedItems} />
                 </VStack>
               </ScrollView>
             </VStack>
@@ -165,7 +153,7 @@ export function CheckoutScreenMain() {
                 </Box>
                 <Box>
                   <Text color={'#9E6DDE'} fontWeight={'bold'} fontSize={'12px'}>
-                    {'3 items'}
+                    {shoppingBagStore.selectedItems.length} Items
                   </Text>
                 </Box>
               </HStack>
@@ -175,7 +163,7 @@ export function CheckoutScreenMain() {
                 </Center>
                 <Center>
                   <Text fontSize={10} color={'#9E6DDE'} fontWeight={'medium'}>
-                    {'P100,000'}
+                    P {shoppingBagStore.Subtotal}
                   </Text>
                 </Center>
               </HStack>
@@ -185,7 +173,7 @@ export function CheckoutScreenMain() {
                 </Center>
                 <Center>
                   <Text fontSize={10} color={'#9E6DDE'} fontWeight={'medium'}>
-                    {'P00.00'}
+                    P {shoppingBagStore.ShippingFee}
                   </Text>
                 </Center>
               </HStack>
@@ -199,13 +187,16 @@ export function CheckoutScreenMain() {
               <HStack justifyContent={'space-around'} paddingBottom={2}>
                 <Center>
                   <Text color={'#9E6DDE'} fontWeight={'bold'} fontSize={'30px'}>
-                    {'P100,000'}
+                    P {shoppingBagStore.Total}
                   </Text>
                 </Center>
                 <Center>
                   <SolidButton
                     value="Place Order"
-                    onPressHandler={() => temptransactionstore.addToDatabase()}
+                    onPressHandler={() => {
+                      temptransactionstore.addToDatabase();
+                      stack.navigate('OrderDetailsScreen');
+                    }}
                   />
                 </Center>
               </HStack>

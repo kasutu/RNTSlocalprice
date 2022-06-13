@@ -13,8 +13,18 @@ import {
   VStack
 } from 'native-base';
 import AddPhotoButton from '../../../general/buttons/addPhoto.Button';
+import { useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { StackParams } from '../../../../types/navigationProps';
+import serverItemFactoryStore from '../../../../model/itemStore/itemStore';
+import { observer } from 'mobx-react-lite';
+import { runInAction } from 'mobx';
+import { documentUpdateHandler } from '../../../../model/common/utils';
+import persistedUserData from '../../../../model/UserStore/persistedUserData';
 
-export function SellOrEditItemScreen() {
+export function SellOrEditItemMain() {
+  const stack = useNavigation<NativeStackNavigationProp<StackParams>>();
+
   return (
     <NativeBaseProvider>
       <Box safeArea width={'full'} height={'full'} position={'absolute'}>
@@ -22,7 +32,7 @@ export function SellOrEditItemScreen() {
           {/* status bar */}
           <TitleAndBackButtonHeader
             title="Sell Item"
-            onPressHandler={() => console.log('Sell item back btn')}
+            onPressHandler={() => stack.goBack()}
           />
 
           {/* scrollable mini gallery */}
@@ -87,18 +97,56 @@ export function SellOrEditItemScreen() {
             alignItems={'center'}
             space={3}
           >
-            <TextInput placeholder="Item Name" VTextAlign={'top'} />
-            <TextInputMultiline placeholder="Description" />
-            <TextInput placeholder="Price" VTextAlign={'top'} />
-            <TextInput placeholder="Discount in percent" VTextAlign={'top'} />
+            <TextInput
+              VTextAlign={'top'}
+              placeholder="Item Name"
+              value={serverItemFactoryStore.name}
+              onChangeHandler={(val) => {
+                runInAction(() => {
+                  serverItemFactoryStore.name = val;
+                });
+              }}
+            />
+            <TextInputMultiline
+              placeholder="Description"
+              value={serverItemFactoryStore.description}
+              onChangeHandler={(val) => {
+                runInAction(() => {
+                  serverItemFactoryStore.description = val;
+                });
+              }}
+            />
+            <TextInput
+              placeholder="Price"
+              value={serverItemFactoryStore.price.toString()}
+              VTextAlign={'top'}
+              onChangeHandler={(val) => {
+                runInAction(() => {
+                  if (!isNaN(Number(val))) {
+                    serverItemFactoryStore.price = Number(val);
+                  }
+                });
+              }}
+            />
           </VStack>
 
           {/* cancel and save button */}
           <Center marginY={'3'} flex={1} width={'full'} maxWidth={'full'}>
-            <HollowAndSolidButton solidButtonValue="Sell" />
+            <HollowAndSolidButton
+              solidButtonValue="Sell"
+              onPressCancelHandler={() => {
+                stack.goBack();
+              }}
+              onPressSaveHandler={() => {
+                serverItemFactoryStore.addToServer();
+                serverItemFactoryStore.clear();
+              }}
+            />
           </Center>
         </VStack>
       </Box>
     </NativeBaseProvider>
   );
 }
+
+export const SellOrEditItemScreen = observer(SellOrEditItemMain);

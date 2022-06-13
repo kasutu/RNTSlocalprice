@@ -1,16 +1,16 @@
 import { uuid } from '../../../api/uuid/index.uuid';
 import { ItemType } from '../../../types/types';
 
-export class Item implements ItemType {
-  imageIDs: string[];
-  description: string;
-  details: string;
-  rating: number;
-  ownerID: string;
-  id: string;
-  locationName: string;
-  price: number;
-  isPacked: boolean;
+export class ServerItems implements ItemType {
+  public imageIDs: string[];
+  public description: string;
+  public details: string;
+  public rating: number;
+  public ownerID: string;
+  public id: string;
+  public locationName: string;
+  public price: number;
+  public isPacked: boolean;
 
   constructor(
     imageIDs: string[],

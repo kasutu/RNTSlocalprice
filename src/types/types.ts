@@ -1,4 +1,5 @@
 import { RNTimestamp } from '../model/common/utils';
+import { Item } from '../view/render/ItemCards.renderer';
 
 // ideal for owners and one to many objects
 export interface ObjectType {
@@ -33,7 +34,7 @@ export interface UserDataType {
   role: UserRole;
   email: string;
   fullName: string;
-  userId: string;
+  id: string;
   contactNumber: string;
   brgy: string;
   town: string;
@@ -54,7 +55,7 @@ export interface TransactionMetadataType extends ObjectType {
   paymentOption: PaymentOptions;
   placedOrder: boolean;
   confirmed: boolean;
-  itemIds: string[];
+  itemIds: Item[];
   shippingFee: number;
   subtotal: number;
   totalAmount: number;
@@ -77,11 +78,7 @@ export interface ConversationOwnersType {
   sellerName: string;
 }
 
-export type UserRole =
-  | 'seller'
-  | 'not verified'
-  | 'not logged in'
-  | 'verified seller';
+export type UserRole = 'not verified' | 'not logged in' | 'verified seller';
 
 export type PaymentOptions = 'cash on delivery' | 'pickup and pay' | '';
 
@@ -93,7 +90,13 @@ export interface GenericObjectWithIdType extends GenericObjectType {
   id?: string;
 }
 
-export type Collections = 'items' | 'conversations';
+export type Collections =
+  | 'items'
+  | 'conversations'
+  | 'locations'
+  | 'transactions'
+  | 'users'
+  | 'test';
 
 export interface BadgeProps {
   status?: 'unconfirmed' | 'confirmed' | 'canceled';

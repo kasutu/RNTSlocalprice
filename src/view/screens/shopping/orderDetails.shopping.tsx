@@ -1,10 +1,16 @@
 import React from 'react';
-import { Box, Button, Center, Pressable, Text, VStack } from 'native-base';
+import { Box, Center, Pressable, Text, VStack } from 'native-base';
 import { TitleAndBackButtonHeader } from '../../general/header/headers';
-import SolidButton from '../../general/buttons/solid.button';
-import { color } from 'native-base/lib/typescript/theme/styled-system';
+import { observer } from 'mobx-react-lite';
+import { useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { StackParams } from '../../../types/navigationProps';
+import shoppingBagStore from '../../../model/shoppingBagStrore/shoppingBagStore';
+import temptransactionstore from '../../../model/transactionStore/tempTransaction';
 
-export function OrderDetailsScreen() {
+function OrderDetailsMain() {
+  const stack = useNavigation<NativeStackNavigationProp<StackParams>>();
+
   return (
     <Box safeArea width={'full'} height={'full'} position={'absolute'}>
       <TitleAndBackButtonHeader title="Order Details" />
@@ -20,7 +26,7 @@ export function OrderDetailsScreen() {
           </Center>
           <Center>
             <Text fontSize={35} color={'#9E6DDE'} fontWeight={'black'}>
-              {'P100,000'}
+              P {shoppingBagStore.Total}
             </Text>
           </Center>
         </VStack>
@@ -34,7 +40,7 @@ export function OrderDetailsScreen() {
           </Center>
           <Center>
             <Text fontSize={10} fontWeight={'normal'}>
-              {'P100,000'}
+              {'time estimate coming soon'}
             </Text>
           </Center>
         </VStack>
@@ -48,7 +54,7 @@ export function OrderDetailsScreen() {
           </Center>
           <Center>
             <Text fontSize={10} fontWeight={'normal'}>
-              {'uwoduoadowd'}
+              {temptransactionstore.id}
             </Text>
           </Center>
         </VStack>
@@ -58,7 +64,7 @@ export function OrderDetailsScreen() {
         <Pressable
           width={'250'}
           height={'45'}
-          onPress={() => console.log('Button Pressed')}
+          onPress={() => stack.navigate('HomeStack')}
           borderRadius={'50'}
           backgroundColor={'#9E6DDE'}
           justifyContent={'center'}
@@ -72,3 +78,5 @@ export function OrderDetailsScreen() {
     </Box>
   );
 }
+
+export const OrderDetailsScreen = observer(OrderDetailsMain);

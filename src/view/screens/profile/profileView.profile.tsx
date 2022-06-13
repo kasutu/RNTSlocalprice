@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import {
   Box,
   Center,
+  Fab,
   HStack,
   Icon,
   NativeBaseProvider,
@@ -23,7 +24,8 @@ import { StackParams } from '../../../types/navigationProps';
 import persistedUserData from '../../../model/UserStore/persistedUserData';
 import { observer } from 'mobx-react-lite';
 import SolidButton from '../../general/buttons/solid.button';
-import LogInButton from '../../general/buttons/logIn.button';
+import AntDesign from 'react-native-vector-icons/AntDesign.js';
+import userStore from '../../../model/UserStore/UserStore';
 
 const uri = 'https://etech.com.pk/wp-content/uploads/2020/07/ROG.jpg';
 const name = 'ROG ni dave';
@@ -38,6 +40,11 @@ for (let i = 0; i < 10; i++) {
 
 export function ProfileScreenMain() {
   const stack = useNavigation<NativeStackNavigationProp<StackParams>>();
+
+  useEffect(() => {
+    persistedUserData.cacheData();
+    userStore.cacheData();
+  }, []);
 
   return (
     <NativeBaseProvider>
@@ -112,6 +119,13 @@ export function ProfileScreenMain() {
           </VStack>
         </VStack>
         <RenderUserContent condition={persistedUserData.loggedIn} />
+        <Fab
+          renderInPortal={false}
+          shadow={2}
+          size="sm"
+          icon={<Icon color="white" as={AntDesign} name="plus" size="sm" />}
+          onPress={() => stack.navigate('SellOrEditItemScreen')}
+        />
       </Box>
     </NativeBaseProvider>
   );
@@ -119,7 +133,7 @@ export function ProfileScreenMain() {
 
 export const ProfileScreen = observer(ProfileScreenMain);
 
-function RenderUserContent({ condition }: { condition: boolean }) {
+function RenderUserContentMain({ condition }: { condition: boolean }) {
   const stack = useNavigation<NativeStackNavigationProp<StackParams>>();
 
   if (condition) {
@@ -160,3 +174,5 @@ function RenderUserContent({ condition }: { condition: boolean }) {
     );
   }
 }
+
+const RenderUserContent = observer(RenderUserContentMain);

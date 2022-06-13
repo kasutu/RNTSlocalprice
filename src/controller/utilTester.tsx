@@ -9,7 +9,11 @@ import {
 } from 'native-base';
 import React, { useState } from 'react';
 import { Keyboard } from 'react-native';
+import { getData } from '../api/mmkv';
 import { Message } from '../model/common/classes/messageClass';
+import { LocalUserDataFactory } from '../model/common/classes/userDataFactory';
+import { userDataSync } from '../model/common/classes/userSyncDataFactory';
+import { LocalUserData } from '../model/common/userDataTypes';
 import {
   addConversationHandler,
   documentAddHandler,
@@ -17,11 +21,49 @@ import {
   documentGetCollectionHandler,
   documentUpdateHandler,
   getAllMessagesHandler,
+  getDocById,
   sendNewMessageHandler
 } from '../model/common/utils';
 import convoStore from '../model/convoStore/convoStore';
+import { userPersistDataStore } from '../model/localPersistUserDataStore.ts/localPersistDataStore';
 import temptransactionstore from '../model/transactionStore/tempTransaction';
 import TextRender from './textRender';
+
+let userTest: LocalUserData = {
+  role: 'verified seller',
+  id: 'dawdawd',
+  fullName: 'heheheh',
+  email: 'sssssss',
+  contactNumber: 'dddddd',
+  brgy: 'sss',
+  town: 'as',
+  city: 'ddddd',
+  zipCode: 'dsasasds',
+  address: 'dasdadasda',
+  geopointId: 'aaaaassadadawd',
+  transactionIds: ['dawd'],
+  convoIds: ['dawd'],
+  itemIds: ['dawd'],
+  isLoggedIn: false
+};
+
+let newUserTest: LocalUserData = {
+  role: 'not logged in',
+  id: 'dawdawd',
+  fullName: 'NEWWWWW FREESSHHHHH MEAATT',
+  email: 'ssssshuhuss',
+  contactNumber: 'ddddhuhuhuhudd',
+  brgy: 'suuss',
+  town: 'ahuhuhs',
+  city: 'NEWWWW BOIIII',
+  zipCode: 'dsasasds',
+  address: 'dasdadasda',
+  geopointId: 'aaaaassadadawd',
+  transactionIds: ['dawd', 'dawd', 'dawd'],
+  convoIds: ['dawd', 'ehhehe', 'ehhehe'],
+  itemIds: ['dawd', 'ehhehe', 'woot woot'],
+  isLoggedIn: true
+};
 
 export default function UtilTester() {
   const convoOwners = {
@@ -37,31 +79,27 @@ export default function UtilTester() {
       <Box w={'full'} h={'full'}>
         <VStack space={1}>
           <Button
-            onPress={() =>
-              documentAddHandler('basil', new Message('test', 'hello'))
-            }
+            onPress={() => {
+              userDataSync.push(new LocalUserDataFactory(userTest));
+              userDataSync.sync();
+            }}
           >
-            {'add doc'}
+            {'test'}
           </Button>
           <Button
-            onPress={() =>
-              documentUpdateHandler('basil', {
-                targetId: 'd97ae85d-b24a-4dfa-8084-3b12ab2497d4',
-                data: { msg: 'ive been updated' }
-              })
-            }
+            onPress={() => {
+              getData('user').then((val) => console.log(val));
+            }}
           >
-            {'update doc'}
+            {'fetch'}
           </Button>
           <Button
-            onPress={() =>
-              documentDeleteHandler(
-                'basil',
-                '3f77c92f-1825-4fa1-bc1e-6f3ca3241b13'
-              )
-            }
+            onPress={() => {
+              userPersistDataStore.fetch(userTest.id);
+              console.log(userPersistDataStore.persist);
+            }}
           >
-            {'delete doc'}
+            {'fetch try'}
           </Button>
           <Button
             onPress={() =>
@@ -114,7 +152,7 @@ export default function UtilTester() {
           </Button>
           <Button
             onPress={() => {
-              temptransactionstore.buyerId = 'basilio'
+              temptransactionstore.buyerId = 'basilio';
               temptransactionstore.addToDatabase();
             }}
           >

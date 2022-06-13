@@ -23,7 +23,7 @@ export const RNTimestamp = firebase.firestore.FieldValue.serverTimestamp();
  * @param newData any object
  */
 export function documentUpdateHandler(
-  collection: string,
+  collection: Collections,
   newData: { targetId: string; data: GenericObjectType | ReactNativeGeoPoint }
 ): void {
   const ref = Db.collection(collection);
@@ -38,7 +38,7 @@ export function documentUpdateHandler(
  * @callback fail triggers that handles error
  */
 export function documentAddHandler(
-  collection: string,
+  collection: Collections,
   data: GenericObjectWithIdType,
   success?: () => void,
   fail?: () => void
@@ -249,4 +249,18 @@ export function RemoveFromArr<T>(array: T[], item: T) {
   if (index !== -1) {
     array.splice(index, 1);
   }
+}
+
+export function getDocById(collection: Collections, id: string) {
+  return Db.collection(collection).doc(id).get();
+}
+
+/**
+ *
+ * @param arr1
+ * @param arr2
+ * @returns combined arr
+ */
+export function combineArrays<T>(arr1: T[], arr2: T[]): T[] {
+  return [...arr1, ...arr2];
 }

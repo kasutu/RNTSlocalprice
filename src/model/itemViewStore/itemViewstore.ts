@@ -61,7 +61,6 @@ export class CurrentItemStore {
 
   public addToCart() {
     const item = this.shoppingBagFactory();
-    console.log(this.counter);
 
     if (this.counter === 0) {
       shoppingBagStore.data.push(item);

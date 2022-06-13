@@ -21,4 +21,5 @@ export type StackParams = {
   CheckoutStack: any;
   MapScreen: any;
   LoginStack: any;
+  HomeStack: any;
 };
