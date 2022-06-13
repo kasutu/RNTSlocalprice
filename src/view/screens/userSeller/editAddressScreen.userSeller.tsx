@@ -1,19 +1,19 @@
 import HollowAndSolidButton from '../../general/buttons/hollowAndSolidButton.component';
-import React, { useState } from 'react';
+import React from 'react';
 import TextInput from '../../general/forms/textInput.form';
 import { TitleAndBackButtonHeader } from '../../general/header/headers';
 import { Box, Center, NativeBaseProvider, View, VStack } from 'native-base';
 
-import userStore from '../../../model/UserStore/UserStore';
 import { observer } from 'mobx-react-lite';
 import { MapViewComponent } from '../../general/map/mapViewComponent.map';
 import { Pressable, StyleSheet } from 'react-native';
-import { Colors } from '../../general/colors/localprice.colors';
 import { runInAction } from 'mobx';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { StackParams } from '../../../types/navigationProps';
 import persistedUserData from '../../../model/UserStore/persistedUserData';
+import { userState } from '../../../model/localUserDataStore/localUserDataStore';
+import { triggerAlert } from '../logIn/logInView.logIn';
 
 export function EditAddress() {
   const stack = useNavigation<NativeStackNavigationProp<StackParams>>();
@@ -26,7 +26,6 @@ export function EditAddress() {
           <TitleAndBackButtonHeader
             title="Edit location"
             onPressHandler={() => {
-              persistedUserData.cacheData();
               stack.goBack();
             }}
           />
@@ -40,65 +39,65 @@ export function EditAddress() {
             marginY={'6'}
           >
             <TextInput
-              value={userStore.fullName}
+              value={userState.state.fullName}
               placeholder="Full Name"
               onChangeHandler={(val) =>
                 runInAction(() => {
-                  userStore.fullName = val;
+                  userState.state.fullName = val;
                 })
               }
             />
             <TextInput
-              value={userStore.contactNumber}
+              value={userState.state.contactNumber}
               placeholder="Mobile Number"
               onChangeHandler={(val) =>
                 runInAction(() => {
-                  userStore.contactNumber = val;
+                  userState.state.contactNumber = val;
                 })
               }
             />
             <TextInput
-              value={userStore.email}
+              value={userState.state.email}
               placeholder="Email"
               onChangeHandler={(val) =>
                 runInAction(() => {
-                  userStore.email = val;
+                  userState.state.email = val;
                 })
               }
             />
             <TextInput
-              value={userStore.brgy}
+              value={userState.state.brgy}
               placeholder="Brgy/ House Number"
               onChangeHandler={(val) =>
                 runInAction(() => {
-                  userStore.brgy = val;
+                  userState.state.brgy = val;
                 })
               }
             />
             <TextInput
-              value={userStore.town}
+              value={userState.state.town}
               placeholder="Town"
               onChangeHandler={(val) =>
                 runInAction(() => {
-                  userStore.town = val;
+                  userState.state.town = val;
                 })
               }
             />
             <TextInput
-              value={userStore.city}
+              value={userState.state.city}
               placeholder="City"
               onChangeHandler={(val) =>
                 runInAction(() => {
-                  userStore.city = val;
+                  userState.state.city = val;
                 })
               }
             />
             <TextInput
-              value={userStore.zipCode.toString()}
+              value={userState.state.zipCode.toString()}
               placeholder="Zip Code"
               onChangeHandler={(val) =>
                 runInAction(() => {
-                  userStore.zipCode = val;
+                  userState.state.zipCode = val;
                 })
               }
             />
@@ -119,9 +118,15 @@ export function EditAddress() {
           <HollowAndSolidButton
             onPressCancelHandler={() => stack.goBack()}
             onPressSaveHandler={() => {
-              persistedUserData.cacheData();
-              userStore.addToServer();
-              userStore.clear();
+              userState.sync();
+              triggerAlert('Hooreeyyy!', 'New Address Added!', [
+                {
+                  text: "I'll take a look",
+                  onPress() {
+                    stack.goBack();
+                  }
+                }
+              ]);
             }}
           />
         </Center>

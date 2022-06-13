@@ -40,16 +40,25 @@ export function documentUpdateHandler(
 export function documentAddHandler(
   collection: Collections,
   data: GenericObjectWithIdType,
+  uid?: string,
   success?: () => void,
   fail?: () => void
 ): void {
   const ref = Db.collection(collection);
 
-  ref
-    .doc(data.id)
-    .set(data)
-    .then(() => success)
-    .catch(() => fail);
+  if (uid) {
+    ref
+      .doc(uid)
+      .set(data)
+      .then(() => success)
+      .catch(() => fail);
+  } else {
+    ref
+      .doc(data.id)
+      .set(data)
+      .then(() => success)
+      .catch(() => fail);
+  }
 }
 
 /**

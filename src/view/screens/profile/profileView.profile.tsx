@@ -21,11 +21,11 @@ import { uuid } from '../../../api/uuid/index.uuid';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { StackParams } from '../../../types/navigationProps';
-import persistedUserData from '../../../model/UserStore/persistedUserData';
 import { observer } from 'mobx-react-lite';
 import SolidButton from '../../general/buttons/solid.button';
 import AntDesign from 'react-native-vector-icons/AntDesign.js';
-import userStore from '../../../model/UserStore/UserStore';
+import { userPersistDataStore } from '../../../model/localPersistUserDataStore.ts/localPersistDataStore';
+import { userState } from '../../../model/localUserDataStore/localUserDataStore';
 
 const uri = 'https://etech.com.pk/wp-content/uploads/2020/07/ROG.jpg';
 const name = 'ROG ni dave';
@@ -40,11 +40,6 @@ for (let i = 0; i < 10; i++) {
 
 export function ProfileScreenMain() {
   const stack = useNavigation<NativeStackNavigationProp<StackParams>>();
-
-  useEffect(() => {
-    persistedUserData.cacheData();
-    userStore.cacheData();
-  }, []);
 
   return (
     <NativeBaseProvider>
@@ -63,10 +58,10 @@ export function ProfileScreenMain() {
               backgroundColor={'#D5C1F1'}
               borderRadius={'full'}
             >
-              <Text fontSize={'11px'}>{persistedUserData.data.role}</Text>
+              <Text fontSize={'11px'}>{userState.view.role}</Text>
             </Center>
             <Text fontSize={'18px'} fontWeight={'bold'}>
-              {persistedUserData.data.fullName}
+              {userState.view.fullName}
             </Text>
 
             {/* USER ADDRESS */}
@@ -87,15 +82,13 @@ export function ProfileScreenMain() {
               >
                 {/* ADDRESS DETAILS */}
                 <Center>
-                  <Text fontSize={'12'}>
-                    {persistedUserData.data.contactNumber}
-                  </Text>
+                  <Text fontSize={'12'}>{userState.view.contactNumber}</Text>
                 </Center>
                 <Center>
-                  <Text fontSize={'12'}>{persistedUserData.data.email}</Text>
+                  <Text fontSize={'12'}>{userState.view.email}</Text>
                 </Center>
                 <Center>
-                  <Text fontSize={'12'}>{persistedUserData.address}</Text>
+                  <Text fontSize={'12'}>{userState.view.address}</Text>
                 </Center>
               </VStack>
               <Box
@@ -118,14 +111,7 @@ export function ProfileScreenMain() {
             </HStack>
           </VStack>
         </VStack>
-        <RenderUserContent condition={persistedUserData.loggedIn} />
-        <Fab
-          renderInPortal={false}
-          shadow={2}
-          size="sm"
-          icon={<Icon color="white" as={AntDesign} name="plus" size="sm" />}
-          onPress={() => stack.navigate('SellOrEditItemScreen')}
-        />
+        <RenderUserContent condition={userPersistDataStore.persist !== null} />
       </Box>
     </NativeBaseProvider>
   );
@@ -135,6 +121,12 @@ export const ProfileScreen = observer(ProfileScreenMain);
 
 function RenderUserContentMain({ condition }: { condition: boolean }) {
   const stack = useNavigation<NativeStackNavigationProp<StackParams>>();
+
+  useEffect(() => {
+    // storeData('user', null);
+    userPersistDataStore.fetch();
+    console.log(userPersistDataStore.persist);
+  }, []);
 
   if (condition) {
     return (
@@ -154,6 +146,13 @@ function RenderUserContentMain({ condition }: { condition: boolean }) {
             </Box>
           </Box>
         </ScrollView>
+        <Fab
+          renderInPortal={false}
+          shadow={2}
+          size="sm"
+          icon={<Icon color="white" as={AntDesign} name="plus" size="sm" />}
+          onPress={() => stack.navigate('SellOrEditItemScreen')}
+        />
       </>
     );
   } else {

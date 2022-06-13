@@ -19,12 +19,10 @@ import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { StackParams } from '../../../types/navigationProps';
 import { login } from '../../../api/firebase/authentications';
-import persistedUserData from '../../../model/UserStore/persistedUserData';
 import { runInAction } from 'mobx';
 import { Alert, AlertButton, Keyboard } from 'react-native';
 import { observer } from 'mobx-react-lite';
-import { storeData } from '../../../api/mmkv';
-import userStore from '../../../model/UserStore/UserStore';
+import { userPersistDataStore } from '../../../model/localPersistUserDataStore.ts/localPersistDataStore';
 
 const appLogo = require('../../../assets/appLogo.png');
 
@@ -51,10 +49,19 @@ export function LogInScreenMain() {
           Keyboard.dismiss();
 
           runInAction(() => {
-            userStore.pullFromServer(response.user.uid);
-            userStore.id = response.user.uid;
-            storeData('loginData', response.user);
-            storeData('loginStatus', true);
+            if (userPersistDataStore.persist !== null) {
+              userPersistDataStore.fetch(response.user.uid);
+            } else {
+              login(email, password)
+                .then((data) => {
+                  return data.user;
+                })
+                .then((userData) => {
+                  userPersistDataStore.fetch(userData.uid);
+                  console.log(userData.uid);
+                  console.log(userPersistDataStore.persist);
+                });
+            }
           });
 
           setEmail('');
@@ -144,6 +151,10 @@ export function LogInScreenMain() {
 
 export const LogInScreen = observer(LogInScreenMain);
 
-function triggerAlert(header: string, msg: string, buttons?: AlertButton[]) {
+export function triggerAlert(
+  header: string,
+  msg: string,
+  buttons?: AlertButton[]
+) {
   Alert.alert(header, msg, buttons);
 }
